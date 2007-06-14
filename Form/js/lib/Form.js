@@ -3,7 +3,7 @@
  *
  * Objeto para manipulacao de formulario como validacao,
  * adicionar o focus ao primeiro elemento do formulario vazio,
- * tab automático e etc.
+ * tab automatico, historico dos campos e etc.
  *
  * Dependencia da funcao dolar $()
  *
@@ -16,6 +16,72 @@
 
 var Form = {
 	
+	//historico das modificacoes
+	modifications: [],
+	
+	checkModifications: function(oForm) {
+		var oInputModifications = $('modifications');
+		var aElements = oForm.elements;
+		
+		if(oInputModifications) {
+			for(var i=0; i<aElements.length; i++) {
+				var oElement = aElements[i];
+				
+				if(oElement.disabled) continue;
+				
+				switch(oElement.type) {
+					case 'text'      :
+					case 'textarea'  :
+						Form.checkModificationInput(oElement);
+					break;
+					case 'select-one':
+						Form.checkModificationCombo(oElement);
+					break;
+				}//fim switch
+			}//fim for
+			
+			oInputModifications.value = Form.modifications.join("<br />");
+		}//fim if
+		
+		return true;
+	},//fim checkModifications
+	
+	
+	addModification: function(oElement, sNewValue, sOldValue) {
+		var sMessage = "";
+		
+		sNewValue = (sNewValue) ? sNewValue : "vazio";
+		sOldValue = (sOldValue) ? sOldValue : "vazio";
+		
+		if(sNewValue != sOldValue) {
+			sMessage = oElement.title + ": De (" + sOldValue + ") para (" + sNewValue + ")";
+			Form.modifications.push(sMessage);
+		}
+	
+	},//fim addModification
+	
+	
+	checkModificationInput: function(oElement) {
+		Form.addModification(oElement, oElement.value, oElement.defaultValue);
+	},//fim checkModificationInput
+	
+	
+	checkModificationCombo: function(oElement) {
+		var sNewValue = oElement[oElement.selectedIndex].text;
+		var sOldValue = "";
+		var aOptions  = oElement.options;
+		
+		for(var i=0; i<aOptions.length; i++) {
+			if(aOptions[i].defaultSelected) {
+				sOldValue = aOptions[i].text;
+				break;
+			}
+		}
+	
+		Form.addModification(oElement, sNewValue, sOldValue);
+	},//fim checkModificationCombo
+ 
+ 
 	focusOnFirst: function() {
 		if(document.forms.length > 0) {
 			var oForm = document.forms[0];
@@ -255,6 +321,28 @@ var Form = {
 			}
 		}//fim do for
 	},//fim setComboValue
+	
+	
+	/*
+	 * requires object Event.js
+	 */
+	formatMoney = function(oInput, iFloatPoint, sDecimalSep, sThousandsSep) {
+		oInput.c = !isNaN(iFloatPoint) ? Math.abs(iFloatPoint) : 2;
+		oInput.sThousandsSep = typeof sThousandsSep != "string" ? "," : sThousandsSep, oInput.sDecimalSep = typeof sDecimalSep != "string" ? "." : sDecimalSep;
+		
+		Event.addHandle(oInput, "keypress", function(e) {
+				if(e.key > 47 && e.key < 58) {
+						var oInput, s, l = (s = ((oInput = this).value.replace(/^0+/g, "") + String.fromCharCode(e.key)).replace(/\D/g, "")).length, iFloatPoint;
+						if(oInput.maxLength + 1 && l >= oInput.maxLength) return false;
+						l <= (iFloatPoint = oInput.c) && (s = new Array(iFloatPoint - l + 2).join("0") + s);
+						for(var i = (l = (s = s.split("")).length) - iFloatPoint; (i -= 3) > 0; s[i - 1] += oInput.sDecimalSep);
+						iFloatPoint && iFloatPoint < l && (s[l - ++iFloatPoint] += oInput.sThousandsSep);
+						oInput.value = s.join("");
+				}
+				e.key > 30 && e.preventDefault();
+		});
+		
+	},//fim formatMoney
 	
 	
 	checkAll: function(oInputCheck) {
