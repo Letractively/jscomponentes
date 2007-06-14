@@ -1,0 +1,11 @@
+/* 
+ * Dialog
+ *  
+ * @author: Edy Segura - edy@liveware.com.br, infoedy@gmail.com
+ * @description: Definicoes para o objeto Dialog
+ */
+
+/* Imports */
+@import url("dialog-overlay.css");
+@import url("dialog-alert.css");
+
