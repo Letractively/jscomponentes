@@ -1,7 +1,9 @@
 /* 
-* JavaScript Document
-* Autor: Edy Segura - infoedy@gmail.com
-* Descrição: Uso do objeto XML
+ * Index.js
+ *
+ * Objeto Literal Index
+ * @author: Edy Segura - infoedy@gmail.com
+ *
 */
 
 var Index = {
@@ -21,7 +23,7 @@ var Index = {
 		var oLink = document.links[0];
 		
 		oLink.onclick = function() {
-			XML.load("xml/republicanos.xml", Index.showXML);
+			Index.loadXML(); //XML.load("xml/republicanos.xml", Index.showXML);
 			return false;
 		};
 		
@@ -47,6 +49,5 @@ var Index = {
 
 };//fim Index
 
-//inicialização
+//inicializacao
 window.onload = Index.init;
-
