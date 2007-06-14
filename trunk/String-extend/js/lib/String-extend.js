@@ -1,7 +1,10 @@
-/* JavaScript Document
-Autor: Edy Segura - edy@liveware.com.br, infoedy@gmail.com
-Descrição: Extendendo o objeto String do javascript.
-*/
+/* 
+ * String-extends.js
+ *
+ * Extendendo o objeto String do javascript
+ * @author: Edy Segura - infoedy@gmail.com
+ *
+ */
 
 //implementação do método String.trim()
 String.prototype.trim = function() {
