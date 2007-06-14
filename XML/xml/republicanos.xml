@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<republicanos>
+	<republicano>
+		<nome>Edy Segura</nome>
+		<idade>23</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+	<republicano>
+		<nome>Jeferson Zamin</nome>
+		<idade>20</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+	<republicano>
+		<nome>Luís Paulo (Pantano)</nome>
+		<idade>23</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+	<republicano>
+		<nome>Paulo Ribeiro</nome>
+		<idade>26</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+	<republicano>
+		<nome>Clayton Souza</nome>
+		<idade>22</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+	<republicano>
+		<nome>Carlão Borges</nome>
+		<idade>22</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+	<republicano>
+		<nome>André Dias</nome>
+		<idade>22</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+	<republicano>
+		<nome>Carlos</nome>
+		<idade>22</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+	<republicano>
+		<nome>Anderson</nome>
+		<idade>22</idade>
+		<sexo>Masculino</sexo>
+	</republicano>
+</republicanos>
