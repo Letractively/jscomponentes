@@ -5,8 +5,8 @@
  * do uso da API do DOM - Document Object Model
  *
  * @author: Edy Segura - infoedy@gmail.com
- * Referência: Prototype - http://www.prototypejs.org/
- * Referência: freeDOM   - http://www.metzen.com.br/freedom/
+ * Referencia: Prototype - http://www.prototypejs.org/
+ * Referencia: freeDOM   - http://www.metzen.com.br/freedom/
  *
  */
 
@@ -105,6 +105,29 @@ function $tagsByAttribute(sAttribute, sAttributeValue, oParentNode) {
 	
 	return aElements;
 }//fim getElementsByAttribute
+
+
+/*
+ * Busca o offsetParent especificado em sTagName
+ * @param: oElementNode => Node Object
+ * @param: sTagName => String
+ * @return: Node Object
+ */
+function $getParentByTagName(oElementNode, sTagName) {
+	sTagName = sTagName.toLowerCase();
+	
+	for(
+		oElementNode = oElementNode.parentNode;
+		(
+			oElementNode && (			
+				(oElementNode.tagName && (oElementNode.tagName.toLowerCase() != sTagName)) ||
+				(!oElementNode.tagName && (oElementNode.nodeType != 3)) 
+			)
+		);
+		oElementNode = oElementNode.parentNode){}
+
+	return oElementNode;
+}
 
 
 /*

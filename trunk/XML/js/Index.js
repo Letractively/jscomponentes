@@ -4,7 +4,7 @@
  * Objeto Literal Index
  * @author: Edy Segura - infoedy@gmail.com
  *
-*/
+ */
 
 var Index = {
 
@@ -31,7 +31,7 @@ var Index = {
 
 
 	showXML: function(oXMLDocument) {
-		var oList = document.createElement("ul");
+		var oList  = document.createElement("ul");
 		var aNomes = oXMLDocument.getElementsByTagName("nome");
 		var aIdade = oXMLDocument.getElementsByTagName("idade");
 
