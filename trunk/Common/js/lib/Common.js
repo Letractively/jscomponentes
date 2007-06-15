@@ -175,6 +175,6 @@ var Common = {
 		return false;
 	}//fim checkExistScript
 
-};//fim Common
+};//fim Common.js
 
 

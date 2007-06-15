@@ -15,9 +15,9 @@ var Browser = {
 	win     : navigator.platform == 'Win32',
 	dom     : (document.createElement && document.getElementById) ? true : false
 
-};//fim Browser
+};//fim Browser.js
 
-//atributos publicos do objeto Browser
+//atributos publicos do objeto literal Browser
 Browser.isSafari  = Browser.ua.indexOf("safari") >= 0;
 Browser.isOpera   = Browser.ua.indexOf("opera")  >= 0;
 Browser.isFirefox = !Browser.isOpera && !Browser.isSafari && (Browser.name == "Netscape");

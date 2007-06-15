@@ -1,5 +1,5 @@
 /* 
- * Cookie
+ * Cookie.js
  *
  * Objeto Literal Cookie
  * @author: Edy Segura - infoedy@gmail.com
@@ -44,5 +44,4 @@ var Cookie = {
 		return null;
 	}//fim getCookie
 	
-};//fim Cookie
-
+};//fim Cookie.js
