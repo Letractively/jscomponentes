@@ -1,6 +1,0 @@
-#summary Objeto Literal Ajax
-#labels Featured
-
-= Ajax.js =
-
-Descrição do objeto "Ajax.js".
