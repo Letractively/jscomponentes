@@ -5,7 +5,7 @@
  * adicionar o focus ao primeiro elemento do formulario vazio,
  * tab automatico, historico dos campos e etc.
  *
- * Dependencia da funcao dolar $()
+ * Dependencia: function $()
  *
  * Referencia ao livro do javascript for web developer, pagina 339
  * do livro e pagina 367 da versao em PDF.

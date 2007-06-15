@@ -1,12 +1,12 @@
 /* 
  * Event.js
  *
- * Objeto para manipulacao de eventos
+ * Objeto Literal para manipulacao de eventos
  * @author: Edy Segura - infoedy@gmail.com
  *
- * Referência: 1 - http://ejohn.org/projects/flexible-javascript-events/
- * Referência: 2 - http://www.quirksmode.org/blog/archives/2005/10/_and_the_winner_1.html
- * Referência: 3 - Livro Professional JavaScript for Web Developer página 292 do livro e 320 do PDF
+ * Referencia: 1 - http://ejohn.org/projects/flexible-javascript-events/
+ * Referencia: 2 - http://www.quirksmode.org/blog/archives/2005/10/_and_the_winner_1.html
+ * Referencia: 3 - Livro Professional JavaScript for Web Developer página 292 do livro e 320 do PDF
  *
  */
 
@@ -84,7 +84,7 @@ var Event = {
 	},//fim getEvent
 	
 	
-	//método para adicionar uma função com parâmetros
+	//metodo para adicionar uma função com parâmetros
 	getFunction: function(fnFunction, vArguments) {
 		return function() {
 			try { 
@@ -102,5 +102,4 @@ var Event = {
 		}//fim return function
 	}//fim getFunction
 
-};//fim Event
-
+};//fim Event.js
