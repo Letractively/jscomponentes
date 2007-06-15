@@ -1,7 +1,7 @@
 /*
  * DOM-Kit.js
  *
- * DOM-Kit é um conjunto de funções para simplificação
+ * DOM-Kit é um conjunto de funcoes para simplificacao
  * do uso da API do DOM - Document Object Model
  *
  * @author: Edy Segura - infoedy@gmail.com
@@ -12,7 +12,7 @@
 
 
 /*
- * Atalho para o método document.getElementById()
+ * Atalho para o metodo document.getElementById()
  * @param: sElementId => String
  * @return: Node Object, Array of Node Objects
  */
@@ -34,7 +34,7 @@ function $() {
 
 
 /*
- * Atalho para o método document.getElementsByTagName()
+ * Atalho para o metodo document.getElementsByTagName()
  * @name: $tags(sTagName, oParentNode)
  * @param: sTagName => String
  * @param: oParentNode => Node Object (optional)
@@ -131,7 +131,7 @@ function $getParentByTagName(oElementNode, sTagName) {
 
 
 /*
- * Atalho para o método document.createElement();
+ * Atalho para o metodo document.createElement();
  * @param: sElement => String
  * @return: Node Object
  */
