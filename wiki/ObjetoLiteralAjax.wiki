@@ -1,4 +1,4 @@
-#summary Documentação do objeto literal "Ajax.js".
+#summary Documentação do objeto literal Ajax.js
 #labels Featured
 
 = Introdução =
