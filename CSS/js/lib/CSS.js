@@ -75,5 +75,4 @@ var CSS = {
 		return true;
 	}//fim removeClass
 
-};//fim CSS
-
+};//fim CSS.js

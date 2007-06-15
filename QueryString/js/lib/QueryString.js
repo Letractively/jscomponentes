@@ -54,7 +54,6 @@ var QueryString = function() {
 		}//fim for
 		
 		this.isOK = true;
-
 	}//fim if
-};//fim QueryString
 
+};//fim QueryString.js

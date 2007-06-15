@@ -10,26 +10,30 @@ var Index = {
 
 	init: function() {
 		Index.loadXML();
-		Index.setLink();
+		window.setTimeout(Index.createElementForTest, 50);
 	},//fim init
 
 
+	createElementForTest: function() {
+		var oElementP = document.createElement('p');
+		
+		oElementP.innerHTML = "Ler XML novamente.";
+		oElementP.className = "link";
+		oElementP.title     = "Ler XML novamente, para teste.";
+		
+		oElementP.onclick = function() {
+			Index.loadXML();
+		};
+		
+		document.body.appendChild(oElementP);
+	},//fim createElementForTest
+	
+	
 	loadXML: function() {
 		XML.load("xml/republicanos.xml", Index.showXML);
 	},//fim loadXML
-
-
-	setLink: function() {
-		var oLink = document.links[0];
-		
-		oLink.onclick = function() {
-			Index.loadXML(); //XML.load("xml/republicanos.xml", Index.showXML);
-			return false;
-		};
-		
-	},//fim setLink
-
-
+	
+	
 	showXML: function(oXMLDocument) {
 		var oList  = document.createElement("ul");
 		var aNomes = oXMLDocument.getElementsByTagName("nome");
@@ -47,7 +51,7 @@ var Index = {
 
 	}//fim showXML
 
-};//fim Index
+};//fim Index.js
 
 //inicializacao
 window.onload = Index.init;
