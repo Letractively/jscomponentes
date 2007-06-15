@@ -1,0 +1,7 @@
+#summary Uso crossbrowser e atalhos para API DOM do javascript.
+#labels Featured
+
+= Introdução =
+
+DOM-kit é um conjunto de funções para o uso facilitado e crossbrowser da API DOM do javascript.
+
