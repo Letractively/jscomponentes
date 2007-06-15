@@ -3,5 +3,4 @@
 
 = Introdução =
 
-DOM-kit é um conjunto de funções para o uso facilitado e crossbrowser da API DOM do javascript.
-
+DOM-Kit é um conjunto de funções para o uso facilitado e crossbrowser da API DOM do javascript.
