@@ -1,11 +1,11 @@
 /* 
  * CSS.js
  * 
- * Objeto Literal para manipulacao do CSS
+ * Objeto Literal CSS para manipulacao de CSS
  * @author: Edy Segura - infoedy@gmail.com
  * 
- * Referência: PDF de exemplo do livro JavaScript Anthology, página 77 do PDF.
- * Dependência: função dolar completa, $()
+ * Referencia: PDF de exemplo do livro JavaScript Anthology, página 77 do PDF.
+ * Dependencia: function $()
  * 
  */
 

@@ -48,5 +48,5 @@ var Index = {
 	
 };//fim Index
 
-//inicialização
+//inicializacao
 window.onload = Index.init;
