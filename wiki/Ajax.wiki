@@ -1,0 +1,7 @@
+#summary Objeto Ajax.
+#labels Featured
+
+= Ajax.js =
+
+Descrição do objeto "Ajax.js".
+
