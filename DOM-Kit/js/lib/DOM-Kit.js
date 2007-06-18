@@ -1,10 +1,12 @@
 /*
  * DOM-Kit.js
+ * http://jscomponentes.googlecode.com/svn/trunk/DOM-Kit/
  *
- * DOM-Kit é um conjunto de funcoes para simplificacao
- * do uso da API do DOM - Document Object Model
- *
- * @author: Edy Segura - infoedy@gmail.com
+ * DOM-Kit e' um conjunto de funcoes para simplificacao
+ * do uso da API do DOM - Document Object Model.
+ * http://jscomponentes.googlecode.com/svn/trunk/DOM-Kit/
+ * 
+ * @author: Edy Segura, infoedy@gmail.com
  * Referencia: Prototype - http://www.prototypejs.org/
  * Referencia: freeDOM   - http://www.metzen.com.br/freedom/
  *
