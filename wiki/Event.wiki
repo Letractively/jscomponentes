@@ -1,0 +1,6 @@
+#summary Documentação do objeto literal Event.js
+#labels Featured
+
+= Introdução =
+
+O objeto literal "Event.js" como o nome já sugere é para manipulação de eventos crossbrowser em javascript.
