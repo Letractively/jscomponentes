@@ -1,0 +1,6 @@
+#summary Objeto dinâmico QueryString.js
+#labels Featured
+
+= Introdução =
+
+Objeto dinâmico para pegar os valores passados na URL.
