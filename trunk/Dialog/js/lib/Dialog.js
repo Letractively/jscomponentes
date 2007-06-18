@@ -1,13 +1,13 @@
 /*
  * Dialog.js
  *
- * Objeto literal para manipulação de dialogs como
+ * Objeto literal para manipulacao de dialogs como
  * alert() e window.open
  *
  * @author: Edy Segura - infoedy@gmail.com
- * Dependencia 1: dom-kit.js
- * Dependencia 2: Método Common.getPageSize()
- * Dependencia 3: Event.js
+ * Dependencia 1: DOM-Kit.js
+ * Dependencia 2: Event.js
+ * Dependencia 3: Metodo Common.getPageSize()
  * Dependencia 4: Dialog.css
  *
  * metodos
@@ -238,8 +238,7 @@ var Dialog = {
 		}//fim if
 	}//fim winClosed
 	
-};//fim Dialog
+};//fim Dialog.js
 
-//inicialização
+//inicializacao
 Event.addHandle(window, 'load', Dialog.init);
-
