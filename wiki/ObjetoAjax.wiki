@@ -1,6 +1,0 @@
-#summary Documentação do objeto literal Ajax.js
-#labels Featured
-
-= Introdução =
-
-O objeto literal "Ajax.js" como o nome já sugere é para uso da metodologia AJAX no desenvolvimento de aplicações web.
