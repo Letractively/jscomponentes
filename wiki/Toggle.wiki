@@ -1,0 +1,6 @@
+#summary Documentação do objeto literal Toggle.js
+#labels Featured
+
+= Introdução =
+
+Objeto literal para esconder e exibir elementos em uma página.
