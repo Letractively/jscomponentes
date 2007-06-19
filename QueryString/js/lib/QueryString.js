@@ -1,5 +1,6 @@
 /*
  * QueryString.js
+ * http://jscomponentes.googlecode.com/svn/trunk/QueryString/js/lib/QueryString.js
  *
  * Script para pegar parametros/get da url
  * @author: Edy Segura - edy@liveware.com.br, infoedy@gmail.com
