@@ -14,7 +14,7 @@ var Cookie = {
 		oExpireDate.setTime(oExpireDate.getTime() + (iExpireDays * 24 * 3600 * 1000));
 		document.cookie = sNome + "=" + escape(sValue) + 
 		((iExpireDays == null) ? "" : "; expires=" + oExpireDate.toGMTString());
-	},//fim addCookie
+	},//fim createCookie
 
 
 	deleteCookie: function(sNome, sPath, sDomain) {
@@ -22,7 +22,7 @@ var Cookie = {
 			document.cookie = sNome + "=" + ((sPath) ? ";path=" + sPath : "") +
 			((sDomain) ? ";domain=" + sDomain : "" ) + ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
 		}
-	},//fim removeCookie
+	},//fim deleteCookie
 
 
 	getCookie: function(sNome) {

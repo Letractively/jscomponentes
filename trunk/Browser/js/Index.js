@@ -1,5 +1,5 @@
 /* 
- * Index
+ * Index.js
  *
  * Objeto Literal Index
  * @author: Edy Segura - infoedy@gmail.com
@@ -31,7 +31,7 @@ var Index = {
 		
 	}//fim buildTable
 	
-};//fim Index
+};//fim Index.js
 
-//inicialização
+//inicializacao
 window.onload = Index.init;

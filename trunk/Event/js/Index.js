@@ -1,7 +1,10 @@
-/* JavaScript Document
-Autor: Edy Segura - infoedy@gmail.com
-Descrição: Scripts para demonstrar o uso do objeto Event
-*/
+/* 
+ * Index.js
+ * 
+ * Script para teste do Event.js
+ * @author: Edy Segura - infoedy@gmail.com
+ *
+ */
 
 var Index = {
 	
@@ -38,7 +41,7 @@ var Index = {
 
 	}//fim eventHandleLog
 	
-};//fim Index
+};//fim Index.js
 
-//inicialização
+//inicializacao
 window.onload = Index.init;

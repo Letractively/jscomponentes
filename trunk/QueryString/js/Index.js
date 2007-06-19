@@ -1,7 +1,9 @@
 /* 
- * JavaScript Document
- * Autor: Edy Segura - infoedy@gmail.com
- * Descrição: Scripts para pegar os valores da QueryString
+ * Index.js
+ * 
+ * Script para teste do objeto QueryString
+ * @author: Edy Segura - infoedy@gmail.com
+ *
  */
 
 var Index = {
@@ -36,8 +38,7 @@ var Index = {
 			
 		}//fim setReload
 		
-};//fim Index
+};//fim Index.js
 
-//inicialização
+//inicializacao
 window.onload = Index.init;
-

@@ -176,5 +176,3 @@ var Common = {
 	}//fim checkExistScript
 
 };//fim Common.js
-
-

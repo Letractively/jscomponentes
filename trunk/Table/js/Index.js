@@ -1,7 +1,10 @@
-/* JavaScript Document
-Autor: Edy Segura - edy@liveware.com.br, infoedy@gmail.com
-Descrição: Script para técnica striped table
-*/
+/* 
+ * Index.js
+ * 
+ * Script para testar o objeto Table.js
+ * @author: Edy Segura - infoedy@gmail.com
+ *
+ */
 
 var Index = {
 	
@@ -9,16 +12,14 @@ var Index = {
 		Index.setStripedTable();
 	},//fim init
 	
+	
 	setStripedTable: function() {
-		var oTable = document.getElementById('zebratable');
-		
-		//três possíveis entradas
-		Table.stripedTable(oTable);
+		Table.stripedTable($('zebratable'));
 		Table.stripedTable('simpletable');
 		Table.stripedTable('nada');
 	}
-	
-};//fim Index
 
-//inicialização
+};//fim Index.js
+
+//inicializacao
 window.onload = Index.init;

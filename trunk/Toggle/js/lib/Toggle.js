@@ -1,7 +1,7 @@
 /* 
  * Toggle.js
  *
- * Objeto literal AJAX, para o uso da metodologia AJAX
+ * Objeto literal Toggle
  * Referencia  : http://www.dustindiaz.com/seven-togglers/ 
  * Dependencia : function $()
  *   
@@ -32,6 +32,7 @@
  * );
  * 
  * ------------------------------------------------------------
+ *
  */
 
 var Toggle = {
