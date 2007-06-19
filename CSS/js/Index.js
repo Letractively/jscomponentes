@@ -37,7 +37,7 @@ var Index = {
 			CSS.addClass(oSpanValue,    "comum");
 
 			oSpanProperty.innerHTML = aCSSPropertys[i]  + ": ";
-			oSpanValue.innerHTML    = CSS.getComputedPropertyValue(oTitle, aCSSPropertys[i]) + ";";
+			oSpanValue.innerHTML    = CSS.getComputed(oTitle, aCSSPropertys[i]) + ";";
 			
 			oParagrafo.appendChild(oSpanProperty);
 			oParagrafo.appendChild(oSpanValue);
@@ -46,7 +46,7 @@ var Index = {
 		}//fim for
 	}//fim showCSSProperty
 	
-};//fim Index
+};//fim Index.js
 
 //inicializacao
 window.onload = Index.init;

@@ -1,7 +1,7 @@
 /* 
  * CSS.js
  * 
- * Objeto Literal CSS para manipulacao de CSS
+ * Objeto Literal CSS
  * @author: Edy Segura - infoedy@gmail.com
  * 
  * Referencia: PDF de exemplo do livro JavaScript Anthology, página 77 do PDF.
@@ -11,7 +11,7 @@
 
 var CSS = {
 	
-	getComputedPropertyValue: function(vElement, sCssProperty) {
+	getComputed: function(vElement, sCssProperty) {
 		var oElement = $(vElement);
 		
 		if(oElement.currentStyle) {
@@ -24,7 +24,7 @@ var CSS = {
 		}
 		
 		return false;
-	},//fim getComputedPropertyValue
+	},//fim getComputed
 	
 	
 	formatPropertyCSS: function(sCssProperty) {

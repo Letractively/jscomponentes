@@ -134,4 +134,4 @@ var Ajax = {
 
 	}//fim run
 
-};//fim ajax
+};//fim Ajax.js
