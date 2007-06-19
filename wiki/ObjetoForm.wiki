@@ -1,6 +1,0 @@
-#summary Documentação do objeto literal Form.js
-#labels Featured
-
-= Introdução =
-
-O objeto literal "Form.js" como o nome já sugere é para uso em formulários no desenvolvimento de aplicações web.
