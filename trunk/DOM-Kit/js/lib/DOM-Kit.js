@@ -76,8 +76,8 @@ function $tagsByClassName(sClassName, oParentNode) {
  * @param: oParentNode => Node Object (optional)
  * @return: Array of Node Objects
  */
-function $tagsByAttribute(sAttribute, sAttributeValue, oParentNode) {
-	var aAllElements = ($(oParentNode) || document).getElementsByTagName('*');
+function $tagsByAttribute(sAttribute, sAttributeValue, oParentNode, sTagName) {
+	var aAllElements = ($(oParentNode) || document).getElementsByTagName((sTagName || *));
 	var aElements    = new Array;
 	
 	for(var i=0; i<aAllElements.length; i++) {
