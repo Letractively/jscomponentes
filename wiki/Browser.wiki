@@ -1,0 +1,6 @@
+#summary Documentação do objeto literal Browser.js
+#labels Featured
+
+= Introdução =
+
+O objeto literal "Browser.js" ajuda na identificação de qual browser o cliente está usando.
