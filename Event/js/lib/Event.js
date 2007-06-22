@@ -1,5 +1,6 @@
 /* 
  * Event.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Event/
  *
  * Objeto Literal para manipulacao de eventos
  * @author: Edy Segura - infoedy@gmail.com
