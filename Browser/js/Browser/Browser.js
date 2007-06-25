@@ -1,5 +1,6 @@
 /* 
  * Browser.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Browser/js/Browser/Browser.js
  *
  * Objeto Literal Browser
  * @author: Edy Segura - infoedy@gmail.com

@@ -1,5 +1,6 @@
 /* 
  * Ajax.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Ajax/js/Ajax/Ajax.js
  *
  * Objeto literal AJAX, para o uso da metodologia AJAX
  * @author: Edy Segura - infoedy@gmail.com
