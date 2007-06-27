@@ -1,0 +1,30 @@
+/* 
+ * stylesheets.css
+ *
+ * Definicoes para index.htm
+ * @author: Edy Segura - infoedy@gmail.com
+ *
+ */
+
+div#drag {
+	position:absolute;
+	top:155px;
+	left:155px;
+	width:150px;
+	height:100px;
+	padding:1px;
+	border:1px solid #000;
+	font:10px Verdana, Arial, Helvetica, sans-serif;
+	background:#EAEAF4;
+}
+
+div#drag h3 {
+	font-size:13px;
+	margin:0;
+	padding:2px;
+	background:#000040;
+	color:#fff;
+	text-align:center;
+	text-transform:uppercase;
+	cursor:pointer;
+}
