@@ -3,4 +3,4 @@
 
 = Introdução =
 
-O objeto literal "Browser.js" ajuda na identificação de qual browser o cliente está usando.
+O objeto literal "Browser.js" serve como auxílio para identficar o browser que usuário está utilizando.
