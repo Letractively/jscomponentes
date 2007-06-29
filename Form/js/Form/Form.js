@@ -1,9 +1,10 @@
 /*
  * Form.js
+ * https://jscomponentes.googlecode.com/svn/trunk/Form/js/Form/Form.js
  *
- * Objeto para manipulacao de formulario como validacao,
- * adicionar o focus ao primeiro elemento do formulario vazio,
- * tab automatico, historico dos campos e etc.
+ * Objeto para manipulacao de formulario, a documentação 
+ * completa pode ser encontrada no endereço:
+ * http://code.google.com/p/jscomponentes/wiki/Form
  *
  * Dependencia: function $()
  *
