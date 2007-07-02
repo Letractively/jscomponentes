@@ -2,25 +2,10 @@
  * Ajax.js
  * http://jscomponentes.googlecode.com/svn/trunk/Ajax/js/Ajax/Ajax.js
  *
- * Objeto literal AJAX, para o uso da metodologia AJAX
+ * Objeto literal Ajax. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/Ajax
+ *
  * @author: Edy Segura - infoedy@gmail.com
- *
- *           Instrucoes para uso do objeto
- * ------------------------------------------------------------
- *
- * Ajax.run({
- * 	method   : "POST",
- * 	url      : "action.php",
- * 	async    : true,
- * 	response : "xml",
- * 	callback : fnReferencia,
- * 	callerro : fnReferenciaErro,
- * 	params   : oDivContent,
- * 	loading  : true,
- * 	send     : urlEncodedValues
- * });
- * 
- * ------------------------------------------------------------
  *
  */
 
