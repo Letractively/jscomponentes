@@ -7,7 +7,7 @@ Objeto dinâmico para pegar os valores passados na URL.
 
 == Instruções para uso do objeto ==
 {{{
-var oUrlParams = new [QueryString QueryString]("http://edysegura.com/?id=37");
-var oUrlParams = new [QueryString QueryString];
+var oUrlParams = new [http://code.google.com/p/jscomponentes/wiki/QueryString QueryString]("http://edysegura.com/?id=37");
+var oUrlParams = new [http://code.google.com/p/jscomponentes/wiki/QueryString QueryString];
 alert(oUrlParams.id);
 }}}
