@@ -1,7 +1,10 @@
 /* 
  * Cookie.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Cookie/js/Cookie/Cookie.js
  *
- * Objeto Literal Cookie
+ * Objeto Literal Cookie. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/Cookie
+ *
  * @author: Edy Segura - infoedy@gmail.com
  *
  */

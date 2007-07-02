@@ -1,11 +1,12 @@
 /* 
  * CSS.js
- * 
- * Objeto Literal CSS
+ * http://jscomponentes.googlecode.com/svn/trunk/CSS/js/CSS/CSS.js
+ *
+ * Objeto Literal CSS. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/CSS
+ *
  * @author: Edy Segura - infoedy@gmail.com
- * 
- * Referencia: PDF de exemplo do livro JavaScript Anthology, página 77 do PDF.
- * Dependencia: function $()
+ * Referencia: PDF de exemplo do livro JavaScript Anthology, página 77 do PDF
  * 
  */
 

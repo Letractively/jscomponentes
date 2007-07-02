@@ -1,7 +1,10 @@
 /* 
  * Toggle.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Toggle/js/Toggle/Toggle.js
+ * 
+ * Objeto Literal Table. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/Toggle
  *
- * Objeto literal Toggle
  * Referencia  : http://www.dustindiaz.com/seven-togglers/ 
  * Dependencia : function $()
  *   

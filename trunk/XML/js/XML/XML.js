@@ -1,7 +1,10 @@
 /* 
  * XML.js
+ * http://jscomponentes.googlecode.com/svn/trunk/XML/js/XML/XML.js
+ * 
+ * Objeto Literal XML. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/XML
  *
- * Objeto Literal XML para leitura de arquivos XML
  * @author: Edy Segura - infoedy@gmail.com
  *
  */

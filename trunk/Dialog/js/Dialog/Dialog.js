@@ -2,8 +2,8 @@
  * Dialog.js
  * http://jscomponentes.googlecode.com/svn/trunk/Dialog/js/Dialog/Dialog.js
  *  
- * Objeto literal para manipulacao de dialogs como
- * alert() e window.open
+ * Objeto Literal Dialog. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/Dialog
  *
  * @author: Edy Segura - infoedy@gmail.com
  * Dependencia 1: DOM-Kit.js

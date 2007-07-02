@@ -1,6 +1,6 @@
 /*
  * Form.js
- * https://jscomponentes.googlecode.com/svn/trunk/Form/js/Form/Form.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Form/js/Form/Form.js
  *
  * Objeto para manipulacao de formulario, a documentação 
  * completa pode ser encontrada no endereço:
