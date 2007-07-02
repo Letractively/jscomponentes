@@ -4,3 +4,18 @@
 = Introdução =
 
 O objeto literal "Ajax.js" como o nome já sugere é para uso da metodologia AJAX no desenvolvimento de aplicações web.
+
+== Instrucoes para uso do objeto Ajax ==
+{{{
+Ajax.run({
+  method   : "POST",
+  url      : "action.php",
+  async    : true,
+  response : "xml",
+  callback : fnReferencia,
+  callerro : fnReferenciaErro,
+  params   : oDivContent,
+  loading  : true,
+  send     : urlEncodedValues
+});
+}}}
