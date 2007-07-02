@@ -2,8 +2,8 @@
  * Event.js
  * http://jscomponentes.googlecode.com/svn/trunk/Event/js/Event/Event.js
  *
- * Objeto Literal para manipulacao de eventos
- * @author: Edy Segura - infoedy@gmail.com
+ * Objeto Literal Event. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/Event
  *
  * Referencia: 1 - http://ejohn.org/projects/flexible-javascript-events/
  * Referencia: 2 - http://www.quirksmode.org/blog/archives/2005/10/_and_the_winner_1.html

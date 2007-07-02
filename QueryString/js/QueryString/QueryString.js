@@ -2,16 +2,10 @@
  * QueryString.js
  * http://jscomponentes.googlecode.com/svn/trunk/QueryString/js/lib/QueryString.js
  *
- * Script para pegar parametros/get da url
- * @author: Edy Segura - edy@liveware.com.br, infoedy@gmail.com
- * 
- *            Instruções para uso do objeto
- * ------------------------------------------------------------
- * var oUrlParams = new QueryString("http://edysegura.com/?id=37");
- * var oUrlParams = new QueryString;
- * alert(oUrlParams.id);
- * 
- * ------------------------------------------------------------
+ * Objeto Literal Browser. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/QueryString
+ *
+ * @author: Edy Segura - infoedy@gmail.com
  * 
  */
 

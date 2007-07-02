@@ -1,6 +1,7 @@
 /* 
  * String-extends.js
- *
+ * https://jscomponentes.googlecode.com/svn/trunk/JSExtends/String-extend/js/String-extend/String-extend.js
+ * 
  * Extendendo o objeto String do javascript
  * @author: Edy Segura - infoedy@gmail.com
  *
