@@ -2,5 +2,18 @@
 #labels Featured
 
 = Lista de objetos =
+Veja abaixo a lista de objetos javascript que compõe o projeto JSComponentes:
 
-
+  * [Ajax Ajax.js]
+  * [Browser Browser.js]
+  * [CSS CSS.js]
+  * [Common Common.js]
+  * [Cookie Cookie.js]
+  * [DOMKit DOM-Kit.js]
+  * [Dialog Dialog.js]
+  * [Event Event.js]
+  * [Form Form.js]
+  * [QueryString QueryString.js]
+  * [Table Table.js]
+  * [Toggle Toggle.js]
+  * [XML XML.js]
