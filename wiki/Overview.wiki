@@ -2,7 +2,7 @@
 #labels Featured
 
 = Lista de objetos =
-Veja abaixo a lista de objetos javascript que compõe o projeto JSComponentes:
+Os seguintes objetos javascript compõe o projeto JSComponentes:
 
   * [Ajax Ajax.js]
   * [Browser Browser.js]
