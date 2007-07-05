@@ -41,8 +41,8 @@ var Event = {
 		}
 		else return false;
 	},
-	
-	
+
+
 	//adicionar evento dinamicamente, http://www.jsfromhell.com/geral/event-listener
 	addEvent: function(o, e, f, s){
 		var r = o[r = "_" + (e = "on" + e)] = o[r] || (o[e] ? [[o[e], o]] : []), a, c, d;
@@ -115,16 +115,12 @@ var Event = {
 	getFunction: function(fnFunction, vArguments) {
 		return function() {
 			try { 
-
 				fnFunction(vArguments); 
-
 			}
 			catch(oErr) { 
 				var sMessage = "Erro na atribuição do método.\n";
-				
 				sMessage += "Descrição: " + oErr.message +"\n";
 				alert(sMessage);
-				
 			}//fim try catch
 		}//fim return function
 	}//fim getFunction
