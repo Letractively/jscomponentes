@@ -331,7 +331,7 @@ var Form = {
 		oInput.floatPoint   = !isNaN(iFloatPoint) ? Math.abs(iFloatPoint) : 2;
 		oInput.thousandsSep = typeof sThousandsSep != "string" ? "," : sThousandsSep, oInput.sDecimalSep = typeof sDecimalSep != "string" ? "." : sDecimalSep;
 		
-		Event.addHandle(oInput, "keypress", function(e) {
+		Event.addEvent(oInput, "keypress", function(e) {
 				if(e.key > 47 && e.key < 58) {
 						var oInput, s, l = (s = ((oInput = this).value.replace(/^0+/g, "") + String.fromCharCode(e.key)).replace(/\D/g, "")).length, iFloatPoint;
 						if(oInput.maxLength + 1 && l >= oInput.maxLength) return false;
