@@ -5,7 +5,7 @@
 
 O objeto literal "Ajax.js" como o nome já sugere é para uso da metodologia AJAX no desenvolvimento de aplicações web.
 
-== Instrucoes para uso do objeto Ajax ==
+== Instruções para uso do objeto Ajax ==
 {{{
 Ajax.run({
   method   : "POST",
