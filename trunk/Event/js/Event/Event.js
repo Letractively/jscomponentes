@@ -44,7 +44,7 @@ var Event = {
 	
 	
 	//adicionar evento dinamicamente, http://www.jsfromhell.com/geral/event-listener
-	addEvent = function(o, e, f, s){
+	addEvent: function(o, e, f, s){
 		var r = o[r = "_" + (e = "on" + e)] = o[r] || (o[e] ? [[o[e], o]] : []), a, c, d;
 		r[r.length] = [f, s || o], o[e] = function(e){
 			try{
@@ -60,7 +60,7 @@ var Event = {
 	
 	
 	//remover evento dinamicamente, http://www.jsfromhell.com/geral/event-listener
-	removeEvent = function(o, e, f, s){
+	removeEvent: function(o, e, f, s){
 		for(var i = (e = o["_on" + e] || []).length; i;)
 			if(e[--i] && e[i][0] == f && (s || o) == e[i][1])
 				return delete e[i];
@@ -105,8 +105,7 @@ var Event = {
 	getEvent: function() {
 		if(window.event) {
     	return Event.formatEvent(window.event);
-    } 
-		else {
+    } else {
     	return Event.getEvent.caller.arguments[0];
     }
 	},//fim getEvent
@@ -116,12 +115,16 @@ var Event = {
 	getFunction: function(fnFunction, vArguments) {
 		return function() {
 			try { 
+
 				fnFunction(vArguments); 
+
 			}
 			catch(oErr) { 
 				var sMessage = "Erro na atribuição do método.\n";
+				
 				sMessage += "Descrição: " + oErr.message +"\n";
 				alert(sMessage);
+				
 			}//fim try catch
 		}//fim return function
 	}//fim getFunction
