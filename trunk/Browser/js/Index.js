@@ -26,7 +26,7 @@ var Index = {
 		
 		oButton2.onclick = function() {
 			if(Browser && Browser.installSearchEngine) {
-				Browser.installSearchEngine("http://edysegura.com/xml/opensearch.xml");
+				Browser.installSearchEngine("http://edysegura.com/xml/opensearch/opensearch.xml");
 			}
 		}
 		
