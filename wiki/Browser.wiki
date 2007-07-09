@@ -7,5 +7,5 @@ O objetivo do objeto literal "Browser.js", é de identificar o [http://pt.wikipe
 
 Também há métodos para incluir a página especificada no favoritos e para adicionar [http://pt.wikipedia.org/wiki/Search_Engine search engine] em [http://getfirefox.com navegadores modernos].
 
-= Propriedades do objeto literal Browser.js =
+== Propriedades do objeto literal Browser.js ==
 Aqui serão listadas as propriedades do objeto Browser.js
