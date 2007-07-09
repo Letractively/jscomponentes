@@ -17,6 +17,7 @@ var Index = {
 	createButtons: function() {
 		var oButton1 = document.createElement('button');
 		var oButton2 = document.createElement('button');
+		var oButton3 = document.createElement('button');
 		
 		oButton1.onclick = function() {
 			if(Browser && Browser.addBookmark) {
@@ -26,15 +27,25 @@ var Index = {
 		
 		oButton2.onclick = function() {
 			if(Browser && Browser.installSearchEngine) {
-				Browser.installSearchEngine("http://edysegura.com/xml/opensearch/opensearch.xml");
+				Browser.installSearchEngine("http://edysegura.com/xml/opensearch/edysegura.com.xml");
+			}
+		}
+		
+		oButton3.onclick = function() {
+			if(Browser && Browser.installSearchEngine) {
+				Browser.installSearchEngine("http://edysegura.com/xml/sherlock/edysegura.com.src", 
+                                    "http://us.i1.yimg.com/us.yimg.com/i/yg/img/logo/favicon.ico",  
+                                    "Edy Search");
 			}
 		}
 		
 		oButton1.appendChild(document.createTextNode('Adicionar ao favoritos'));
-		oButton2.appendChild(document.createTextNode('Adicionar search engine'));
+		oButton2.appendChild(document.createTextNode('Adicionar search engine (OpenSearch)'));
+		oButton3.appendChild(document.createTextNode('Adicionar search engine (Sherlock)'));
 		
 		document.body.appendChild(oButton1);
 		document.body.appendChild(oButton2);
+		document.body.appendChild(oButton3);
 	},//fim createButton
 	
 	
