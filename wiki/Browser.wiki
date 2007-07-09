@@ -3,4 +3,4 @@
 
 = Introdução =
 
-O objeto literal "Browser.js" serve como auxílio para identficar o browser que usuário está utilizando.
+O objetivo do objeto literal "Browser.js", é de identificar o [http://pt.wikipedia.org/wiki/Browser navegador](user-agent) que o usuário está usando para abrir as páginas da web. Também há métodos para incluir a página especificada no favoritos e para adicionar [http://pt.wikipedia.org/wiki/Search_Engine search engine] em [http://getfirefox.com navegadores modernos].
