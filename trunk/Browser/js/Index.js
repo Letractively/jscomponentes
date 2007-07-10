@@ -26,13 +26,13 @@ var Index = {
 		}
 		
 		oButton2.onclick = function() {
-			if(Browser && Browser.installSearchEngine) {
+			if(Browser && Browser.isAddSearchProvider) {
 				Browser.installSearchEngine("http://edysegura.com/xml/opensearch/edysegura.com.xml");
 			}
 		}
 		
 		oButton3.onclick = function() {
-			if(Browser && Browser.installSearchEngine) {
+			if(Browser && Browser.isAddSearchEngine) {
 				Browser.installSearchEngine("http://edysegura.com/xml/sherlock/edysegura.com.src", 
                                     "http://us.i1.yimg.com/us.yimg.com/i/yg/img/logo/favicon.ico",  
                                     "Edy Search");
@@ -40,12 +40,18 @@ var Index = {
 		}
 		
 		oButton1.appendChild(document.createTextNode('Adicionar ao favoritos'));
-		oButton2.appendChild(document.createTextNode('Adicionar search engine (OpenSearch)'));
-		oButton3.appendChild(document.createTextNode('Adicionar search engine (Sherlock)'));
-		
 		document.body.appendChild(oButton1);
-		document.body.appendChild(oButton2);
-		document.body.appendChild(oButton3);
+		
+		if(Browser.isAddSearchProvider) {
+			oButton2.appendChild(document.createTextNode('Adicionar search engine (OpenSearch)'));
+			document.body.appendChild(oButton2);
+		}
+		
+		if(Browser.isAddSearchProvider) {
+			oButton3.appendChild(document.createTextNode('Adicionar search engine (Sherlock)'));
+			document.body.appendChild(oButton3);
+		}
+		
 	},//fim createButton
 	
 	
