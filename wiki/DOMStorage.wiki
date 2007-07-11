@@ -1,0 +1,8 @@
+#summary Documentação do objeto literal DOMStorage.
+#labels Featured
+
+= Introdução =
+
+Documentação em desenvolvimento.
+
+
