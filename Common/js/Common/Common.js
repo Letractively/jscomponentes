@@ -153,6 +153,19 @@ var Common = {
 	},//fim getScroll
 	
 	
+	getBaseURL: function(sScriptName) {
+		var aScripts = document.getElementsByTagName("script");
+		
+		for(var i=0; i<aScripts.length; ++i) {
+			if(aScripts[i].src.indexOf((sScriptName || "Common.js")) != -1) {
+				var iLastSlash = aScripts[i].src.lastIndexOf("/");
+				return aScripts[i].src.substr(0, iLastSlash);
+			}
+		}
+		
+	},//fim getBaseURL
+	
+	
 	includeJS: function(sSource) {
 		if(!Common.checkExistScript(sSource)) {
 			var oScript  = document.createElement('script');
