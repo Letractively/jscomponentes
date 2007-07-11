@@ -1,0 +1,25 @@
+/* 
+ * table.css
+ * 
+ * Definicoes CSS para o elemento table
+ * @author: Edy Segura - infoedy@gmail.com
+ *
+ */
+
+table {
+	border:1px solid #060;
+	font:10px Verdana, Arial, Helvetica, sans-serif;
+	float:left;
+}
+
+caption {
+	padding:2px;
+	text-transform:uppercase;
+	font:bold 10px Verdana, Arial, Helvetica, sans-serif;
+	letter-spacing:.5em;
+}
+
+th, td {
+	padding:2px;
+	margin:0;
+}
