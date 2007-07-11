@@ -1,0 +1,24 @@
+/* 
+ * zebratable.css
+ * 
+ * Definicoes CSS para o elemento table#zebratable
+ * @author: Edy Segura - infoedy@gmail.com
+ *
+ */
+
+table#zebratable thead, 
+table#zebratable tfoot {
+	background:#FDE0B4;
+	color:#000;
+}
+
+table#zebratable tbody tr {
+	background:#85EAA7;
+	color:#000;
+}
+
+table#zebratable 
+tr.odd {
+	background:#B9F3CD;
+	color:#000;
+}

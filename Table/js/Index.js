@@ -9,17 +9,24 @@
 var Index = {
 	
 	init: function() {
+		Index.setTableAttribute();
 		Index.setStripedTable();
 	},//fim init
 	
 	
+	setTableAttribute: function() {
+		var oTable = document.getElementById('zebratable');
+		oTable.setAttribute("cellSpacing", "1");
+	},//fim setTableAttribute
+	
+	
 	setStripedTable: function() {
-		Table.stripedTable($('zebratable'));
-		Table.stripedTable('simpletable');
-		Table.stripedTable('nada');
+		Table.stripedTable(document.getElementById('zebratable'));
+		Table.stripedTable('simpletable', 'alternada');
+		//Table.stripedTable('nada');
 	}
 
-};//fim Index.js
+};//fim Index
 
 //inicializacao
 window.onload = Index.init;

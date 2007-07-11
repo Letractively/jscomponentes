@@ -11,31 +11,43 @@
 
 var Table = {
 	
-	stripedTable: function(sTable) {
-		var oTable = (typeof sTable == "string") ? ($(sTable)) ? $(sTable) : sTable : sTable;
+	stripedTable: function(sTable, sOdd) {
+		var oTable = (typeof sTable == "string") ? document.getElementById(sTable) : sTable;
 		
-		if(typeof oTable == "object" && oTable.nodeName.toLowerCase() == "table") {
+		if(oTable && typeof oTable == "object") {
 			for(var i=0; i<oTable.tBodies.length; i++) {
-				var oRows = oTable.tBodies[i].rows;
+				var aRows = oTable.tBodies[i].rows;
 			
-				for(var j=0; j<oRows.length; j++) {
-					oRows[j].className = (j%2) ? "normal" : "alternada";
-				}
-			
-			}//fim do for
-		} else alert("Table: \"" + oTable + "\" não encontrada!");
+				for(var j=0; j<aRows.length; j++) {
+					var oRow = aRows[j];
+					
+					if(!oRow.className) {
+						if(j%2) oRow.className = (sOdd) ? sOdd : "odd";
+					}
+					
+				}//fim for
+			}//fim for
+		}//fim if
+		else {
+			throw new Error("table#" + sTable + " não foi encontrada para uso do método Table.stripedTable()");
+		}
 
 	},//fim stripedTable
 	
 	
-	clearTable: function(sTable) {
-		var oTable = $(sTable);
-		var oTbody = document.createElement('tbody');
+	clearTable: function(oTable) {
+		var result = false;
 		
-		oTable.removeChild(oTable.tBodies[0]);
-		oTable.appendChild(oTbody);
+		if(oTable) {
+			var oTbody = document.createElement('tbody');
+			
+			oTable.appendChild(oTbody);
+			oTable.removeChild(oTable.tBodies[0]);
+			
+			result = oTbody;
+		}
 		
-		return oTbody;
+		return result;
 	}//fim clearTable
 	
 };//fim Table.js

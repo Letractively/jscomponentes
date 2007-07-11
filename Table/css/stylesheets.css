@@ -1,60 +1,12 @@
-/* CSS Document
-Autor: Edy Segura - infoedy@gmail.com
-Descrição: Definições para formatação da tabela
-*/
+/* 
+ * stylesheets.css
+ * 
+ * Definicoes CSS para pagina Index.html
+ * @author: Edy Segura - infoedy@gmail.com
+ *
+ */
 
-table {
-	border:1px solid #060;
-	font:10px Verdana, Arial, Helvetica, sans-serif;
-	float:left;
-}
-
-caption {
-	padding:5px;
-	text-transform:uppercase;
-	font:bold 1em Verdana, Arial, Helvetica, sans-serif;
-	letter-spacing:.5em;
-}
-
-th, td {
-	padding:2px;
-}
-
-thead, tfoot {
-	background:#FDE0B4;
-	color:#000;
-}
-
-/* Cores das Linhas */
-tr.normal {
-	background:#85EAA7;
-	color:#000;
-}
-
-tr.alternada {
-	background:#B9F3CD;
-	color:#000;
-}
-
-/* Definições para simpletable */
-table#simpletable tr.normal {
-	background:#E5F7FF;
-	color:#000;
-}
-
-table#simpletable tr.alternada {
-	background:#B3E8FF;
-	color:#000;
-}
-
-table#simpletable { 
-	margin-left:10px;
-	border:1px solid #000;
-}
-
-table#simpletable th, 
-table#simpletable td {
-	padding:2px;
-	border-bottom:1px solid #333;
-	border-right:1px solid #333;
-}
+/* imports */
+@import url("table.css");
+@import url("zebratable.css");
+@import url("simpletable.css");
