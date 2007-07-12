@@ -2,14 +2,9 @@
  * Form.js
  * http://jscomponentes.googlecode.com/svn/trunk/Form/js/Form/Form.js
  *
- * Objeto para manipulacao de formulario, a documentação 
- * completa pode ser encontrada no endereço:
+ * Objeto para manipulacao e edicao de formulario. 
+ * A documentacao completa pode ser encontrada no endereco:
  * http://code.google.com/p/jscomponentes/wiki/Form
- *
- * Dependencia: function $()
- *
- * Referencia ao livro do javascript for web developer, pagina 339
- * do livro e pagina 367 da versao em PDF.
  *
  * @author: Edy Segura - infoedy@gmail.com
  *
@@ -99,6 +94,32 @@ var Form = {
 			}//fim for
 		}//fim if
 	},//fim focusOnFirst
+	
+	
+	reset: function(oForm) {
+		var oForm = (oForm) ? oForm : document.forms[0];
+		
+		if(oForm) {
+			for(var i=0; i<oForm.elements.length; i++) {
+				var oElement = oForm.elements[i];
+				
+				switch (oElement.type) {
+					case 'text'    :
+					case 'hidden'  :
+					case 'password':
+						
+						if(oElement.name != "filtro") {
+							oElement.value = "";
+							oElement.defaultValue = "";
+						}
+						
+					break;
+				}//fim switch
+			}//fim for
+		}//fim if
+		
+		return true;
+	},//fim reset
 	
 	
 	validate: function(oForm) {
