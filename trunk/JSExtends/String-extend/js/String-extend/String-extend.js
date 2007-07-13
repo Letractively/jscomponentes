@@ -7,13 +7,13 @@
  *
  */
 
-//implementação do método String.trim()
+//implementacao do metodo String.trim()
 String.prototype.trim = function() {
 	return this.replace(/^\s+|\s+$/, "");
 }
 
 
-//implementação do método String.isEmpty()
+//implementacao do metodo String.isEmpty()
 String.prototype.isEmpty = function() {
 	var sCaractere;
 	var sValue = this;
@@ -32,7 +32,7 @@ String.prototype.isEmpty = function() {
 }
 
 
-//implementação do método String.isEmail()
+//implementacao do metodo String.isEmail()
 String.prototype.isEmail = function() {
 	var sEmail = this;
 	var rePattern = /^[a-zA-Z0-9_\.-]{2,}@([A-Za-z0-9_-]{2,}\.)+[A-Za-z]{2,4}$/;
