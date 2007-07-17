@@ -4,3 +4,9 @@
 = Introdução =
 
 O objeto literal "Event.js" como o nome já sugere é para manipulação de eventos crossbrowser em javascript.
+
+== Referência ==
+Referencia: 1 - http://ejohn.org/projects/flexible-javascript-events/
+Referencia: 2 - http://www.quirksmode.org/blog/archives/2005/10/_and_the_winner_1.html
+Referencia: 3 - Livro Professional JavaScript for Web Developer página 292 do livro e 320 do PDF
+Referencia: 4 - http://www.jsfromhell.com/geral/event-listener
