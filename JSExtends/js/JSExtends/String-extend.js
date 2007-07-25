@@ -9,8 +9,7 @@
 
 //implementacao do metodo String.trim()
 String.prototype.trim = function() {
-	var sTrimString = this.ltrim();
-	return sTrimString.rtrim();
+	return (this.ltrim()).rtrim();
 }
 
 
