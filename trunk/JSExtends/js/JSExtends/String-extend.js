@@ -9,7 +9,9 @@
 
 //implementacao do metodo String.trim()
 String.prototype.trim = function() {
-	return this.replace(/^\s+\s+$/, "");
+	var sTrimString = this.ltrim();
+	sTrimString = sTrimString.rtrim();
+	return sTrimString;
 }
 
 
