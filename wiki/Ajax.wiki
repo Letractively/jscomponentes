@@ -3,7 +3,9 @@
 
 = Objetivo =
 
-Usar a metodologia AJAX sem complicações e sem se preocupar com as diferenças dos vários navegadores existentes no mercado. Abaixo uma breve explicação do uso do objeto literal Ajax.
+Usar a metodologia AJAX sem complicações e sem se preocupar com as diferenças dos vários navegadores existentes no mercado. 
+
+Abaixo uma breve explicação do uso do objeto literal Ajax.
 
 == Instruções para uso do objeto Ajax ==
 {{{
