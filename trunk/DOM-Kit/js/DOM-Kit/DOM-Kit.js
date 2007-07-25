@@ -7,8 +7,6 @@
  * http://code.google.com/p/jscomponentes/wiki/DOMKit
  *
  * @author: Edy Segura, infoedy@gmail.com
- * Referencia: Prototype - http://www.prototypejs.org/
- * Referencia: freeDOM   - http://www.metzen.com.br/freedom/
  *
  */
 

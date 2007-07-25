@@ -39,7 +39,7 @@ var XML = {
 
 		}
 		else {
-			alert("Seu navegador não da suporte para o objeto literal XML");
+			throw new Error("Seu navegador não da suporte para o objeto literal XML");
 		}
 
 	}//fim load

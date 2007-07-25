@@ -5,36 +5,7 @@
  * Objeto Literal Table. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Toggle
  *
- * Referencia  : http://www.dustindiaz.com/seven-togglers/ 
- * Dependencia : function $()
- *   
  * @author: Edy Segura - infoedy@gmail.com
- *
- *           Instrucoes para uso do objeto
- * ------------------------------------------------------------
- *
- * //exibir elementos
- * Toggle.show (
- * 	'Elemento1',
- * 	'Elemento2',
- * 	oElemento3
- * );
- *  
- * //esconder elementos
- * Toggle.hide (
- * 	'Elemento1',
- * 	'Elemento2',
- * 	oElemento3
- * );
- *  
- * //esconder ou exibir elementos
- * Toggle.showHide (
- * 	'Elemento1',
- * 	'Elemento2',
- *  	oElemento3
- * );
- * 
- * ------------------------------------------------------------
  *
  */
 

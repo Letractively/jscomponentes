@@ -6,22 +6,6 @@
  * http://code.google.com/p/jscomponentes/wiki/Dialog
  *
  * @author: Edy Segura - infoedy@gmail.com
- * Dependencia 1: DOM-Kit.js
- * Dependencia 2: Event.js
- * Dependencia 3: Metodo Common.getPageSize()
- * Dependencia 4: Dialog.css
- *
- * metodos
- *
- * @name: init()
- * @name: setDialogs()
- * @name: createDivOverlay()
- * @name: showHideElementsForIE()
- * @name: resizeDivOverlay()
- * @name: positionDialog()
- * @name: popup()
- * @name: removeDivOverlay()
- * @name: checkPopupIsClosed()
  *
  */
 

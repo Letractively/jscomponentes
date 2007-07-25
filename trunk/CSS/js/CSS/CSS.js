@@ -6,7 +6,6 @@
  * http://code.google.com/p/jscomponentes/wiki/CSS
  *
  * @author: Edy Segura - infoedy@gmail.com
- * Referencia: PDF de exemplo do livro JavaScript Anthology, página 77 do PDF
  * 
  */
 
