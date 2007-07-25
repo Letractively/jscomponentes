@@ -1,6 +1,6 @@
 /* 
  * String-extends.js
- * https://jscomponentes.googlecode.com/svn/trunk/JSExtends/String-extend/js/String-extend/String-extend.js
+ * http://jscomponentes.googlecode.com/svn/trunk/JSExtends/js/JSExtends/String-extend.js
  * 
  * Extendendo o objeto String do javascript
  * @author: Edy Segura - infoedy@gmail.com
@@ -9,7 +9,19 @@
 
 //implementacao do metodo String.trim()
 String.prototype.trim = function() {
-	return this.replace(/^\s+|\s+$/, "");
+	return this.replace(/^\s+\s+$/, "");
+}
+
+
+//implementacao do metodo String.trim()
+String.prototype.ltrim = function() {
+	return this.replace(/^\s+/, "");
+}
+
+
+//implementacao do metodo String.trim()
+String.prototype.rtrim = function() {
+	return this.replace(/\s+$/, "");
 }
 
 
