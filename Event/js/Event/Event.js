@@ -5,6 +5,8 @@
  * Objeto Literal Event. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Event
  *
+ * @author: Edy Segura - infoedy@gmail.com
+ *
  */
 
 var Event = {
