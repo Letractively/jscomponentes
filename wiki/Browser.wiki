@@ -1,11 +1,8 @@
-#summary Documentação do objeto literal Browser.js
+#summary Documentação do objeto literal Browser
 #labels Featured
 
-= Introdução =
+= Objetivo =
 
-O objetivo do objeto literal "Browser.js", é de identificar o [http://pt.wikipedia.org/wiki/Browser navegador] que o usuário está usando para abrir as páginas da web. 
+O objetivo do objeto literal Browser, é de identificar o [http://pt.wikipedia.org/wiki/Browser navegador] que o usuário está usando para navegar na web.
 
-Também há métodos para incluir uma página especificada no favoritos e para adicionar [http://pt.wikipedia.org/wiki/Search_Engine search engine] em [http://getfirefox.com navegadores modernos].
-
-== Propriedades do objeto literal Browser.js ==
-Aqui serão listadas as propriedades do objeto Browser.js
+Também há métodos para incluir a própria ou uma página especificada no favoritos e para adicionar [http://pt.wikipedia.org/wiki/Search_Engine search engine] em [http://getfirefox.com navegadores modernos].
