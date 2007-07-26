@@ -1,0 +1,6 @@
+#summary Documentação dos objetos que compõem o JSExtends.
+#labels Featured
+
+= Objetivo =
+
+JSExtends é uma forma de estender os objetos nativos do javascript, como String, Object, Number, Array entre outros para implementar novos métodos que auxiliam no desenvolvimento.
