@@ -15,13 +15,13 @@ String.prototype.trim = function() {
 
 //implementacao do metodo String.trim()
 String.prototype.ltrim = function() {
-	return this.replace(/^\s+/, "");
+	return this.replace(/^\s*\n/, "");
 }
 
 
 //implementacao do metodo String.trim()
 String.prototype.rtrim = function() {
-	return this.replace(/\s+$/, "");
+	return this.replace(/\s*\n$/, "");
 }
 
 
