@@ -16,4 +16,21 @@ Array.prototype.max = function() {
 	}
 	
 	return iMax;
-}
+};
+
+
+//implementacao do metodo Array.inArray()
+Array.prototype.inArray = function(value) {
+	var bResult = false;
+	
+	if(value) {
+		for(var i=0; i<this.length; i++) {
+			if(value == this[i]) {
+				bResult = true;
+				break;
+			}
+		}
+	}
+	
+	return bResult;
+};
