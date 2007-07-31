@@ -6,11 +6,6 @@
  *
  */
 
-table#simpletable tbody tr {
-	background:#E5F7FF;
-	color:#000;
-}
-
 table#simpletable 
 tr.alternada {
 	background:#B3E8FF;
