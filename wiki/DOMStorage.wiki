@@ -1,8 +1,7 @@
 #summary Documentação do objeto literal DOMStorage.
-#labels Featured
+#labels Phase-Implementation
 
 = Introdução =
 
 Documentação em desenvolvimento.
-
 
