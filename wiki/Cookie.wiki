@@ -1,5 +1,5 @@
 #summary Documentação do objeto literal Cookie.js
-#labels Featured
+#labels Phase-Implementation
 
 = Introdução =
 
