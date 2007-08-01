@@ -1,5 +1,5 @@
 #summary Uso crossbrowser e atalhos para API DOM do javascript.
-#labels Featured
+#labels Phase-Implementation
 
 = Introdução =
 
