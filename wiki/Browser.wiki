@@ -1,5 +1,5 @@
 #summary Documentação do objeto literal Browser
-#labels Featured
+#labels Phase-Implementation
 
 = Objetivo =
 
