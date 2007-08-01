@@ -1,5 +1,5 @@
 #summary Documentação dos objetos que compõem o JSExtends.
-#labels Featured
+#labels Phase-Implementation
 
 = Objetivo =
 
