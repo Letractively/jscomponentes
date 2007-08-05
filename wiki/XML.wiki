@@ -1,5 +1,5 @@
 #summary Documentação do objeto literal XML.js
-#labels Featured
+#labels Phase-Implementation
 
 = Introdução =
 
