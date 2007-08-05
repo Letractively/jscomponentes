@@ -1,5 +1,5 @@
 #summary Documentação do objeto literal Toggle.js
-#labels Featured
+#labels Phase-Implementation
 
 = Introdução =
 
