@@ -1,6 +1,6 @@
-#summary Documentação dos objetos que compõem o JSExtends.
+#summary Estendendo os objetos existentes no javascript.
 #labels Phase-Implementation
 
 = Objetivo =
 
-JSExtends é uma forma de estender os objetos nativos do javascript, como String, Object, Number, Array entre outros para implementar novos métodos que auxiliam no desenvolvimento.
+Adicionar funcionalidades não existentes e estender as funcionalidades dos objetos nativos do javascript tais como String, Object, Number, Array entre outros.
