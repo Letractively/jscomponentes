@@ -1,4 +1,4 @@
-/* 
+/**
  * Cookie.js
  * http://jscomponentes.googlecode.com/svn/trunk/Cookie/js/Cookie/Cookie.js
  *
