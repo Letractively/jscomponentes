@@ -1,5 +1,4 @@
 /* 
- * Index.js
  *
  * Objeto Literal Index para uso do objeto Restrict.js
  * @author: Edy Segura - edy@liveware.com.br, infoedy@gmail.com
@@ -10,6 +9,7 @@ var Index = {
 	
 	init: function() {
 		Index.setMasks();
+		Index.setForm();
 	},//fim init
 	
 	
@@ -23,6 +23,13 @@ var Index = {
     oForm.mask.cnpj  = "##.###.###/####-##";
    
     oForm.start();
+	},
+	
+	
+	setForm: function() {
+		document.forms['frmMask'].onsubmit = function() {
+			return false;
+		}
 	}
 	
 };//fim Index
