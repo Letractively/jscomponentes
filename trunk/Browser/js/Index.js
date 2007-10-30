@@ -58,10 +58,11 @@ var Index = {
 	buildTable: function() {
 		var oTable = document.getElementsByTagName('table')[0];
 		var oTbody = oTable.appendChild(document.createElement('tbody'));
+		var rePattern = /addBookmark|installSearchEngine|getPageSize|getScroll/
 		
 		//percorrendo o objeto Browser
 		for(var sProperty in Browser) {
-			if(/addBookmark|installSearchEngine/.test(sProperty)) continue;
+			if(rePattern.test(sProperty)) continue;
 			
 			var oRow          = oTbody.insertRow(oTbody.rows.length);
 			var oCellProperty = oRow.insertCell(oRow.cells.length);

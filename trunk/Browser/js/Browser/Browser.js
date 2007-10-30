@@ -1,4 +1,4 @@
-/* 
+﻿/* 
  * Browser.js
  * http://jscomponentes.googlecode.com/svn/trunk/Browser/js/Browser/Browser.js
  *
@@ -35,7 +35,7 @@ var Browser = {
       window.sidebar.addPanel(sTitle, sLocation, "");
 		}
 		else {
-			if(confirm("Seu navegador no suporta a extenso sidebar. Voc quer fazer o upgrade agora?")) {
+			if(confirm("Seu navegador não suporta a extensão sidebar. Você quer fazer o upgrade agora?")) {
 				document.location.href = "http://getfirefox.com/";
 			}
 		}
@@ -127,6 +127,31 @@ var Browser = {
 		
 	},//getPageSize
 
+	
+	getScroll: function() {
+		var iScrollX = 0, iScrollY = 0;
+		
+		if(self.pageYOffset) {
+			iScrollX = self.pageXOffset;
+			iScrollY = self.pageYOffset;
+		}
+		else if(document.documentElement && document.documentElement.scrollTop) {
+			iScrollX = document.documentElement.scrollLeft;
+			iScrollY = document.documentElement.scrollTop;
+		}
+		else if(document.body) {
+			iScrollX = document.body.scrollLeft;
+			iScrollY = document.body.scrollTop;
+		}
+		
+		//retorna objeto
+		return oScroll = {
+			x : iScrollX,
+			y : iScrollY
+		};
+		
+	}//fim getScroll
+	
 };//fim Browser
 
 //atributos publicos do objeto literal Browser
@@ -136,4 +161,3 @@ Browser.isMac     = Browser.ua.indexOf('mac')    >= 0;
 Browser.isGecko   = Browser.ua.indexOf('gecko')  >= 0;
 Browser.isFirefox = !Browser.isOpera && !Browser.isSafari && (Browser.name == "Netscape");
 Browser.isIE      = !Browser.isOpera && (Browser.name == "Microsoft Internet Explorer");
-
