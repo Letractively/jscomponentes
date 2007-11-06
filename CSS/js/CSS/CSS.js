@@ -5,7 +5,7 @@
  * Objeto Literal CSS. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/CSS
  *
- * @author: Edy Segura - infoedy@gmail.com
+ * @author: Edy Segura - edy@segura.eti.br
  * 
  */
 

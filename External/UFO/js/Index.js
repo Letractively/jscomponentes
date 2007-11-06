@@ -2,7 +2,7 @@
  * Index.js
  * 
  * Exemplo do uso do objeto UFO
- * @author: Edy Segura - infoedy@gmail.com
+ * @author: Edy Segura - edy@segura.eti.br
  *
  */
 
