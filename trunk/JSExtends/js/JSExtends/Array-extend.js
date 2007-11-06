@@ -3,7 +3,7 @@
  * http://jscomponentes.googlecode.com/svn/trunk/JSExtends/js/JSExtends/Array-extend.js
  * 
  * Extendendo o objeto Array do javascript
- * @author: Edy Segura - infoedy@gmail.com
+ * @author: Edy Segura - edy@segura.eti.br
  *
  */
 

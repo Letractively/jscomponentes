@@ -2,7 +2,7 @@
  * Index.js
  *
  * Objeto Literal Index para uso do objeto Browser.js
- * @author: Edy Segura - infoedy@gmail.com
+ * @author: Edy Segura - edy@segura.eti.br
  *
  */
 

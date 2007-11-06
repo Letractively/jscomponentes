@@ -6,7 +6,7 @@
  * Documentação completa pode ser consultada em:
  * http://code.google.com/p/jscomponentes/wiki/DOMStorage
  *
- * @author: Edy Segura - infoedy@gmail.com
+ * @author: Edy Segura - edy@segura.eti.br
  *
  */
 

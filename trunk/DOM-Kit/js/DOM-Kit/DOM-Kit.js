@@ -6,7 +6,7 @@
  * do uso da API do DOM. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/DOMKit
  *
- * @author: Edy Segura, infoedy@gmail.com
+ * @author: Edy Segura, edy@segura.eti.br
  *
  */
 

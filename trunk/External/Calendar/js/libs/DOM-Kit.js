@@ -6,7 +6,7 @@
  * do uso da API do DOM - Document Object Model.
  * http://jscomponentes.googlecode.com/svn/trunk/DOM-Kit/
  * 
- * @author: Edy Segura, infoedy@gmail.com
+ * @author: Edy Segura, edy@segura.eti.br
  * Referencia: Prototype - http://www.prototypejs.org/
  * Referencia: freeDOM   - http://www.metzen.com.br/freedom/
  *

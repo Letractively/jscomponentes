@@ -2,7 +2,7 @@
  * Index.js
  * 
  * Script para testar o objeto Table.js
- * @author: Edy Segura - infoedy@gmail.com
+ * @author: Edy Segura - edy@segura.eti.br
  *
  */
 

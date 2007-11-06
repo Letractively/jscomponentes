@@ -2,7 +2,7 @@
  * Index.js
  *
  * Exemplo do uso do componente Drag.js
- * @author: Edy Segura - infoedy@gmail.com
+ * @author: Edy Segura - edy@segura.eti.br
  *
  */
 

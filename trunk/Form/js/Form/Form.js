@@ -6,7 +6,7 @@
  * A documentacao completa pode ser encontrada no endereco:
  * http://code.google.com/p/jscomponentes/wiki/Form
  *
- * @author: Edy Segura - infoedy@gmail.com
+ * @author: Edy Segura - edy@segura.eti.br
  *
  */
 
