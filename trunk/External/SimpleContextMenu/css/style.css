@@ -1,0 +1,16 @@
+﻿/**
+ *
+ * Style for page index.html
+ * @author Edy Segura, edy@segura.eti.br
+ *
+ **/
+ 
+@import url(contextmenu.css);
+
+div.container {
+	padding: 5px;
+	margin: 5px 5px;
+	border: 1px solid #eee;
+	width: 100px;
+	color: red;
+}
