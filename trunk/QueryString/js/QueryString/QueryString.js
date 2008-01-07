@@ -1,15 +1,13 @@
-/*
- * QueryString.js
- * http://jscomponentes.googlecode.com/svn/trunk/QueryString/js/lib/QueryString.js
- *
- * Objeto Literal Browser. Documentacao completa disponivel em: 
+﻿/**
+ * 
+ * Objeto para parsear querystring, documentacao completa em: 
  * http://code.google.com/p/jscomponentes/wiki/QueryString
- *
- * @author: Edy Segura - edy@segura.eti.br
+ * @url http://jscomponentes.googlecode.com/svn/trunk/QueryString/js/lib/QueryString.js
+ * @author Edy Segura - edy@segura.eti.br
  * 
  */
 
-var QueryString = function() {
+var QueryString = function(sURI) {
 	
 	//private
 	var iStart, reKey, sUrl, 
@@ -18,7 +16,7 @@ var QueryString = function() {
 	//public
 	this.isOK = false;
 	
-	sUrl = (QueryString.arguments[0]) ? QueryString.arguments[0] : document.location.toString();
+	sUrl = (sURI) ? sURI : document.location.toString();
 	
 	//expressão regular para pegar a posição do "?"
 	reKey  = /\?/i;
