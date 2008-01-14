@@ -12,7 +12,28 @@ var Index = {
 	},
 	
 	setInputMask: function() {
-		MaskNumber.setMaksNumberByClass("number");
+
+		MaskNumber.setMaksNumberByClass({
+			className : "number"
+		});
+		
+		MaskNumber.setMaksNumberByClass({
+			className   : "number-2",
+			maskOptions : {
+				FRACTION_SEPARATOR : ".",
+				FRACTION_NUMBER    : 3,
+				THOUSAND_SEPARATOR : ","
+			}
+		});
+		
+		MaskNumber.setMaksNumberByClass({
+			className   : "number-3",
+			maskOptions : {
+				FRACTION_SEPARATOR : "-",
+				FRACTION_NUMBER    : 4,
+				THOUSAND_SEPARATOR : " "
+			}
+		});
 	}
 	
 };
