@@ -2,8 +2,19 @@
  * 
  * Mask Currency for input elements
  * @author Marcos Okita, edited by Edy Segura
- *  
+ * 
+ * MaskNumber.setMaksNumberByClass({
+ * 	className   : "number",
+ *	parent      : document.getElementById('elementId'),
+ *	maskOptions : {
+ *		FRACTION_SEPARATOR : ".",
+ *		FRACTION_NUMBER    : 3,
+ *		THOUSAND_SEPARATOR : ","
+ *	}
+ * });
+ *
  */
+
 
 /**
  * Currency Format for MaskCurrency
@@ -13,7 +24,6 @@ var oMaskOptionDefault = {
 	FRACTION_NUMBER    : 2,
 	THOUSAND_SEPARATOR : "."
 };
-
 
 var MaskNumber = {
 	
