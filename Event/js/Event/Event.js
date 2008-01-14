@@ -1,10 +1,9 @@
-/* 
- * Event.js
- * http://jscomponentes.googlecode.com/svn/trunk/Event/js/Event/Event.js
+/**
  *
  * Objeto Literal Event. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Event
  *
+ * @url http://jscomponentes.googlecode.com/svn/trunk/Event/js/Event/Event.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */
