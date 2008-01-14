@@ -5,6 +5,9 @@
  *
  */
 
-input.number {
+.number,
+.number-2,
+.number-3,
+.number-4 {
 	text-align:right;
 }

@@ -8,7 +8,7 @@
 /**
  * Currency Format for MaskCurrency
  */
-var MaskNumberFormat = {
+var oMaskOptionDefault = {
 	FRACTION_SEPARATOR : ",",
 	FRACTION_NUMBER    : 2,
 	THOUSAND_SEPARATOR : "."
@@ -17,8 +17,12 @@ var MaskNumberFormat = {
 
 var MaskNumber = {
 	
-	setMaksNumberByClass: function(sClassName, oParentNode) {
-		var aInputs = MaskNumber.getInputsByClass(sClassName, oParentNode);
+	setMaksNumberByClass: function(oParams) {
+		oParams.className   = (oParams.className)   ? oParams.className   : null;
+		oParams.parent      = (oParams.parent)      ? oParams.parent      : null;
+		oParams.maskOptions = (oParams.maskOptions) ? oParams.maskOptions : null;
+		
+		var aInputs = MaskNumber.getInputsByClass(oParams.className, oParams.parentNode);
 		
 		for(var i=0; i<aInputs.length; i++) {
 			var oInput = aInputs[i];
@@ -28,15 +32,16 @@ var MaskNumber = {
 			};
 			
 			oInput.onkeyup = function() {
-				MaskNumber.setMaskInputValue(this);
+				MaskNumber.setMaskInputValue(this, oParams.maskOptions);
 			};
 			
 		}//endfor
 	},
 	
 
-	setMaskInputValue: function(oInput) {
+	setMaskInputValue: function(oInput, oMaskOption) {
 		if(!oInput || oInput.nodeName.toLowerCase() != "input") return false;
+		if(!oMaskOption) oMaskOption = oMaskOptionDefault;
 		
 		var inputValue    = oInput.value;
 		var oldInputValue = inputValue;
@@ -48,22 +53,22 @@ var MaskNumber = {
 		
 			
 		//complete the inputValue with 0
-		for(var i=inputValue.length; i<=MaskNumberFormat.FRACTION_NUMBER; i++) {
+		for(var i=inputValue.length; i<=oMaskOption.FRACTION_NUMBER; i++) {
 		  inputValue = '0' + inputValue;
 		}
 		
-		var frac = inputValue.substring(inputValue.length - MaskNumberFormat.FRACTION_NUMBER);
-		var int  = inputValue.substring(0, inputValue.length - MaskNumberFormat.FRACTION_NUMBER);
+		var frac = inputValue.substring(inputValue.length - oMaskOption.FRACTION_NUMBER);
+		var int  = inputValue.substring(0, inputValue.length - oMaskOption.FRACTION_NUMBER);
 		
 		var last   = int.length;
 		var newInt = "";
 		
 		for(var i = last; i > 3; i = i - 3 ) {
-		  newInt = MaskNumberFormat.THOUSAND_SEPARATOR + int.substring(i-3,i) + newInt;
+		  newInt = oMaskOption.THOUSAND_SEPARATOR + int.substring(i-3,i) + newInt;
 		}
 		
 		newInt = int.substring(0,i) + newInt;
-		inputValue = newInt + MaskNumberFormat.FRACTION_SEPARATOR + frac;
+		inputValue = newInt + oMaskOption.FRACTION_SEPARATOR + frac;
 		
 		if(oldInputValue != inputValue) {
 			oInput.value = inputValue;
@@ -107,6 +112,20 @@ var MaskNumber = {
 		
 		return false;
 	},
+	
+	
+	getFunction: function(fnFunction, vArguments) {
+		return function() {
+			try { 
+				fnFunction(vArguments); 
+			}
+			catch(oErr) { 
+				var sMessage = "Erro na atribui��o do m�todo.\n";
+				sMessage += "Descri��o: " + oErr.message +"\n";
+				alert(sMessage);
+			}//fim try catch
+		}//fim return function
+	},//fim getFunction
 	
 	
 	getInputsByClass: function(sClassName, oParentNode) {
