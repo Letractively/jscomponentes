@@ -370,8 +370,8 @@ var Form = {
 	checkAll: function(oInputCheck) {
 		var oForm = oInputCheck.form;
 		var aInputs = (oForm || document.body).getElementsByTagName('input');
-		var rePattern = new RegExp(oInputCheck.id, "i");
-	
+		var rePattern = new RegExp("^" + oInputCheck.id + "\\b");
+		
 		for(var i=0; i<aInputs.length; i++) {
 			if(aInputs[i].type.toLowerCase() == "checkbox" && rePattern.test(aInputs[i].name)) {
 				aInputs[i].checked = oInputCheck.checked;
