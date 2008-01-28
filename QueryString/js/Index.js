@@ -1,5 +1,4 @@
-/* 
- * Index.js
+/**
  * 
  * Script para teste do objeto QueryString
  * @author: Edy Segura - edy@segura.eti.br
