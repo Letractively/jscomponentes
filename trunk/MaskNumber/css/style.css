@@ -11,3 +11,8 @@
 .number-4 {
 	text-align:right;
 }
+
+.example {
+	color: #999;
+	font: bold 10px "Courier New";
+}
