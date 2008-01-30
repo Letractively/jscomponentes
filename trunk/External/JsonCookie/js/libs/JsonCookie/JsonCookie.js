@@ -1,7 +1,10 @@
-/**
- * @projectDescription JsonCookie: Serialização de dados para cookies
+﻿/**
+ *
+ * @project Description JsonCookie: Serialização de dados para cookies
  * @version 1.0
  * @author JulioGreff
+ * @url http://www.juliogreff.blog.br/cookies-em-json/
+ *
  */
 
 var JsonCookie = {
