@@ -1,4 +1,4 @@
-/**
+﻿/**
  *
  * Objeto Literal Event. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Event
@@ -115,10 +115,10 @@ var Event = {
 	//metodo para adicionar uma função com parâmetros
 	getFunction: function(fnFunction, vArguments) {
 		return function() {
-			try { 
-				fnFunction(vArguments); 
+			try {
+				fnFunction(vArguments);
 			}
-			catch(oErr) { 
+			catch(oErr) {
 				var sMessage = "Erro na atribuição do método.\n";
 				sMessage += "Descrição: " + oErr.message +"\n";
 				alert(sMessage);
