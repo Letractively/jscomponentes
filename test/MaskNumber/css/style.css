@@ -1,0 +1,18 @@
+/**
+ *
+ * CSS for page Index
+ * @author Edy Segura, edy@segura.eti.br
+ *
+ */
+
+.number,
+.number-2,
+.number-3,
+.number-4 {
+	text-align:right;
+}
+
+.example {
+	color: #999;
+	font: bold 10px "Courier New";
+}

@@ -1,0 +1,13 @@
+/* 
+ * stylesheets.js
+ * 
+ * Definicoes para index.html
+ * @author: Edy Segura - edy@segura.eti.br
+ *
+ */
+
+p.link {
+	cursor:pointer;
+	text-decoration:underline;
+	color:#00F;
+}

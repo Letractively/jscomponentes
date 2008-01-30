@@ -1,0 +1,29 @@
+<form id="form" action=" " method="post">
+	<input type="text" name="a" maxlength="10" /><br />
+	Restrição = (\\d/) Somente números e "/"<br />Máscara = ##/##/####<br /><br />
+	<input type="text" name="b" maxlength="14" /><br />
+	Restrição = (\\d.-) Somente números, ponto e hífen<br />Máscara = ###.###.###-##<br /><br />
+	<textarea name="c" cols="4" rows="5" style="width: 300px; height: 120px;"></textarea><br />
+	Restrição = (a\\^bc) Somente os caracteres "a", "b", "c" e "^"
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+
+	var r = new Restrict("form");
+	r.field.a = "\\d/";
+	r.mask.a = "##/##/####";
+	r.field.b = "\\d.-";
+	r.mask.b = "###.###.###-##";
+	r.field.c = "a\\^bc";
+	r.onKeyRefuse = function(o, k){
+		o.style.backgroundColor = "#fdc";
+	}
+	r.onKeyAccept = function(o, k){
+		if(k > 30)
+			o.style.backgroundColor = "transparent";
+	}
+	r.start();
+
+//]]>
+</script>

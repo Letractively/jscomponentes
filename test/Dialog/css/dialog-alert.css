@@ -1,0 +1,36 @@
+/**
+ *
+ * Definicoes para div#dialog-alert
+ * @author: Edy Segura - edy@segura.eti.br
+ * 
+ */
+
+div#dialog-alert {
+	position:absolute;
+	width:400px;;
+	top:50%;
+	left:50%;
+	margin-left:-200px;
+	background:#F5F5FC url(../../imagens/bg-dialog-warning.jpg) no-repeat 15px 25px;
+	border:1px solid #9FA4DC;
+	z-index:1001;
+}
+
+div#dialog-alert h3 {
+	background:url(../../imagens/bg-title-menu.jpg) repeat-x top;
+	border-bottom:1px solid #9FA4DC;
+	color:#0000A0;
+	padding:2px;
+	text-align:center;
+	overflow:hidden;
+	font-size:12px;
+}
+
+div#dialog-alert p.content {
+	padding:5px 2px 10px 60px;
+	overflow:hidden;
+}
+
+div#dialog-alert p.botoes {
+	padding:5px;
+}

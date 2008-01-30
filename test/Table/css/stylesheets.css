@@ -1,0 +1,12 @@
+/* 
+ * stylesheets.css
+ * 
+ * Definicoes CSS para pagina Index.html
+ * @author: Edy Segura - edy@segura.eti.br
+ *
+ */
+
+/* imports */
+@import url("table.css");
+@import url("zebratable.css");
+@import url("simpletable.css");

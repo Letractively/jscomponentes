@@ -1,0 +1,24 @@
+/* 
+ * stylesheets.js
+ * 
+ * Definicoes para index.html
+ * @author: Edy Segura - edy@segura.eti.br
+ *
+ */
+
+h2 {
+	padding:2px;
+	border-bottom:1px solid #F90;
+	background:#FFE9D2;
+	color:#000;
+	font-size:16px;
+}
+
+span.comum    { background:#fff; }
+span.property { color:blue; }
+span.value    { color:green; }
+
+p {
+	margin:0;
+	padding:0;
+}

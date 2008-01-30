@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Edy Segura" />
+<meta name="reply-to" content="edy@segura.eti.br" />
+<meta name="description" content="Objeto QueryString para pegar os parâmetros da url" />
+<title>Objeto QueryString</title>
+
+<!-- stylesheet -->
+<link rel="stylesheet" href="css/stylesheets.css" type="text/css" title="Padrão" />
+
+<!-- javascript -->
+<script type="text/javascript" src="js/QueryString/QueryString.js"></script>
+<script type="text/javascript" src="js/Index.js"></script>
+
+</head>
+<body>
+
+<h1>Objeto QueryString</h1>
+<p>Objeto "QueryString" para pegar os parâmetros da url. Para mais detalhes veja o código fonte.</p>
+
+
+<h2>Resultado</h2>
+<noscript>
+	<p class="noscript">Para visualizar este exemplo, seu javascript deve estar <strong>HABILITADO</strong>.</p>
+</noscript>
+
+<form id="frm-contato" action="" method="get">
+	<fieldset>
+		<legend>Dados Pessoais:</legend>
+		
+		<label for="nome">Nome:</label>
+		<input type="text" name="nome" id="nome" />
+		
+		<label for="nome">E-mail:</label>
+		<input type="text" name="email" id="email" />
+		
+		<label for="comentario">Comentário:</label>
+		<textarea name="comentario" id="comentario" cols="50" rows="10"></textarea>
+		
+		<div class="botoes">
+			<input type="submit" value="OK" />
+			<input type="reset" value="Reiniciar" />
+		</div>
+		
+	</fieldset>
+</form>
+
+<p id="result">&nbsp;</p>
+
+</body>
+</html>
