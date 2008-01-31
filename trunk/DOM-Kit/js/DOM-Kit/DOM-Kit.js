@@ -1,4 +1,9 @@
-/*
+﻿/**
+ *
+ * DOM-Kit e' um conjunto de funcoes para simplificacao
+ * do uso da API do DOM. Documentacao completa disponivel em: 
+ * http://code.google.com/p/jscomponentes/wiki/DOMKit
+ *
  * DOM-Kit.js
  * http://jscomponentes.googlecode.com/svn/trunk/DOM-Kit/js/DOM-Kit/DOM-Kit.js
  *
@@ -11,10 +16,12 @@
  */
 
 
-/*
+/**
+ *
  * Atalho para o metodo document.getElementById()
  * @param: sElementId => String
  * @return: Node Object, Array of Node Objects
+ *
  */
 function $() {
  	var aElements = new Array;
@@ -33,23 +40,27 @@ function $() {
 }//fim $
 
 
-/*
+/**
+ *
  * Atalho para o metodo document.getElementsByTagName()
  * @name: $tags(sTagName, oParentNode)
  * @param: sTagName => String
  * @param: oParentNode => Node Object (optional)
  * @return: Array of Node Objects
+ *
  */
 function $tags(sTagName, oParentNode) {
 	return ($(oParentNode) || document).getElementsByTagName(sTagName);
 }//fim $tags
 
 
-/*
+/**
+ * 
  * Retorna um array de objetos contendo a classe especificada
  * @param: sClassName => String
  * @param: oParentNode => Node Object (optional)
  * @return: Array of Node Objects
+ *
  */
 function $tagsByClassName(sClassName, oParentNode) {
 	var aAllElements = ($(oParentNode) || document.body).getElementsByTagName('*');
@@ -66,13 +77,15 @@ function $tagsByClassName(sClassName, oParentNode) {
 }//fim getElementsByClassName
 
 
-/*
+/**
+ *
  * Retorna um array de objetos contendo o atributo e
  * valor especificado
  * @param: sAttribute => String
  * @param: sAttributeValue => String
  * @param: oParentNode => Node Object (optional)
  * @return: Array of Node Objects
+ *
  */
 function $tagsByAttribute(sAttribute, sAttributeValue, oParentNode, sTagName) {
 	var aAllElements = ($(oParentNode) || document).getElementsByTagName((sTagName || '*'));
@@ -107,11 +120,13 @@ function $tagsByAttribute(sAttribute, sAttributeValue, oParentNode, sTagName) {
 }//fim getElementsByAttribute
 
 
-/*
+/**
+ *
  * Busca o offsetParent especificado em sTagName
  * @param: oElementNode => Node Object
  * @param: sTagName => String
  * @return: Node Object
+ *
  */
 function $getParentByTagName(oElementNode, sTagName) {
 	sTagName = sTagName.toLowerCase();
@@ -130,10 +145,12 @@ function $getParentByTagName(oElementNode, sTagName) {
 }
 
 
-/*
+/**
+ *
  * Atalho para o metodo document.createElement();
  * @param: sElement => String
  * @return: Node Object
+ *
  */
 function $create(sElement) {
 	var oElement = document.createElement(sElement);
@@ -153,33 +170,39 @@ function $create(sElement) {
 }//fim $create
 
 
-/*
- * Método para inserir oNewElement antes de oElement
+/**
+ *
+ * Metodo para inserir oNewElement antes de oElement
  * @param: oNewElement => Node Object
  * @param: oElement => Node Object
  * @return: boolean
+ *
  */
 function $before(oNewElement, oElement) { 
 	return oElement.parentNode.insertBefore(oNewElement, oElement);
 }//fim $before
 
 
-/*
- * Método para inserir oNewElement depois de oElement
+/**
+ *
+ * Metodo para inserir oNewElement depois de oElement
  * @param: oNewElement => Node Object
  * @param: oElement => Node Object
  * @return: boolean
+ *
  */
 function $after(oNewElement, oElement) { 
 	return oElement.parentNode.insertBefore(oNewElement, oElement.nextSibling);
 }//after
 
 
-/*
+/**
+ *
  * Método para substituir oNewElement por oOldElement
  * @param: oNewElement => Node Object
  * @param: oOldElement => Node Object
  * @return: boolean
+ *
  */
 function $replace(oNewElement, oOldElement) {
 	if(oOldElement.parentNode) {
@@ -191,9 +214,11 @@ function $replace(oNewElement, oOldElement) {
 }//fim $replace
 
 
-/*
- * Método para remover o elemento especificado em sElementId
+/**
+ *
+ * Metodo para remover o elemento especificado em sElementId
  * @param: sElementId => String or Node Object
+ *
  */
 function $remove() {
 	for(var i=0; i<arguments.length; i++) {
