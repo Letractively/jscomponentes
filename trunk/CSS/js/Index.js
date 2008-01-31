@@ -1,5 +1,4 @@
-/* 
- * Index.js
+/**
  * 
  * Script para pegar os valores computado do CSS
  * @author: Edy Segura - edy@segura.eti.br

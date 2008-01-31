@@ -1,10 +1,10 @@
-/* 
- * CSS.js
- * http://jscomponentes.googlecode.com/svn/trunk/CSS/js/CSS/CSS.js
+/**
  *
  * Objeto Literal CSS. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/CSS
  *
+ * CSS.js
+ * http://jscomponentes.googlecode.com/svn/trunk/CSS/js/CSS/CSS.js
  * @author: Edy Segura - edy@segura.eti.br
  * 
  */
