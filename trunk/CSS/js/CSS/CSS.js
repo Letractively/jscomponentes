@@ -11,8 +11,7 @@
 
 var CSS = {
 	
-	getComputed: function(vElement, sCssProperty) {
-		var oElement = $(vElement);
+	getComputed: function(oElement, sCssProperty) {
 		
 		if(oElement.currentStyle) {
 			sCssProperty = CSS.formatPropertyCSS(sCssProperty);
@@ -46,8 +45,7 @@ var CSS = {
 	},//fim formatPropertyCSS
 	
 	
-	addClass: function(vElement, sClassName) {
-		var oElement  = $(vElement);
+	addClass: function(oElement, sClassName) {
 		var rePattern = new RegExp("(^| )" + sClassName + "( |$)");
 
 		if(!rePattern.test(oElement.className)) {
@@ -63,8 +61,7 @@ var CSS = {
 	},//fim addClass
 	
 	
-	removeClass: function(vElement, sClassName) {
-		var oElement = $(vElement);
+	removeClass: function(oElement, sClassName) {
 		var sRemovedClass = oElement.className;
 		var rePattern = new RegExp("(^| )" + sClassName + "( |$)");
 		
