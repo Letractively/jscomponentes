@@ -1,10 +1,10 @@
-/*
- * Table.js
- * http://jscomponentes.googlecode.com/svn/trunk/Table/js/Table/Table.js
+﻿/**
  * 
  * Objeto Literal Table. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Table
  *
+ * Table.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Table/js/Table/Table.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */

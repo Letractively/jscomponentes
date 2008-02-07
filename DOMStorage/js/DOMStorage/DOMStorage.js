@@ -1,10 +1,11 @@
-/* 
- * DOMStorage.js
- * http://jscomponentes.googlecode.com/svn/trunk/DOMStorage/js/DOMStorage/DOMStorage.js
+/** 
  *
  * Objeto Literal DOMStorage para armazenamento de dados no cliente. 
  * Documentação completa pode ser consultada em:
  * http://code.google.com/p/jscomponentes/wiki/DOMStorage
+ *
+ * DOMStorage.js
+ * http://jscomponentes.googlecode.com/svn/trunk/DOMStorage/js/DOMStorage/DOMStorage.js
  *
  * @author: Edy Segura - edy@segura.eti.br
  *
