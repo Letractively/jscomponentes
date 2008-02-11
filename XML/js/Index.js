@@ -1,5 +1,4 @@
-/* 
- * Index.js
+/**
  *
  * Objeto Literal Index
  * @author: Edy Segura - edy@segura.eti.br
@@ -10,7 +9,7 @@ var Index = {
 
 	init: function() {
 		Index.loadXML();
-		window.setTimeout(Index.createElementForTest, 50);
+		window.setTimeout(Index.createElementForTest, 100);
 	},//fim init
 
 
@@ -38,17 +37,16 @@ var Index = {
 		var oList  = document.createElement("ul");
 		var aNomes = oXMLDocument.getElementsByTagName("nome");
 		var aIdade = oXMLDocument.getElementsByTagName("idade");
-
+		
 		for(var i=0; i<aNomes.length; i++) {
 			var oItem = document.createElement('li');
-
+			
 			oItem.innerHTML = aNomes[i].firstChild.nodeValue + ", com " + aIdade[i].firstChild.nodeValue + " anos";
 			oList.appendChild(oItem);
-
+			
 		}//fim for
-
+		
 		document.body.appendChild(oList);
-
 	}//fim showXML
 
 };//fim Index.js
