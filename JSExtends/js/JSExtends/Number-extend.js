@@ -1,8 +1,9 @@
-/* 
- * Number-extends.js
- * http://jscomponentes.googlecode.com/svn/trunk/JSExtends/js/JSExtends/Number-extend.js
+/** 
  * 
  * Extendendo o objeto Number do javascript
+ *
+ * Number-extends.js
+ * http://jscomponentes.googlecode.com/svn/trunk/JSExtends/js/JSExtends/Number-extend.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */

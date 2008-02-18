@@ -1,10 +1,10 @@
-/*
- * Dialog.js
- * http://jscomponentes.googlecode.com/svn/trunk/Dialog/js/Dialog/Dialog.js
+/**
  *  
  * Objeto Literal Dialog. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Dialog
  *
+ * Dialog.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Dialog/js/Dialog/Dialog.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */

@@ -1,10 +1,10 @@
-﻿/* 
- * Browser.js
- * http://jscomponentes.googlecode.com/svn/trunk/Browser/js/Browser/Browser.js
+﻿/**
  *
  * Objeto Literal Browser. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Browser
  *
+ * Browser.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Browser/js/Browser/Browser.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */

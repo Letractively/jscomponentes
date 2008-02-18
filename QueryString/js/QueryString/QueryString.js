@@ -2,7 +2,9 @@
  * 
  * Objeto para parsear querystring, documentacao completa em: 
  * http://code.google.com/p/jscomponentes/wiki/QueryString
- * @url http://jscomponentes.googlecode.com/svn/trunk/QueryString/js/lib/QueryString.js
+ * 
+ * QueryString.js
+ * http://jscomponentes.googlecode.com/svn/trunk/QueryString/js/lib/QueryString.js
  * @author Edy Segura - edy@segura.eti.br
  * 
  */

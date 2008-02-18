@@ -1,11 +1,11 @@
-/*
- * Form.js
- * http://jscomponentes.googlecode.com/svn/trunk/Form/js/Form/Form.js
+﻿/**
  *
  * Objeto para manipulacao e edicao de formulario. 
  * A documentacao completa pode ser encontrada no endereco:
  * http://code.google.com/p/jscomponentes/wiki/Form
  *
+ * Form.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Form/js/Form/Form.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */
@@ -343,28 +343,6 @@ var Form = {
 			}
 		}//fim do for
 	},//fim setComboValue
-	
-	
-	/*
-	 * requires object Event.js
-	 */
-	formatMoney: function(oInput, iFloatPoint, sDecimalSep, sThousandsSep) {
-		oInput.floatPoint   = !isNaN(iFloatPoint) ? Math.abs(iFloatPoint) : 2;
-		oInput.thousandsSep = typeof sThousandsSep != "string" ? "," : sThousandsSep, oInput.sDecimalSep = typeof sDecimalSep != "string" ? "." : sDecimalSep;
-		
-		Event.addEvent(oInput, "keypress", function(e) {
-				if(e.key > 47 && e.key < 58) {
-						var oInput, s, l = (s = ((oInput = this).value.replace(/^0+/g, "") + String.fromCharCode(e.key)).replace(/\D/g, "")).length, iFloatPoint;
-						if(oInput.maxLength + 1 && l >= oInput.maxLength) return false;
-						l <= (iFloatPoint = oInput.floatPoint) && (s = new Array(iFloatPoint - l + 2).join("0") + s);
-						for(var i = (l = (s = s.split("")).length) - iFloatPoint; (i -= 3) > 0; s[i - 1] += oInput.sDecimalSep);
-						iFloatPoint && iFloatPoint < l && (s[l - ++iFloatPoint] += oInput.thousandsSep);
-						oInput.value = s.join("");
-				}
-				e.key > 30 && e.preventDefault();
-		});
-		
-	},//fim formatMoney
 	
 	
 	checkAll: function(oInputCheck) {

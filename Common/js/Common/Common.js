@@ -1,10 +1,10 @@
-﻿/* 
- * Common.js
- * http://jscomponentes.googlecode.com/svn/trunk/Common/js/Common/Common.js
+﻿/** 
  *
  * Objeto Literal Common. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Common
  *
+ * Common.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Common/js/Common/Common.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */

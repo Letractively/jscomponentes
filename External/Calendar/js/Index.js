@@ -1,5 +1,4 @@
-/* 
- * Index.js
+/**
  *  
  * Uso do objeto Calendar 
  * @author: Edy Segura - edy@segura.eti.br
