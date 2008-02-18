@@ -1,6 +1,6 @@
 /**
  * 
- * Objeto Literal Index
+ * Objeto Literal Index para uso do NumberFormat.js
  * @author Edy Segura, edy@segura.eti.br
  * 
  */
@@ -8,16 +8,16 @@
 var Index = {
 	
 	init: function() {
-		Index.setInputMask();
+		Index.setNumberFormat();
 	},
 	
-	setInputMask: function() {
+	setNumberFormat: function() {
 
-		MaskNumber.setMaksNumberByClass({
+		NumberFormat.setNumberFormatByClass({
 			className : "number"
 		});
 		
-		MaskNumber.setMaksNumberByClass({
+		NumberFormat.setNumberFormatByClass({
 			className   : "number-2",
 			maskOptions : {
 				FRACTION_SEPARATOR : ".",
@@ -26,7 +26,7 @@ var Index = {
 			}
 		});
 		
-		MaskNumber.setMaksNumberByClass({
+		NumberFormat.setNumberFormatByClass({
 			className   : "number-3",
 			maskOptions : {
 				FRACTION_SEPARATOR : "-",

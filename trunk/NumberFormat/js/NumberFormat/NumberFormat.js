@@ -1,9 +1,9 @@
-/**
+﻿/**
  * 
- * Mask Currency for input elements
- * @author Marcos Okita, edited by Edy Segura
+ * Format number for input elements
+ * @author Marcos Okita, edited by Edy Segura - edy@segura.eti.br
  * 
- * MaskNumber.setMaksNumberByClass({
+ * NumberFormat.setMaksNumberByClass({
  * 	className   : "number",
  *	parent      : document.getElementById('elementId'),
  *	maskOptions : {
@@ -25,24 +25,24 @@ var oMaskOptionDefault = {
 	THOUSAND_SEPARATOR : "."
 };
 
-var MaskNumber = {
+var NumberFormat = {
 	
-	setMaksNumberByClass: function(oParams) {
+	setNumberFormatByClass: function(oParams) {
 		oParams.className   = (oParams.className)   ? oParams.className   : null;
 		oParams.parent      = (oParams.parent)      ? oParams.parent      : null;
 		oParams.maskOptions = (oParams.maskOptions) ? oParams.maskOptions : null;
 		
-		var aInputs = MaskNumber.getInputsByClass(oParams.className, oParams.parentNode);
+		var aInputs = NumberFormat.getInputsByClass(oParams.className, oParams.parentNode);
 		
 		for(var i=0; i<aInputs.length; i++) {
 			var oInput = aInputs[i];
 			
 			oInput.onkeypress = function(oEvent) {
-				return MaskNumber.numberOnly(oEvent);
+				return NumberFormat.numberOnly(oEvent);
 			};
 			
 			oInput.onkeyup = function() {
-				MaskNumber.setMaskInputValue(this, oParams.maskOptions);
+				NumberFormat.setMaskInputValue(this, oParams.maskOptions);
 			};
 			
 		}//endfor
@@ -130,8 +130,8 @@ var MaskNumber = {
 				fnFunction(vArguments); 
 			}
 			catch(oErr) { 
-				var sMessage = "Erro na atribui��o do m�todo.\n";
-				sMessage += "Descri��o: " + oErr.message +"\n";
+				var sMessage = "Error!\n";
+				sMessage += "Message: " + oErr.message + "\n";
 				alert(sMessage);
 			}//fim try catch
 		}//fim return function

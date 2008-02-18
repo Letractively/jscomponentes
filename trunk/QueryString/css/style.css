@@ -1,0 +1,20 @@
+/**
+ * 
+ * Definicoes CSS para pagina index.html
+ * @author: Edy Segura - edy@segura.eti.br
+ *
+ */
+ 
+label {
+	display:block;
+}
+
+div.botoes {
+	margin-top:10px;
+}
+
+div.botoes input {
+	width:80px;
+	border-width:1px;
+	font-weight:bold;
+}

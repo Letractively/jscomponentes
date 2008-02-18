@@ -1,16 +1,16 @@
-/* 
- * Ajax.js
- * http://jscomponentes.googlecode.com/svn/trunk/Ajax/js/Ajax/Ajax.js
+﻿/**
  *
  * Objeto literal Ajax. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Ajax
  *
+ * Ajax.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Ajax/js/Ajax/Ajax.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */
 
 var Ajax = {
-		
+
 	/*
 	 * create XMLHttpRequest
 	 * @return XMLHttpRequest

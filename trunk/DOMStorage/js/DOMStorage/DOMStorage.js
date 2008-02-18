@@ -6,7 +6,6 @@
  *
  * DOMStorage.js
  * http://jscomponentes.googlecode.com/svn/trunk/DOMStorage/js/DOMStorage/DOMStorage.js
- *
  * @author: Edy Segura - edy@segura.eti.br
  *
  */
