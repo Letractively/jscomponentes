@@ -26,13 +26,13 @@ var Index = {
 		
 		oButton2.onclick = function() {
 			if(Browser && Browser.isAddSearchProvider) {
-				Browser.installSearchEngine("http://edysegura.com/xml/opensearch/edysegura.com.xml");
+				Browser.installSearchEngine("http://files.edysegura.com/xml/opensearch/edysegura.com.xml");
 			}
 		}
 		
 		oButton3.onclick = function() {
 			if(Browser && Browser.isAddSearchEngine) {
-				Browser.installSearchEngine("http://edysegura.com/xml/sherlock/edysegura.com.src", 
+				Browser.installSearchEngine("http://files.edysegura.com/xml/sherlock/edysegura.com.src", 
                                     "http://us.i1.yimg.com/us.yimg.com/i/yg/img/logo/favicon.ico",  
                                     "Edy Search");
 			}
