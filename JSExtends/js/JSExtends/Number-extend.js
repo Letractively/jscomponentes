@@ -4,11 +4,17 @@
  *
  * Number-extends.js
  * http://jscomponentes.googlecode.com/svn/trunk/JSExtends/js/JSExtends/Number-extend.js
+ *
  * @author: Edy Segura - edy@segura.eti.br
  *
  */
 
-//implementacao do metodo Number.isInt()
+/**
+ *
+ * Verifica se o numero e um inteiro
+ * @author Edy Segura
+ *
+ */
 Number.prototype.isInt = function() {
  var iValue = parseInt(this);
  if(isNaN(iValue)) return false;
