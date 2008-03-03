@@ -1,24 +1,26 @@
-/* 
- * DivOverlay
- *  
+/** 
+ * 
+ * Definicoes para div#dialog-overlay 
  * @author: Edy Segura - edy@liveware.com.br, edy@segura.eti.br
- * @description: Definicoes para div#dialog-overlay
+ * 
  */
 
 div#dialog-overlay {
-	position:absolute;
-	width:100%;
-	top:0;
-	left:0;
-	background:#000;
-	z-index:1000;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #000;
+	z-index: 9998;
 	
 	/*
-	 * Propriedades CSS para transparência.
-	 * Propriedade opacity é para todos navegadores menos o IE.
-	 * Propriedade filter é excluisa para IE.
+	 *
+	 * Regra CSS para transparencia.
+	 * Propriedade filter e' excluisa para IE.
+	 *
 	 */
-	opacity:0.2;
+	opacity: 0.2;
+	-moz-opacity: 0.2;
 	filter:alpha(opacity=20);
 }
 
