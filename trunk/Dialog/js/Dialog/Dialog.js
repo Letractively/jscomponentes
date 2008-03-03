@@ -1,4 +1,4 @@
-/**
+﻿/**
  *  
  * Objeto Literal Dialog. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Dialog
@@ -46,7 +46,7 @@ var Dialog = {
 		var oDivOverlay   = oWindow.$create('div', 'id:dialog-overlay');
 		var oFirstElement = oWindow.document.body.firstChild;
 		
-		oDivOverlay.style.height = (Common.getPageSize()).pageHeight + "px";
+		oDivOverlay.style.height = (Browser.getPageSize()).pageHeight + "px";
 		
 		Dialog.divOverlay = oDivOverlay;
 		Event.addHandle(window, 'resize', Dialog.resizeDivOverlay);
@@ -92,7 +92,7 @@ var Dialog = {
 	 */
 	resizeDivOverlay: function() {
 		if(Dialog.divOverlay) 
-			Dialog.divOverlay.style.height = (Common.getPageSize()).pageHeight + "px";
+			Dialog.divOverlay.style.height = (Browser.getPageSize()).pageHeight + "px";
 		else 
 			Event.removeHandle(window, 'resize', Dialog.resizeDivOverlay);
 	},//fim resizeDivOverlay

@@ -1,4 +1,6 @@
-﻿function openWindow(anchor, options) {
+﻿//example for use: openWindow(anchor, {width:790,height:450,center:true})
+
+function openWindow(anchor, options) {
  
 	var args = '';
  
