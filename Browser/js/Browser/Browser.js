@@ -157,7 +157,9 @@ var Browser = {
 //atributos publicos do objeto literal Browser
 Browser.isSafari  = Browser.ua.indexOf("safari") >= 0;
 Browser.isOpera   = Browser.ua.indexOf("opera")  >= 0;
-Browser.isMac     = Browser.ua.indexOf('mac')    >= 0;
-Browser.isGecko   = Browser.ua.indexOf('gecko')  >= 0;
+Browser.isMac     = Browser.ua.indexOf("mac")    >= 0;
+Browser.isGecko   = Browser.ua.indexOf("gecko")  >= 0;
 Browser.isFirefox = !Browser.isOpera && !Browser.isSafari && (Browser.name == "Netscape");
 Browser.isIE      = !Browser.isOpera && (Browser.name == "Microsoft Internet Explorer");
+Browser.isIE6     = Browser.isIE && Browser.ua.indexOf("msie 6.0") >= 0;
+Browser.isIE7     = Browser.isIE && Browser.ua.indexOf("msie 7.0") >= 0;
