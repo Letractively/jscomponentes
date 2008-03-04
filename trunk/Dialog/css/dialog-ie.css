@@ -4,7 +4,7 @@ Descrição: Definições para divOverlay
 */
 
 /* Imports */
-@import url("dialog-overlay.css");
+@import url("overlay.css");
 @import url("dialog-alert.css");
 
 /* Redefinições para o IEca 6 e inferiores */
