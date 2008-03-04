@@ -21,7 +21,7 @@ var Index = {
 				
 				window.setTimeout(function(){
 					Dialog.removeDivOverlay();
-				}, 1000);
+				}, 2000);
 			};
 		}
 	}
