@@ -90,7 +90,7 @@ var NumberFormat = {
 		var keynum;
 		var keychar;
 		var numCheck = /\d/;
-		var acceptKeyNum = /8|3[5-9]|46/;
+		var acceptKeyNum = /8|9|3[5-9]|46/;
 		var acceptKeyNumWithCtrlKey = /3[5-9]|46|118/;
 		
 		//IE
