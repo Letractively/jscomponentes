@@ -118,3 +118,40 @@ String.prototype.isCNPJ = function(){
 	if(c[13] != (((n %= 11) < 2) ? 0 : 11 - n)) return false;
 	return true;
 };
+
+
+/**
+ *
+ * Metodo para completar a string com valores especificos
+ * exemplo:
+ * 	alert(mes.pad(2, "0", String.PAD_LEFT)); // exibe "09"
+ * 
+ * http://forum.imasters.uol.com.br/index.php?showtopic=144107
+ * @author Carlos R. L. Rodrigues
+ *
+ */
+ 
+String.PAD_LEFT  = 0;
+String.PAD_RIGHT = 1;
+String.PAD_BOTH  = 2;
+
+String.prototype.pad = function(size, pad, side) {
+  var str = this, append = "", size = (size - str.length);
+  var pad = ((pad != null) ? pad : " ");
+	
+  if((typeof size != "number") || ((typeof pad != "string") || (pad == ""))) {
+    throw new Error("Wrong parameters for String.pad() method.");
+  }
+	
+  if (side == String.PAD_BOTH) {
+    str = str.pad((Math.floor(size / 2) + str.length), pad, String.PAD_LEFT);
+    return str.pad((Math.ceil(size / 2) + str.length), pad, String.PAD_RIGHT);
+  }
+	
+  while ((size -= pad.length) > 0) {
+    append += pad;
+  }
+	
+  append += pad.substr(0, (size + pad.length));
+  return ((side == String.PAD_LEFT) ? append.concat(str) : str.concat(append));
+}
