@@ -122,6 +122,29 @@ String.prototype.isCNPJ = function(){
 
 /**
  *
+ * Converte string formatada em dinheiro para
+ * o tipo float
+ *
+ * @author Edy Segura
+ *
+ */
+String.prototype.currencyToFloat = function() {
+	var result   = "";
+	var currency = this;
+	
+	if(currency.length) {
+		currency = currency.replace(/\./, "");
+		currency = currency.replace(/\,/, ".");
+		currency = parseFloat(currency);
+		result   = currency
+	}
+
+	return result;
+}
+
+
+/**
+ *
  * Metodo para completar a string com valores especificos
  * exemplo:
  * 	alert(mes.pad(2, "0", String.PAD_LEFT)); // exibe "09"

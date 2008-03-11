@@ -1,22 +1,23 @@
-/* 
-* CSS Document
-* Autor: Edy Segura - edy@segura.eti.br
-* Descrição: CSS padrão para página inicial
-*/
+/** 
+ * 
+ * CSS Document
+ * Autor: Edy Segura - edy@segura.eti.br
+ * 
+ */
 
 /* Imports */
 @import url("calendar-system.css");
 
 /* Definições */
 input.campo {
-	font:bold 10px Verdana, Arial, Helvetica, sans-serif;
-	border:1px solid #FC0;
-	background:#FFF5F0;
-	width:70px;
-	padding:1px;
+	font: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	border: 1px solid #FC0;
+	background: #FFF5F0;
+	width: 70px;
+	padding: 1px;
 }
 
 img.image {
-	vertical-align:middle;
-	cursor:pointer;
+	vertical-align: middle;
+	cursor: pointer;
 }
