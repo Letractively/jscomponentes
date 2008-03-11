@@ -28,7 +28,7 @@ Number.prototype.isInt = function() {
  * em JSExtend/String.js
  *
  * exemplo:
- * 	numero = 2195440.3517;
+ * 	var numero = 2195440.3517;
  * 	alert(numero.format(2, ",", ".")); //exibe: "2.195.440,35";
  *
  * http://forum.imasters.uol.com.br/index.php?showtopic=144107
