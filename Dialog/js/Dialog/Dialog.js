@@ -51,7 +51,7 @@ var Dialog = {
 		Dialog.divOverlay = oDivOverlay;
 		Event.addHandle(window, 'resize', Dialog.resizeDivOverlay);
 		
-		if(window.ActiveXObject) Dialog.showHideElementsForIE('hidden');
+		if(Browser.isIE6) Dialog.showHideElementsForIE('hidden');
 		$before(oDivOverlay, oFirstElement);
 		
 		return oDivOverlay;
@@ -205,7 +205,7 @@ var Dialog = {
 	removeDivOverlay: function() {
 		if(Dialog.divOverlay) {
 			Event.removeHandle(window, 'resize', Dialog.resizeDivOverlay);
-			if(window.ActiveXObject) Dialog.showHideElementsForIE('visible');
+			if(Browser.isIE6) Dialog.showHideElementsForIE('visible');
 			$remove(Dialog.divOverlay);
 			Dialog.divOverlay = null;
 		}//fim if
