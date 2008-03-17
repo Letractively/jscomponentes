@@ -216,16 +216,16 @@ function $replace(oNewElement, oOldElement) {
 
 /**
  *
- * Metodo para remover o elemento especificado em sElementId
- * @param: sElementId => String or Node Object
+ * Metodo para remover elemento(s)
+ * @param: elementId => String or Node Object
  *
  */
 function $remove() {
 	for(var i=0; i<arguments.length; i++) {
-		var oElement = $(arguments[i]);
+		var element = $(arguments[i]);
 		
-		if(oElement) {
-			oElement.parentNode.removeChild(oElement);
+		if(element && element.parentNode) {
+			element.parentNode.removeChild(element);
 		}
 	
 	}//fim for
