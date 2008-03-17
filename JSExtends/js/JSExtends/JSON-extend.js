@@ -1,6 +1,6 @@
 /*
-    JSON-extend.js
-    2008-02-14
+    json2.js
+    2008-03-14
 
     Public Domain
 
@@ -249,7 +249,7 @@ if (!this.JSON) {
 // we look to see that the remaining characters are only whitespace or ']' or
 // ',' or ':' or '{' or '}'. If that is so, then the text is safe for eval.
 
-                if (/^[\],:{}\s]*$/.test(text.replace(/\\./g, '@').
+                if (/^[\],:{}\s]*$/.test(text.replace(/\\["\\\/bfnrtu]/g, '@').
 replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
 replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
 
