@@ -60,7 +60,12 @@ var Index = {
 	showContent2: function(sResponse) {
 		var oTarget = document.getElementById('content-2');
 		Index.showContent(sResponse, oTarget);
-	}//fim showContent2
+	},//fim showContent2
+	
+	
+	showMsg: function() {
+		alert("Componente Ajax.js");
+	}
 	
 };//fim Index
 
