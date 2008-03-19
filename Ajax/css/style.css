@@ -1,0 +1,35 @@
+/**
+ *
+ * Definicoes CSS para pagina index.html
+ * @author: Edy Segura - edy@segura.eti.br
+ *
+ */
+
+a, span.link {
+	color: blue;
+	background:#FFF;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+p.teste {
+	border:1px solid red;
+	padding:5px;
+}
+
+h3 {
+	padding:5px;
+	font-size:16px;
+	color:#6464FF;
+	background:#ECECFF;
+}
+
+p.loading {
+	position:absolute;
+	top:0px;
+	right:5px;
+	background:#F00;
+	color:#fff;
+	padding:10px;
+	font:bold 10px Verdana, Arial, Helvetica, sans-serif;
+}
