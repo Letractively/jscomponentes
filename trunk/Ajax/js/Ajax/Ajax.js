@@ -11,6 +11,8 @@
 
 var Ajax = {
 
+	loading: null,
+	
 	/*
 	 * create XMLHttpRequest
 	 * @return XMLHttpRequest
@@ -43,10 +45,18 @@ var Ajax = {
 		oLoading.innerHTML = "Carregando...";
 		document.body.appendChild(oLoading);
 		
-		return oLoading;
+		Ajax.loading = oLoading;
 	},//fim createDivLoading
 	
 	
+	removeLoading: function() {
+		if(Ajax.loading) {
+			Ajax.loading.parentNode.removeChild(Ajax.loading);
+			Ajax.loading = null;
+		}
+	},
+	
+
 	/*
 	 * Adiciona uma requisicao AJAX na fila 
 	 */
@@ -65,7 +75,7 @@ var Ajax = {
 		if(oXmlHttp) {
 			var sMethod  = (oParams.method) ? oParams.method : "GET";
 			var bAsync   = (typeof oParams.async == 'boolean') ? oParams.async : true;
-			var oLoading = (oParams.loading) ? Ajax.createLoading() : false;
+			if(oParams.loading) Ajax.createLoading();
 			
 			oXmlHttp.open(sMethod, oParams.url, bAsync);
 			oXmlHttp.setRequestHeader("Cache-Control", "no-cache, must-revalidate");
@@ -81,13 +91,14 @@ var Ajax = {
 			
 			oXmlHttp.onreadystatechange = function() {
 				if(oXmlHttp.readyState == 4) {
-					if(oXmlHttp.status == 200) {
+					if(oXmlHttp.status == 200 || oParams.update) {
 						
 						if(oParams.callback) {
 							oParams.callback((oParams.response == "xml") ? oXmlHttp.responseXML : oXmlHttp.responseText, 
 															 (oParams.params) ? oParams.params : 0);
 						}
 						
+						if(oParams.loading) Ajax.removeLoading();
 					}
 					else {
 						
@@ -103,11 +114,10 @@ var Ajax = {
 							sMessage += (oXmlHttp.statusText) ? oXmlHttp.statusText : "Unknown";
 							
 							alert(sMessage);
-							
 						}//fim else
+						
+						if(oParams.loading) Ajax.removeLoading();
 					}//fim else
-					
-					if(oLoading) oLoading.parentNode.removeChild(oLoading);
 				}//fim if
 			};
 			
@@ -117,7 +127,7 @@ var Ajax = {
 		else {
 			alert("Sem suporte ao objeto XMLHttpRequest");
 		}
-
+		
 	}//fim run
 
 };//fim Ajax.js

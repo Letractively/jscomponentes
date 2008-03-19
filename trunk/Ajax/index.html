@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -7,14 +7,32 @@
 <meta name="description" content="Componente javascript para uso da metodologia Ajax" />
 <title>Componente Ajax.js</title>
 
+<!-- stylesheet -->
+<link rel="stylesheet" href="css/style.css" type="text/css" title="Padrão" />
+
 <!-- javascript -->
+<script type="text/javascript" src="http://jscomponentes.googlecode.com/svn/trunk/QueryString/js/QueryString/QueryString.js"></script>
 <script type="text/javascript" src="js/Ajax/Ajax.js"></script>
+<script type="text/javascript" src="js/Index.js"></script>
 
 </head>
 <body>
 
 <h1>Componente Ajax.js</h1>
 <p>Componente javascript para uso da metodologia Ajax. Para mais detalhes veja o código fonte.</p>
+
+<fieldset>
+	<legend>Opções:</legend>
+	<ul>
+		<li><a href="paginas/content1.html?callback=Index.showContent1" title="Conteúdo 01">Conteúdo 01</a></li>
+		<li><a href="paginas/content2.html?callback=Index.showContent2" title="Conteúdo 02">Conteúdo 02</a></li>
+		<li><a href="index.html" title="Limpar conteúdos">Limpar conteúdos</a></li>
+	</ul>
+</fieldset>
+
+<!-- divisões -->
+<div id="content-1"></div>
+<div id="content-2"></div>
 
 </body>
 </html>
