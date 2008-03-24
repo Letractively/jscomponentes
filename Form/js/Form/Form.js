@@ -196,32 +196,6 @@ var Form = {
 	},//fim checkNodeListElement
 	
 	
-	isEmpty: function(sValue) {
-		var sCaractere;
-		
-		if(sValue == "" || sValue == null) return true;
-		
-		sCaractere = sValue.charAt(0);
-		if((sCaractere == " ") || 
-			 (sCaractere == "\t") && 
-			 (sCaractere == "\n")) {
-			return true;
-		}
-		
-		return false;
-	},//fim isEmpty
-	
-	
-	isMail: function(sEmail) {
-		//var rePattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-		//var rePattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-		
-		var rePattern = /^[a-zA-Z0-9_\.-]{2,}@([A-Za-z0-9_-]{2,}\.)+[A-Za-z]{2,4}$/;
-		return rePattern.test(sEmail);
-		
-	},//fim isMail
-	
-	
 	tabForward: function(oField) {
 		var oForm = oField.form;
 		
