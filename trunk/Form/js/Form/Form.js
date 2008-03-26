@@ -319,14 +319,33 @@ var Form = {
 	},//fim setComboValue
 	
 	
-	checkAll: function(oInputCheck) {
-		var oForm = oInputCheck.form;
-		var aInputs = (oForm || document.body).getElementsByTagName('input');
-		var rePattern = new RegExp("^" + oInputCheck.id + "\\b");
+	hasOneChecked: function(inputsName) {
+		var result = false;
+		var checks = document.getElementsByName(inputsName);
 		
-		for(var i=0; i<aInputs.length; i++) {
-			if(aInputs[i].type.toLowerCase() == "checkbox" && rePattern.test(aInputs[i].name)) {
-				aInputs[i].checked = oInputCheck.checked;
+		if(checks) {
+			for(var i=0; i<checks.length; i++) {
+				
+				if(checks[i].checked) {
+					result = true;
+					break;
+				}
+				
+			}
+		}
+		
+		return result;
+	},
+	
+	
+	checkAll: function(inputCheck) {
+		var form    = inputCheck.form;
+		var inputs  = (form || document.body).getElementsByTagName('input');
+		var pattern = new RegExp("^" + inputCheck.id + "\\b");
+		
+		for(var i=0; i<inputs.length; i++) {
+			if(inputs[i].type.toLowerCase() == "checkbox" && pattern.test(inputs[i].name)) {
+				inputs[i].checked = inputCheck.checked;
 			}
 		}
 		
