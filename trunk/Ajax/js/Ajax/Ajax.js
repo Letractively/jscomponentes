@@ -64,12 +64,18 @@ var Ajax = {
 	},//fim addRequest
 	
 	
+	//old alias (deprecated)
+	run: function(params) {
+		Ajax.request(params);
+	},
+	
+	
 	/*
 	 * Executa a requisicao AJAX 
 	 * chega a resposta do objeto XMLHttpRequest
 	 * @param: (object) oParams
 	 */
-	run: function(oParams) {
+	request: function(oParams) {
 		var oXmlHttp = Ajax.createXmlHttp();
 		
 		if(oXmlHttp) {
