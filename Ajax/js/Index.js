@@ -10,28 +10,28 @@ var Index = {
 	init: function() {
 		Index.setLinksAjax();
 		Index.setLinkClear();
-	},//fim init
+	},
 	
 	
 	setLinksAjax: function() {
-		var aLinks = [document.links[0], document.links[1]];
+		var links = [document.links[0], document.links[1]];
 		
-		for(var i=0; i<aLinks.length; i++) {
-			aLinks[i].onclick = function() {
-				var oUrlParams = new QueryString(this.href);
+		for(var i=0; i<links.length; i++) {
+			links[i].onclick = function() {
+				var urlParams = new QueryString(this.href);
 				
-				Ajax.run({
+				Ajax.request({
 					url      : this.href,
-					callback : (oUrlParams.callback) ? eval('(' + oUrlParams.callback + ')') : null,
+					callback : (urlParams.callback) ? eval('(' + urlParams.callback + ')') : null,
 					update   : true,
 					loading  : true
 				});
 				
 				return false;
-			};//fim function aLinks
-		}//fim for
-
-	},//fim setLinksAjax
+			};
+		}
+		
+	},
 	
 
 	setLinkClear: function() {
