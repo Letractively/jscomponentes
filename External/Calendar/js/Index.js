@@ -1,4 +1,4 @@
-﻿/**
+/**
  *  
  * Uso do objeto Calendar 
  * @author: Edy Segura - edy@segura.eti.br
@@ -9,11 +9,12 @@ var Index = {
 	
 	init: function() {
 		Index.setCalendar();
-	},//fim init
+	},
 	
 	
 	setCalendar: function() {
-		var aInputs = $(
+		
+		var inputs = $(
 			'date01', 'date02', 'date03', 
 			'date04', 'date05', 'date06',
 			'date07', 'date08', 'date09',
@@ -21,19 +22,18 @@ var Index = {
 			'date13'
 		);
 		
-		for(var i in aInputs) {
-			
+		for(var i in inputs) {
 			Calendar.setup({
-				inputField : aInputs[i],
-				button     : "btn-" + aInputs[i].id,
+				inputField : inputs[i],
+				button     : "btn-" + inputs[i].id,
 				ifFormat   : "%d/%m/%Y"
 			});
-			
-		}//fim for
-	}//fim setCalendar
+		}
+		
+	}
 	
-};//fim Index.js
+};
 
-//inicialização
+//inicializacao
 window.onload = Index.init;
 
