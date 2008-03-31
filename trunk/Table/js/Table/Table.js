@@ -11,43 +11,47 @@
 
 var Table = {
 	
-	stripedTable: function(sTable, sOdd) {
-		var oTable = (typeof sTable == "string") ? document.getElementById(sTable) : sTable;
+	stripedTable: function(tableId, className) {
+		var table = (typeof(tableId) == "string") ? document.getElementById(tableId) : tableId;
 		
-		if(oTable && typeof oTable == "object") {
-			for(var i=0; i<oTable.tBodies.length; i++) {
-				var aRows = oTable.tBodies[i].rows;
-			
-				for(var j=0; j<aRows.length; j++) {
-					var oRow = aRows[j];
+		if(table && typeof(table) == "object") {
+			for(var i=0; i<table.tBodies.length; i++) {
+				var rows = table.tBodies[i].rows;
+				
+				for(var j=0; j<rows.length; j++) {
+					var row = rows[j];
 					
-					if(!oRow.className) {
-						if(j%2) oRow.className = (sOdd) ? sOdd : "odd";
+					if(!row.className) {
+						if(j%2) row.className = (className) ? className : "odd";
 					}
 					
-				}//fim for
-			}//fim for
-		}//fim if
+				}
+			}
+		}
 		else {
-			throw new Error("table#" + sTable + " não foi encontrada para uso do método Table.stripedTable()");
+			throw new Error("table#" + tableId + " not found for method Table.stripedTable()");
 		}
 
 	},//fim stripedTable
 	
 	
-	clearTable: function(oTable) {
+	clearTable: function(tableId) {
+		var table  = (typeof(tableId) == "string") ? document.getElementById(tableId) : tableId;
 		var result = false;
 		
-		if(oTable) {
-			var oTbody = document.createElement('tbody');
+		if(table && typeof(table) == "object") {
+			var tbody = document.createElement('tbody');
 			
-			oTable.appendChild(oTbody);
-			oTable.removeChild(oTable.tBodies[0]);
+			table.appendChild(tbody);
+			table.removeChild(table.tBodies[0]);
 			
-			result = oTbody;
+			result = tbody;
+		}
+		else {
+			throw new Error("table#" + tableId + " not found for method Table.clearTable()");
 		}
 		
 		return result;
-	}//fim clearTable
+	}
 	
-};//fim Table.js
+};
