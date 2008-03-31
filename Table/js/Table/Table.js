@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 
  * Objeto Literal Table. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Table
