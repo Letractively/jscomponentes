@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 
  * Script para uso do componente Table.js
  * @author: Edy Segura - edy@segura.eti.br
@@ -14,15 +14,15 @@ var Index = {
 	
 	
 	setTableAttribute: function() {
-		var oTable = document.getElementById('zebratable');
+		var oTable = document.getElementById("zebratable");
 		oTable.setAttribute("cellSpacing", "1");
 	},
 	
 	
 	setStripedTable: function() {
-		Table.stripedTable(document.getElementById('zebratable'));
-		Table.stripedTable('simpletable', 'alternada');
-		//Table.stripedTable('nada');
+		Table.stripedTable(document.getElementById("zebratable"));
+		Table.stripedTable("simpletable", "alternada");
+		//Table.clearTable('nada');
 	}
 
 };
