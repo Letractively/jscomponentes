@@ -13,31 +13,31 @@ var Ajax = {
 
 	loading: null,
 	
-	/*
-	 * create XMLHttpRequest
-	 * @return XMLHttpRequest
-	 */
 	createXmlHttp: function() {
-		var oXmlHttp;
+		var xmlHttp;
 		
 		//instanciando o objeto XMLHttpRequest
-		try{ oXmlHttp = new XMLHttpRequest(); }
-		catch(oErr1) {
-			 try{ oXmlHttp = new ActiveXObject("Msxml2.XMLHTTP"); }
-			 catch(oErr2) {
-					try{ oXmlHttp = new ActiveXObject("Microsoft.XMLHTTP"); }
-					catch(oErr3) { oXmlHttp = false; }
-			 }
+		try {
+			xmlHttp = new XMLHttpRequest();
+		}
+		catch(e1) {
+			try {
+				xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+			}
+			catch(e2) {
+				try {
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				catch(e3) {
+					xmlHttp = false; 
+				}
+			}
 		}
 		
-		return oXmlHttp;
-	},//fim createXmlHttp
+		return xmlHttp;
+	},
 	
 	
-	/*
-	 * Exibi carregando enquanto nao 
-	 * chega a resposta do objeto XMLHttpRequest
-	 */
 	createLoading: function() {
 		var oLoading = document.createElement('p');
 				
@@ -57,11 +57,8 @@ var Ajax = {
 	},
 	
 
-	/*
-	 * Adiciona uma requisicao AJAX na fila 
-	 */
-	addRequest: function(oParams) {
-	},//fim addRequest
+	addRequest: function(params) {
+	},
 	
 	
 	//old alias (deprecated)
@@ -69,71 +66,65 @@ var Ajax = {
 		Ajax.request(params);
 	},
 	
-	
-	/*
-	 * Executa a requisicao AJAX 
-	 * chega a resposta do objeto XMLHttpRequest
-	 * @param: (object) oParams
-	 */
-	request: function(oParams) {
-		var oXmlHttp = Ajax.createXmlHttp();
+
+	request: function(params) {
+		var xmlHttp = Ajax.createXmlHttp();
 		
-		if(oXmlHttp) {
-			var sMethod  = (oParams.method) ? oParams.method : "GET";
-			var bAsync   = (typeof oParams.async == 'boolean') ? oParams.async : true;
-			if(oParams.loading) Ajax.createLoading();
+		if(xmlHttp) {
+			var method = (params.method) ? params.method : "GET";
+			var async  = (typeof params.async == 'boolean') ? params.async : true;
+			if(params.loading) Ajax.createLoading();
 			
-			oXmlHttp.open(sMethod, oParams.url, bAsync);
-			oXmlHttp.setRequestHeader("Cache-Control", "no-cache, must-revalidate");
-			oXmlHttp.setRequestHeader("Pragma", "no-cache");
+			xmlHttp.open(method, params.url, async);
+			xmlHttp.setRequestHeader("Cache-Control", "no-cache, must-revalidate");
+			xmlHttp.setRequestHeader("Pragma", "no-cache");
 			
-			if(sMethod.toUpperCase() == "POST") {
-				oXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			if(method.toUpperCase() == "POST") {
+				xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			}
 			
-			if(oParams.response == "xml" && oXmlHttp.overrideMimeType) {
-				oXmlHttp.overrideMimeType('text/xml');
+			if(params.response == "xml" && xmlHttp.overrideMimeType) {
+				xmlHttp.overrideMimeType('text/xml');
 			}
 			
-			oXmlHttp.onreadystatechange = function() {
-				if(oXmlHttp.readyState == 4) {
-					if(oXmlHttp.status == 200 || oParams.update) {
+			xmlHttp.onreadystatechange = function() {
+				if(xmlHttp.readyState == 4) {
+					if(xmlHttp.status == 200 || params.update) {
 						
-						if(oParams.callback) {
-							oParams.callback((oParams.response == "xml") ? oXmlHttp.responseXML : oXmlHttp.responseText, 
-															 (oParams.params) ? oParams.params : 0);
+						if(params.callback) {
+							params.callback((params.response == "xml") ? xmlHttp.responseXML : xmlHttp.responseText, 
+															 (params.params) ? params.params : 0);
 						}
 						
-						if(oParams.loading) Ajax.removeLoading();
+						if(params.loading) Ajax.removeLoading();
 					}
 					else {
 						
-						if(oParams.callerro) {
-							oParams.callerro(oXmlHttp.status, oXmlHttp.statusText, 
-															 (oParams.params) ? oParams.params : 0);
+						if(params.callerro) {
+							params.callerro(xmlHttp.status, xmlHttp.statusText, 
+															 (params.params) ? params.params : 0);
 						}
 						else {
-							var sMessage = new String;
+							var message = new String;
 							
-							sMessage += "HTTP Status: " + oXmlHttp.status + "\n";
-							sMessage += "Message: ";
-							sMessage += (oXmlHttp.statusText) ? oXmlHttp.statusText : "Unknown";
+							message += "HTTP Status: " + xmlHttp.status + "\n";
+							message += "Message: ";
+							message += (xmlHttp.statusText) ? xmlHttp.statusText : "Unknown";
 							
-							alert(sMessage);
-						}//fim else
+							alert(message);
+						}
 						
-						if(oParams.loading) Ajax.removeLoading();
-					}//fim else
-				}//fim if
+						if(params.loading) Ajax.removeLoading();
+					}
+				}
 			};
 			
-			oXmlHttp.send((oParams.send) ? oParams.send : null);
-			delete oXmlHttp;
+			xmlHttp.send((params.send) ? params.send : null);
+			delete xmlHttp;
 		}
 		else {
 			alert("Sem suporte ao objeto XMLHttpRequest");
 		}
-		
-	}//fim run
+	}
 
-};//fim Ajax.js
+};
