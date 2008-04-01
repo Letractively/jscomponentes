@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 
  * Objeto Literal Table. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Table
@@ -14,7 +14,7 @@ var Table = {
 	stripedTable: function(tableId, className) {
 		var table = (typeof(tableId) == "string") ? document.getElementById(tableId) : tableId;
 		
-		if(table && typeof(table) == "object") {
+		if(table && table.nodeName.toLowerCase() == "table") {
 			for(var i=0; i<table.tBodies.length; i++) {
 				var rows = table.tBodies[i].rows;
 				
@@ -32,14 +32,14 @@ var Table = {
 			throw new Error("table#" + tableId + " not found for method Table.stripedTable()");
 		}
 
-	},//fim stripedTable
+	},
 	
 	
 	clearTable: function(tableId) {
 		var table  = (typeof(tableId) == "string") ? document.getElementById(tableId) : tableId;
 		var result = false;
 		
-		if(table && typeof(table) == "object") {
+		if(table && table.nodeName.toLowerCase() == "table") {
 			var tbody = document.createElement('tbody');
 			
 			table.appendChild(tbody);
