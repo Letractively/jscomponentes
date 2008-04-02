@@ -22,7 +22,7 @@ var Index = {
 	setStripedTable: function() {
 		Table.stripedTable(document.getElementById("zebratable"));
 		Table.stripedTable("simpletable", "alternada");
-		//Table.clearTable('nada');
+		//Table.stripedTable('nada');
 	}
 
 };

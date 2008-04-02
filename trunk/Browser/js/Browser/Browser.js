@@ -39,7 +39,7 @@ var Browser = {
 				document.location.href = "http://getfirefox.com/";
 			}
 		}
-	},//fim addBookmark
+	},
 	
 	
 	installSearchEngine: function() {
@@ -67,7 +67,7 @@ var Browser = {
 			}
 		}
 		
-	},//fim installSearchEngine
+	},
 	
 	
 	getPageSize: function() {
@@ -125,7 +125,7 @@ var Browser = {
 			viewHeight : iViewHeight
 		};
 		
-	},//getPageSize
+	},
 
 	
 	getScroll: function() {
@@ -152,7 +152,7 @@ var Browser = {
 		
 	}//fim getScroll
 	
-};//fim Browser
+};
 
 //atributos publicos do objeto literal Browser
 Browser.isSafari  = Browser.ua.indexOf("safari") >= 0;
