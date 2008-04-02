@@ -1,4 +1,4 @@
-/**
+﻿/**
  *
  * Objeto Literal Index para uso do objeto Browser.js
  * @author: Edy Segura - edy@segura.eti.br
@@ -10,7 +10,7 @@ var Index = {
 	init: function() {
 		Index.buildTable();
 		Index.createButtons();
-	},//fim init
+	},
 	
 	
 	createButtons: function() {
@@ -51,7 +51,7 @@ var Index = {
 			document.body.appendChild(oButton3);
 		}
 		
-	},//fim createButton
+	},
 	
 	
 	buildTable: function() {
@@ -69,13 +69,12 @@ var Index = {
 			
 			oCellProperty.innerHTML = sProperty;
 			oCellValue.innerHTML    = Browser[sProperty];
-		}//fim do for
+		}
 		
 		oTable.removeChild(oTable.tBodies[0]);
-		
-	}//fim buildTable
+	}
 	
-};//fim Index
+};
 
 //inicializacao
 window.onload = Index.init;
