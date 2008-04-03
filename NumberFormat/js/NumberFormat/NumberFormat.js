@@ -68,16 +68,16 @@ var NumberFormat = {
 		}
 		
 		var frac = inputValue.substring(inputValue.length - oMaskOption.FRACTION_NUMBER);
-		var int  = inputValue.substring(0, inputValue.length - oMaskOption.FRACTION_NUMBER);
+		var integer = inputValue.substring(0, inputValue.length - oMaskOption.FRACTION_NUMBER);
 		
-		var last   = int.length;
+		var last   = integer.length;
 		var newInt = "";
 		
 		for(var i = last; i > 3; i = i - 3 ) {
-		  newInt = oMaskOption.THOUSAND_SEPARATOR + int.substring(i-3,i) + newInt;
+		  newInt = oMaskOption.THOUSAND_SEPARATOR + integer.substring(i-3,i) + newInt;
 		}
 		
-		newInt = int.substring(0,i) + newInt;
+		newInt = integer.substring(0,i) + newInt;
 		inputValue = newInt + oMaskOption.FRACTION_SEPARATOR + frac;
 		
 		if(oldInputValue != inputValue) {
