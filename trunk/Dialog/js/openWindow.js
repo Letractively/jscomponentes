@@ -1,7 +1,6 @@
-﻿//example for use: openWindow(anchor, {width:790,height:450,center:true})
-
+﻿// HTML example
+// <a href="http://www.sourcesnippets.com" title="Free source snippets" onclick="return openWindow(this, {width:790,height:450,center:true})">click this link</a>
 function openWindow(anchor, options) {
- 
 	var args = '';
  
 	if (typeof(options) == 'undefined') { var options = new Object(); }
