@@ -348,7 +348,6 @@ var Form = {
 				inputs[i].checked = inputCheck.checked;
 			}
 		}
-		
-	}//fim checkAll
+	}
 	
 };//fim Form.js
