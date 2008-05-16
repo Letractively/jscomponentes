@@ -62,7 +62,7 @@ var Index = {
 	
 	
 	buildTable: function() {
-		var oTable = document.getElementsByTagName('table')[0];
+		var oTable = document.getElementById('properties');
 		var oTbody = oTable.appendChild(document.createElement('tbody'));
 		var rePattern = /addBookmark|installSearchEngine|getPageSize|getScroll/
 		
