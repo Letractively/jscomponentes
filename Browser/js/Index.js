@@ -10,6 +10,13 @@ var Index = {
 	init: function() {
 		Index.buildTable();
 		Index.createButtons();
+		Index.setWinResize();
+	},
+	
+	
+	setWinResize: function() {
+		Index.getPageSize();
+		window.onresize = Index.getPageSize;
 	},
 	
 	
@@ -72,7 +79,21 @@ var Index = {
 		}
 		
 		oTable.removeChild(oTable.tBodies[0]);
-	}
+	},
+	
+	
+	getPageSize: function() {
+		var oPageSize   = Browser.getPageSize();
+		var oPageWidth  = document.getElementById('pageWidth');
+		var oPageHeight = document.getElementById('pageHeight');
+		var oViewWidth  = document.getElementById('viewWidth');
+		var oViewHeight = document.getElementById('viewHeight');
+		
+		oPageWidth.innerHTML  = oPageSize.pageWidth;
+		oPageHeight.innerHTML = oPageSize.pageHeight;
+		oViewWidth.innerHTML  = oPageSize.viewWidth;
+		oViewHeight.innerHTML = oPageSize.viewHeight;
+	}//fim buildTable
 	
 };
 
