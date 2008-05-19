@@ -73,50 +73,60 @@ var Form = {
 				break;
 			}
 		}
-	
+		
 		Form.addModification(oElement, sNewValue, sOldValue);
-	},//fim checkModificationCombo
+	},
  
  
 	focusOnFirst: function() {
 		if(document.forms.length > 0) {
-			var oForm = document.forms[0];
+			var form = document.forms[0];
 			
-			for(var i=0; i<oForm.elements.length; i++) {
-				var oField = oForm.elements[i];
+			for(var i=0; i<form.elements.length; i++) {
+				var field = form.elements[i];
 				
-				if(typeof oField.type != "undefined" && oField.type != "hidden") {
-					if(!oField.value) oField.focus();
+				if(typeof field.type != "undefined" && field.type != "hidden") {
+					if(!field.value) field.focus();
 					else continue;
 					return;
 				}
 				
-			}//fim for
-		}//fim if
-	},//fim focusOnFirst
+			}
+		}
+	},
 	
 	
-	reset: function(oForm) {
-		var oForm = (oForm) ? oForm : document.forms[0];
+	reset: function(form) {
+		var form = (form) ? form : document.forms[0];
 		
-		if(oForm) {
-			for(var i=0; i<oForm.elements.length; i++) {
-				var oElement = oForm.elements[i];
+		if(form) {
+			for(var i=0; i<form.elements.length; i++) {
+				var formElement = form.elements[i];
 				
-				switch (oElement.type) {
+				switch (formElement.type) {
 					case 'text'    :
 					case 'hidden'  :
 					case 'password':
 						
-						if(oElement.name != "filtro") {
-							oElement.value = "";
-							oElement.defaultValue = "";
+						if(formElement.name != "filtro") {
+							formElement.value = "";
+							formElement.defaultValue = "";
 						}
 						
 					break;
-				}//fim switch
-			}//fim for
-		}//fim if
+					case 'select-one' :
+					
+					for(var j=0; j<formElement.options.length; j++) {
+						formElement.options[j].defaultSelected = false;
+					}
+					
+					formElement.options[0].defaultSelected = true;
+					formElement.options[0].selected = true;
+					
+					break;
+				}
+			}
+		}
 		
 		return true;
 	},//fim reset
