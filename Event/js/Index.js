@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 
  * Script para teste do Event.js
  * @author: Edy Segura - edy@segura.eti.br
@@ -9,38 +9,36 @@ var Index = {
 	
 	init: function() {
 		Index.setEventHandle();
-	},//fim init
+	},
 	
 	
 	setEventHandle: function() {
-		var oDiv = document.getElementById("handle-test");
+		var div = document.getElementById("handle-test");
 
-		Event.addHandle(oDiv, "mouseover", Index.eventHandleLog);
-		Event.addHandle(oDiv, "mouseout",  Index.eventHandleLog);
-		Event.addHandle(oDiv, "mousedown", Index.eventHandleLog);
-		Event.addHandle(oDiv, "mouseup",   Index.eventHandleLog);
-		Event.addHandle(oDiv, "click",     Index.eventHandleLog);
-		Event.addHandle(oDiv, "dblclick",  Event.getFunction(Index.eventHandle, "Edy Segura"));
-
-	},//fim addEventHandle
+		Event.addHandle(div, "mouseover", Index.eventHandleLog);
+		Event.addHandle(div, "mouseout",  Index.eventHandleLog);
+		Event.addHandle(div, "mousedown", Index.eventHandleLog);
+		Event.addHandle(div, "mouseup",   Index.eventHandleLog);
+		Event.addHandle(div, "click",     Index.eventHandleLog);
+		Event.addHandle(div, "dblclick",  Event.getFunction(Index.eventHandle, "Edy Segura"));
+	},
 	
 	
 	eventHandleLog: function() {
-		var oEvent = Event.getEvent();
-		var oTextArea = document.getElementById("log");
-
-		oTextArea.value += "\n>" + oEvent.type;
-		oTextArea.value += "\n target is " + oEvent.target.nodeName;
+		var event = Event.getEvent();
+		var textarea = document.getElementById("log");
 		
-		if(oEvent.relatedTarget) {
-			oTextArea.value += "\n relatedTarget is " + oEvent.relatedTarget.nodeName;
+		textarea.value += "\n>" + event.type;
+		textarea.value += "\n target is " + event.target.nodeName;
+		
+		if(event.relatedTarget) {
+			textarea.value += "\n relatedTarget is " + event.relatedTarget.nodeName;
 		}
 		
-		oTextArea.value += "\n\n-------------------------------------------------\n";
-
-	}//fim eventHandleLog
+		textarea.value += "\n\n-------------------------------------------------\n";
+	}
 	
-};//fim Index.js
+};
 
 //inicializacao
 window.onload = Index.init;
