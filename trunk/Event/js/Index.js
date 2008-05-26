@@ -15,16 +15,16 @@ var Index = {
 	setEventHandle: function() {
 		var div = document.getElementById("handle-test");
 
-		Event.addHandle(div, "mouseover", Index.eventHandleLog);
-		Event.addHandle(div, "mouseout",  Index.eventHandleLog);
-		Event.addHandle(div, "mousedown", Index.eventHandleLog);
-		Event.addHandle(div, "mouseup",   Index.eventHandleLog);
-		Event.addHandle(div, "click",     Index.eventHandleLog);
-		Event.addHandle(div, "dblclick",  Event.getFunction(Index.eventHandle, "Edy Segura"));
+		Event.add(div, "mouseover", Index.eventLog);
+		Event.add(div, "mouseout",  Index.eventLog);
+		Event.add(div, "mousedown", Index.eventLog);
+		Event.add(div, "mouseup",   Index.eventLog);
+		Event.add(div, "click",     Index.eventLog);
+		Event.add(div, "dblclick",  Event.getFunction(Index.eventHandle, "Edy Segura"));
 	},
 	
 	
-	eventHandleLog: function() {
+	eventLog: function() {
 		var event = Event.getEvent();
 		var textarea = document.getElementById("log");
 		

@@ -11,15 +11,46 @@
 
 var Event = {
 
-	//adicionar evento dinamicamente
-	addHandle: function(oElement, sType, oFunction) {
-		if(oElement.attachEvent) {
-			oElement['e' + sType + oFunction] = oFunction;
-			oElement[sType + oFunction] = function(){ oElement['e' + sType + oFunction](window.event); };
-			oElement.attachEvent('on' + sType, oElement[sType + oFunction]);
+	//old alias - deprecated
+	addHandle: function(element, type, functionReference) {
+		Event.add(element, type, functionReference);
+	},
+	
+	
+	//example: Event.add(window, 'load', functionReference);
+	add: function(element, type, functionReference) {
+		if(element.attachEvent) {
+			element['e' + type + functionReference] = functionReference;
+			element[type + functionReference] = function(){ element['e' + type + functionReference](window.event); };
+			element.attachEvent('on' + type, element[type + functionReference]);
 		}
-		else if(oElement.addEventListener) {
-			oElement.addEventListener(sType, oFunction, false);
+		else if(element.addEventListener) {
+			element.addEventListener(type, functionReference, false);
+			return true;
+		}
+		else return false;
+	},
+	
+	
+	addLoad: function(functionReference) {
+		Event.add(window, 'load', functionReference);
+	},
+	
+	
+	//old alias - deprecated
+	removeHandle: function(element, type, functionReference) {
+		Event.remove(element, type, functionReference);
+	},
+	
+	
+	//example: Event.remove(document, 'keypress', functionReference);
+	remove: function(element, type, functionReference) {
+		if(element.detachEvent) {
+			element.detachEvent('on' + type, element[type + functionReference]);
+			element[type + functionReference] = null;
+		}
+		else if(element.addEventListener) {
+			element.removeEventListener(type, functionReference, false);
 			return true;
 		}
 		else return false;
@@ -42,25 +73,6 @@ var Event = {
 	},
 	
 	
-	addLoad: function(oFunction) {
-		Event.addHandle(window, 'load', oFunction);
-	},//fim addLoad
-	
-	
-	//remover evento dinamicamente
-	removeHandle: function(oElement, sType, oFunction) {
-		if(oElement.detachEvent) {
-			oElement.detachEvent('on' + sType, oElement[sType + oFunction]);
-			oElement[sType + oFunction] = null;
-		}
-		else if(oElement.addEventListener) {
-			oElement.removeEventListener(sType, oFunction, false);
-			return true;
-		}
-		else return false;
-	},
-	
-	
 	//remover evento dinamicamente, http://www.jsfromhell.com/geral/event-listener
 	removeEvent: function(o, e, f, s) {
 		for(var i = (e = o["_on" + e] || []).length; i;)
@@ -71,35 +83,35 @@ var Event = {
 	
 	
 	//formata o evento no IE
-	formatEvent: function(oEvent) {
-		if(oEvent.srcElement && window.ActiveXObject) {
-    	oEvent.charCode = (oEvent.type == "keypress") ? oEvent.keyCode : 0;
-      oEvent.eventPhase = 2;
-      oEvent.isChar = (oEvent.charCode > 0);
+	formatEvent: function(event) {
+		if(event.srcElement && window.ActiveXObject) {
+    	event.charCode = (event.type == "keypress") ? event.keyCode : 0;
+      event.eventPhase = 2;
+      event.isChar = (event.charCode > 0);
       
-			oEvent.pageX = oEvent.clientX + document.body.scrollLeft;
-      oEvent.pageY = oEvent.clientY + document.body.scrollTop;
+			event.pageX = event.clientX + document.body.scrollLeft;
+      event.pageY = event.clientY + document.body.scrollTop;
       
-			oEvent.preventDefault = function () {
+			event.preventDefault = function () {
       	this.returnValue = false;
       };
-
-      if(oEvent.type == "mouseout") {
-      	oEvent.relatedTarget = oEvent.toElement;
+			
+      if(event.type == "mouseout") {
+      	event.relatedTarget = event.toElement;
       } 
-			else if(oEvent.type == "mouseover") {
-      	oEvent.relatedTarget = oEvent.fromElement;
+			else if(event.type == "mouseover") {
+      	event.relatedTarget = event.fromElement;
       }
-
-			oEvent.stopPropagation = function () {
+			
+			event.stopPropagation = function () {
 				this.cancelBubble = true;
 			};
-
-			oEvent.target = oEvent.srcElement;
-			oEvent.time = (new Date).getTime();
-    }//fim do if
+			
+			event.target = event.srcElement;
+			event.time = (new Date).getTime();
+    }
 		
-    return oEvent;
+    return event;
 	},
 	
 	
@@ -110,21 +122,19 @@ var Event = {
     } else {
     	return Event.getEvent.caller.arguments[0];
     }
-	},//fim getEvent
+	},
 	
 	
 	//metodo para adicionar uma função com parâmetros
-	getFunction: function(fnFunction, vArguments) {
+	getFunction: function(functionReference, params) {
 		return function() {
 			try {
-				fnFunction(vArguments);
+				functionReference(params);
 			}
-			catch(oErr) {
-				var sMessage = "Erro na atribuição do método.\n";
-				sMessage += "Descrição: " + oErr.message +"\n";
-				alert(sMessage);
-			}//fim try catch
-		}//fim return function
-	}//fim getFunction
+			catch(e) {
+				throw new Error("Erro na atribuição da functionReference em Event.getFunction(). Descrição: " + e.message);
+			}
+		}
+	}
 
-};//fim Event.js
+};
