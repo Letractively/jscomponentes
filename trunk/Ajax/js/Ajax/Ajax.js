@@ -13,40 +13,41 @@ var Ajax = {
 
 	loading: null,
 	
-	createXmlHttp: function() {
-		var xmlHttp;
+	getXHR: function() {
+		var httpRequest;
 		
 		//instanciando o objeto XMLHttpRequest
 		try {
-			xmlHttp = new XMLHttpRequest();
+			httpRequest = new XMLHttpRequest();
 		}
 		catch(e1) {
 			try {
-				xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
 			}
 			catch(e2) {
 				try {
-					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+					httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
 				}
 				catch(e3) {
-					xmlHttp = false; 
+					httpRequest = false; 
 				}
 			}
 		}
 		
-		return xmlHttp;
+		return httpRequest;
 	},
 	
 	
 	createLoading: function() {
-		var oLoading = document.createElement('p');
-				
-		oLoading.className = "loading";
-		oLoading.innerHTML = "Carregando...";
-		document.body.appendChild(oLoading);
+		var loading = document.createElement('p');
 		
-		Ajax.loading = oLoading;
-	},//fim createDivLoading
+		loading.id = "ajax-loading";
+		loading.className = "loading";
+		loading.innerHTML = "Carregando...";
+		document.body.appendChild(loading);
+		
+		Ajax.loading = loading;
+	},
 	
 	
 	removeLoading: function() {
@@ -68,31 +69,32 @@ var Ajax = {
 	
 
 	request: function(params) {
-		var xmlHttp = Ajax.createXmlHttp();
+		var httpRequest = Ajax.getXHR();
+		var result  = true;
 		
-		if(xmlHttp) {
+		if(httpRequest) {
 			var method = (params.method) ? params.method : "GET";
 			var async  = (typeof params.async == 'boolean') ? params.async : true;
 			if(params.loading) Ajax.createLoading();
 			
-			xmlHttp.open(method, params.url, async);
-			xmlHttp.setRequestHeader("Cache-Control", "no-cache, must-revalidate");
-			xmlHttp.setRequestHeader("Pragma", "no-cache");
+			httpRequest.open(method, params.url, async);
+			httpRequest.setRequestHeader("Cache-Control", "no-cache, must-revalidate");
+			httpRequest.setRequestHeader("Pragma", "no-cache");
 			
 			if(method.toUpperCase() == "POST") {
-				xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			}
 			
-			if(params.response == "xml" && xmlHttp.overrideMimeType) {
-				xmlHttp.overrideMimeType('text/xml');
+			if(params.response == "xml" && httpRequest.overrideMimeType) {
+				httpRequest.overrideMimeType('text/xml');
 			}
 			
-			xmlHttp.onreadystatechange = function() {
-				if(xmlHttp.readyState == 4) {
-					if(xmlHttp.status == 200 || params.update) {
+			httpRequest.onreadystatechange = function() {
+				if(httpRequest.readyState == 4) {
+					if(httpRequest.status == 200 || params.update) {
 						
 						if(params.callback) {
-							params.callback((params.response == "xml") ? xmlHttp.responseXML : xmlHttp.responseText, 
+							params.callback((params.response == "xml") ? httpRequest.responseXML : httpRequest.responseText, 
 															 (params.params) ? params.params : 0);
 						}
 						
@@ -101,15 +103,15 @@ var Ajax = {
 					else {
 						
 						if(params.callerro) {
-							params.callerro(xmlHttp.status, xmlHttp.statusText, 
+							params.callerro(httpRequest.status, httpRequest.statusText, 
 															 (params.params) ? params.params : 0);
 						}
 						else {
 							var message = new String;
 							
-							message += "HTTP Status: " + xmlHttp.status + "\n";
+							message += "HTTP Status: " + httpRequest.status + "\n";
 							message += "Message: ";
-							message += (xmlHttp.statusText) ? xmlHttp.statusText : "Unknown";
+							message += (httpRequest.statusText) ? httpRequest.statusText : "Unknown";
 							
 							alert(message);
 						}
@@ -119,12 +121,15 @@ var Ajax = {
 				}
 			};
 			
-			xmlHttp.send((params.send) ? params.send : null);
-			delete xmlHttp;
+			httpRequest.send((params.send) ? params.send : null);
+			delete httpRequest;
 		}
 		else {
-			alert("Sem suporte ao objeto XMLHttpRequest");
+			throw new Error("No support for XMLHttpRequest");
+			result = false;
 		}
+		
+		return result;
 	}
 
 };
