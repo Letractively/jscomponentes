@@ -150,7 +150,7 @@ var Form = {
 		for(var i=0; i<aElements.length; i++) {
 			var oElement = $(aElements[i]);
 			
-			if(oElement.disabled) continue;
+			if(!oElement || oElement.disabled) continue;
 			
 			switch(oElement.type) {
 				case 'text'      :
