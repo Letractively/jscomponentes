@@ -24,15 +24,15 @@ var Browser = {
 	isAddSearchEngine   : (window.sidebar && ("addSearchEngine" in window.sidebar)) ? true : false,
 	
 	
-	addBookmark: function(sLocation, sTitle) {
-		sLocation = (sLocation) ? sLocation : document.location.href;
-		sTitle    = (sTitle) ? sTitle : document.title;
+	addBookmark: function(location, title) {
+		location = (location) ? location : document.location.href;
+		title    = (title) ? title : document.title;
 		
 		if(Browser.isIE) {
-			window.external.AddFavorite(sLocation, sTitle);
+			window.external.AddFavorite(location, title);
 		}
 		else if(typeof window.sidebar == "object" && typeof window.sidebar.addPanel == "function") {
-      window.sidebar.addPanel(sTitle, sLocation, "");
+      window.sidebar.addPanel(title, location, "");
 		}
 		else {
 			if(confirm("Seu navegador não suporta a extensão sidebar. Você quer fazer o upgrade agora?")) {
@@ -43,27 +43,27 @@ var Browser = {
 	
 	
 	installSearchEngine: function() {
-		var sUrlSearch = arguments[0];
-		var sUrlIcon   = arguments[1];
-		var sTitle     = arguments[2];
-		var sMsgError  = "Seu navegador nao tem suporte ao search engine";
+		var urlSearch = arguments[0];
+		var urlIcon   = arguments[1];
+		var title     = arguments[2];
+		var msgError  = "Your browser not supported search engine.";
 		
 		if(arguments.length == 1) {
 			// Firefox 2 and IE 7, OpenSearch
 			if(window.external && ("AddSearchProvider" in window.external)) {
-				window.external.AddSearchProvider(sUrlSearch);
+				window.external.AddSearchProvider(urlSearch);
 			}
 			else {
-				alert(sMsgError);
+				alert(msgError);
 			}
 		}
 		else if(arguments.length == 3) {
 			//Firefox <= 1.5, Sherlock
 			if(window.sidebar && ("addSearchEngine" in window.sidebar)) {
-				window.sidebar.addSearchEngine(sUrlSearch, sUrlIcon, sTitle, "");
+				window.sidebar.addSearchEngine(urlSearch, urlIcon, title, "");
 			}
 			else {
-				alert(sMsgError);
+				alert(msgError);
 			}
 		}
 		
@@ -71,86 +71,86 @@ var Browser = {
 	
 	
 	getPageSize: function() {
-		var iScrollX, iScrollY, oPageSize;
-		var iViewWidth, iViewHeight;
-		var iPageWidth, iPageHeight;
+		var scrollX, scrollY, pageSize;
+		var viewWidth, viewHeight;
+		var pageWidth, pageHeight;
 		
 		if(window.innerHeight && window.scrollMaxY) {	
-			iScrollX = document.body.scrollWidth;
-			iScrollY = window.innerHeight + window.scrollMaxY;
+			scrollX = document.body.scrollWidth;
+			scrollY = window.innerHeight + window.scrollMaxY;
 		} 
 		else if(document.body.scrollHeight > document.body.offsetHeight){
-			iScrollX = document.body.scrollWidth;
-			iScrollY = document.body.scrollHeight;
+			scrollX = document.body.scrollWidth;
+			scrollY = document.body.scrollHeight;
 		} 
 		else { 
-			iScrollX = document.body.offsetWidth;
-			iScrollY = document.body.offsetHeight;
+			scrollX = document.body.offsetWidth;
+			scrollY = document.body.offsetHeight;
 		}
 		
 		if(self.innerHeight) {
-			iViewWidth  = self.innerWidth;
-			iViewHeight = self.innerHeight;
+			viewWidth  = self.innerWidth;
+			viewHeight = self.innerHeight;
 		} 
 		else if(document.documentElement && document.documentElement.clientHeight) { 
-			iViewWidth  = document.documentElement.clientWidth;
-			iViewHeight = document.documentElement.clientHeight;
+			viewWidth  = document.documentElement.clientWidth;
+			viewHeight = document.documentElement.clientHeight;
 		} 
 		else if(document.body) {
-			iViewWidth  = document.body.clientWidth;
-			iViewHeight = document.body.clientHeight;
+			viewWidth  = document.body.clientWidth;
+			viewHeight = document.body.clientHeight;
 		}
 		
 		//coordenada X
-		if(iScrollX < iViewWidth){	
-			iPageWidth = iViewWidth;
+		if(scrollX < viewWidth){	
+			pageWidth = viewWidth;
 		} 
 		else {
-			iPageWidth = iScrollX;
+			pageWidth = scrollX;
 		}
 		
 		//coordenada Y
-		if(iScrollY < iViewHeight){
-			iPageHeight = iViewHeight;
+		if(scrollY < viewHeight){
+			pageHeight = viewHeight;
 		} 
 		else { 
-			iPageHeight = iScrollY;
+			pageHeight = scrollY;
 		}
 		
 		//retorna objeto
-		return oPageSize = {
-			pageWidth  : iPageWidth,
-			pageHeight : iPageHeight,
-			viewWidth  : iViewWidth,
-			viewHeight : iViewHeight
+		return pageSize = {
+			pageWidth  : pageWidth,
+			pageHeight : pageHeight,
+			viewWidth  : viewWidth,
+			viewHeight : viewHeight
 		};
 		
 	},
 
 	
 	getScroll: function() {
-		var iScrollX = 0, iScrollY = 0;
+		var scrollX = 0, scrollY = 0, pageScroll;
 		
 		if(self.pageYOffset) {
-			iScrollX = self.pageXOffset;
-			iScrollY = self.pageYOffset;
+			scrollX = self.pageXOffset;
+			scrollY = self.pageYOffset;
 		}
 		else if(document.documentElement && document.documentElement.scrollTop) {
-			iScrollX = document.documentElement.scrollLeft;
-			iScrollY = document.documentElement.scrollTop;
+			scrollX = document.documentElement.scrollLeft;
+			scrollY = document.documentElement.scrollTop;
 		}
 		else if(document.body) {
-			iScrollX = document.body.scrollLeft;
-			iScrollY = document.body.scrollTop;
+			scrollX = document.body.scrollLeft;
+			scrollY = document.body.scrollTop;
 		}
 		
 		//retorna objeto
-		return oScroll = {
-			x : iScrollX,
-			y : iScrollY
+		return pageScroll = {
+			x : scrollX,
+			y : scrollY
 		};
 		
-	}//fim getScroll
+	}
 	
 };
 
