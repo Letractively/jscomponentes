@@ -1,6 +1,6 @@
 ﻿/**
  *
- * Objeto Literal Index para uso do objeto Browser.js
+ * Objeto Literal Index para uso do componente Browser.js
  * @author: Edy Segura - edy@segura.eti.br
  *
  */
@@ -21,23 +21,23 @@ var Index = {
 	
 	
 	createButtons: function() {
-		var oButton1 = document.createElement('button');
-		var oButton2 = document.createElement('button');
-		var oButton3 = document.createElement('button');
+		var button1 = document.createElement('button');
+		var button2 = document.createElement('button');
+		var button3 = document.createElement('button');
 		
-		oButton1.onclick = function() {
+		button1.onclick = function() {
 			if(Browser && Browser.addBookmark) {
 				Browser.addBookmark("http://edysegura.com", "Edy Segura");
 			}
 		}
 		
-		oButton2.onclick = function() {
+		button2.onclick = function() {
 			if(Browser && Browser.isAddSearchProvider) {
 				Browser.installSearchEngine("http://files.edysegura.com/xml/opensearch/edysegura.com.xml");
 			}
 		}
 		
-		oButton3.onclick = function() {
+		button3.onclick = function() {
 			if(Browser && Browser.isAddSearchEngine) {
 				Browser.installSearchEngine("http://files.edysegura.com/xml/sherlock/edysegura.com.src", 
                                     "http://us.i1.yimg.com/us.yimg.com/i/yg/img/logo/favicon.ico",  
@@ -45,55 +45,55 @@ var Index = {
 			}
 		}
 		
-		oButton1.appendChild(document.createTextNode('Adicionar ao favoritos'));
-		document.body.appendChild(oButton1);
+		button1.appendChild(document.createTextNode('Adicionar ao favoritos'));
+		document.body.appendChild(button1);
 		
 		if(Browser.isAddSearchProvider) {
-			oButton2.appendChild(document.createTextNode('Adicionar search engine (OpenSearch)'));
-			document.body.appendChild(oButton2);
+			button2.appendChild(document.createTextNode('Adicionar search engine (OpenSearch)'));
+			document.body.appendChild(button2);
 		}
 		
 		if(Browser.isAddSearchProvider) {
-			oButton3.appendChild(document.createTextNode('Adicionar search engine (Sherlock)'));
-			document.body.appendChild(oButton3);
+			button3.appendChild(document.createTextNode('Adicionar search engine (Sherlock)'));
+			document.body.appendChild(button3);
 		}
 		
 	},
 	
 	
 	buildTable: function() {
-		var oTable = document.getElementById('properties');
-		var oTbody = oTable.appendChild(document.createElement('tbody'));
-		var rePattern = /addBookmark|installSearchEngine|getPageSize|getScroll/
+		var table = document.getElementById('properties');
+		var tbody = table.appendChild(document.createElement('tbody'));
+		var pattern = /addBookmark|installSearchEngine|getPageSize|getScroll/
 		
 		//percorrendo o objeto Browser
-		for(var sProperty in Browser) {
-			if(rePattern.test(sProperty)) continue;
+		for(var property in Browser) {
+			if(pattern.test(property)) continue;
 			
-			var oRow          = oTbody.insertRow(oTbody.rows.length);
-			var oCellProperty = oRow.insertCell(oRow.cells.length);
-			var oCellValue    = oRow.insertCell(oRow.cells.length);
+			var row          = tbody.insertRow(tbody.rows.length);
+			var cellProperty = row.insertCell(row.cells.length);
+			var cellValue    = row.insertCell(row.cells.length);
 			
-			oCellProperty.innerHTML = sProperty;
-			oCellValue.innerHTML    = Browser[sProperty];
+			cellProperty.innerHTML = property;
+			cellValue.innerHTML    = Browser[property];
 		}
 		
-		oTable.removeChild(oTable.tBodies[0]);
+		table.removeChild(table.tBodies[0]);
 	},
 	
 	
 	getPageSize: function() {
-		var oPageSize   = Browser.getPageSize();
-		var oPageWidth  = document.getElementById('pageWidth');
-		var oPageHeight = document.getElementById('pageHeight');
-		var oViewWidth  = document.getElementById('viewWidth');
-		var oViewHeight = document.getElementById('viewHeight');
+		var pageSize   = Browser.getPageSize();
+		var pageWidth  = document.getElementById('pageWidth');
+		var pageHeight = document.getElementById('pageHeight');
+		var viewWidth  = document.getElementById('viewWidth');
+		var viewHeight = document.getElementById('viewHeight');
 		
-		oPageWidth.innerHTML  = oPageSize.pageWidth;
-		oPageHeight.innerHTML = oPageSize.pageHeight;
-		oViewWidth.innerHTML  = oPageSize.viewWidth;
-		oViewHeight.innerHTML = oPageSize.viewHeight;
-	}//fim buildTable
+		pageWidth.innerHTML  = pageSize.pageWidth;
+		pageHeight.innerHTML = pageSize.pageHeight;
+		viewWidth.innerHTML  = pageSize.viewWidth;
+		viewHeight.innerHTML = pageSize.viewHeight;
+	}
 	
 };
 
