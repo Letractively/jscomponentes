@@ -19,6 +19,9 @@ var Form = {
 		var oInputModifications = $('modifications');
 		var aElements = oForm.elements;
 		
+		//inicializacao
+		Form.modifications = [];
+		
 		if(oInputModifications) {
 			for(var i=0; i<aElements.length; i++) {
 				var oElement = aElements[i];
