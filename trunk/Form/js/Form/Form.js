@@ -15,26 +15,26 @@ var Form = {
 	//historico das modificacoes
 	modifications: [],
 	
-	checkModifications: function(oForm) {
+	checkModifications: function(form) {
 		var oInputModifications = $('modifications');
-		var aElements = oForm.elements;
+		var aElements = form.elements;
 		
 		//inicializacao
 		Form.modifications = [];
 		
 		if(oInputModifications) {
 			for(var i=0; i<aElements.length; i++) {
-				var oElement = aElements[i];
+				var element = aElements[i];
 				
-				if(oElement.disabled) continue;
+				if(element.disabled) continue;
 				
-				switch(oElement.type) {
+				switch(element.type) {
 					case 'text'      :
 					case 'textarea'  :
-						Form.checkModificationInput(oElement);
+						Form.checkModificationInput(element);
 					break;
 					case 'select-one':
-						Form.checkModificationCombo(oElement);
+						Form.checkModificationCombo(element);
 					break;
 				}//fim switch
 			}//fim for
@@ -46,29 +46,29 @@ var Form = {
 	},//fim checkModifications
 	
 	
-	addModification: function(oElement, sNewValue, sOldValue) {
+	addModification: function(element, sNewValue, sOldValue) {
 		var sMessage = "";
 		
 		sNewValue = (sNewValue) ? sNewValue : "vazio";
 		sOldValue = (sOldValue) ? sOldValue : "vazio";
 		
 		if(sNewValue != sOldValue) {
-			sMessage = oElement.title + ": De (" + sOldValue + ") para (" + sNewValue + ")";
+			sMessage = element.title + ": De (" + sOldValue + ") para (" + sNewValue + ")";
 			Form.modifications.push(sMessage);
 		}
 	
 	},//fim addModification
 	
 	
-	checkModificationInput: function(oElement) {
-		Form.addModification(oElement, oElement.value, oElement.defaultValue);
+	checkModificationInput: function(element) {
+		Form.addModification(element, element.value, element.defaultValue);
 	},//fim checkModificationInput
 	
 	
-	checkModificationCombo: function(oElement) {
-		var sNewValue = oElement[oElement.selectedIndex].text;
+	checkModificationCombo: function(element) {
+		var sNewValue = element[element.selectedIndex].text;
 		var sOldValue = "";
-		var aOptions  = oElement.options;
+		var aOptions  = element.options;
 		
 		for(var i=0; i<aOptions.length; i++) {
 			if(aOptions[i].defaultSelected) {
@@ -77,7 +77,7 @@ var Form = {
 			}
 		}
 		
-		Form.addModification(oElement, sNewValue, sOldValue);
+		Form.addModification(element, sNewValue, sOldValue);
 	},
  
  
@@ -135,15 +135,15 @@ var Form = {
 	},//fim reset
 	
 	
-	validate: function(oForm) {
-		var oRequired = oForm.required;
+	validate: function(form) {
+		var oRequired = form.required;
 		
 		if(oRequired) {
 			var aElements = oRequired.value.split(",");
 			return Form.eachElements(aElements);
 		}//fim if
 		else {
-			return Form.eachElements(oForm.elements);
+			return Form.eachElements(form.elements);
 		}//fim else
 		
 	},//fim validate
@@ -151,17 +151,18 @@ var Form = {
 	
 	eachElements: function(aElements) {
 		for(var i=0; i<aElements.length; i++) {
-			var oElement = $(aElements[i]);
+			var element = $(aElements[i]);
+			var noRequired = new RegExp("(^|\\s)no-required(\\s|$)");
 			
-			if(!oElement || oElement.disabled) continue;
+			if(!element || element.disabled || noRequired.test(element.className)) continue;
 			
-			switch(oElement.type) {
+			switch(element.type) {
 				case 'text'      :
 				case 'password'  :
 				case 'textarea'  :
 				case 'select-one':
 					
-					if(!Form.checkElement(oElement)) {
+					if(!Form.checkElement(element)) {
 						return false;
 					}
 
@@ -170,7 +171,7 @@ var Form = {
 				case 'radio'   :
 				case 'checkbox':
 
-					continue; //Form.checkNodeListElement(oElement);
+					continue; //Form.checkNodeListElement(element);
 
 				break;
 			
@@ -181,14 +182,14 @@ var Form = {
 	},//fim eachElements
 	
 	
-	checkElement: function(oElement) {
+	checkElement: function(element) {
 		try {
 			
-			if(Form.isEmpty(oElement.value)) {
-				var sFieldName = (oElement.title) ? oElement.title : oElement.name;
+			if(Form.isEmpty(element.value)) {
+				var sFieldName = (element.title) ? element.title : element.name;
 				
 				alert("O campo ( " + sFieldName + " ) é obrigatório.");
-				oElement.focus();
+				element.focus();
 				
 				return false;
 
@@ -209,19 +210,19 @@ var Form = {
 	},//fim checkNodeListElement
 	
 	
-	tabForward: function(oField) {
-		var oForm = oField.form;
+	tabForward: function(field) {
+		var form = field.form;
 		
-		if(oForm.elements[oForm.elements.length-1] != oField && 
-			 oField.value.length == oField.getAttribute("maxlength")) {
+		if(form.elements[form.elements.length-1] != field && 
+			 field.value.length == field.getAttribute("maxlength")) {
 			
-			for(var i=0; i<oForm.elements.length; i++) {
-				if(oForm.elements[i] == oField) {
-					for(var j=i+1; j<oForm.elements.length; j++) {
-						var oElement = oForm.elements[j];
+			for(var i=0; i<form.elements.length; i++) {
+				if(form.elements[i] == field) {
+					for(var j=i+1; j<form.elements.length; j++) {
+						var element = form.elements[j];
 
-						if(typeof oElement.type != "undefined" && oElement.type != "hidden") {
-							oForm.elements[j].focus();
+						if(typeof element.type != "undefined" && element.type != "hidden") {
+							form.elements[j].focus();
 							return;
 						}
 						
@@ -232,20 +233,20 @@ var Form = {
 	},//fim tabForward
 	
 	
-	getFormUrlEncodedValues: function(oForm) {
+	getFormUrlEncodedValues: function(form) {
 		var sParams = new String;
 		var aParams = new Array;
 		
-		oForm = (typeof oForm == "string") ? $(oForm) : oForm;
+		form = (typeof form == "string") ? $(form) : form;
 		
-		for(var i=0; i<oForm.elements.length; i++) {
-			var oElement = oForm.elements[i];
+		for(var i=0; i<form.elements.length; i++) {
+			var element = form.elements[i];
 			
-			if(oElement.disabled) continue;
-			if(oElement.name == "" || oElement.name == undefined) continue;
-      if(oElement.type == "" || oElement.type == undefined) continue;
+			if(element.disabled) continue;
+			if(element.name == "" || element.name == undefined) continue;
+      if(element.type == "" || element.type == undefined) continue;
 			
-			switch(oElement.type) {
+			switch(element.type) {
 
 				case "text"       :
 				case "textarea"   :
@@ -253,15 +254,15 @@ var Form = {
 				case "hidden"     :
 				case "select-one" :
 					
-					sParams = oElement.name + "=" + encodeURIComponent(oElement.value);
+					sParams = element.name + "=" + encodeURIComponent(element.value);
 					if(sParams) aParams.push(sParams);
 					
 				break;
 
 				case "select-multiple" :
 					
-					for(var j=0; j<oElement.options.length; j++) {
-            sParams = (oElement.options[j].selected) ? oElement.name + "=" + encodeURIComponent(oElement.options[j].value) : "";
+					for(var j=0; j<element.options.length; j++) {
+            sParams = (element.options[j].selected) ? element.name + "=" + encodeURIComponent(element.options[j].value) : "";
 						if(sParams) aParams.push(sParams);
           }
 
@@ -270,7 +271,7 @@ var Form = {
 				case "radio"    :
 				case "checkbox" :
 
-					sParams = (oElement.checked) ? oElement.name + "=" + encodeURIComponent(oElement.value) : "";
+					sParams = (element.checked) ? element.name + "=" + encodeURIComponent(element.value) : "";
 					if(sParams) aParams.push(sParams);
 
 				break;
@@ -281,27 +282,27 @@ var Form = {
 	},//fim getValues
 	
 	
-	populateFormFromJson: function(oForm, aValues) {
+	populateFormFromJson: function(form, aValues) {
 		var oNodeList;
 		
 		for(var sIndex in aValues) {
-			var oElement = $(sIndex);
+			var element = $(sIndex);
 			
-			if(oElement) {
+			if(element) {
 				
-				switch(oElement.type) {
+				switch(element.type) {
 					case "text"     :
 					case "textarea" :
 					case "hidden"   :
-						oElement.value = aValues[sIndex];
+						element.value = aValues[sIndex];
 					break;
 					
 					case "select-one" :
-						Form.setComboValue(oElement, aValues[sIndex]);
+						Form.setComboValue(element, aValues[sIndex]);
 					break;
 					
 					case "checkbox" :
-						oElement.checked = (aValues[sIndex]) ? true : false;
+						element.checked = (aValues[sIndex]) ? true : false;
 					break;
 				}
 				
@@ -316,20 +317,25 @@ var Form = {
 					}
 					
 				}//fim do for
-			}//fim do if(oElement)
+			}//fim do if(element)
 		}//fim do for
 	
 	},//fim populateForm
 	
 	
-	setComboValue: function(oCombo, sValue) {
-		for(var i=0; i<oCombo.options.length; i++) {
-			if(oCombo.options[i].value == sValue) {
-				oCombo.options[i].selected = true;
-				return;
+	setComboValue: function(combo, value) {
+		var result = false;
+		
+		for(var i=0; i<combo.options.length; i++) {
+			if(combo.options[i].value == value) {
+				combo.options[i].selected = true;
+				result = true;
+				break;
 			}
-		}//fim do for
-	},//fim setComboValue
+		}
+		
+		return result;
+	},
 	
 	
 	hasOneChecked: function(inputsName) {
@@ -353,7 +359,7 @@ var Form = {
 	
 	checkAll: function(inputCheck) {
 		var form    = inputCheck.form;
-		var inputs  = (form || document.body).getElementsByTagName('input');
+		var inputs  = (form || document.body).getElementsByTagName("input");
 		var pattern = new RegExp("^" + inputCheck.id + "\\b");
 		
 		for(var i=0; i<inputs.length; i++) {
@@ -361,6 +367,23 @@ var Form = {
 				inputs[i].checked = inputCheck.checked;
 			}
 		}
+	},
+	
+	
+	//deprecated
+	isEmpty: function(value) {
+		var sCaractere;
+		
+		if(value == "" || value == null) return true;
+		
+		sCaractere = value.charAt(0);
+		if((sCaractere == " ") || 
+			 (sCaractere == "\t") && 
+			 (sCaractere == "\n")) {
+			return true;
+		}
+		
+		return false;
 	}
 	
-};//fim Form.js
+};
