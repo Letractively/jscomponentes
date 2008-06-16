@@ -19,25 +19,25 @@
 /**
  *
  * Atalho para o metodo document.getElementById()
- * @param: sElementId => String
+ * @param: elementId => String
  * @return: Node Object, Array of Node Objects
  *
  */
 function $() {
- 	var aElements = new Array;
+ 	var elements = [];
 
 	for(var i=0; i<arguments.length; i++) {
-		var vElement = arguments[i];
-
-		vElement = (typeof vElement == 'string') ? 
-		            document.getElementById(vElement) : vElement;
-
-		if(arguments.length == 1) return vElement;
-		aElements.push(vElement);
+		var element = arguments[i];
+		
+		element = (typeof element == "string") ? 
+		document.getElementById(element) : element;
+		
+		if(arguments.length == 1) return element;
+		elements.push(element);
 	}
 	
-	return aElements;
-}//fim $
+	return elements;
+}
 
 
 /**
