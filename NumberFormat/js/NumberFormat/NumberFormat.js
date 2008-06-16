@@ -32,7 +32,7 @@ var NumberFormat = {
 		oParams.parent      = (oParams.parent)      ? oParams.parent      : null;
 		oParams.maskOptions = (oParams.maskOptions) ? oParams.maskOptions : null;
 		
-		var aInputs = NumberFormat.getInputsByClass(oParams.className, oParams.parentNode);
+		var aInputs = NumberFormat.getInputsByClass(oParams.className, oParams.parent);
 		
 		for(var i=0; i<aInputs.length; i++) {
 			var oInput = aInputs[i];
