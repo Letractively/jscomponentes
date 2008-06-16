@@ -6,11 +6,6 @@
  *
  * DOM-Kit.js
  * http://jscomponentes.googlecode.com/svn/trunk/DOM-Kit/js/DOM-Kit/DOM-Kit.js
- *
- * DOM-Kit e' um conjunto de funcoes para simplificacao
- * do uso da API do DOM. Documentacao completa disponivel em: 
- * http://code.google.com/p/jscomponentes/wiki/DOMKit
- *
  * @author: Edy Segura, edy@segura.eti.br
  *
  */
@@ -43,175 +38,213 @@ function $() {
 /**
  *
  * Atalho para o metodo document.getElementsByTagName()
- * @name: $tags(sTagName, oParentNode)
- * @param: sTagName => String
- * @param: oParentNode => Node Object (optional)
+ * @name: $tags(tagName, parentNode)
+ * @param: tagName => String
+ * @param: parentNode => Node Object (optional)
  * @return: Array of Node Objects
  *
  */
-function $tags(sTagName, oParentNode) {
-	return ($(oParentNode) || document).getElementsByTagName(sTagName);
-}//fim $tags
+function $getByTag(tagName, parentNode) {
+	return ($(parentNode) || document).getElementsByTagName(tagName);
+}
 
+//deprecated
+function $tags(tagName, parentNode) {
+	return $getByTag(tagName, parentNode)
+}
 
 /**
  * 
  * Retorna um array de objetos contendo a classe especificada
- * @param: sClassName => String
- * @param: oParentNode => Node Object (optional)
+ * @param: className => String
+ * @param: parentNode => Node Object (optional)
  * @return: Array of Node Objects
  *
  */
-function $tagsByClassName(sClassName, oParentNode) {
-	var aAllElements = ($(oParentNode) || document.body).getElementsByTagName('*');
-	var aElements    = new Array;
-	var rePattern    = new RegExp("(^|\\s)" + sClassName + "(\\s|$)");
+function $getByClass(className, parentNode) {
+	var allElements = ($(parentNode) || document.body).getElementsByTagName("*");
+	var elements    = new Array;
+	var rePattern   = new RegExp("(^|\\s)" + className + "(\\s|$)");
 	
-	for(var i=0; i<aAllElements.length; i++) {
-		if(rePattern.test(aAllElements[i].className)) {
-			aElements.push(aAllElements[i]);
+	for(var i=0; i<allElements.length; i++) {
+		if(rePattern.test(allElements[i].className)) {
+			elements.push(allElements[i]);
 		}
-	}//fim for
+	}
 	
-	return aElements;
-}//fim getElementsByClassName
+	return elements;
+}
+
+//deprecated
+function $tagsByClassName(className, parentNode) {
+	return $getByClass(className, parentNode);
+}
 
 
 /**
  *
  * Retorna um array de objetos contendo o atributo e
  * valor especificado
- * @param: sAttribute => String
- * @param: sAttributeValue => String
- * @param: oParentNode => Node Object (optional)
+ * @param: attributeName => String
+ * @param: attributeValue => String
+ * @param: parentNode => Node Object (optional)
+ * @param: tagName => String (optional)
  * @return: Array of Node Objects
  *
  */
-function $tagsByAttribute(sAttribute, sAttributeValue, oParentNode, sTagName) {
-	var aAllElements = ($(oParentNode) || document).getElementsByTagName((sTagName || '*'));
-	var aElements    = new Array;
+function $getByAttribute(attributeName, attributeValue, parentNode, tagName) {
+	var allElements = ($(parentNode) || document).getElementsByTagName((tagName || "*"));
+	var elements    = [];
 	
-	for(var i=0; i<aAllElements.length; i++) {
-		if(sAttribute == "class") {
-			var rePattern = new RegExp("(^|\\s)" + sAttributeValue + "(\\s|$)");
+	for(var i=0; i<allElements.length; i++) {
+		if(attributeName == "class") {
+			var rePattern = new RegExp("(^|\\s)" + attributeValue + "(\\s|$)");
 			
-				if(rePattern.test(aAllElements[i].className)) {
-					aElements.push(aAllElements[i]);
-				}
-
-		}//fim if
-		else if(sAttribute == "for") {
-			if(aAllElements[i].getAttribute("htmlFor") || aAllElements[i].getAttribute("for")) {
-				
-				if(aAllElements[i].htmlFor == sAttributeValue) {
-					aElements.push(aAllElements[i]);
-				}
-				
-			}//fim if
-		}//fim elseif
-		else if(aAllElements[i].getAttribute(sAttribute) == sAttributeValue) {
+			if(rePattern.test(allElements[i].className)) {
+				elements.push(allElements[i]);
+			}
 			
-			aElements.push(aAllElements[i]);
-		
-		}//fim elseif
-	}//fim for
+		}
+		else if(attributeName == "for") {
+			if(allElements[i].getAttribute("htmlFor") || allElements[i].getAttribute("for")) {
+				
+				if(allElements[i].htmlFor == attributeValue) {
+					elements.push(allElements[i]);
+				}
+				
+			}
+		}
+		else if(allElements[i].getAttribute(attributeName) == attributeValue) {
+			elements.push(allElements[i]);
+		}
+	}
 	
-	return aElements;
-}//fim getElementsByAttribute
+	return elements;
+}
 
-
-/**
- *
- * Busca o offsetParent especificado em sTagName
- * @param: oElementNode => Node Object
- * @param: sTagName => String
- * @return: Node Object
- *
- */
-function $getParentByTagName(oElementNode, sTagName) {
-	sTagName = sTagName.toLowerCase();
-	
-	for(
-		oElementNode = oElementNode.parentNode;
-		(
-			oElementNode && (			
-				(oElementNode.tagName && (oElementNode.tagName.toLowerCase() != sTagName)) ||
-				(!oElementNode.tagName && (oElementNode.nodeType != 3)) 
-			)
-		);
-		oElementNode = oElementNode.parentNode){}
-
-	return oElementNode;
+//deprecated
+function $tagsByAttribute(attributeName, attributeValue, parentNode, tagName) {
+	return $getByAttribute(attributeName, attributeValue, parentNode, tagName);
 }
 
 
 /**
  *
- * Atalho para o metodo document.createElement();
- * @param: sElement => String
+ * Busca o offsetParent especificado em tagName
+ * @param: element => Node Object
+ * @param: tagName => String
  * @return: Node Object
  *
  */
-function $create(sElement) {
-	var oElement = document.createElement(sElement);
+function $getOffsetParent(element, tagName) {
+	element = $(element);
+	tagName = tagName.toLowerCase();
 	
-	if(typeof oElement == 'object' && arguments.length > 1) {
+	for(
+		element = element.parentNode;
+		(
+			element && (			
+				(element.tagName && (element.tagName.toLowerCase() != tagName)) ||
+				(!element.tagName && (element.nodeType != 3)) 
+			)
+		);
+		element = element.parentNode){}
+
+	return element;
+}
+
+//deprecated
+function $getParentByTagName(element, tagName) {
+	return $getOffsetParent(element, tagName);
+}
+
+/**
+ *
+ * Atalho para o metodo document.createElement();
+ * @param: elementName => String
+ * @return: Node Object
+ *
+ */
+function $create(elementName) {
+	var element = document.createElement(elementName);
+	
+	if(typeof element == 'object' && arguments.length > 1) {
 		for(var i=1; i<arguments.length; i++) {
-			var aAttribute = arguments[i].split(":");
+			var attribute = arguments[i].split(":");
 			
-			if(aAttribute.length == 2) {
-				oElement[aAttribute[0]] = aAttribute[1];
+			if(attribute.length == 2) {
+				element[attribute[0]] = attribute[1];
 			}
 			
-		}//fim for
-	}//fim if
+		}
+	}
 	
-	return oElement;
-}//fim $create
+	return element;
+}
 
 
 /**
  *
- * Metodo para inserir oNewElement antes de oElement
- * @param: oNewElement => Node Object
- * @param: oElement => Node Object
+ * Metodo para inserir newElement antes de element
+ * @param: newElement => Node Object
+ * @param: element => Node Object
  * @return: boolean
  *
  */
-function $before(oNewElement, oElement) { 
-	return oElement.parentNode.insertBefore(oNewElement, oElement);
-}//fim $before
+function $insertBefore(newElement, element) { 
+	try {
+		return element.parentNode.insertBefore(newElement, element);
+	}
+	catch(e) {
+		if(console && console.info) console.info("Error: " + e.message);
+		return false;
+	}
+}
 
+//deprecated
+function $before(newElement, element) { 
+	return $insertBefore(newElement, element);
+}
 
 /**
  *
- * Metodo para inserir oNewElement depois de oElement
- * @param: oNewElement => Node Object
- * @param: oElement => Node Object
+ * Metodo para inserir newElement depois de element
+ * @param: newElement => Node Object
+ * @param: element => Node Object
  * @return: boolean
  *
  */
-function $after(oNewElement, oElement) { 
-	return oElement.parentNode.insertBefore(oNewElement, oElement.nextSibling);
-}//after
+function $insertAfter(newElement, element) { 
+	try {
+		return element.parentNode.insertBefore(newElement, element.nextSibling);
+	}
+	catch(e) {
+		if(console && console.info) console.info("Error: " + e.message);
+		return false;
+	}
+}
 
+//deprecated
+function $after(newElement, element) {
+	return $insertAfter(newElement, element);
+}
 
 /**
  *
- * Método para substituir oNewElement por oOldElement
- * @param: oNewElement => Node Object
- * @param: oOldElement => Node Object
+ * Método para substituir newElement por oldElement
+ * @param: newElement => Node Object
+ * @param: oldElement => Node Object
  * @return: boolean
  *
  */
-function $replace(oNewElement, oOldElement) {
-	if(oOldElement.parentNode) {
-		return oOldElement.parentNode.replaceChild(oNewElement, oOldElement);
+function $replace(newElement, oldElement) {
+	if(oldElement.parentNode) {
+		return oldElement.parentNode.replaceChild(newElement, oldElement);
 	}
 	else {
 		return false;
 	}
-}//fim $replace
+}
 
 
 /**
@@ -227,6 +260,6 @@ function $remove() {
 		if(element && element.parentNode) {
 			element.parentNode.removeChild(element);
 		}
-	
-	}//fim for
-}//fim $remove
+		
+	}
+}
