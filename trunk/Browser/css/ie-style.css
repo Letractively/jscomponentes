@@ -1,0 +1,10 @@
+﻿/**
+ *
+ * Correções para formatacao no IEca!
+ * @author Edy Segura, edy@segura.pro.br
+ *
+ */
+
+table#scroll {
+	position: absolute;
+}

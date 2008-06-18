@@ -1,7 +1,7 @@
 ﻿/**
  *
  * Objeto Literal Index para uso do componente Browser.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 
@@ -16,7 +16,9 @@ var Index = {
 	
 	setWinResize: function() {
 		Index.getPageSize();
+		Index.getPageScroll();
 		window.onresize = Index.getPageSize;
+		window.onscroll = Index.getPageScroll;
 	},
 	
 	
@@ -93,6 +95,16 @@ var Index = {
 		pageHeight.innerHTML = pageSize.pageHeight;
 		viewWidth.innerHTML  = pageSize.viewWidth;
 		viewHeight.innerHTML = pageSize.viewHeight;
+	},
+	
+	
+	getPageScroll: function() {
+		var pageScroll = Browser.getScroll();
+		var scrollTop  = document.getElementById("scrollTop");
+		var scrollLeft = document.getElementById("scrollLeft");
+		
+		scrollTop.innerHTML = pageScroll.x;
+		scrollLeft.innerHTML = pageScroll.y;
 	}
 	
 };
