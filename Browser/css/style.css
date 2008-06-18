@@ -23,3 +23,19 @@ table#dimensions {
 table#properties th {
 	text-align: left;
 }
+
+table#scroll {
+	position: fixed;
+	bottom: 5px;
+	right: 20px;
+	background: #fff;
+	width: 180px;
+}
+
+col.pixel {
+	width: 70px;
+}
+
+td.pixels {
+	text-align: right;
+}
