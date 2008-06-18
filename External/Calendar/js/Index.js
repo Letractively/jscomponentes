@@ -1,4 +1,4 @@
-/**
+﻿/**
  *  
  * Uso do objeto Calendar 
  * @author: Edy Segura - edy@segura.eti.br
@@ -14,7 +14,7 @@ var Index = {
 	
 	setCalendar: function() {
 		
-		var inputs = $(
+		var inputs = Index.getInputs(
 			'date01', 'date02', 'date03', 
 			'date04', 'date05', 'date06',
 			'date07', 'date08', 'date09',
@@ -30,8 +30,24 @@ var Index = {
 			});
 		}
 		
-	}
+	},
 	
+	
+	getInputs: function() {
+		var elements = [];
+		
+		for(var i=0; i<arguments.length; i++) {
+			var element = arguments[i];
+			
+			element = (typeof element == "string") ? 
+			document.getElementById(element) : element;
+			
+			elements.push(element);
+		}
+		
+		return elements;
+	}
+
 };
 
 //inicializacao
