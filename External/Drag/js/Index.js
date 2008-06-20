@@ -8,23 +8,21 @@
 var Index = {
 
 	init: function() {
-		Index.setDomDrag();
-	},//fim init
+		Index.setDrag();
+	},
 
-
-	setDomDrag: function() {
-		var oDiv = document.getElementById("drag");
-		var oH3  = oDiv.getElementsByTagName('h3')[0];
+	setDrag: function() {
+		var div   = document.getElementById("drag");
+		var title = div.getElementsByTagName('h3')[0];
 		
-		oDiv.style.top  = "155px";
-		oDiv.style.left = "155px";
+		div.style.top  = "212px";
+		div.style.left = "9px";
 		
 		//usando componente Drag
-		Drag.init(oH3, oDiv);
-		
-	}//fim setDomDrag
+		Drag.init(title, div);
+	}
 
-};//fim Index
+};
 
-//inicialização
+//inicializacao
 window.onload = Index.init;
