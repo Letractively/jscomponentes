@@ -10,46 +10,45 @@ var Index = {
 	init: function() {
 		Index.loadXML();
 		window.setTimeout(Index.createElementForTest, 100);
-	},//fim init
+	},
 
 
 	createElementForTest: function() {
-		var oElementP = document.createElement('p');
+		var p = document.createElement("p");
 		
-		oElementP.innerHTML = "Ler XML novamente.";
-		oElementP.className = "link";
-		oElementP.title     = "Ler XML novamente, para teste.";
+		p.innerHTML = "Ler XML novamente.";
+		p.className = "link";
+		p.title     = "Ler XML novamente, para teste.";
 		
-		oElementP.onclick = function() {
+		p.onclick = function() {
 			Index.loadXML();
 		};
 		
-		document.body.appendChild(oElementP);
-	},//fim createElementForTest
+		document.body.appendChild(p);
+	},
 	
 	
 	loadXML: function() {
 		XML.load("xml/republicanos.xml", Index.showXML);
-	},//fim loadXML
+	},
 	
 	
 	showXML: function(oXMLDocument) {
-		var oList  = document.createElement("ul");
-		var aNomes = oXMLDocument.getElementsByTagName("nome");
-		var aIdade = oXMLDocument.getElementsByTagName("idade");
+		var list  = document.createElement("ul");
+		var nomes = oXMLDocument.getElementsByTagName("nome");
+		var idade = oXMLDocument.getElementsByTagName("idade");
 		
-		for(var i=0; i<aNomes.length; i++) {
-			var oItem = document.createElement('li');
+		for(var i=0; i<nomes.length; i++) {
+			var listItem = document.createElement('li');
 			
-			oItem.innerHTML = aNomes[i].firstChild.nodeValue + ", com " + aIdade[i].firstChild.nodeValue + " anos";
-			oList.appendChild(oItem);
-			
-		}//fim for
+			listItem.innerHTML = nomes[i].childNodes[0].nodeValue + ", com " + idade[i].childNodes[0].nodeValue + " anos";
+			list.appendChild(listItem);
+		}
 		
-		document.body.appendChild(oList);
-	}//fim showXML
+		document.body.appendChild(list);
+	}
 
-};//fim Index.js
+};
 
 //inicializacao
 window.onload = Index.init;
