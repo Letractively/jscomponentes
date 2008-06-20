@@ -15,7 +15,7 @@ var XML = {
 		var xml;
 		
 		if(!url || !callback) {
-			throw new Error("Par‚metros incorretos.");
+			throw new Error("Par√¢metros incorretos.");
 			return false;
 		}
 		
@@ -38,6 +38,6 @@ var XML = {
 		else {
 			throw new Error("Sem suporte ao objeto XML.");
 		}
-	}//fim load
+	}
 
-};//fim XML.js
+};
