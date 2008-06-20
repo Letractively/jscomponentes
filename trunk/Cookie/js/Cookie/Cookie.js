@@ -5,46 +5,61 @@
  *
  * Cookie.js
  * http://jscomponentes.googlecode.com/svn/trunk/Cookie/js/Cookie/Cookie.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 
 var Cookie = {
 
-	createCookie: function(sNome, sValue, iExpireDays) {
-		var oExpireDate = new Date();
+	set: function(nome, value, expireDays) {
+		var expireDate = new Date();
 
-		oExpireDate.setTime(oExpireDate.getTime() + (iExpireDays * 24 * 3600 * 1000));
-		document.cookie = sNome + "=" + escape(sValue) + 
-		((iExpireDays == null) ? "" : "; expires=" + oExpireDate.toGMTString());
-	},//fim createCookie
+		expireDate.setTime(expireDate.getTime() + (expireDays * 24 * 3600 * 1000));
+		document.cookie = nome + "=" + escape(value) + 
+		((expireDays == null) ? "" : "; expires=" + expireDate.toGMTString());
+	},
 
+	//deprecated
+	createCookie: function(nome, value, expireDays) {
+		Cookie.set(nome, value, expireDays);
+	},
+	
 
-	deleteCookie: function(sNome, sPath, sDomain) {
-		if(Cookie.getCookie(sNome)) {
-			document.cookie = sNome + "=" + ((sPath) ? ";path=" + sPath : "") +
-			((sDomain) ? ";domain=" + sDomain : "" ) + ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+	remove: function(nome, path, domain) {
+		if(Cookie.get(nome)) {
+			document.cookie = nome + "=" + ((path) ? ";path=" + path : "") +
+			((domain) ? ";domain=" + domain : "" ) + ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
 		}
-	},//fim deleteCookie
+	},
+
+	//deprecated
+	deleteCookie: function(nome, path, domain) {
+		Cookie.remove(nome, path, domain);
+	},
 
 
-	getCookie: function(sNome) {
+	get: function(nome) {
 		if(document.cookie.length > 0) {
-			var iBegin = document.cookie.indexOf(sNome +"=");
+			var begin = document.cookie.indexOf(nome +"=");
 
-			if(iBegin != -1) {
-				var iEnd;
+			if(begin != -1) {
+				var end;
 
-				iBegin += sNome.length + 1;
-				iEnd = document.cookie.indexOf(";", iBegin);
+				begin += nome.length + 1;
+				end = document.cookie.indexOf(";", begin);
 
-				if(iEnd == -1) iEnd = document.cookie.length;
-				return unescape(document.cookie.substring(iBegin, iEnd));
+				if(end == -1) end = document.cookie.length;
+				return unescape(document.cookie.substring(begin, end));
 
-			}//fim if
-		}//fim if
+			}
+		}
 		
 		return null;
-	}//fim getCookie
+	},
 	
-};//fim Cookie.js
+	//deprecated
+	getCookie: function(nome) {
+		Cookie.get(nome);
+	},
+	
+};
