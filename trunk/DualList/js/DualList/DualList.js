@@ -1,10 +1,10 @@
 ﻿/**
  * 
  * Script para DualList
- * @author Edy Segura, edy@segura.pro.br
+ * @author LIVEWARE, contato@liveware.com.br
  * 
  */
-
+ 
 var DualList = {
 
 	listOne  : null,
@@ -59,7 +59,6 @@ var DualList = {
 	
 	
 	saveList: function(list, field) {
-		field.value = "";
 		if(list && field) {
 			for(var i=0; i<list.options.length; i++) {
 				var option = list.options[i];
@@ -71,11 +70,11 @@ var DualList = {
 	
 	
 	all2Right: function() {
-		DualList.moveAll(DualList.listOne, DualList.listTwo);
+		DualList.moveList(DualList.listOne, DualList.listTwo, true);
 	},
 	
 	all2Left: function() {
-		DualList.moveAll(DualList.listTwo, DualList.listOne);
+		DualList.moveList(DualList.listTwo, DualList.listOne, true);
 	},
 	
 	
@@ -95,11 +94,11 @@ var DualList = {
 	
 		
 	left2Right: function() {
-		DualList.sourceToTarget(DualList.listOne, DualList.listTwo);
+		DualList.moveList(DualList.listOne, DualList.listTwo, false);
 	},
 	
 	right2Left: function() {
-		DualList.sourceToTarget(DualList.listTwo, DualList.listOne);
+		DualList.moveList(DualList.listTwo, DualList.listOne, false);
 	},
 	
 	
@@ -124,11 +123,11 @@ var DualList = {
 	setDoubleClick: function() {
 		try {
 			DualList.listOne.ondblclick = function() {
-				DualList.sourceToTarget(DualList.listOne, DualList.listTwo);	
+				DualList.moveList(DualList.listOne, DualList.listTwo, false);	
 			};
 			
 			DualList.listTwo.ondblclick = function() {
-				DualList.sourceToTarget(DualList.listTwo, DualList.listOne);
+				DualList.moveList(DualList.listTwo, DualList.listOne, false);
 			};
 		} 
 		catch(e) {
@@ -137,6 +136,45 @@ var DualList = {
 	},
 	
 	
+	moveList: function(listSource, listTarget, moveAll) {
+		if((listSource.selectedIndex == -1 ) && (moveAll == false)) {
+			return false;
+		}
+		
+		var newList = [];
+		var index   = 0;
+		
+		for(index=0; index<listTarget.length; index++) {
+			var option = listTarget.options[index];
+			if(option != null) {
+				newList[index] = new Option(option.text, option.value);
+			}
+		}
+		
+		for(var i=0; i<listSource.length; i++) {
+			var option = listSource.options[i];
+			if(option != null && (option.selected || moveAll)) {
+				newList[index] = new Option(option.text, option.value);
+				index++;
+			}
+		}
+		
+		for(var i=0; i<newList.length; i++) {
+			var option = newList[i];
+			if(option != null) {
+				listTarget.options[i] = option;
+			}
+		}
+		
+		for(var i=listSource.options.length - 1; i>=0; i--) {
+			var option = listSource.options[i];
+			if(option != null && (option.selected || moveAll)) {
+				listSource.options[i] = null;
+			}
+		}
+	},
+	
+
 	errorLog: function(e) {
 		if(console && console.info) {
 			console.info("Error: " + e.message);
