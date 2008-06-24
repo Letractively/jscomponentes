@@ -1,10 +1,10 @@
 ﻿/**
  * 
  * Script para DualList
- * @author LIVEWARE, contato@liveware.com.br
+ * @author Edy Segura, edy@segura.pro.br
  * 
  */
- 
+
 var DualList = {
 
 	listOne  : null,
@@ -70,64 +70,30 @@ var DualList = {
 	
 	
 	all2Right: function() {
-		DualList.moveList(DualList.listOne, DualList.listTwo, true);
+		DualList.sourceToTarget(DualList.listOne, DualList.listTwo, true);
 	},
 	
 	all2Left: function() {
-		DualList.moveList(DualList.listTwo, DualList.listOne, true);
+		DualList.sourceToTarget(DualList.listTwo, DualList.listOne, true);
 	},
 	
-	
-	moveAll: function(listSource, listTarget) {
-		try {
-			for(var i=0; i<listSource.length; i++) {
-		    var option = listSource.options[i];
-		    var newOption = new Option(option.text, option.value);
-		    listTarget.options[listTarget.options.length] = newOption;
-		    listSource.options[i] = null;
-		  }
-		}
-		catch(e) {
-			DualList.errorLog(e);
-		}
-	},
-	
-		
 	left2Right: function() {
-		DualList.moveList(DualList.listOne, DualList.listTwo, false);
+		DualList.sourceToTarget(DualList.listOne, DualList.listTwo, false);
 	},
 	
 	right2Left: function() {
-		DualList.moveList(DualList.listTwo, DualList.listOne, false);
-	},
-	
-	
-	sourceToTarget: function(listSource, listTarget) {
-		try {
-			for(var i=0; i<listSource.length; i++) {
-		    var option = listSource.options[i];
-		    
-		    if(option.selected) {
-			    var newOption = new Option(option.text, option.value);
-			    listTarget.options[listTarget.options.length] = newOption;
-			    listSource.options[i] = null;
-		    }
-		  }
-		}
-		catch(e) {
-			DualList.errorLog(e);
-		}
+		DualList.sourceToTarget(DualList.listTwo, DualList.listOne, false);
 	},
 	
 	
 	setDoubleClick: function() {
 		try {
 			DualList.listOne.ondblclick = function() {
-				DualList.moveList(DualList.listOne, DualList.listTwo, false);	
+				DualList.sourceToTarget(DualList.listOne, DualList.listTwo, false);	
 			};
 			
 			DualList.listTwo.ondblclick = function() {
-				DualList.moveList(DualList.listTwo, DualList.listOne, false);
+				DualList.sourceToTarget(DualList.listTwo, DualList.listOne, false);
 			};
 		} 
 		catch(e) {
@@ -136,7 +102,7 @@ var DualList = {
 	},
 	
 	
-	moveList: function(listSource, listTarget, moveAll) {
+	sourceToTarget: function(listSource, listTarget, moveAll) {
 		if((listSource.selectedIndex == -1 ) && (moveAll == false)) {
 			return false;
 		}
