@@ -31,24 +31,28 @@ var DualList = {
 			if(buttonL2R) {
 				buttonL2R.onclick = function() {
 					DualList.left2Right();
+					return false;
 				}
 			}
 			
 			if(buttonR2L) {
 				buttonR2L.onclick = function() {
 					DualList.right2Left();
+					return false;
 				}
 			}
 			
 			if(buttonA2R) {
 				buttonA2R.onclick = function() {
 					DualList.all2Right();
+					return false;
 				}
 			}
 			
 			if(buttonA2L) {
 				buttonA2L.onclick = function() {
 					DualList.all2Left();
+					return false;
 				}
 			}
 		} 
