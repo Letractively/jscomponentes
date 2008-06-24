@@ -25,7 +25,7 @@ var Cookie = {
 	},
 	
 
-	remove: function(nome, path, domain) {
+	unset: function(nome, path, domain) {
 		if(Cookie.get(nome)) {
 			document.cookie = nome + "=" + ((path) ? ";path=" + path : "") +
 			((domain) ? ";domain=" + domain : "" ) + ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
@@ -34,7 +34,7 @@ var Cookie = {
 
 	//deprecated
 	deleteCookie: function(nome, path, domain) {
-		Cookie.remove(nome, path, domain);
+		Cookie.unset(nome, path, domain);
 	},
 
 
