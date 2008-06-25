@@ -16,9 +16,9 @@
  *
  */
 Number.prototype.isInt = function() {
- var iValue = parseInt(this);
- if(isNaN(iValue)) return false;
- return (this == iValue && this.toString() == iValue.toString());
+ var value = parseInt(this);
+ if(isNaN(value)) return false;
+ return (this == value && this.toString() == value.toString());
 }
 
 /**
@@ -32,7 +32,7 @@ Number.prototype.isInt = function() {
  * 	alert(numero.numberFormat(2, ",", ".")); //exibe: "2.195.440,35";
  *
  * http://forum.imasters.uol.com.br/index.php?showtopic=144107
- * @author Carlos R. L. Rodrigues, editador por Edy Segura - edy@segura.eti.br
+ * @author Carlos R. L. Rodrigues, editador por Edy Segura - edy@segura.pro.br
  *
  */
 Number.prototype.numberFormat = function(fractionNumber, fractionSeparator, thousandSeparator) {
@@ -59,5 +59,6 @@ Number.prototype.numberFormat = function(fractionNumber, fractionSeparator, thou
     }
     integer = number[0].substr(--numberLength, 1).concat(integer);
   }
+	
   return (integer + decimal);
 }
