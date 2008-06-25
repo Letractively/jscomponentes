@@ -25,7 +25,7 @@ Number.prototype.isInt = function() {
  *
  * Formata o numero com o padrao especificado
  * Precisa da implementacao do metodo String.pad()
- * em JSExtend/String.js
+ * em JSExtend/String-extend.js
  *
  * exemplo:
  * 	var numero = 2195440.3517;
