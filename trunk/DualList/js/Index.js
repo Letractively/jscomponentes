@@ -23,8 +23,12 @@ var Index = {
 	
 	setDualList: function() {
 		DualList.init({
-			listOne: "permissao",
-			listTwo: "permissoes"
+			listOne    : "permissao",
+			listTwo    : "permissoes",
+			left2Right : "left2Right",
+			right2Left : "right2Left",
+			all2Left   : "all2Left",
+			all2Right  : "all2Right"
 		});
 	}
 	
