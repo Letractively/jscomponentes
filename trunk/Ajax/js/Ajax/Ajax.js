@@ -5,7 +5,7 @@
  *
  * Ajax.js
  * http://jscomponentes.googlecode.com/svn/trunk/Ajax/js/Ajax/Ajax.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

@@ -1,7 +1,7 @@
 ﻿/**
  *
  * Objeto Literal Index para uso do componente Ajax.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 
