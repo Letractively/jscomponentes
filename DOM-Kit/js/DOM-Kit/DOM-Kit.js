@@ -6,7 +6,7 @@
  *
  * DOM-Kit.js
  * http://jscomponentes.googlecode.com/svn/trunk/DOM-Kit/js/DOM-Kit/DOM-Kit.js
- * @author: Edy Segura, edy@segura.eti.br
+ * @author: Edy Segura, edy@segura.pro.br
  *
  */
 
