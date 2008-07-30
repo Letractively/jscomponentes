@@ -1,0 +1,25 @@
+/**
+ *
+ * Definicoes CSS para pagina index.html
+ * @author: Edy Segura - edy@segura.eti.br
+ *
+ */
+
+img {
+	border:none;
+}
+
+img.collapse {
+	cursor:pointer;
+	margin:0 1px -2px 0;
+}
+	
+a {
+	text-decoration:none;
+	font-size:11px;
+	color:#3E73A8;
+}
+
+a:hover { 
+	text-decoration:underline; 
+}
