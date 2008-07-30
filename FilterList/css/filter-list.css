@@ -1,0 +1,44 @@
+/**
+ *
+ * Definicoes CSS para pagina index.html
+ * @author: Edy Segura - edy@segura.eti.br
+ *
+ */
+
+div.list {
+	background:#E0E8EF;
+	border:1px solid #7DA7CF;
+	height:123px;
+	left:100px;
+	padding:6px 4px 6px 4px;
+	position:absolute;
+	width:270px;
+}
+
+div.list input {
+	width: 99%;
+}
+
+div.listFiltered ul {
+	list-style:none;
+	margin:5px 0 0 1px;
+	padding:0;
+	height:80px;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+
+div.listFiltered ul li { 
+	list-style:none;
+	display: block;
+	height: 20px;
+	white-space: nowrap;
+	padding-left: 5px;
+	line-height: 18px;
+	font-family: Verdana;
+}
+
+div.list li.even { background:#D0DAE8; }
+div.list label { font-weight:bold; }
+
+div#listPlanoCustoFixo { top:150px; }
