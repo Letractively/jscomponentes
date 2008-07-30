@@ -8,11 +8,7 @@
 var Index = {
 	
 	init: function() {
-		Index.set();
-	},
-	
-	
-	set: function() {
+		FilterList.init();
 	}
 		
 };
