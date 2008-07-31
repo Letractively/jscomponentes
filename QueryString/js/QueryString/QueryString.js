@@ -5,50 +5,46 @@
  * 
  * QueryString.js
  * http://jscomponentes.googlecode.com/svn/trunk/QueryString/js/lib/QueryString.js
- * @author Edy Segura - edy@segura.eti.br
+ * @author Edy Segura - edy@segura.pro.br
  * 
  */
 
-var QueryString = function(sURI) {
+var QueryString = function(url) {
 	
 	//private
-	var iStart, reKey, sUrl, 
-	    aDados, aExpressao, sContent;
+	var start, key, data, name, value;
 	
 	//public
 	this.isOK = false;
 	
-	sUrl = (sURI) ? sURI : document.location.toString();
+	url = (url) ? url : document.location.toString();
 	
 	//expressão regular para pegar a posição do "?"
-	reKey  = /\?/i;
-	iStart = sUrl.search(reKey);
+	key  = /\?/i;
+	start = url.search(key);
 	
-	//verificando se há parâmetros QueryString
-	if(iStart > 1 && sUrl.substring(iStart + 1).search("=") > 1) {
-		sUrl   = sUrl.substring(iStart + 1);
-		aDados = sUrl.split("&");
+	if(start > 1 && url.substring(start + 1).search("=") > 1) {
+		url  = url.substring(start + 1);
+		data = url.split("&");
 		
-		for(var i=0; i<aDados.length; i++) {
-			aExpressao = aDados[i].split("=");
+		for(var i=0; i<data.length; i++) {
+			name = data[i].split("=");
 			
 			//essa expressão regular é para substituir o sinal "+" por espaço
-			sContent = decodeURIComponent(aExpressao[1].replace(/\+/g, " "));
+			value = decodeURIComponent(name[1].replace(/\+/g, " "));
 			//remove os \r da string
-			sContent = sContent.replace(/\r/g, "");
+			value = value.replace(/\r/g, "");
 			//remove os \n da string
-			sContent = sContent.replace(/\n/g, " ");
+			value = value.replace(/\n/g, " ");
 			
 			try {
-				eval("this." + aExpressao[0] + "=\"" + sContent + "\";");
+				eval("this." + name[0] + "=\"" + value + "\";");
 			} 
 			catch(oErr) { 
 				alert([oErr.name, oErr.message].join("\n"));
 			}
-
-		}//fim for
+		}
 		
 		this.isOK = true;
-	}//fim if
-
-};//fim QueryString.js
+	}
+};
