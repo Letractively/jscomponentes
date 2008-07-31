@@ -39,6 +39,20 @@ div.listFiltered ul li {
 	font-family: Verdana;
 }
 
+div.close {
+	position: absolute;
+	top:-20px;
+	right:5px;
+	padding: 5px;
+	width: 50px;
+	margin: 3px 0 0 -5px;
+	background:#E0E8EF;
+	border:1px solid #7DA7CF;
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+}
+
 div.liveSearch li.even { background:#D0DAE8; }
 div.liveSearch label { font-weight:bold; }
 
