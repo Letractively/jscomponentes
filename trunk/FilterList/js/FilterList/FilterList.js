@@ -18,30 +18,33 @@ var FilterList = {
 		if(filters && filters.length) {
 			for(var i=0; i<filters.length; i++) {
 				var filter = filters[i];
-				FilterList.setActions(filter);
+				FilterList.setActions(filter, params);
 			}
 		}
 	},
 	
 	
-	setActions: function(filter) {
+	setActions: function(filter, params) {
 		if(filter) {
-			FilterList.setLinks(filter);
+			FilterList.setLinks(filter, params);
 			FilterList.setInput(filter);
 			FilterList.setClose(filter);
 		}
-			
-		var divClose = $getByClass("close", filter)[0];
 	},
 	
 	
-	setLinks: function(filter) {
+	setLinks: function(filter, params) {
 		var links = filter.getElementsByTagName("a");
+		
 		if(links) {
 			for(var i=0; i<links.length; i++) {
 				var link = links[i];
+				
 				link.onclick = function() {
-					alert(this.href.replace("#","?"));
+					if(params && params.linkAction) {
+						params.linkAction(this);
+					}
+					return false;
 				}
 			}
 		}
@@ -60,7 +63,7 @@ var FilterList = {
 		var divClose = $getByClass("close", filter)[0];
 		if(divClose) {
 			divClose.onclick = function() {
-				$remove(this.parentNode);
+				this.parentNode.style.display = "none";
 			};
 		}
 	},
@@ -74,7 +77,7 @@ var FilterList = {
 		for(var i=0; i<list.length; i++) {
 			var item = list[i];
 			var link = item.getElementsByTagName("a")[0];
-			var pattern  = new RegExp("^[\s\n\t\r]?" + value, "i");
+			var pattern  = new RegExp("^[\s\n\t\r]*" + value, "i");
 			var linkText = link.innerHTML;
 			
 			item.style.display = "";
