@@ -9,11 +9,11 @@ var Index = {
 	
 	init: function() {
 		Index.setAnchor();
-	},//fim init
+	},
 	
 	
 	setAnchor: function() {
-		var anchor = document.body.getElementsByTagName("a")[0];
+		var anchor = document.links[2];
 		
 		if(anchor) {
 			anchor.onclick = function() {
@@ -26,7 +26,7 @@ var Index = {
 		}
 	}
 	
-};//fim Index
+};
 
 //inicializacao
 window.onload = Index.init;
