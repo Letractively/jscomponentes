@@ -7,26 +7,36 @@
 
 var FilterList = {
 	
-	init: function() {
-		FilterList.setFilters();
+	init: function(params) {
+		FilterList.setFilters(params);
 	},
 	
-	setFilters: function() {
+	
+	setFilters: function(params) {
 		var filters = $getByClass("liveSearch");
 		
-		if(filters) {
-			for(var i = 0; i<filters.length; i++) {
+		if(filters && filters.length) {
+			for(var i=0; i<filters.length; i++) {
 				var filter = filters[i];
-				var filterLinks = filter.getElementsByTagName("a");
-				var filterInput = filter.getElementsByTagName("input")[0];
-				FilterList.setLinks(filterLinks);
-				FilterList.setInput(filterInput);
+				FilterList.setActions(filter);
 			}
 		}
 	},
 	
 	
-	setLinks: function(links) {
+	setActions: function(filter) {
+		if(filter) {
+			FilterList.setLinks(filter);
+			FilterList.setInput(filter);
+			FilterList.setClose(filter);
+		}
+			
+		var divClose = $getByClass("close", filter)[0];
+	},
+	
+	
+	setLinks: function(filter) {
+		var links = filter.getElementsByTagName("a");
 		if(links) {
 			for(var i=0; i<links.length; i++) {
 				var link = links[i];
@@ -38,9 +48,20 @@ var FilterList = {
 	},
 	
 	
-	setInput: function(input) {
+	setInput: function(filter) {
+		var input = filter.getElementsByTagName("input")[0];
 		if(input) {
 			input.onkeyup = FilterList.liveSearch;
+		}
+	},
+	
+	
+	setClose: function(filter) {
+		var divClose = $getByClass("close", filter)[0];
+		if(divClose) {
+			divClose.onclick = function() {
+				$remove(this.parentNode);
+			};
 		}
 	},
 	
@@ -53,7 +74,7 @@ var FilterList = {
 		for(var i=0; i<list.length; i++) {
 			var item = list[i];
 			var link = item.getElementsByTagName("a")[0];
-			var pattern  = new RegExp("^" + value, "i");
+			var pattern  = new RegExp("^[\s\n\t\r]?" + value, "i");
 			var linkText = link.innerHTML;
 			
 			item.style.display = "";
