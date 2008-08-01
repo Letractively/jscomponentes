@@ -41,7 +41,7 @@ var FilterList = {
 				var link = links[i];
 				
 				link.onclick = function() {
-					if(params && params.linkAction) {
+					if(params && params.linkAction && typeof(params.linkAction) == "function") {
 						params.linkAction(this);
 					}
 					return false;
