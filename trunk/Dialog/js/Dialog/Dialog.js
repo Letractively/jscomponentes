@@ -11,34 +11,21 @@
 
 var Dialog = {
 	
-	timerID    : "",
-	divOverlay : "",
+	timerID    : null,
+	divOverlay : null,
 	winParent  : (self.location != top.location) ? top : self,
 	
-	
-	/*
-	 * metodo para inicialização do objeto
-	 * @name: init
-	 */
 	init: function() {
 		Dialog.setDialogs();
-	},//fim init
+	},
 	
 	
-	/*
-	 * sobrescrevendo os metodos do javascript core
-	 * @name: setDialogs
-	 */
 	setDialogs: function() {
 		window.oldAlert = window.alert;
 		window.alert = Dialog.alert;
-	},//fim setWindowAlert
+	},
 	
 	
-	/*
-	 * div para o congelamento da tela
-	 * @name: createDivOverlay
-	 */
 	createDivOverlay: function() {
 		var oWindow = Dialog.winParent;
 		if(oWindow.$('dialog-overlay')) return;
@@ -55,13 +42,9 @@ var Dialog = {
 		$before(oDivOverlay, oFirstElement);
 		
 		return oDivOverlay;
-	},//fim createDivOverlay
+	},
 	
 	
-	/*
-	 * esconde/exibe elementos no IE
-	 * @name: showHideElementsForIE
-	 */
 	showHideElementsForIE: function(sStatus) {
 		var aSelects = document.body.getElementsByTagName('select');
 		var aObjects = document.body.getElementsByTagName('object');
@@ -83,25 +66,17 @@ var Dialog = {
 		for(var i=0; i != aIframes.length; i++) {
 			aIframes[i].style.visibility = sStatus;
 		}
-	},//fim showHideElementsForIE
+	},
 	
 	
-	/*
-	 * redimensiona a div-overlay se a janela for redimensionada
-	 * @name: resizeDivOverlay
-	 */
 	resizeDivOverlay: function() {
 		if(Dialog.divOverlay) 
 			Dialog.divOverlay.style.height = (Browser.getPageSize()).pageHeight + "px";
 		else 
 			Event.removeHandle(window, 'resize', Dialog.resizeDivOverlay);
-	},//fim resizeDivOverlay
+	},
 	
-	
-	/*
-	 * metodo alert para exibir informações como uma dialog
-	 * @name: alert
-	 */
+
 	alert: function(sMessage) {
 		var oWindow = Dialog.winParent;
 		if(oWindow.$('dialog-alert')) return;
@@ -130,31 +105,23 @@ var Dialog = {
 		Dialog.positionDialog(oDivAlert);
 		
 		oButton.focus();
-	},//fim alert
+	},
 	
 	
-	/*
-	 * metodo para posicionar a dialog
-	 * @name: positionDialog
-	 */
 	positionDialog: function(oDivDialog) {
 		var iHeight = oDivDialog.offsetHeight;
 		var sTopPxl = "-" + iHeight + "px";
 		
 		oDivDialog.style.marginTop = sTopPxl;
-	},//fim positionDialogAlert
+	},
 	
 	
-	/*
-	 * metodo para manipulação do window.open
-	 * @name: popup
-	 */
 	popup: function(sURL, sWinName, iWidth, iHeight, sParams) {
 		if(sURL) {
 			var oWinPopup  = null;
 			var sWinSize   = "", sPosition = "";
 			var iPositionX = 0, iPositionY = 0;
-
+			
 			sWinName  = (sWinName) ? sWinName : 'popup';
 			iWidth    = (iWidth)   ? iWidth   : 500;
 			iHeight   = (iHeight)  ? iHeight  : 400;
@@ -198,32 +165,24 @@ var Dialog = {
 	},//fim popup
 	
 	
-	/*
-	 * metodo para verificar se a popup foi fechada
-	 * @name: removeDivOverlay
-	 */
 	removeDivOverlay: function() {
 		if(Dialog.divOverlay) {
 			Event.removeHandle(window, 'resize', Dialog.resizeDivOverlay);
 			if(Browser.isIE6) Dialog.showHideElementsForIE('visible');
 			$remove(Dialog.divOverlay);
 			Dialog.divOverlay = null;
-		}//fim if
-	},//fim removeDivOverlay
+		}
+	},
 	
 	
-	/*
-	 * metodo para verificar se a popup foi fechada
-	 * @name: checkPopupIsClosed
-	 */
 	checkPopupIsClosed: function(oWinPopup) {
 		if(oWinPopup.closed) {
 			clearInterval(Dialog.timerID);
 			Dialog.removeDivOverlay();
-		}//fim if
-	}//fim winClosed
+		}
+	}
 	
-};//fim Dialog.js
+};
 
 //inicializacao
 Event.addHandle(window, 'load', Dialog.init);
