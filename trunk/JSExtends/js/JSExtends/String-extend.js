@@ -54,16 +54,15 @@ String.prototype.rtrim = function() {
  *
  */
 String.prototype.isEmpty = function() {
-	var sCaractere;
-	var sValue = this;
+	var oneChar;
+	var value = this;
 	
-	if(sValue == "" || sValue == null) return true;
+	if(value == "" || value == null) return true;
+	oneChar = value.charAt(0);
 	
-	sCaractere = sValue.charAt(0);
-	
-	if((sCaractere == " ") || 
-		 (sCaractere == "\t") && 
-		 (sCaractere == "\n")) {
+	if((oneChar == " ") || 
+		 (oneChar == "\t") && 
+		 (oneChar == "\n")) {
 		return true;
 	}
 	
