@@ -342,7 +342,7 @@ var Form = {
 		var result = false;
 		var checks = document.getElementsByName(inputsName);
 		
-		if(checks) {
+		if(checks.length) {
 			for(var i=0; i<checks.length; i++) {
 				
 				if(checks[i].checked) {
@@ -372,14 +372,14 @@ var Form = {
 	
 	//deprecated
 	isEmpty: function(value) {
-		var sCaractere;
+		var oneChar;
 		
 		if(value == "" || value == null) return true;
 		
-		sCaractere = value.charAt(0);
-		if((sCaractere == " ") || 
-			 (sCaractere == "\t") && 
-			 (sCaractere == "\n")) {
+		oneChar = value.charAt(0);
+		if((oneChar == " ") || 
+			 (oneChar == "\t") && 
+			 (oneChar == "\n")) {
 			return true;
 		}
 		
