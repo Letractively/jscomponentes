@@ -8,9 +8,17 @@
 var Index = {
 	
 	init: function() {
-		FilterList.init();
+		FilterList.init({
+			linkAction: Index.linkAction
+		});
+	},
+	
+	
+	linkAction: function(link) {
+		var description = (link.rel) ? link.rel : link.innerHTML;
+		alert(description);
 	}
-		
+	
 };
 
 //inicializacao
