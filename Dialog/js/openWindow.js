@@ -1,5 +1,6 @@
 ﻿// HTML example
 // <a href="http://www.sourcesnippets.com" title="Free source snippets" onclick="return openWindow(this, {width:790,height:450,center:true})">click this link</a>
+// http://sourcesnippets.com/javascript-open-window.html
 function openWindow(anchor, options) {
 	var args = '';
  
