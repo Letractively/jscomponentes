@@ -5,7 +5,7 @@
  *
  * Event.js
  * http://jscomponentes.googlecode.com/svn/trunk/Event/js/Event/Event.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

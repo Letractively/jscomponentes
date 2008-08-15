@@ -5,7 +5,7 @@
  *
  * Dialog.js
  * http://jscomponentes.googlecode.com/svn/trunk/Dialog/js/Dialog/Dialog.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

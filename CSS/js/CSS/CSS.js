@@ -5,7 +5,7 @@
  *
  * CSS.js
  * http://jscomponentes.googlecode.com/svn/trunk/CSS/js/CSS/CSS.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  * 
  */
 

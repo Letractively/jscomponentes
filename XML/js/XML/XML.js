@@ -5,7 +5,7 @@
  *
  * XML.js
  * http://jscomponentes.googlecode.com/svn/trunk/XML/js/XML/XML.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

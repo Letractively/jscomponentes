@@ -5,7 +5,7 @@
  *
  * Browser.js
  * http://jscomponentes.googlecode.com/svn/trunk/Browser/js/Browser/Browser.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

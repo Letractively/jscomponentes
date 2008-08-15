@@ -1,7 +1,7 @@
 ﻿/**
  * 
  * Format number for input elements
- * @author Marcos Okita, edited by Edy Segura - edy@segura.eti.br
+ * @author Marcos Okita, edited by Edy Segura - edy@segura.pro.br
  * 
  * NumberFormat.setMaksNumberByClass({
  * 	className   : "number",
