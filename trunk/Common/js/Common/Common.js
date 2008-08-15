@@ -5,7 +5,7 @@
  *
  * Common.js
  * http://jscomponentes.googlecode.com/svn/trunk/Common/js/Common/Common.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

@@ -6,7 +6,7 @@
  *
  * Form.js
  * http://jscomponentes.googlecode.com/svn/trunk/Form/js/Form/Form.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

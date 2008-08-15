@@ -1,7 +1,7 @@
 /** 
  *
  * Exemplo do uso do componente Drag.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

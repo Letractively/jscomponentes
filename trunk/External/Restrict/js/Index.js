@@ -1,7 +1,7 @@
 /* 
  *
  * Objeto Literal Index para uso do objeto Restrict.js
- * @author: Edy Segura - edy@liveware.com.br, edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br, edy@segura.pro.br
  *
  */
 

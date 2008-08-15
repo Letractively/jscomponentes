@@ -5,7 +5,7 @@
  *
  * Table.js
  * http://jscomponentes.googlecode.com/svn/trunk/Table/js/Table/Table.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

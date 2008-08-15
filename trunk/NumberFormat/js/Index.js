@@ -1,7 +1,7 @@
 /**
  * 
  * Objeto Literal Index para uso do NumberFormat.js
- * @author Edy Segura, edy@segura.eti.br
+ * @author Edy Segura, edy@segura.pro.br
  * 
  */
 

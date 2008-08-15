@@ -1,7 +1,7 @@
 ﻿/**
  * 
  * Script para teste do Event.js
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 

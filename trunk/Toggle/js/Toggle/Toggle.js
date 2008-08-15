@@ -5,7 +5,7 @@
  * Objeto Literal Table. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Toggle
  *
- * @author: Edy Segura - edy@segura.eti.br
+ * @author: Edy Segura - edy@segura.pro.br
  *
  */
 
