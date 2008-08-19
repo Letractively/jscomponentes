@@ -1,0 +1,27 @@
+/**
+ *
+ * Documento CSS
+ * @author Edy Segura, edy@segura.pro.br
+ *
+ */
+
+input[type='text'] {
+	border: 1px solid #000;
+	background: #D8BFD8;
+}
+
+input[type='text']:hover {
+	border: 1px solid #000;
+	background: #6A5ACD;
+	color: #FFF;
+}
+
+input[type='text']:focus {
+	border: 1px solid #F00;
+	background: #FFF;
+	color: #000;
+}
+
+img {
+	cursor: pointer;
+}
