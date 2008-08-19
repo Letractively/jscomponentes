@@ -7,6 +7,9 @@
 <meta name="description" content="Componente Cookie.js para manipulação de cookies." />
 <title>Componente Cookie.js</title>
 
+<!-- stylesheet -->
+<link rel="stylesheet" href="css/style.css" type="text/css" title="Layout Padrão" />
+
 <!-- javascript -->
 <script type="text/javascript" src="js/Cookie/Cookie.js"></script>
 <script type="text/javascript" src="js/Index.js"></script>
@@ -15,7 +18,43 @@
 <body>
 
 <h1>Componente Cookie.js</h1>
-<p>Componente para manipulção de cookies através do javascript. Para mais detalhes veja o código fonte.</p>
+<p>
+	Componente para manipulção de cookies através do javascript.
+	Para mais detalhes veja o código fonte.
+</p>
+
+<form action="" method="post">
+	<fieldset>
+		<legend>Informações:</legend>
+		
+		<label for="nome">
+			Nome:<br />
+			<input type="text" id="nome" tabindex="1" name="nome" />
+			<img src="images/deletar.png" alt="deletar" />
+		</label>
+		
+		<br />
+		
+		<label for="email">
+			Email:<br />
+			<input type="text" id="email" tabindex="2" name="email" />
+			<img src="images/deletar.png" alt="deletar" />
+		</label>
+		
+		<br />
+		
+		<label for="website">
+			Website:<br />
+			<input type="text" id="website" tabindex="3" name="website" />
+			<img src="images/deletar.png" alt="deletar" />
+		</label>
+		
+		<br />
+		<br />
+		
+		<input id="botao-enviar" tabindex="5" type="submit" value="Gravar Cookie" />
+	</fieldset>
+</form>
 
 </body>
 </html>
