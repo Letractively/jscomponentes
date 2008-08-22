@@ -1,7 +1,6 @@
-/* 
- * stylesheets.css
+/**
  *
- * Definicoes para index.htm
+ * Definicoes CSS para index.html
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
@@ -27,4 +26,8 @@ div#drag h3 {
 	text-align:center;
 	text-transform:uppercase;
 	cursor:pointer;
+}
+
+div#drag p {
+	padding: 5px;
 }
