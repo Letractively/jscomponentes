@@ -115,8 +115,8 @@ Calendar._TT["TODAY"] = "Hoje";
 Calendar._TT["TIME_PART"] = "(Shift-)Click ou arraste para mudar valor";
 
 // date formats
-Calendar._TT["DEF_DATE_FORMAT"] = "%d-%m-%Y";
-Calendar._TT["TT_DATE_FORMAT"] = "%a, %b %e";
+Calendar._TT["DEF_DATE_FORMAT"] = "%d/%m/%Y";
+Calendar._TT["TT_DATE_FORMAT"] = "%a, %e %b";
 
 Calendar._TT["WK"] = "SM";
 Calendar._TT["TIME"] = "Hora:";
