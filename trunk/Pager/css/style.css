@@ -1,0 +1,17 @@
+/**
+ *
+ * CSS Document
+ * @author Edy Segura, edy@segura.pro.br
+ * 
+ */
+
+@import url(tagbox.css);
+
+
+#pageNavPosition {
+	margin-bottom: 10px;
+}
+
+#pageNavPosition img {
+	cursor: pointer;
+}
