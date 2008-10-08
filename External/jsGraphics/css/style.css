@@ -1,0 +1,70 @@
+﻿/**
+ *
+ * Formatacao para pagina index.html
+ * @author Edy Segura, edy@segura.pro.br
+ *
+ */
+
+* {
+	font-family: Verdana;
+}
+
+div#ringviewer-content {
+	position: relative;
+	width: 600px;
+	height: 400px;
+}
+
+canvas {
+	/*border: 1px solid #000;*/
+}
+
+div.ring {
+	position: absolute;
+	width: 100px;
+	height: 91px;
+}
+
+div.ring .linktop,
+div.ring .linkbottom {
+	color: red;
+	font-size: 11px;
+}
+
+div.ring .linktop span,
+div.ring .linkbottom span {
+	background: #fff;
+}
+
+div.ring  .ring-content {
+	padding: 5px;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	background: #FFE4CA;
+	border: 3px solid #F77921;
+}
+
+div.ring .linkbottom {
+	text-align: right;
+}
+
+div.ring  .ring-destaque {
+	background: #FFC;
+	border: 3px solid #2853FF;
+}
+
+div#ring-1 {
+	top: 50px;
+	left: 130px;
+}
+
+div#ring-2 {
+	top: 250px;
+	left: 110px;
+}
+
+div#ring-3 {
+	top: 160px;
+	right: 100px;
+}
