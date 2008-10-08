@@ -25,15 +25,62 @@ div.ring {
 	height: 91px;
 }
 
+div#ring-name {
+	position: absolute;
+	top: 190px;
+	left: 230px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
 div.ring .linktop,
 div.ring .linkbottom {
 	color: red;
 	font-size: 11px;
 }
 
-div.ring .linktop span,
-div.ring .linkbottom span {
-	background: #fff;
+div.ring .linktop a,
+div.ring .linkbottom a {
+	position: relative;
+	padding: 2px;
+	margin: 1px;
+	display:block;
+	color: red;
+	text-decoration: none;
+	height: 14px;
+}
+
+div.ring .linktop a:hover,
+div.ring .linkbottom a:hover {
+	margin:0;
+	border: 1px solid #2F38A8;
+	background: #E7EAFB;
+}
+
+div.ring .linktop a span,
+div.ring .linkbottom a span {
+	position: absolute;
+	top:18px;
+	right:-1px;
+	width: 66px;
+	height: 80px;
+	background: #E7EAFB;
+	display: none;
+	text-align: left;
+	color:#000;
+	padding: 2px;
+	border: 1px solid #2F38A8;
+	border-top: none;
+	z-index:10;
+}
+
+div.ring .linktop a:hover span,
+div.ring .linkbottom a:hover span {
+	display: block;
+}
+
+div.ring .linkbottom a:hover span {
+	left:-1px;
 }
 
 div.ring  .ring-content {
