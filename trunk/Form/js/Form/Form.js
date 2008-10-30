@@ -16,15 +16,15 @@ var Form = {
 	modifications: [],
 	
 	checkModifications: function(form) {
-		var oInputModifications = $('modifications');
-		var aElements = form.elements;
+		var inputModifications = $('modifications');
+		var elements = form.elements;
 		
 		//inicializacao
 		Form.modifications = [];
 		
-		if(oInputModifications) {
-			for(var i=0; i<aElements.length; i++) {
-				var element = aElements[i];
+		if(inputModifications) {
+			for(var i=0; i<elements.length; i++) {
+				var element = elements[i];
 				
 				if(element.disabled) continue;
 				
@@ -36,48 +36,48 @@ var Form = {
 					case 'select-one':
 						Form.checkModificationCombo(element);
 					break;
-				}//fim switch
-			}//fim for
+				}
+			}
 			
-			oInputModifications.value = Form.modifications.join("<br />");
-		}//fim if
+			inputModifications.value = Form.modifications.join("<br />");
+		}
 		
 		return true;
-	},//fim checkModifications
+	},
 	
 	
-	addModification: function(element, sNewValue, sOldValue) {
-		var sMessage = "";
+	addModification: function(element, newValue, oldValue) {
+		var message = "";
 		
-		sNewValue = (sNewValue) ? sNewValue : "vazio";
-		sOldValue = (sOldValue) ? sOldValue : "vazio";
+		newValue = (newValue) ? newValue : "vazio";
+		oldValue = (oldValue) ? oldValue : "vazio";
 		
-		if(sNewValue != sOldValue) {
-			sMessage = element.title + ": De (" + sOldValue + ") para (" + sNewValue + ")";
-			Form.modifications.push(sMessage);
+		if(newValue != oldValue) {
+			message = element.title + ": De (" + oldValue + ") para (" + newValue + ")";
+			Form.modifications.push(message);
 		}
 	
-	},//fim addModification
+	},
 	
 	
 	checkModificationInput: function(element) {
 		Form.addModification(element, element.value, element.defaultValue);
-	},//fim checkModificationInput
+	},
 	
 	
 	checkModificationCombo: function(element) {
-		var sNewValue = element[element.selectedIndex].text;
-		var sOldValue = "";
-		var aOptions  = element.options;
+		var newValue = element[element.selectedIndex].text;
+		var oldValue = "";
+		var options  = element.options;
 		
-		for(var i=0; i<aOptions.length; i++) {
-			if(aOptions[i].defaultSelected) {
-				sOldValue = aOptions[i].text;
+		for(var i=0; i<options.length; i++) {
+			if(options[i].defaultSelected) {
+				oldValue = options[i].text;
 				break;
 			}
 		}
 		
-		Form.addModification(element, sNewValue, sOldValue);
+		Form.addModification(element, newValue, oldValue);
 	},
  
  
@@ -132,26 +132,26 @@ var Form = {
 		}
 		
 		return true;
-	},//fim reset
+	},
 	
 	
 	validate: function(form) {
-		var oRequired = form.required;
+		var required = form.required;
 		
-		if(oRequired) {
-			var aElements = oRequired.value.split(",");
-			return Form.eachElements(aElements);
-		}//fim if
+		if(required) {
+			var elements = required.value.split(",");
+			return Form.eachElements(elements);
+		}
 		else {
 			return Form.eachElements(form.elements);
-		}//fim else
+		}
 		
-	},//fim validate
+	},
 	
 	
-	eachElements: function(aElements) {
-		for(var i=0; i<aElements.length; i++) {
-			var element = $(aElements[i]);
+	eachElements: function(elements) {
+		for(var i=0; i<elements.length; i++) {
+			var element = $(elements[i]);
 			var noRequired = new RegExp("(^|\\s)no-required(\\s|$)");
 			
 			if(!element || element.disabled || noRequired.test(element.className)) continue;
@@ -175,11 +175,11 @@ var Form = {
 
 				break;
 			
-			}//fim switch
-		}//fim for
+			}
+		}
 		
 		return true;
-	},//fim eachElements
+	},
 	
 	
 	checkElement: function(element) {
@@ -193,21 +193,21 @@ var Form = {
 				
 				return false;
 
-			}//fim if
+			}
 		}
 		catch(oErr) {
 			
 			alert([oErr.name, oErr.message].join("\n"));
 			return false;
 			
-		}//fim try catch
+		}
 		
 		return true;
-	},//fim checkElement
+	},
 	
 	
 	checkNodeListElement: function(oNodeList) {
-	},//fim checkNodeListElement
+	},
 	
 	
 	tabForward: function(field) {
@@ -226,11 +226,11 @@ var Form = {
 							return;
 						}
 						
-					}//fim do for
-				}//fim do if
-			}//fim do for
-		}//fim do if
-	},//fim tabForward
+					}
+				}
+			}
+		}
+	},
 	
 	
 	getFormUrlEncodedValues: function(form) {
@@ -275,11 +275,11 @@ var Form = {
 					if(sParams) aParams.push(sParams);
 
 				break;
-			}//fim switch
-		}//fim do for
+			}
+		}
 
 		return aParams.join("&");
-	},//fim getValues
+	},
 	
 	
 	populateFormFromJson: function(form, aValues) {
@@ -316,11 +316,11 @@ var Form = {
 						break;
 					}
 					
-				}//fim do for
-			}//fim do if(element)
-		}//fim do for
+				}
+			}
+		}
 	
-	},//fim populateForm
+	},
 	
 	
 	setComboValue: function(combo, value) {
