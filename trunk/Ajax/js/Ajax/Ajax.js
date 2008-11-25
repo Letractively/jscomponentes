@@ -70,7 +70,7 @@ var Ajax = {
 
 	request: function(params) {
 		var httpRequest = Ajax.getXHR();
-		var result  = true;
+		var result = true;
 		
 		if(httpRequest) {
 			var method = (params.method) ? params.method : "GET";
@@ -94,8 +94,10 @@ var Ajax = {
 					if(httpRequest.status == 200 || params.update) {
 						
 						if(params.callback) {
-							params.callback((params.response == "xml") ? httpRequest.responseXML : httpRequest.responseText, 
-															 (params.params) ? params.params : 0);
+							params.callback(
+								(params.response == "xml") ? httpRequest.responseXML : httpRequest.responseText, 
+								(params.params) ? params.params : null
+							);
 						}
 						
 						if(params.loading) Ajax.removeLoading();
@@ -103,11 +105,14 @@ var Ajax = {
 					else {
 						
 						if(params.callerro) {
-							params.callerro(httpRequest.status, httpRequest.statusText, 
-															 (params.params) ? params.params : 0);
+							params.callerro(
+								httpRequest.status, 
+								httpRequest.statusText, 
+								(params.params) ? params.params : null
+							);
 						}
 						else {
-							var message = new String;
+							var message = new String();
 							
 							message += "HTTP Status: " + httpRequest.status + "\n";
 							message += "Message: ";
@@ -116,7 +121,7 @@ var Ajax = {
 							alert(message);
 						}
 						
-						if(params.loading) Ajax.removeLoading();
+						if(params.loading) Ajax.removeLoading();	
 					}
 				}
 			};
@@ -125,7 +130,7 @@ var Ajax = {
 			delete httpRequest;
 		}
 		else {
-			throw new Error("No support for XMLHttpRequest");
+			throw new Error("Your browser does not support XMLHttpRequest");
 			result = false;
 		}
 		

@@ -14,7 +14,10 @@ var Index = {
 	
 	
 	setLinksAjax: function() {
-		var links = [document.links[0], document.links[1]];
+		var links = [
+			document.getElementById('link-content-1'),
+			document.getElementById('link-content-2')
+		];
 		
 		for(var i=0; i<links.length; i++) {
 			links[i].onclick = function() {
@@ -35,11 +38,13 @@ var Index = {
 	
 
 	setLinkClear: function() {
-		var link = document.links[2];
+		var link = document.getElementById('link-clear');
+		var div1 = document.getElementById('content-1');
+		var div2 = document.getElementById('content-2');
 		
 		link.onclick = function() {
-			document.getElementById('content-1').innerHTML = 
-			document.getElementById('content-2').innerHTML = "";
+			div1.innerHTML = 
+			div2.innerHTML = "";
 			return false;
 		};
 		
