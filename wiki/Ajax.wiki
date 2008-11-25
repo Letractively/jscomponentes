@@ -9,7 +9,7 @@ Abaixo uma breve explicação do uso do objeto literal Ajax.
 
 == Instruções para uso do objeto Ajax ==
 {{{
-Ajax.run({
+Ajax.request({
   method   : "POST",
   url      : "action.php",
   async    : true,
