@@ -14,6 +14,4 @@ var Index = {
 };
 
 //inicializacao
-$(function() {
-	Index.init();
-});
+$(document).ready(Index.init);
