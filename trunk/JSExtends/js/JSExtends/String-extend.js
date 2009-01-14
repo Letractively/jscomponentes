@@ -152,7 +152,6 @@ String.prototype.currencyToFloat = function() {
  * @author Carlos R. L. Rodrigues
  *
  */
- 
 String.PAD_LEFT  = 0;
 String.PAD_RIGHT = 1;
 String.PAD_BOTH  = 2;
