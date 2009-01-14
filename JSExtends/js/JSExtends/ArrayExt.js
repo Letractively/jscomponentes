@@ -1,8 +1,6 @@
 /**
  * 
  * Extendendo o objeto Array do javascript
- * 
- * Array-extends.js
  * http://jscomponentes.googlecode.com/svn/trunk/JSExtends/js/JSExtends/Array-extend.js
  *
  * @author: Edy Segura, edy@segura.pro.br
