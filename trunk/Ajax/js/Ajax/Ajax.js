@@ -1,14 +1,10 @@
 ﻿/**
  *
- * Objeto literal Ajax. Documentacao completa disponivel em: 
- * http://code.google.com/p/jscomponentes/wiki/Ajax
- *
- * Ajax.js
- * http://jscomponentes.googlecode.com/svn/trunk/Ajax/js/Ajax/Ajax.js
+ * Objeto literal para o uso da metodologia Ajax.
+ * Documentacao disponivel em: http://code.google.com/p/jscomponentes/wiki/Ajax
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
 var Ajax = {
 
 	loading: null,
@@ -29,7 +25,7 @@ var Ajax = {
 					httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
 				}
 				catch(e3) {
-					httpRequest = false; 
+					httpRequest = false;
 				}
 			}
 		}
@@ -95,7 +91,7 @@ var Ajax = {
 						
 						if(params.callback) {
 							params.callback(
-								(params.response == "xml") ? httpRequest.responseXML : httpRequest.responseText, 
+								(params.response == "xml") ? httpRequest.responseXML : httpRequest.responseText,
 								(params.params) ? params.params : null
 							);
 						}
@@ -106,8 +102,8 @@ var Ajax = {
 						
 						if(params.callerro) {
 							params.callerro(
-								httpRequest.status, 
-								httpRequest.statusText, 
+								httpRequest.status,
+								httpRequest.statusText,
 								(params.params) ? params.params : null
 							);
 						}
@@ -121,7 +117,7 @@ var Ajax = {
 							alert(message);
 						}
 						
-						if(params.loading) Ajax.removeLoading();	
+						if(params.loading) Ajax.removeLoading();
 					}
 				}
 			};
