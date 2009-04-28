@@ -144,6 +144,7 @@ String.prototype.currencyToFloat = function() {
  *
  * Metodo para completar a string com valores especificos
  * exemplo:
+ *  var mes = 9;
  * 	alert(mes.pad(2, "0", String.PAD_LEFT)); // exibe "09"
  * 
  * http://forum.imasters.uol.com.br/index.php?showtopic=144107
