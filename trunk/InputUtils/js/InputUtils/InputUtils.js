@@ -6,7 +6,6 @@
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
 var InputUtils = {
 	
 	setInputs: function(inputs, handle) {
