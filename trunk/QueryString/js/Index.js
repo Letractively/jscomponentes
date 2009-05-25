@@ -4,7 +4,6 @@
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
 var Index = {
 		
 		init: function() {
@@ -14,7 +13,7 @@ var Index = {
 		
 		
 		showParams: function() {
-			var urlParams = new QueryString;
+			var urlParams = new QueryString();
 		
 			if(urlParams.isOK) {
 				document.getElementById("result").innerHTML = "Nome: " + urlParams.nome + ", " + 
