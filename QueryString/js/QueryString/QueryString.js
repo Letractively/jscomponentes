@@ -8,7 +8,6 @@
  * @author Edy Segura - edy@segura.pro.br
  * 
  */
-
 var QueryString = function(url) {
 	
 	//private
@@ -40,8 +39,8 @@ var QueryString = function(url) {
 			try {
 				eval("this." + name[0] + "=\"" + value + "\";");
 			} 
-			catch(oErr) { 
-				alert([oErr.name, oErr.message].join("\n"));
+			catch(e) { 
+				alert([e.name, e.message].join("\n"));
 			}
 		}
 		
