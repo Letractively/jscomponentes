@@ -5,29 +5,28 @@
  *
  */
 
+fieldset#dualList {
+	width: 600px;
+}
 
-label {
+fieldset#dualList label {
 	display: block;
 	width: 250px;
 	float: left;
 }
 
-select {
+fieldset#dualList select {
 	width: 250px;
 }
 
-fieldset#dualList {
-	width: 600px;
-}
-
-div#buttons {
+fieldset#dualList div.buttons {
 	float: left;
 	width: 10px;
 	margin: 20px 20px 0 20px;
 	padding-top: 10px;
 }
 
-div#buttons img {
+fieldset#dualList div.buttons img {
 	display: block;
 	width: 16px;
 	height: 16px;
