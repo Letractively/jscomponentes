@@ -191,7 +191,6 @@ var Form = {
 				element.focus();
 				
 				return false;
-
 			}
 		}
 		catch(oErr) {

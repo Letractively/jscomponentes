@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  *
  * Objeto Literal DateUtil
  * @author: Edy Segura, edy@segura.pro.br
@@ -6,43 +6,43 @@
  */
 var DateUtil = {
 	
-	getFormatDate: function(date) {
+	getFormatDate: function() {
 		var result;
 		
-		var dayMonth = date.getDate();     // dia do mês.
+		var date     = new Date();         // objeto do tipo date.
+		var dayMonth = date.getDate();     // dia do mÃªs.
 		var dayWeek  = date.getDay();      // dia da semana.
-		var month    = date.getMonth();    // mês representado em números.
-		var year     = date.getFullYear(); // ano representado em números.
+		var month    = date.getMonth();    // mÃªs representado em nÃºmeros.
+		var year     = date.getFullYear(); // ano representado em nÃºmeros.
 		
 		var weekLabel = [
 			"Domingo",
 			"Segunda",
-			"Terça",
+			"TerÃ§a",
 			"Quarta",
 			"Quinta",
 			"Sexta",
-			"Sábado"
+			"SÃ¡bado"
 		];
 		
 		var monthLabel = [
-			"Jan",
-			"Fev",
-			"Mar",
-			"Abr",
-			"Mai",
-			"Jun",
-			"Jul",
-			"Ago",
-			"Set",
-			"Out",
-			"Nov",
-			"Dez"
+			"Janeiro",
+			"Fevereiro",
+			"MarÃ§o",
+			"Abril",
+			"Maio",
+			"Junho",
+			"Julho",
+			"Agosto",
+			"Setembro",
+			"Outubro",
+			"Novembro",
+			"Dezembro"
 		];
 		
 		dayMonth = (dayMonth < 10) ? "0" + dayMonth : dayMonth;
-		result   = monthLabel[month] + " " + year;
-		
-		return result;
-	}
+		result   = weekLabel[dayWeek] + ", " + dayMonth + " de " + monthLabel[month] + " de " + year + ".";
+	},
+	
 	
 };
