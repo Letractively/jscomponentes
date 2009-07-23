@@ -385,46 +385,18 @@ var Form = {
 	},
 	
 	
-	validKey: function (keyNum) {
-		var aKeys = {8:0,9:0,35:0,36:0,37:0,38:0,39:0,118:0};
-		return keyNum in aKeys;
-	},
-	
-	
-  numberOnly: function (e) {
-		var keynum;
-		var keychar;
-		var numCheck = /\d/;
-		var acceptKeyNumWithCtrlKey = /^(3[5-9]|46|118){2,3}/;
+	numberOnly: function(event) {
+ 		var isNumber = true;
+ 		var charCode;
 		
-		//IE
-		if(window.event) {
-			try {
-				keynum = window.event.keyCode;
-			}
-			catch(eError){}
-		}
-		//Netscape/Firefox/Opera
-		else if(e.which) {
-		  keynum = e.which
-		} 
-		else {
-		  try {
-				keynum = e.keyCode;
-			}
-			catch(eError){}
+ 		event = (event) ? event : window.event;
+ 		charCode = (event.which) ? event.which : event.keyCode;
+		
+		if(charCode > 31 && (charCode < 48 || charCode > 57)){
+			isNumber = false;
 		}
 		
-		keychar = String.fromCharCode(keynum);
-		
-		if(numCheck.test(keychar) || Form.validKey(keynum)) {
-		   return true;
-		}
-		else if(e.ctrlKey && acceptKeyNumWithCtrlKey.test(keynum)) {
-		   return true;
-		}
-		
-		return false;
-	},
+ 		return isNumber;
+	}
 	
 };
