@@ -4,23 +4,27 @@
  * @author Edy Segura, edy@segura.pro.br
  * 
  */
-var DualList = {
+var DualList = function(params) {
 
-	listOne  : null,
-	listTwo  : null,
-
-
-	init: function(params) {
-		if(params && params.listOne && params.listTwo) {
-			DualList.listOne = document.getElementById(params.listOne);
-			DualList.listTwo = document.getElementById(params.listTwo);
-			DualList.setButtons(params);
-			DualList.setDoubleClick();
-		}
-	},
+	var dualList = this;
+	
+	if(params && params.listOne && params.listTwo) {
+		this.listOne = document.getElementById(params.listOne);
+		this.listTwo = document.getElementById(params.listTwo);
+		this.params  = params;
+	}
+	else {
+		alert("Parâmetros incorretos para DualList.");
+	}
 	
 	
-	setButtons: function(params) {
+	this.init = function() {
+		this.setButtons(this.params);
+		this.setDoubleClick();
+	};
+	
+	
+	this.setButtons = function(params) {
 		var buttonL2R = document.getElementById(params.left2Right);
 		var buttonR2L = document.getElementById(params.right2Left);
 		var buttonA2R = document.getElementById(params.all2Right);
@@ -29,39 +33,39 @@ var DualList = {
 		try {
 			if(buttonL2R) {
 				buttonL2R.onclick = function() {
-					DualList.left2Right();
+					dualList.left2Right();
 					return false;
 				}
 			}
 			
 			if(buttonR2L) {
 				buttonR2L.onclick = function() {
-					DualList.right2Left();
+					dualList.right2Left();
 					return false;
 				}
 			}
 			
 			if(buttonA2R) {
 				buttonA2R.onclick = function() {
-					DualList.all2Right();
+					dualList.all2Right();
 					return false;
 				}
 			}
 			
 			if(buttonA2L) {
 				buttonA2L.onclick = function() {
-					DualList.all2Left();
+					dualList.all2Left();
 					return false;
 				}
 			}
 		} 
 		catch(e) {
-			DualList.errorLog(e);
+			this.errorLog(e);
 		}
-	},
+	};
 	
 	
-	saveList: function(list, field) {
+	this.saveList = function(list, field) {
 		if(list && field) {
 			for(var i=0; i<list.options.length; i++) {
 				var option = list.options[i];
@@ -69,43 +73,43 @@ var DualList = {
 				else field.value += "|" + option.value;
 			}
 		}
-	},
+	};
 	
 	
-	all2Right: function() {
-		DualList.sourceToTarget(DualList.listOne, DualList.listTwo, true);
-	},
+	this.all2Right = function() {
+		dualList.sourceToTarget(this.listOne, this.listTwo, true);
+	};
 	
-	all2Left: function() {
-		DualList.sourceToTarget(DualList.listTwo, DualList.listOne, true);
-	},
+	this.all2Left = function() {
+		dualList.sourceToTarget(this.listTwo, this.listOne, true);
+	};
 	
-	left2Right: function() {
-		DualList.sourceToTarget(DualList.listOne, DualList.listTwo, false);
-	},
+	this.left2Right = function() {
+		dualList.sourceToTarget(this.listOne, this.listTwo, false);
+	};
 	
-	right2Left: function() {
-		DualList.sourceToTarget(DualList.listTwo, DualList.listOne, false);
-	},
+	this.right2Left = function() {
+		dualList.sourceToTarget(this.listTwo, this.listOne, false);
+	};
 	
 	
-	setDoubleClick: function() {
+	this.setDoubleClick = function() {
 		try {
-			DualList.listOne.ondblclick = function() {
-				DualList.sourceToTarget(DualList.listOne, DualList.listTwo, false);	
+			this.listOne.ondblclick = function() {
+				dualList.sourceToTarget(dualList.listOne, dualList.listTwo, false);	
 			};
 			
-			DualList.listTwo.ondblclick = function() {
-				DualList.sourceToTarget(DualList.listTwo, DualList.listOne, false);
+			this.listTwo.ondblclick = function() {
+				dualList.sourceToTarget(dualList.listTwo, dualList.listOne, false);
 			};
 		} 
 		catch(e) {
-			DualList.errorLog(e);
+			this.errorLog(e);
 		}
-	},
+	};
 	
 	
-	sourceToTarget: function(listSource, listTarget, moveAll) {
+	this.sourceToTarget = function(listSource, listTarget, moveAll) {
 		if((listSource.selectedIndex == -1 ) && (moveAll == false)) {
 			return false;
 		}
@@ -141,13 +145,13 @@ var DualList = {
 				listSource.options[i] = null;
 			}
 		}
-	},
+	};
 	
 
-	errorLog: function(e) {
+	this.errorLog = function(e) {
 		if(console && console.info) {
 			console.info("Error: " + e.message);
 		}
-	}
+	};
 
 };
