@@ -1,23 +1,22 @@
 ﻿/**
  *
- * Objeto Literal Event. Documentacao completa disponivel em: 
+ * Objeto Literal EventUtils. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Event
  *
- * Event.js
- * http://jscomponentes.googlecode.com/svn/trunk/Event/js/Event/Event.js
+ * EventUtils.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Event/js/Event/EventUtils.js
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
-var Event = {
+var EventUtils = {
 
 	//old alias - deprecated
 	addHandle: function(element, type, functionReference) {
-		Event.add(element, type, functionReference);
+		EventUtils.add(element, type, functionReference);
 	},
 	
 	
-	//example: Event.add(window, 'load', functionReference);
+	//example: EventUtils.add(window, 'load', functionReference);
 	add: function(element, type, functionReference) {
 		if(element.attachEvent) {
 			element['e' + type + functionReference] = functionReference;
@@ -33,17 +32,17 @@ var Event = {
 	
 	
 	addLoad: function(functionReference) {
-		Event.add(window, 'load', functionReference);
+		EventUtils.add(window, 'load', functionReference);
 	},
 	
 	
 	//old alias - deprecated
 	removeHandle: function(element, type, functionReference) {
-		Event.remove(element, type, functionReference);
+		EventUtils.remove(element, type, functionReference);
 	},
 	
 	
-	//example: Event.remove(document, 'keypress', functionReference);
+	//example: EventUtils.remove(document, 'keypress', functionReference);
 	remove: function(element, type, functionReference) {
 		if(element.detachEvent) {
 			element.detachEvent('on' + type, element[type + functionReference]);
@@ -118,9 +117,9 @@ var Event = {
 	//pega o evento formatado para o IE
 	getEvent: function() {
 		if(window.event) {
-    	return Event.formatEvent(window.event);
+    	return EventUtils.formatEvent(window.event);
     } else {
-    	return Event.getEvent.caller.arguments[0];
+    	return EventUtils.getEvent.caller.arguments[0];
     }
 	},
 	
@@ -132,9 +131,33 @@ var Event = {
 				functionReference(params);
 			}
 			catch(e) {
-				throw new Error("Erro na atribuição da functionReference em Event.getFunction(). Descrição: " + e.message);
+				throw new Error("Erro na atribuição da functionReference em EventUtils.getFunction(). Descrição: " + e.message);
 			}
 		}
+	},
+	
+	
+	//metodo para pegar a posicao do mouse
+	getMousePosition: function(e) {
+		e = e || window.event;
+		
+		var positionX = (e.clientX) ? e.clientX : e.pageX;
+		var positionY = (e.clientY) ? e.clientY : e.pageY;
+		
+		return {x:positionX, y:positionY};
+	},
+	
+	
+	//metodo para pegar o elemento que gerou o evento
+	getSource: function(e) {
+		e = e || window.event;
+		
+		var target = (e.target) ? e.target : 
+		             (e.srcElement) ? e.srcElement : null;
+		
+		//necessario para safari e konqueror
+		if(target && target.nodeType == 3) target = target.parentNode;
+		return target;
 	}
 
 };
