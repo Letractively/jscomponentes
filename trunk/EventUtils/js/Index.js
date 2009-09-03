@@ -19,7 +19,8 @@ var Index = {
 		EventUtils.add(div, "mousedown", Index.eventLog);
 		EventUtils.add(div, "mouseup",   Index.eventLog);
 		EventUtils.add(div, "click",     Index.eventLog);
-		EventUtils.add(div, "dblclick",  EventUtils.getFunction(Index.eventHandle, "Edy Segura"));
+		EventUtils.add(div, "dblclick",  Index.eventLog);
+		EventUtils.add(div, "dblclick",  EventUtils.getFunction(Index.showParam, {id:37, name:"Edy Segura"}));
 	},
 	
 	
@@ -34,6 +35,14 @@ var Index = {
 			textarea.value += "\n relatedTarget is " + event.relatedTarget.nodeName;
 		}
 		
+		textarea.value += "\n\n-------------------------------------------------\n";
+		textarea.scrollTop = textarea.scrollHeight;
+	},
+	
+	
+	showParam: function(param) {
+		var textarea = document.getElementById("log");
+		textarea.value += "\n>" + "ID: " + param.id + " Nome: " + param.name;
 		textarea.value += "\n\n-------------------------------------------------\n";
 	}
 	
