@@ -1,10 +1,9 @@
 ﻿/**
  * 
- * Script para teste do Event.js
+ * Script para teste do EventUtils.js
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
 var Index = {
 	
 	init: function() {
@@ -15,17 +14,17 @@ var Index = {
 	setEventHandle: function() {
 		var div = document.getElementById("handle-test");
 
-		Event.add(div, "mouseover", Index.eventLog);
-		Event.add(div, "mouseout",  Index.eventLog);
-		Event.add(div, "mousedown", Index.eventLog);
-		Event.add(div, "mouseup",   Index.eventLog);
-		Event.add(div, "click",     Index.eventLog);
-		Event.add(div, "dblclick",  Event.getFunction(Index.eventHandle, "Edy Segura"));
+		EventUtils.add(div, "mouseover", Index.eventLog);
+		EventUtils.add(div, "mouseout",  Index.eventLog);
+		EventUtils.add(div, "mousedown", Index.eventLog);
+		EventUtils.add(div, "mouseup",   Index.eventLog);
+		EventUtils.add(div, "click",     Index.eventLog);
+		EventUtils.add(div, "dblclick",  EventUtils.getFunction(Index.eventHandle, "Edy Segura"));
 	},
 	
 	
 	eventLog: function() {
-		var event = Event.getEvent();
+		var event = EventUtils.getEvent();
 		var textarea = document.getElementById("log");
 		
 		textarea.value += "\n>" + event.type;
