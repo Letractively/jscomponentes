@@ -8,16 +8,6 @@
  */
 var InputUtils = {
 	
-	setInputs: function(inputs, handle) {
-		if(inputs && inputs.length && handle) {
-			for(var i=0; i<inputs.length; i++) {
-				var input = inputs[i];
-				input.onkeypress = handle;
-			}
-		}
-	},
-	
-	
 	setNumberOnly: function(inputs) {
 		if(inputs && inputs.length) {
 			InputUtils.setInputs(inputs, InputUtils.numberOnly);
@@ -28,6 +18,16 @@ var InputUtils = {
 	setLetterOnly: function(inputs) {
 		if(inputs && inputs.length) {
 			InputUtils.setInputs(inputs, InputUtils.letterOnly);
+		}
+	},
+	
+
+	setInputs: function(inputs, handle) {
+		if(inputs && inputs.length && handle) {
+			for(var i=0; i<inputs.length; i++) {
+				var input = inputs[i];
+				input.onkeypress = handle;
+			}
 		}
 	},
 	
