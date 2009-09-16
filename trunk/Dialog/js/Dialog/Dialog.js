@@ -36,7 +36,7 @@ var Dialog = {
 		oDivOverlay.style.height = (Browser.getPageSize()).pageHeight + "px";
 		
 		Dialog.divOverlay = oDivOverlay;
-		Event.addHandle(window, 'resize', Dialog.resizeDivOverlay);
+		EventUtils.addHandle(window, 'resize', Dialog.resizeDivOverlay);
 		
 		if(Browser.isIE6) Dialog.showHideElementsForIE('hidden');
 		$before(oDivOverlay, oFirstElement);
@@ -73,7 +73,7 @@ var Dialog = {
 		if(Dialog.divOverlay) 
 			Dialog.divOverlay.style.height = (Browser.getPageSize()).pageHeight + "px";
 		else 
-			Event.removeHandle(window, 'resize', Dialog.resizeDivOverlay);
+			EventUtils.removeHandle(window, 'resize', Dialog.resizeDivOverlay);
 	},
 	
 
@@ -146,7 +146,7 @@ var Dialog = {
 				Dialog.timerID = window.setInterval(fnCheckIsClosed, 500);
 				
 				if(Dialog.divOverlay) {
-					Event.addHandle(Dialog.divOverlay, 'click', function(){ oWinPopup.focus(); });
+					EventUtils.addHandle(Dialog.divOverlay, 'click', function(){ oWinPopup.focus(); });
 				}
 				
 				oWinPopup.focus();
@@ -167,7 +167,7 @@ var Dialog = {
 	
 	removeDivOverlay: function() {
 		if(Dialog.divOverlay) {
-			Event.removeHandle(window, 'resize', Dialog.resizeDivOverlay);
+			EventUtils.removeHandle(window, 'resize', Dialog.resizeDivOverlay);
 			if(Browser.isIE6) Dialog.showHideElementsForIE('visible');
 			$remove(Dialog.divOverlay);
 			Dialog.divOverlay = null;
@@ -185,4 +185,4 @@ var Dialog = {
 };
 
 //inicializacao
-Event.addHandle(window, 'load', Dialog.init);
+EventUtils.addHandle(window, 'load', Dialog.init);
