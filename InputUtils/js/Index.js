@@ -25,8 +25,10 @@ var Index = {
 	setInputs: function() {
 		var inputLetter = document.getElementById('letter');
 		var inputNumber = document.getElementById('number');
+		var inputDigit  = document.getElementById('digit');
 		InputUtils.setLetterOnly([inputLetter]);
 		InputUtils.setNumberOnly([inputNumber]);
+		InputUtils.setDigitOnly([inputDigit]);
 	}
 	
 };
