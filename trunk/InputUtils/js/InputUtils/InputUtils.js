@@ -15,6 +15,13 @@ var InputUtils = {
 	},
 	
 	
+	setDigitOnly: function(inputs) {
+		if(inputs && inputs.length) {
+			InputUtils.setInputs(inputs, InputUtils.digitOnly);
+		}
+	},
+	
+	
 	setLetterOnly: function(inputs) {
 		if(inputs && inputs.length) {
 			InputUtils.setInputs(inputs, InputUtils.letterOnly);
@@ -43,6 +50,19 @@ var InputUtils = {
 	  }
 		
 		return true;
+	},
+	
+	
+	digitOnly: function(e) {
+		var event = (e) ? e : window.event;
+		var charCode = (event.which) ? event.which : event.keyCode;
+		var input = (event.target) ? event.target : event.srcElement;
+		
+		if((charCode == 43 || charCode == 45) && input.value.search(/[+-]/) == -1) {
+			return true;
+		}
+		
+		return InputUtils.numberOnly(e);
 	},
 	
 	
