@@ -7,7 +7,8 @@
  *
  */
 var InputUtils = {
-	
+
+
 	setNumberOnly: function(inputs) {
 		if(inputs && inputs.length) {
 			InputUtils.setInputs(inputs, InputUtils.numberOnly);
@@ -40,12 +41,17 @@ var InputUtils = {
 	
 	
 	numberOnly: function(e) {
-		var event = (e) ? e : window.event;
-		var charCode = (event.which) ? event.which : event.keyCode;
+		var event      = (e) ? e : window.event,
+		    charCode   = (event.which) ? event.which : event.keyCode,
+		    acceptCode = {8:0, 13:0, 35:0, 36:0, 37:0, 38:0, 39:0, 40:0, 46:0},
+				charactere = String.fromCharCode(charCode),
+				isAccept   = charCode in acceptCode;
 		
-		if(charCode == 13) return true;
+		if(isAccept) {
+			return true;
+		}
 		
-		if(charCode > 31 && (charCode < 48 || charCode > 57)) {
+		if(/[^0-9]/.test(charactere)) {
 			return false;
 	  }
 		
@@ -54,11 +60,13 @@ var InputUtils = {
 	
 	
 	digitOnly: function(e) {
-		var event = (e) ? e : window.event;
-		var charCode = (event.which) ? event.which : event.keyCode;
-		var input = (event.target) ? event.target : event.srcElement;
+		var event      = (e) ? e : window.event,
+		    charCode   = (event.which) ? event.which : event.keyCode,
+				acceptCode = {43:0, 45:0},
+		    input      = (event.target) ? event.target : event.srcElement,
+				isAccept   = charCode in acceptCode;
 		
-		if((charCode == 43 || charCode == 45) && input.value.search(/[+-]/) == -1) {
+		if(isAccept && (input.value.search(/[+-]/) == -1 && input.value == "")) {
 			return true;
 		}
 		
@@ -67,13 +75,19 @@ var InputUtils = {
 	
 	
 	letterOnly: function(e) {
-		var event = (e) ? e : window.event;
-		var charCode = (event.which) ? event.which : event.keyCode;
+		var event      = (e) ? e : window.event,
+		    charCode   = (event.which) ? event.which : event.keyCode,
+		    acceptCode = {8:0, 13:0, 35:0, 36:0, 37:0, 38:0, 39:0, 40:0, 46:0},
+				charactere = String.fromCharCode(charCode),
+				isAccept   = charCode in acceptCode;
 		
-		if((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) &&
-			 (charCode != 32 || charCode != 8 || charCode != 13)) {
-			return false;
+		if(isAccept) {
+			return true;
 		}
+		
+		if(/[^a-zA-Z ]/.test(charactere)) {
+			return false;
+	  }
 		
 		return true;
 	}
