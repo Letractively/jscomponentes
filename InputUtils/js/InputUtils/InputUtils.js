@@ -8,7 +8,8 @@
  */
 var InputUtils = {
 
-
+	especialKeys: {8:0, 9:0, 13:0, 35:0, 36:0, 37:0, 38:0, 39:0, 40:0, 46:0},
+	
 	setNumberOnly: function(inputs) {
 		if(inputs && inputs.length) {
 			InputUtils.setInputs(inputs, InputUtils.numberOnly);
@@ -43,7 +44,7 @@ var InputUtils = {
 	numberOnly: function(e) {
 		var event      = (e) ? e : window.event,
 		    charCode   = (event.which) ? event.which : event.keyCode,
-		    acceptCode = {8:0, 13:0, 35:0, 36:0, 37:0, 38:0, 39:0, 40:0, 46:0},
+		    acceptCode = InputUtils.especialKeys,
 				charactere = String.fromCharCode(charCode),
 				isAccept   = charCode in acceptCode;
 		
@@ -77,7 +78,7 @@ var InputUtils = {
 	letterOnly: function(e) {
 		var event      = (e) ? e : window.event,
 		    charCode   = (event.which) ? event.which : event.keyCode,
-		    acceptCode = {8:0, 13:0, 35:0, 36:0, 37:0, 38:0, 39:0, 40:0, 46:0},
+		    acceptCode = InputUtils.especialKeys,
 				charactere = String.fromCharCode(charCode),
 				isAccept   = charCode in acceptCode;
 		
