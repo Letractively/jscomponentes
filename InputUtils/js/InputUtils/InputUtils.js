@@ -85,7 +85,7 @@ var InputUtils = {
 			return true;
 		}
 		
-		if(/[^a-zA-Z ]/.test(charactere)) {
+		if(/[^a-zA-ZáàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ]/.test(charactere)) {
 			return false;
 	  }
 		
