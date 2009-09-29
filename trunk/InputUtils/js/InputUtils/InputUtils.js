@@ -48,7 +48,7 @@ var InputUtils = {
 				charactere = String.fromCharCode(charCode),
 				isAccept   = charCode in acceptCode;
 		
-		if(isAccept) {
+		if(isAccept && !event.shiftKey) {
 			return true;
 		}
 		
@@ -67,7 +67,7 @@ var InputUtils = {
 		    input      = (event.target) ? event.target : event.srcElement,
 				isAccept   = charCode in acceptCode;
 		
-		if(isAccept && (input.value.search(/[+-]/) == -1 && input.value == "")) {
+		if(isAccept && (input.value.search(/[+-]/) == -1 && input.value == "") && !event.shiftKey) {
 			return true;
 		}
 		
@@ -82,7 +82,7 @@ var InputUtils = {
 				charactere = String.fromCharCode(charCode),
 				isAccept   = charCode in acceptCode;
 		
-		if(isAccept) {
+		if(isAccept && !event.shiftKey) {
 			return true;
 		}
 		
