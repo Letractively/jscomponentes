@@ -4,7 +4,6 @@
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
 var Index = {
 	
 	init: function() {
@@ -23,9 +22,9 @@ var Index = {
 	
 	
 	createButtons: function() {
-		var button1 = document.createElement('button');
-		var button2 = document.createElement('button');
-		var button3 = document.createElement('button');
+		var button1 = document.createElement('button'),
+		    button2 = document.createElement('button'),
+		    button3 = document.createElement('button');
 		
 		button1.onclick = function() {
 			if(Browser && Browser.addBookmark) {
@@ -64,9 +63,9 @@ var Index = {
 	
 	
 	buildTable: function() {
-		var table = document.getElementById('properties');
-		var tbody = table.appendChild(document.createElement('tbody'));
-		var pattern = /addBookmark|installSearchEngine|getPageSize|getScroll/
+		var table = document.getElementById('properties'),
+		    tbody = table.appendChild(document.createElement('tbody')),
+		    pattern = /addBookmark|installSearchEngine|getPageSize|getScroll/;
 		
 		//percorrendo o objeto Browser
 		for(var property in Browser) {
@@ -85,11 +84,11 @@ var Index = {
 	
 	
 	getPageSize: function() {
-		var pageSize   = Browser.getPageSize();
-		var pageWidth  = document.getElementById('pageWidth');
-		var pageHeight = document.getElementById('pageHeight');
-		var viewWidth  = document.getElementById('viewWidth');
-		var viewHeight = document.getElementById('viewHeight');
+		var pageSize   = Browser.getPageSize(),
+		    pageWidth  = document.getElementById('pageWidth'),
+		    pageHeight = document.getElementById('pageHeight'),
+		    viewWidth  = document.getElementById('viewWidth'),
+		    viewHeight = document.getElementById('viewHeight');
 		
 		pageWidth.innerHTML  = pageSize.pageWidth;
 		pageHeight.innerHTML = pageSize.pageHeight;
@@ -99,12 +98,12 @@ var Index = {
 	
 	
 	getPageScroll: function() {
-		var pageScroll = Browser.getScroll();
-		var scrollTop  = document.getElementById("scrollTop");
-		var scrollLeft = document.getElementById("scrollLeft");
+		var pageScroll = Browser.getScroll(),
+		    scrollTop  = document.getElementById("scrollTop"),
+		    scrollLeft = document.getElementById("scrollLeft");
 		
-		scrollTop.innerHTML = pageScroll.x;
-		scrollLeft.innerHTML = pageScroll.y;
+		scrollLeft.innerHTML = pageScroll.x;
+		scrollTop.innerHTML  = pageScroll.y;
 	}
 	
 };
