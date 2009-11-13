@@ -12,8 +12,8 @@ var Index = {
 	
 	
 	setStripedTable: function() {
-		Table.stripedTable(document.getElementById("zebratable"));
-		Table.stripedTable("simpletable", "alternada");
+		TableUtils.stripedTable(document.getElementById("zebratable"));
+		TableUtils.stripedTable("simpletable", "alternada");
 		//Table.stripedTable("nada");
 	}
 
