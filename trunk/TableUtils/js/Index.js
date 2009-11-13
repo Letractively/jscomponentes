@@ -13,7 +13,7 @@ var Index = {
 	
 	setStripedTable: function() {
 		TableUtils.stripedTable(document.getElementById("zebratable"));
-		TableUtils.stripedTable("simpletable", "alternada");
+		TableUtils.stripedTable("simpletable", "normal", "alternada");
 		//Table.stripedTable("nada");
 	}
 

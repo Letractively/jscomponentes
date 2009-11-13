@@ -1,16 +1,16 @@
 ﻿/**
  * 
- * Objeto Literal TableUtils. Documentacao completa disponivel em: 
+ * Objeto Literal Table. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Table
  *
  * TableUtils.js
- * http://jscomponentes.googlecode.com/svn/trunk/TableUtils/js/TableUtils/TableUtils.js
+ * http://jscomponentes.googlecode.com/svn/trunk/Table/js/Table/Table.js
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
 var TableUtils = {
 	
-	stripedTable: function(tableId, className) {
+	stripedTable: function(tableId, classNameForOdd, classNameForEven) {
 		var table = (typeof(tableId) == "string") ? document.getElementById(tableId) : tableId;
 		
 		if(table && table.nodeName.toLowerCase() == "table") {
@@ -21,13 +21,12 @@ var TableUtils = {
 					var row = rows[j];
 					
 					if(j%2) {
-						var className = (className) ? className : "odd";
-						if(!row.className) {
-							row.className = className;
-						}
-						else {
-							row.className += " " + className;
-						}
+						classNameForOdd = (classNameForOdd) ? classNameForOdd : "odd";
+						TableUtils.addClass(row, classNameForOdd);
+					}
+					else {
+						classNameForEven = (classNameForEven) ? classNameForEven : "even";
+						TableUtils.addClass(row, classNameForEven);
 					}
 					
 				}
@@ -35,6 +34,16 @@ var TableUtils = {
 		}
 		else {
 			throw new Error("table#" + tableId + " not found for method TableUtils.stripedTable()");
+		}
+	},
+	
+	
+	addClass: function(row, className) {
+		if(!row.className) {
+			row.className = className;
+		}
+		else if(!row.className.indexOf(className) > -1) {
+			row.className += " " + className;
 		}
 	},
 	
