@@ -1,10 +1,10 @@
 ﻿/**
  * 
- * Objeto Literal Table. Documentacao completa disponivel em: 
+ * Objeto Literal TableUtils. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Table
  *
  * TableUtils.js
- * http://jscomponentes.googlecode.com/svn/trunk/Table/js/Table/Table.js
+ * http://jscomponentes.googlecode.com/svn/trunk/TableUtils/js/TableUtils/TableUtils.js
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
