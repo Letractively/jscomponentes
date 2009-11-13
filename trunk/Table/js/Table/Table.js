@@ -3,12 +3,12 @@
  * Objeto Literal Table. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/Table
  *
- * Table.js
+ * TableUtils.js
  * http://jscomponentes.googlecode.com/svn/trunk/Table/js/Table/Table.js
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-var Table = {
+var TableUtils = {
 	
 	stripedTable: function(tableId, className) {
 		var table = (typeof(tableId) == "string") ? document.getElementById(tableId) : tableId;
@@ -20,23 +20,28 @@ var Table = {
 				for(var j=0; j<rows.length; j++) {
 					var row = rows[j];
 					
-					if(!row.className) {
-						if(j%2) row.className = (className) ? className : "odd";
+					if(j%2) {
+						var className = (className) ? className : "odd";
+						if(!row.className) {
+							row.className = className;
+						}
+						else {
+							row.className += " " + className;
+						}
 					}
 					
 				}
 			}
 		}
 		else {
-			throw new Error("table#" + tableId + " not found for method Table.stripedTable()");
+			throw new Error("table#" + tableId + " not found for method TableUtils.stripedTable()");
 		}
-
 	},
 	
 	
 	clearTable: function(tableId) {
-		var table  = (typeof(tableId) == "string") ? document.getElementById(tableId) : tableId;
-		var result = false;
+		var table  = (typeof(tableId) == "string") ? document.getElementById(tableId) : tableId,
+		    result = false;
 		
 		if(table && table.nodeName.toLowerCase() == "table") {
 			var tbody = document.createElement('tbody');
@@ -47,7 +52,7 @@ var Table = {
 			result = tbody;
 		}
 		else {
-			throw new Error("table#" + tableId + " not found for method Table.clearTable()");
+			throw new Error("table#" + tableId + " not found for method TableUtils.clearTable()");
 		}
 		
 		return result;
