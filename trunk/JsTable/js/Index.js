@@ -6,7 +6,7 @@ var Index = {
 
 	init: function() {
 		Index.showTableProdutos();
-		//Index.showTableProdutosAdvance();
+		Index.showTableProdutosAdvance();
 	},
 	
 	showTableProdutos: function() {
@@ -14,7 +14,7 @@ var Index = {
 			tableId: 'produtos',
 			containerId: 'wrapper-produto',
 			classNames: 'report',
-			itensForPage: 10
+			itensForPage: 5
 		});
 		
 		var jsTableModel = new JsDefaultTableModel (
@@ -27,13 +27,15 @@ var Index = {
 	},
 	
 	showTableProdutosAdvance: function() {
-		var jsTableProdutoAdvance = new JsTable();
-		
-		jsTableProdutoAdvance.setTableModel({
-			tableId: 'produtos'
+		var jsTableCCusto = new JsTable({
+			tableId: 'ccusto',
+			containerId: 'wrapper-ccusto'
 		});
 		
-		jsTableProdutoAdvance.showTable();
+		var jsTableModel = new MyTableModel(cache);
+		
+		jsTableCCusto.setTableModel(jsTableModel);
+		jsTableCCusto.showTable();
 	}
 	
 };

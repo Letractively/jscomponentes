@@ -11,6 +11,7 @@ var JsTable = function(params) {
 	this.classNames   = (params.classNames) ? params.classNames : null;
 	this.itensForPage = (params.itensForPage) ? params.itensForPage : 10;
 	this.currentPage  = 1;
+	this.model        = {};
 	this.errors       = [];
 	
 	if(!this.tableId) {
@@ -32,18 +33,20 @@ var JsTable = function(params) {
 		this.rowRenderer = renderer;
 	};
 	
-	this.setColumnRenderer = function(renderer) {
-		this.columnRenderer = renderer;
-	};
-	
 	//--------- renderers ----------------------------------------------------
 	
 	this.rowRenderer = function(row) {
-		var rowString = "<tr>",
+		var rowString = "<tr>", column
 		    columns   = this.model.getColumns();
 				
 		for(var col = 0; col < columns.length; col++) {
-			rowString += this.columnRenderer(row, col);
+			column = columns[col];
+			if(typeof column.columnRenderer === 'function') {
+				rowString += column.columnRenderer(row, col, this.model);
+			}
+			else {
+				rowString += this.columnRenderer(row, col, this.model);
+			}
 		}
 		
 		rowString += "</tr>";
@@ -51,16 +54,18 @@ var JsTable = function(params) {
 	};
 	
 	this.rowHeaderRenderer = function(columns) {
-		var rowString = "<tr>", renderer;
+		var rowString = "<tr>", column;
+		
 		for(var index in columns) {
-			if(typeof columns[index].renderer ===  'function') {
-				renderer = columns[index].renderer;
-				rowString += renderer(columns[index]);
+			column = columns[index];
+			if(typeof column.cellHeaderRenderer ===  'function') {
+				rowString += column.cellHeaderRenderer(column);
 			}
 			else {
-				rowString += this.cellHeaderRenderer(columns[index]);
+				rowString += this.cellHeaderRenderer(column);
 			}
 		}
+		
 		rowString += "</tr>";
 		return rowString;
 	};
@@ -71,22 +76,26 @@ var JsTable = function(params) {
 		return cellString;
 	};
 	
-	this.columnRenderer = function(row, col) {
-		var cellString = "";
-		cellString = "<td>" + this.model.getData(row, col) + "</td>";
+	this.columnRenderer = function(row, col, model) {
+		var cellString = "", 
+		    modelData  = model.getData(row, col);
+				data = (modelData) ? modelData : "&nbsp;";
+		cellString = "<td>" + data + "</td>";
 		return cellString;
 	};
+	
+	//---------- métodos para construção da tabela -----------------------------
 	
 	this.setTableModel = function(tableModel) {
 		if(tableModel) {
 			this.model = tableModel;
 			
-			if(!this.model.getColumns) {
-				this.errors.push("tableModel.getColumns is not defined!");
-			}
-			
 			if(!this.model) {
 				this.errors.push("tableModel.model is not defined!");
+			}
+			
+			if(!this.model.getColumns) {
+				this.errors.push("tableModel.getColumns is not defined!");
 			}
 			
 			if(this.errors.length) {
