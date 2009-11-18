@@ -36,7 +36,7 @@ var MyTableModel = function(cache) {
 				},
 				columnRenderer: function(row, col, model) {
 					var cellString = "", 
-							data = model.getData(row,col);
+							data = model.getData(row, col);
 					cellString = '<td><input type="checkbox" name="produtoIds" value="' + data + '" /></td>';
 					return cellString;
 				}

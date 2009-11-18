@@ -33,57 +33,6 @@ var JsTable = function(params) {
 		this.rowRenderer = renderer;
 	};
 	
-	//--------- renderers ----------------------------------------------------
-	
-	this.rowRenderer = function(row) {
-		var rowString = "<tr>", column
-		    columns   = this.model.getColumns();
-				
-		for(var col = 0; col < columns.length; col++) {
-			column = columns[col];
-			if(typeof column.columnRenderer === 'function') {
-				rowString += column.columnRenderer(row, col, this.model);
-			}
-			else {
-				rowString += this.columnRenderer(row, col, this.model);
-			}
-		}
-		
-		rowString += "</tr>";
-		return rowString;
-	};
-	
-	this.rowHeaderRenderer = function(columns) {
-		var rowString = "<tr>", column;
-		
-		for(var index in columns) {
-			column = columns[index];
-			if(typeof column.cellHeaderRenderer ===  'function') {
-				rowString += column.cellHeaderRenderer(column);
-			}
-			else {
-				rowString += this.cellHeaderRenderer(column);
-			}
-		}
-		
-		rowString += "</tr>";
-		return rowString;
-	};
-	
-	this.cellHeaderRenderer = function(cell) {
-		var cellString = "";
-		cellString = "<th>" + cell.text + "</th>";
-		return cellString;
-	};
-	
-	this.columnRenderer = function(row, col, model) {
-		var cellString = "", 
-		    modelData  = model.getData(row, col);
-				data = (modelData) ? modelData : "&nbsp;";
-		cellString = "<td>" + data + "</td>";
-		return cellString;
-	};
-	
 	//---------- métodos para construção da tabela -----------------------------
 	
 	this.setTableModel = function(tableModel) {
@@ -151,6 +100,57 @@ var JsTable = function(params) {
 		}
 		tbody += "</tbody>";
 		return tbody;
+	};
+	
+	//--------- renderers ----------------------------------------------------
+	
+	this.rowRenderer = function(row) {
+		var rowString = "<tr>", column
+		    columns   = this.model.getColumns();
+				
+		for(var col = 0; col < columns.length; col++) {
+			column = columns[col];
+			if(typeof column.columnRenderer === 'function') {
+				rowString += column.columnRenderer(row, col, this.model);
+			}
+			else {
+				rowString += this.columnRenderer(row, col, this.model);
+			}
+		}
+		
+		rowString += "</tr>";
+		return rowString;
+	};
+	
+	this.rowHeaderRenderer = function(columns) {
+		var rowString = "<tr>", column;
+		
+		for(var index in columns) {
+			column = columns[index];
+			if(typeof column.cellHeaderRenderer ===  'function') {
+				rowString += column.cellHeaderRenderer(column);
+			}
+			else {
+				rowString += this.cellHeaderRenderer(column);
+			}
+		}
+		
+		rowString += "</tr>";
+		return rowString;
+	};
+	
+	this.cellHeaderRenderer = function(cell) {
+		var cellString = "";
+		cellString = "<th>" + cell.text + "</th>";
+		return cellString;
+	};
+	
+	this.columnRenderer = function(row, col, model) {
+		var cellString = "", 
+		    modelData  = model.getData(row, col);
+				data = (modelData) ? modelData : "&nbsp;";
+		cellString = "<td>" + data + "</td>";
+		return cellString;
 	};
 	
 	//--------- métodos para paginação ------------------------------------
