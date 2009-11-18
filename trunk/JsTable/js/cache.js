@@ -52,7 +52,7 @@ var cache = [
 		preco: '0,01',
 		m1: '0,01',
 		m2: '0,01',
-		readonly: false
+		readonly: true
 	},
 	
 	{
@@ -80,7 +80,7 @@ var cache = [
 		preco: '',
 		m1: '',
 		m2: '',
-		readonly: false
+		readonly: true
 	},
 	
 	{
@@ -94,7 +94,7 @@ var cache = [
 		preco: '',
 		m1: '',
 		m2: '',
-		readonly: false
+		readonly: true
 	},
 	
 	{

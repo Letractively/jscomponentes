@@ -9,10 +9,10 @@ var MyTableModel = function(cache) {
 	  var obj = this.cache[row];
 		
 	  switch (col) {
-		  case 0: return obj.codigo;
-		  case 1: return obj.versao;
-		  case 2: return obj.descricao;
-		  case 3: return obj.id;
+		  case 0: return obj.id;
+			case 1: return obj.codigo;
+		  case 2: return obj.versao;
+		  case 3: return obj.descricao;
 		}
 		
 		return obj;
@@ -28,15 +28,34 @@ var MyTableModel = function(cache) {
 	
 	this.getColumns = function() {
 	  return [
+			{
+				className: 'check', 
+				text: '&nbsp;', 
+				cellHeaderRenderer: function(cell) {
+					return '<th><input type="checkbox" id="produtoIds" /></th>';
+				},
+				columnRenderer: function(row, col, model) {
+					var cellString = "", 
+							data = model.getData(row,col);
+					cellString = '<td><input type="checkbox" name="produtoIds" value="' + data + '" /></td>';
+					return cellString;
+				}
+			},
 			{className:'codigo', text:'Código'}, 
 			{className:'versao', text:'Versão'}, 
 			{className:'descricao', text:'Descrição'}, 
 			{
 				className:'acoes', 
-				text:'&nbsp;',
+				text:'Ações',
 				columnRenderer: function(row, col, model) {
-					var obj = model.getObject(row);
-					return '<td><a href="#deletar-id-' + id + '">deletar</a></td>';
+					var obj = model.getObject(row),
+					    cellString = "<td>";
+					cellString += '<a href="#duplicar-id-' + obj.id + '">Duplicar</a> ';
+					if(!obj.readonly) {
+						cellString += '| <a href="#deletar-id-' + obj.id + '">Deletar</a>';
+					}
+					cellString += "</td>";
+					return cellString;
 				}
 			}
 		];
