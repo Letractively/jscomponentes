@@ -23,15 +23,15 @@ var Index = {
 	},
 	
 	showTableProdutosAdvance: function() {
-		var jsTableCCusto = new JsTable({
+		var tableCCusto = new JsTable({
 			tableId: 'ccusto',
 			pagingId: 'page-ccusto',
 			containerId: 'wrapper-ccusto',
 			itemsPerPage: 9
 		});
 		
-		jsTableCCusto.setTableModel(new MyTableModel(cache));
-		jsTableCCusto.showTable();
+		tableCCusto.setTableModel(new MyTableModel(cache));
+		tableCCusto.showTable();
 	},
 	
 	getProdutoTableModel: function() {
