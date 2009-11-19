@@ -10,32 +10,36 @@ var Index = {
 	},
 	
 	showTableProdutos: function() {
-		var jsTableProduto = new JsTable ({
+		var tableProduto = new JsTable ({
 			tableId: 'produtos',
 			containerId: 'wrapper-produto',
+			pagingId: 'page-produto',
 			classNames: 'report',
-			itensForPage: 5
+			itemsPerPage: 3
 		});
 		
-		var jsTableModel = new JsDefaultTableModel (
-			CacheProduto.columns,
-			CacheProduto.tableData
-		);
-		
-		jsTableProduto.setTableModel(jsTableModel);
-		jsTableProduto.showTable();
+		tableProduto.setTableModel(Index.getProdutoTableModel());
+		tableProduto.showTable();
 	},
 	
 	showTableProdutosAdvance: function() {
 		var jsTableCCusto = new JsTable({
 			tableId: 'ccusto',
-			containerId: 'wrapper-ccusto'
+			pagingId: 'page-ccusto',
+			containerId: 'wrapper-ccusto',
+			itemsPerPage: 9
 		});
 		
-		var jsTableModel = new MyTableModel(cache);
-		
-		jsTableCCusto.setTableModel(jsTableModel);
+		jsTableCCusto.setTableModel(new MyTableModel(cache));
 		jsTableCCusto.showTable();
+	},
+	
+	getProdutoTableModel: function() {
+		var tableModel = new JsDefaultTableModel (
+			CacheProduto.columns,
+			CacheProduto.tableData
+		);
+		return tableModel;
 	}
 	
 };

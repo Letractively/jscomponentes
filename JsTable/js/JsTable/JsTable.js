@@ -8,11 +8,23 @@ var JsTable = function(params) {
 	//atributos
 	this.tableId      = (params.tableId) ? params.tableId : null;
 	this.containerId  = (params.containerId) ? params.containerId : null;
+	this.pagingId     = (params.pagingId) ? params.pagingId : null;
 	this.classNames   = (params.classNames) ? params.classNames : null;
-	this.itensForPage = (params.itensForPage) ? params.itensForPage : 10;
-	this.currentPage  = 1;
 	this.model        = {};
 	this.errors       = [];
+	
+	//atributos para paginação
+	this.itemsPerPage = (params.itemsPerPage) ? params.itemsPerPage : 10;
+	this.totalPages   = 0;
+	this.currentPage  = 1;
+	
+	if(this.pagingId) {
+		this.pagingContainer = document.getElementById(this.pagingId);
+		this.showTotalPage = $('.totalPages', this.pagingContainer).get(0);
+		this.showTotalItems = $('.totalItems', this.pagingContainer).get(0);
+		this.inputCurrentPage = $('.currentPage', this.pagingContainer).get(0);
+		this.inputItemsPerPage = $('.itemsPerPage', this.pagingContainer).get(0);
+	}	
 	
 	if(!this.tableId) {
 		this.errors.push("tableId is not defined!");
@@ -63,6 +75,9 @@ var JsTable = function(params) {
 					+ this.getBody()
 			+ '</table>';
 			$('#' + this.containerId).html(tableString);
+			if(this.pagingId) {
+				this.setPagination(this.itemsPerPage);
+			}
 		}
 	};
 	
@@ -95,7 +110,7 @@ var JsTable = function(params) {
 	
 	this.getBody = function() {
 		var tbody = "<tbody>";
-		for(var i=0; i<this.model.getNumRows() && i<this.itensForPage; i++) {
+		for(var i=0; i<this.model.getNumRows() && i<this.itemsPerPage; i++) {
 			tbody += this.rowRenderer(i);
 		}
 		tbody += "</tbody>";
@@ -155,13 +170,33 @@ var JsTable = function(params) {
 	
 	//--------- métodos para paginação ------------------------------------
 	
-	this.setPagination = function() {
+	this.setPagination = function(itemsPerPage) {
+		this.itemsPerPage = itemsPerPage;
+		var totalPages = Math.ceil(this.model.getNumRows() / this.itemsPerPage);
+		if(totalPages === 0) {
+			totalPages = 1;
+		}
+		this.totalPages = totalPages;
+		this.setStatusPagination();
+		this.showTotalItens();
 	};
 	
-	this.setControllsPagination = function() {
+	this.showTotalItens = function() {
+		if(this.showTotalItems) {
+			this.showTotalItems.innerHTML = this.model.getNumRows();
+		}
 	};
 	
 	this.setStatusPagination = function() {
+		if(this.showTotalPage) {
+			this.showTotalPage.innerHTML = "/" + this.totalPages;
+		}
+		if(this.currentPage) {
+			this.currentPage.value = this.currentPage;
+		}
+	};
+	
+	this.setControllsPagination = function() {
 	};
 
 }
