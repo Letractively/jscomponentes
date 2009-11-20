@@ -9,25 +9,17 @@ var JsTable = function(params) {
 	var jsTable = this;
 	
 	//atributos
-	this.tableId      = (params.tableId) ? params.tableId : null;
-	this.containerId  = (params.containerId) ? params.containerId : null;
-	this.pagingId     = (params.pagingId) ? params.pagingId : null;
-	this.classNames   = (params.classNames) ? params.classNames : null;
-	this.model        = {};
-	this.errors       = [];
+	this.tableId = (params.tableId) ? params.tableId : null;
+	this.containerId = (params.containerId) ? params.containerId : null;
+	this.pagingContainerId = (params.pagingContainerId) ? params.pagingContainerId : null;
+	this.classNames = (params.classNames) ? params.classNames : null;
+	this.contextpath = (params.contextpath) ? (params.contextpath + "/") : "";
+	this.model = {};
+	this.errors = [];
 	
 	//atributos para paginação
 	this.itemsPerPage = (params.itemsPerPage) ? params.itemsPerPage : 10;
 	
-	if(this.pagingId) {
-		this.currentPage = 1;
-		this.totalPages  = 0;
-		this.pagingContainer = document.getElementById(this.pagingId);
-		this.showTotalPage = $('.totalPages', this.pagingContainer).get(0);
-		this.showTotalItems = $('.totalItems', this.pagingContainer).get(0);
-		this.inputCurrentPage = $('.currentPage', this.pagingContainer).get(0);
-		this.inputItemsPerPage = $('.itemsPerPage', this.pagingContainer).get(0);
-	}	
 	
 	//tratamento de erros
 	if(!this.tableId) {
@@ -81,7 +73,7 @@ var JsTable = function(params) {
 			
 			$('#' + this.containerId).html(tableString);
 			
-			if(this.pagingId) {
+			if(this.pagingContainerId) {
 				this.initPaging();
 			}
 		}
@@ -177,10 +169,32 @@ var JsTable = function(params) {
 	//--------- métodos para paginação ------------------------------------
 	
 	this.initPaging = function() {
+		this.createPagingControls();
 		this.setPaging(this.itemsPerPage);
 		this.setPagingControls();
 		this.showTotalItens();
 	};
+	
+	this.createPagingControls = function() {
+		if(this.pagingContainer) {
+			$(this.pagingContainer)
+			 .append(this.firstPageControl)
+			 .append(" ")
+			 .append(this.prevPageControl)
+			 .append(" ")
+			 .append(this.currentPageControl)
+			 .append(" ")
+			 .append(this.totalPageControl)
+			 .append(" ")
+			 .append(this.nextPageControl)
+			 .append(" ")
+			 .append(this.lastPageControl)
+			 .append(" | Itens por página: ")
+			 .append(this.itemsPerPageControl)
+			 .append(" | Total: ")
+			 .append(this.totalItemsControl)
+		}
+	}
 	
 	this.setPaging = function(itemsPerPage) {
 		this.itemsPerPage = itemsPerPage;
@@ -194,32 +208,31 @@ var JsTable = function(params) {
 	};
 	
 	this.showTotalItens = function() {
-		if(this.showTotalItems) {
-			this.showTotalItems.innerHTML = this.model.getNumRows();
+		if(this.totalItemsControl) {
+			this.totalItemsControl.innerHTML = this.model.getNumRows();
 		}
 	};
 	
 	this.showItemsPerPage = function() {
-		if(this.inputItemsPerPage) {
-			$(this.inputItemsPerPage).val(this.itemsPerPage);
+		if(this.itemsPerPageControl) {
+			$(this.itemsPerPageControl).val(this.itemsPerPage);
 		}
 	}
 	
 	this.setStatusPaging = function() {
-		if(this.showTotalPage) {
-			this.showTotalPage.innerHTML = "/" + this.totalPages;
+		if(this.totalPageControl) {
+			this.totalPageControl.innerHTML = "/" + this.totalPages;
 		}
-		if(this.inputCurrentPage) {
-			$(this.inputCurrentPage).val(this.currentPage);
+		if(this.currentPageControl) {
+			$(this.currentPageControl).val(this.currentPage);
 		}
 	};
 	
 	this.setPagingControls = function() {
-		var divPagination = this.pagingContainer,
-		    begin = 0;
+		var begin = 0;
 		
 		//ir para primeira página
-		$('.first', divPagination).click(function() {
+		$(this.firstPageControl).click(function() {
 			if(jsTable.currentPage > 1) {
 				jsTable.currentPage = 1;
 				jsTable.showPagingRows(0, jsTable.itemsPerPage);
@@ -228,7 +241,7 @@ var JsTable = function(params) {
 		});
 		
 		//ir para página anterior
-		$('.prev', divPagination).click(function() {
+		$(this.prevPageControl).click(function() {
 			if(jsTable.currentPage > 1) {
 				jsTable.currentPage--;
 				begin = (jsTable.currentPage-1) * jsTable.itemsPerPage;
@@ -238,7 +251,7 @@ var JsTable = function(params) {
 		});
 		
 		//ir para próxima página
-		$('.next', divPagination).click(function() {
+		$(this.nextPageControl).click(function() {
 			if(jsTable.currentPage < jsTable.totalPages) {
 				jsTable.currentPage++;
 				begin = (jsTable.currentPage-1) * jsTable.itemsPerPage;
@@ -248,7 +261,7 @@ var JsTable = function(params) {
 		});
 		
 		//ir para última página
-		$('.last', divPagination).click(function() {
+		$(this.lastPageControl).click(function() {
 			if(jsTable.currentPage < jsTable.totalPages) {
 				jsTable.currentPage = jsTable.totalPages;
 				begin = (jsTable.currentPage-1) * jsTable.itemsPerPage;
@@ -258,7 +271,7 @@ var JsTable = function(params) {
 		});
 		
 		//ir para página informada
-		$(this.inputCurrentPage).keydown(function(e) {
+		$(this.currentPageControl).keydown(function(e) {
 			if(e.keyCode == 13) {
 				var numPage = 1;
 				
@@ -281,7 +294,7 @@ var JsTable = function(params) {
 		});
 		
 		//lista número de itens informado por página
-		$(this.inputItemsPerPage).keydown(function(e) {
+		$(this.itemsPerPageControl).keydown(function(e) {
 			if(e.keyCode == 13) {
 				var numItens = 1;
 				
@@ -320,5 +333,110 @@ var JsTable = function(params) {
 			
 		}
 	};
+	
+	//------------------ componentes para paginação --------------------------------------
+	
+	this.createFirstPageControl = function() {
+		var pageControl = $('<img />').attr({
+			'src': jsTable.contextpath + 'images/pag-first.png',
+			'id': jsTable.tableId + "-first",
+			'class' : 'first',
+			'alt' : 'Início',
+			'title' : 'Início'
+		}).get(0);
+		return pageControl;
+	};
+	
+	this.createPrevPageControl = function() {
+		var pageControl = $('<img />').attr({
+			'src': jsTable.contextpath + 'images/pag-prev.png',
+			'id': jsTable.tableId + "-prev",
+			'class' : 'prev',
+			'alt' : 'Anterior',
+			'title' : 'Anterior'
+		}).get(0);
+		return pageControl;
+	};
+	
+	this.createCurrentPageControl = function() {
+		var pageControl = $('<input />').attr({
+			'type': 'text',
+			'id': jsTable.tableId + "-currentPage",
+			'class' : 'number currentPage',
+			'maxlength' : 3,
+			'value' : 1
+		}).get(0);
+		return pageControl;
+	};
+	
+	this.createTotalPageControl = function() {
+		var pageControl = $('<span />').attr({
+			'id': jsTable.tableId + "-totalPages",
+			'class' : 'totalPages',
+		})
+		.text('/ ' + jsTable.totalPages)
+		.get(0);
+		return pageControl;
+	};
+	
+	this.createNextPageControl = function() {
+		var pageControl = $('<img />').attr({
+			'src': jsTable.contextpath + 'images/pag-next.png',
+			'id': jsTable.tableId + "-next",
+			'class' : 'next',
+			'alt' : 'Próximo',
+			'title' : 'Próximo'
+		}).get(0);
+		return pageControl;
+	};
+	
+	this.createLastPageControl = function() {
+		var pageControl = $('<img />').attr({
+			'src': jsTable.contextpath + 'images/pag-last.png',
+			'id': jsTable.tableId + "-last",
+			'class' : 'last',
+			'alt' : 'Último',
+			'title' : 'Último'
+		}).get(0);
+		return pageControl;
+	};
+	
+	this.createItemsPerPageControl = function() {
+		var pageControl = $('<input />').attr({
+			'type': 'text',
+			'id': jsTable.tableId + "-itemsPerPage",
+			'class' : 'number itemsPerPage',
+			'maxlength' : 3,
+			'value' : jsTable.itemsPerPage
+		}).get(0);
+		return pageControl;
+	};
+	
+	this.createTotalItemsControl = function() {
+		var pageControl = $('<span />').attr({
+			'id': jsTable.tableId + "-totalItems",
+			'class' : 'totalItems',
+		})
+		.text(0)
+		.get(0);
+		return pageControl;
+	};
 
+	//-------------------- controles para paginação --------------------------------
+	
+	if(this.pagingContainerId) {
+		this.currentPage = 1;
+		this.totalPages  = 0;
+		this.pagingContainer = document.getElementById(this.pagingContainerId);
+		
+		this.firstPageControl = this.createFirstPageControl();
+		this.prevPageControl = this.createPrevPageControl();
+		this.currentPageControl = this.createCurrentPageControl();
+		this.totalPageControl = this.createTotalPageControl();
+		this.nextPageControl = this.createNextPageControl();
+		this.lastPageControl = this.createLastPageControl();
+		this.itemsPerPageControl = this.createItemsPerPageControl();
+		this.totalItemsControl = this.createTotalItemsControl();
+	}
+	
 }

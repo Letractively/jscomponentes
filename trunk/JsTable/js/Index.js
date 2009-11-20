@@ -13,7 +13,7 @@ var Index = {
 		var tableProduto = new JsTable ({
 			tableId: 'produtos',
 			containerId: 'wrapper-produto',
-			pagingId: 'page-produto',
+			pagingContainerId: 'page-produto',
 			classNames: 'report',
 			itemsPerPage: 4
 		});
@@ -25,8 +25,8 @@ var Index = {
 	showTableProdutosAdvance: function() {
 		var tableCCusto = new JsTable({
 			tableId: 'ccusto',
-			pagingId: 'page-ccusto',
 			containerId: 'wrapper-ccusto',
+			pagingContainerId: 'page-ccusto',
 			itemsPerPage: 9
 		});
 		
