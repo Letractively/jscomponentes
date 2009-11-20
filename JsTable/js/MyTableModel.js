@@ -29,16 +29,14 @@ var MyTableModel = function(cache) {
 	this.getColumns = function() {
 	  return [
 			{
-				className: 'check', 
-				text: '&nbsp;', 
+				className: 'check',
+				text: '&nbsp;',
 				cellHeaderRenderer: function(cell) {
 					return '<th><input type="checkbox" id="produtoIds" /></th>';
 				},
 				columnRenderer: function(row, col, model) {
-					var cellString = "", 
-							data = model.getData(row, col);
-					cellString = '<td><input type="checkbox" name="produtoIds" value="' + data + '" /></td>';
-					return cellString;
+					var id = model.getData(row, col);
+					return '<td><input type="checkbox" name="produtoIds" value="' + id + '" /></td>';
 				}
 			},
 			{className:'codigo', text:'Código'}, 
