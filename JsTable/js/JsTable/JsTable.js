@@ -190,6 +190,7 @@ var JsTable = function(params) {
 		}
 		this.totalPages = totalPages;
 		this.setStatusPaging();
+		this.showItemsPerPage();
 	};
 	
 	this.showTotalItens = function() {
@@ -198,13 +199,18 @@ var JsTable = function(params) {
 		}
 	};
 	
+	this.showItemsPerPage = function() {
+		if(this.inputItemsPerPage) {
+			$(this.inputItemsPerPage).val(this.itemsPerPage);
+		}
+	}
+	
 	this.setStatusPaging = function() {
 		if(this.showTotalPage) {
 			this.showTotalPage.innerHTML = "/" + this.totalPages;
 		}
-		if(this.currentPage) {
-			this.currentPage.value =
-			this.currentPage.defaultValue = this.currentPage;
+		if(this.inputCurrentPage) {
+			$(this.inputCurrentPage).val(this.currentPage);
 		}
 	};
 	
@@ -309,8 +315,7 @@ var JsTable = function(params) {
 			$(tbody).html("");
 			
 			for(var index=begin, i=0; index<this.model.getNumRows() && i<n; index++, i++) {
-				rowStr += this.rowRenderer(i);
-				$(tbody).append(rowStr);
+				$(tbody).append(this.rowRenderer(index));
 			}
 			
 		}

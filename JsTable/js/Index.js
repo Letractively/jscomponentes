@@ -15,7 +15,7 @@ var Index = {
 			containerId: 'wrapper-produto',
 			pagingId: 'page-produto',
 			classNames: 'report',
-			itemsPerPage: 3
+			itemsPerPage: 4
 		});
 		
 		tableProduto.setTableModel(Index.getProdutoTableModel());
