@@ -14,6 +14,8 @@ var JsTable = function(params) {
 	this.pagingContainerId = (params.pagingContainerId) ? params.pagingContainerId : null;
 	this.classNames = (params.classNames) ? params.classNames : null;
 	this.contextpath = (params.contextpath) ? (params.contextpath + "/") : "";
+	this.classNameForOdd = (params.classNameForOdd) ? params.classNameForOdd : null;
+	this.classNameForEven = (params.classNameForEven) ? params.classNameForEven : null;
 	this.model = {};
 	this.errors = [];
 	
@@ -76,6 +78,8 @@ var JsTable = function(params) {
 			if(this.pagingContainerId) {
 				this.initPaging();
 			}
+			
+			this.stripedTable();
 		}
 	};
 	
@@ -296,22 +300,27 @@ var JsTable = function(params) {
 		//lista número de itens informado por página
 		jQuery(this.itemsPerPageControl).keydown(function(e) {
 			if(e.keyCode == 13) {
-				var numItens = 1;
-				
+				var numItems = 1;
+		
 				if(this.value != "") {
-					numItens = parseInt(this.value);
+					numItems = parseInt(this.value);
 				}
 				
-				if(numItens > 100) {
-					numItens = 100;
+				if(isNaN(numItems)) {
+					this.value = this.defaultValue;
+					return false;
+				}
+				
+				if(numItems > 100) {
+					numItems = 100;
 				} 
-				else if(numItens <= 0) {
-					numItens = 1;
+				else if(numItems <= 0) {
+					numItems = 1;
 				}
 				
-				this.value = numItens;
+				this.value = numItems;
 				
-				jsTable.setPaging(numItens);
+				jsTable.setPaging(numItems);
 				jsTable.showPagingRows(0, jsTable.itemsPerPage);
 				jsTable.currentPage = 1;
 				jsTable.setStatusPaging();
@@ -331,6 +340,7 @@ var JsTable = function(params) {
 				jQuery(tbody).append(this.rowRenderer(index));
 			}
 			
+			this.stripedTable();
 		}
 	};
 	
@@ -407,7 +417,8 @@ var JsTable = function(params) {
 			'id': jsTable.tableId + "-itemsPerPage",
 			'class' : 'number itemsPerPage',
 			'maxlength' : 3,
-			'value' : jsTable.itemsPerPage
+			'value' : jsTable.itemsPerPage,
+			'defaultValue' : jsTable.itemsPerPage
 		}).get(0);
 		return pageControl;
 	};
@@ -420,6 +431,25 @@ var JsTable = function(params) {
 		.text(0)
 		.get(0);
 		return pageControl;
+	};
+	
+	//-------------------- stripedTable --------------------------------
+	
+	this.stripedTable = function() {
+		var table = document.getElementById(this.tableId),
+		    tbody = table.tBodies[0],
+				rows  = tbody.rows, className, row;
+				
+		for(var i=0; i<rows.length; i++) {
+			row = rows[i];
+			if(i%2) {
+				className = (this.classNameForOdd) ? this.classNameForOdd : "odd";
+			}
+			else {
+				className = (this.classNameForEven) ? this.classNameForEven : "even";
+			}
+			jQuery(row).addClass(className);
+		}
 	};
 
 	//-------------------- controles para paginação --------------------------------

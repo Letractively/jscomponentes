@@ -27,7 +27,7 @@ var Index = {
 			tableId: 'ccusto',
 			containerId: 'wrapper-ccusto',
 			pagingContainerId: 'page-ccusto',
-			itemsPerPage: 9
+			itemsPerPage: 8
 		});
 		
 		tableCCusto.setTableModel(new MyTableModel(cache));
