@@ -1,7 +1,13 @@
 /**
  * Documento CSS
  */
- 
+
+@import url(tagbox.css);
+
 div#wrapper-produto {
 	margin-bottom: 10px;
+}
+
+div.paginacao {
+	margin-bottom: 5px;
 }

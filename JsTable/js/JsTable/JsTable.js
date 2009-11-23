@@ -64,14 +64,14 @@ var JsTable = function(params) {
 	this.showTable = function() {
 		if(this.errors.length === 0) {
 			var tableString = 
-				'<table border="1" id="'+ this.tableId +'"'+ this.addClass() +'>'
+				'<table id="'+ this.tableId +'"'+ this.addClass() +'>'
 					+ this.getTagsCol()
 					+ this.getHeader()
 					+ this.getFooter()
 					+ this.getBody()
 			+ '</table>';
 			
-			$('#' + this.containerId).html(tableString);
+			jQuery('#' + this.containerId).html(tableString);
 			
 			if(this.pagingContainerId) {
 				this.initPaging();
@@ -177,7 +177,7 @@ var JsTable = function(params) {
 	
 	this.createPagingControls = function() {
 		if(this.pagingContainer) {
-			$(this.pagingContainer)
+			jQuery(this.pagingContainer)
 			 .append(this.firstPageControl)
 			 .append(" ")
 			 .append(this.prevPageControl)
@@ -215,7 +215,7 @@ var JsTable = function(params) {
 	
 	this.showItemsPerPage = function() {
 		if(this.itemsPerPageControl) {
-			$(this.itemsPerPageControl).val(this.itemsPerPage);
+			jQuery(this.itemsPerPageControl).val(this.itemsPerPage);
 		}
 	}
 	
@@ -224,7 +224,7 @@ var JsTable = function(params) {
 			this.totalPageControl.innerHTML = "/" + this.totalPages;
 		}
 		if(this.currentPageControl) {
-			$(this.currentPageControl).val(this.currentPage);
+			jQuery(this.currentPageControl).val(this.currentPage);
 		}
 	};
 	
@@ -232,7 +232,7 @@ var JsTable = function(params) {
 		var begin = 0;
 		
 		//ir para primeira página
-		$(this.firstPageControl).click(function() {
+		jQuery(this.firstPageControl).click(function() {
 			if(jsTable.currentPage > 1) {
 				jsTable.currentPage = 1;
 				jsTable.showPagingRows(0, jsTable.itemsPerPage);
@@ -241,7 +241,7 @@ var JsTable = function(params) {
 		});
 		
 		//ir para página anterior
-		$(this.prevPageControl).click(function() {
+		jQuery(this.prevPageControl).click(function() {
 			if(jsTable.currentPage > 1) {
 				jsTable.currentPage--;
 				begin = (jsTable.currentPage-1) * jsTable.itemsPerPage;
@@ -251,7 +251,7 @@ var JsTable = function(params) {
 		});
 		
 		//ir para próxima página
-		$(this.nextPageControl).click(function() {
+		jQuery(this.nextPageControl).click(function() {
 			if(jsTable.currentPage < jsTable.totalPages) {
 				jsTable.currentPage++;
 				begin = (jsTable.currentPage-1) * jsTable.itemsPerPage;
@@ -261,7 +261,7 @@ var JsTable = function(params) {
 		});
 		
 		//ir para última página
-		$(this.lastPageControl).click(function() {
+		jQuery(this.lastPageControl).click(function() {
 			if(jsTable.currentPage < jsTable.totalPages) {
 				jsTable.currentPage = jsTable.totalPages;
 				begin = (jsTable.currentPage-1) * jsTable.itemsPerPage;
@@ -271,7 +271,7 @@ var JsTable = function(params) {
 		});
 		
 		//ir para página informada
-		$(this.currentPageControl).keydown(function(e) {
+		jQuery(this.currentPageControl).keydown(function(e) {
 			if(e.keyCode == 13) {
 				var numPage = 1;
 				
@@ -294,7 +294,7 @@ var JsTable = function(params) {
 		});
 		
 		//lista número de itens informado por página
-		$(this.itemsPerPageControl).keydown(function(e) {
+		jQuery(this.itemsPerPageControl).keydown(function(e) {
 			if(e.keyCode == 13) {
 				var numItens = 1;
 				
@@ -325,10 +325,10 @@ var JsTable = function(params) {
 			    rowStr = "", 
 					tbody  = table.getElementsByTagName('tbody')[0];
 			
-			$(tbody).html("");
+			jQuery(tbody).html("");
 			
 			for(var index=begin, i=0; index<this.model.getNumRows() && i<n; index++, i++) {
-				$(tbody).append(this.rowRenderer(index));
+				jQuery(tbody).append(this.rowRenderer(index));
 			}
 			
 		}
@@ -337,7 +337,7 @@ var JsTable = function(params) {
 	//------------------ componentes para paginação --------------------------------------
 	
 	this.createFirstPageControl = function() {
-		var pageControl = $('<img />').attr({
+		var pageControl = jQuery('<img />').attr({
 			'src': jsTable.contextpath + 'images/pag-first.png',
 			'id': jsTable.tableId + "-first",
 			'class' : 'first',
@@ -348,7 +348,7 @@ var JsTable = function(params) {
 	};
 	
 	this.createPrevPageControl = function() {
-		var pageControl = $('<img />').attr({
+		var pageControl = jQuery('<img />').attr({
 			'src': jsTable.contextpath + 'images/pag-prev.png',
 			'id': jsTable.tableId + "-prev",
 			'class' : 'prev',
@@ -359,7 +359,7 @@ var JsTable = function(params) {
 	};
 	
 	this.createCurrentPageControl = function() {
-		var pageControl = $('<input />').attr({
+		var pageControl = jQuery('<input />').attr({
 			'type': 'text',
 			'id': jsTable.tableId + "-currentPage",
 			'class' : 'number currentPage',
@@ -370,7 +370,7 @@ var JsTable = function(params) {
 	};
 	
 	this.createTotalPageControl = function() {
-		var pageControl = $('<span />').attr({
+		var pageControl = jQuery('<span />').attr({
 			'id': jsTable.tableId + "-totalPages",
 			'class' : 'totalPages'
 		})
@@ -380,7 +380,7 @@ var JsTable = function(params) {
 	};
 	
 	this.createNextPageControl = function() {
-		var pageControl = $('<img />').attr({
+		var pageControl = jQuery('<img />').attr({
 			'src': jsTable.contextpath + 'images/pag-next.png',
 			'id': jsTable.tableId + "-next",
 			'class' : 'next',
@@ -391,7 +391,7 @@ var JsTable = function(params) {
 	};
 	
 	this.createLastPageControl = function() {
-		var pageControl = $('<img />').attr({
+		var pageControl = jQuery('<img />').attr({
 			'src': jsTable.contextpath + 'images/pag-last.png',
 			'id': jsTable.tableId + "-last",
 			'class' : 'last',
@@ -402,7 +402,7 @@ var JsTable = function(params) {
 	};
 	
 	this.createItemsPerPageControl = function() {
-		var pageControl = $('<input />').attr({
+		var pageControl = jQuery('<input />').attr({
 			'type': 'text',
 			'id': jsTable.tableId + "-itemsPerPage",
 			'class' : 'number itemsPerPage',
@@ -413,7 +413,7 @@ var JsTable = function(params) {
 	};
 	
 	this.createTotalItemsControl = function() {
-		var pageControl = $('<span />').attr({
+		var pageControl = jQuery('<span />').attr({
 			'id': jsTable.tableId + "-totalItems",
 			'class' : 'totalItems'
 		})
