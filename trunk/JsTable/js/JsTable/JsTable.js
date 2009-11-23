@@ -372,7 +372,7 @@ var JsTable = function(params) {
 	this.createTotalPageControl = function() {
 		var pageControl = $('<span />').attr({
 			'id': jsTable.tableId + "-totalPages",
-			'class' : 'totalPages',
+			'class' : 'totalPages'
 		})
 		.text('/ ' + jsTable.totalPages)
 		.get(0);
@@ -415,7 +415,7 @@ var JsTable = function(params) {
 	this.createTotalItemsControl = function() {
 		var pageControl = $('<span />').attr({
 			'id': jsTable.tableId + "-totalItems",
-			'class' : 'totalItems',
+			'class' : 'totalItems'
 		})
 		.text(0)
 		.get(0);
