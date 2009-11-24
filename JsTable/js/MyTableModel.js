@@ -32,15 +32,24 @@ var MyTableModel = function(cache) {
 				className: 'check',
 				text: '&nbsp;',
 				cellHeaderRenderer: function(cell) {
-					return '<th><input type="checkbox" id="produtoIds" /></th>';
+					return '<th><input type="checkbox" id="produtoIds" onclick="Index.setSelectedAll(this)" /></th>';
 				},
 				columnRenderer: function(row, col, model) {
-					var id = model.getData(row, col);
-					return '<td><input type="checkbox" name="produtoIds" value="' + id + '" /></td>';
+					var obj = model.getObject(row), checked = '';
+					if(obj.selected) {
+						checked = 'checked="checked"';
+					}
+					return '<td><input type="checkbox" name="produtoIds" onclick="Index.setSelected(' + row + ')" value="' + obj.id + '" ' + checked + ' /></td>';
 				}
 			},
 			{className:'codigo', text:'Código'}, 
-			{className:'versao', text:'Versão'}, 
+			{
+				className: 'versao', 
+				text: 'Versão',
+				cellHeaderRenderer: function(cell) {
+					return '<th><acronym title="' + cell.text + '">V</acronym></th>';
+				}
+			}, 
 			{className:'descricao', text:'Descrição'}, 
 			{
 				className:'acoes', 

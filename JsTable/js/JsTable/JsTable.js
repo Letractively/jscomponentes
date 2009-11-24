@@ -228,7 +228,8 @@ var JsTable = function(params) {
 			this.totalPageControl.innerHTML = "/" + this.totalPages;
 		}
 		if(this.currentPageControl) {
-			jQuery(this.currentPageControl).val(this.currentPage);
+			this.currentPageControl.value =
+			this.currentPageControl.defaultValue = this.currentPage;
 		}
 	};
 	
@@ -281,6 +282,10 @@ var JsTable = function(params) {
 				
 				if(this.value != "") {
 					numPage = parseInt(this.value);
+				}
+				if(isNaN(numPage)) {
+					this.value = this.defaultValue;
+					return false;
 				}
 				if(numPage > jsTable.totalPages) {
 					numPage = jsTable.totalPages;
@@ -374,7 +379,8 @@ var JsTable = function(params) {
 			'id': jsTable.tableId + "-currentPage",
 			'class' : 'number currentPage',
 			'maxlength' : 3,
-			'value' : 1
+			'value' : 1,
+			'defaultValue': 1
 		}).get(0);
 		return pageControl;
 	};

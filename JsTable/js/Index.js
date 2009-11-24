@@ -23,7 +23,7 @@ var Index = {
 	},
 	
 	showTableProdutosAdvance: function() {
-		var tableCCusto = new JsTable({
+		var tableCCusto = new JsTable ({
 			tableId: 'ccusto',
 			containerId: 'wrapper-ccusto',
 			pagingContainerId: 'page-ccusto',
@@ -40,6 +40,25 @@ var Index = {
 			CacheProduto.tableData
 		);
 		return tableModel;
+	},
+	
+	setSelectedAll: function(inputCheck) {
+		for(var index in cache) {
+			cache[index].selected = inputCheck.checked;
+		}
+		Index.setInputsChecked(inputCheck);
+	},
+	
+	setInputsChecked: function(inputCheck) {
+		var table  = inputCheck.parentNode.parentNode.parentNode.parentNode, check,
+		    checks = table.getElementsByTagName('input');
+		for(var i=0; i<checks.length; i++) {
+			checks[i].checked = inputCheck.checked;
+		}
+	},
+	
+	setSelected: function(row) {
+		cache[row].selected = !cache[row].selected;
 	}
 	
 };
