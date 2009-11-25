@@ -7,6 +7,7 @@ var Index = {
 	init: function() {
 		Index.showTableProdutos();
 		Index.showTableProdutosAdvance();
+		Index.showTableDespesa();
 	},
 	
 	showTableProdutos: function() {
@@ -15,7 +16,7 @@ var Index = {
 			containerId: 'wrapper-produto',
 			pagingContainerId: 'page-produto',
 			classNames: 'report',
-			itemsPerPage: 4
+			itemsPerPage: 2
 		});
 		
 		tableProduto.setTableModel(Index.getProdutoTableModel());
@@ -27,12 +28,25 @@ var Index = {
 			tableId: 'ccusto',
 			containerId: 'wrapper-ccusto',
 			pagingContainerId: 'page-ccusto',
-			itemsPerPage: 8
+			itemsPerPage: 2
 		});
 		
 		tableCCusto.setTableModel(new MyTableModel(cache));
 		tableCCusto.showTable();
 	},
+
+	showTableDespesa: function() {
+		var tableDespesa = new JsTable ({
+			tableId: 'despesa',
+			containerId: 'wrapper-despesa',
+			pagingContainerId: 'page-despesa',
+			itemsPerPage: 8
+		});
+		
+		tableDespesa.setTableModel(new DespesaTableModel(cacheDespesa));
+		tableDespesa.showTable();
+	},
+
 	
 	getProdutoTableModel: function() {
 		var tableModel = new JsDefaultTableModel (
