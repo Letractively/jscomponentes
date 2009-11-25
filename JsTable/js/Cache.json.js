@@ -7828,5 +7828,5 @@ var cache = [
 	{}
 ];
 	
-	//remove o último item da lista
-	cache.pop();
+//remove o último item da lista
+cache.pop();

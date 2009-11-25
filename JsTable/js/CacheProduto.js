@@ -9,8 +9,8 @@ var CacheProduto = {
 		{
 			className:'versao', 
 			text:'Versão',
-			cellHeaderRenderer: function(cell) {
-				return '<th><acronym title="'+ cell.text +'">V</acronym></th>';
+			cellHeaderRenderer: function(cell, columnNumber) {
+				return '<th class="sortby-' + cell.className + ' column-' + columnNumber + '"><acronym title="'+ cell.text +'">V</acronym></th>';
 			}
 		},
 		{className:'descricao', text:'Descrição'},
