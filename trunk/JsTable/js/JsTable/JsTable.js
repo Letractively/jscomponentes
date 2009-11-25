@@ -14,8 +14,8 @@ var JsTable = function(params) {
 	this.pagingContainerId = (params.pagingContainerId) ? params.pagingContainerId : null;
 	this.classNames = (params.classNames) ? params.classNames : null;
 	this.contextpath = (params.contextpath) ? (params.contextpath + "/") : "";
-	this.classNameForOdd = (params.classNameForOdd) ? params.classNameForOdd : null;
-	this.classNameForEven = (params.classNameForEven) ? params.classNameForEven : null;
+	this.classNameForOdd = (params.classNameForOdd) ? params.classNameForOdd : "odd";
+	this.classNameForEven = (params.classNameForEven) ? params.classNameForEven : "even";
 	this.model = {};
 	this.errors = [];
 	
@@ -111,10 +111,18 @@ var JsTable = function(params) {
 	};
 	
 	this.getBody = function() {
-		var tbody = "<tbody>";
-		for(var i=0; i<this.model.getNumRows() && i<this.itemsPerPage; i++) {
-			tbody += this.rowRenderer(i);
+		var tbody = "<tbody>", numCols;
+		
+		if(this.model.getNumRows() > 0) {
+			for(var i=0; i<this.model.getNumRows() && i<this.itemsPerPage; i++) {
+				tbody += this.rowRenderer(i);
+			}
 		}
+		else {
+			numCols = this.model.getColumns().length;
+			tbody  += '<td colspan="' + numCols +'" class="'+ this.classNameForOdd +'">Nenhum item foi encontrado.</td>';
+		}
+		
 		tbody += "</tbody>";
 		return tbody;
 	};
@@ -140,15 +148,16 @@ var JsTable = function(params) {
 	};
 	
 	this.rowHeaderRenderer = function(columns) {
-		var rowString = "<tr>", column;
+		var rowString = "<tr>", column, columnNumber = 0;
 		
 		for(var index in columns) {
 			column = columns[index];
+			columnNumber++;
 			if(typeof column.cellHeaderRenderer ===  'function') {
-				rowString += column.cellHeaderRenderer(column);
+				rowString += column.cellHeaderRenderer(column, columnNumber);
 			}
 			else {
-				rowString += this.cellHeaderRenderer(column);
+				rowString += this.cellHeaderRenderer(column, columnNumber);
 			}
 		}
 		
@@ -156,9 +165,9 @@ var JsTable = function(params) {
 		return rowString;
 	};
 	
-	this.cellHeaderRenderer = function(cell) {
+	this.cellHeaderRenderer = function(cell, columnNumber) {
 		var cellString = "";
-		cellString = "<th>" + cell.text + "</th>";
+		cellString = '<th class="sortby-' + cell.className + ' column-'+ columnNumber +'">' + cell.text + '</th>';
 		return cellString;
 	};
 	
@@ -449,10 +458,10 @@ var JsTable = function(params) {
 		for(var i=0; i<rows.length; i++) {
 			row = rows[i];
 			if(i%2) {
-				className = (this.classNameForOdd) ? this.classNameForOdd : "odd";
+				className = this.classNameForOdd;
 			}
 			else {
-				className = (this.classNameForEven) ? this.classNameForEven : "even";
+				className = this.classNameForEven;
 			}
 			jQuery(row).addClass(className);
 		}

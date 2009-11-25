@@ -25,14 +25,14 @@ var MyTableModel = function(cache) {
 	this.getNumRows = function() {
 		return this.cache.length;
 	};
-	
+		
 	this.getColumns = function() {
 	  return [
 			{
 				className: 'check',
 				text: '&nbsp;',
-				cellHeaderRenderer: function(cell) {
-					return '<th><input type="checkbox" id="produtoIds" onclick="Index.setSelectedAll(this)" /></th>';
+				cellHeaderRenderer: function(cell, columnNumber) {
+					return '<th class="sortby-' + cell.className + ' "><input type="checkbox" id="produtoIds" onclick="Index.setSelectedAll(this)" /></th>';
 				},
 				columnRenderer: function(row, col, model) {
 					var obj = model.getObject(row), checked = '';
