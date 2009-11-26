@@ -4,7 +4,8 @@
 
 @import url(tagbox.css);
 
-div#wrapper-produto {
+div#wrapper-produto,
+div#wrapper-ccusto {
 	margin-bottom: 10px;
 }
 
