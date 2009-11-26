@@ -500,8 +500,8 @@ var JsTable = function(params) {
 							this.asc = true;
 						}
 						
-						if(typeof columns[columnNumber].sortRenderer == 'function') {
-							columns[columnNumber].sortRenderer(columnName, columnNumber, jsTable.model, factor);
+						if(typeof columns[columnNumber].sortby == 'function') {
+							columns[columnNumber].sortby(columnName, columnNumber, jsTable.model, factor);
 						}
 						else {
 							jsTable.sortby(columnName, columnNumber, jsTable.model, factor);
@@ -521,7 +521,7 @@ var JsTable = function(params) {
 			var rawData = model.getRawData(),
 					index   = (rawData[0].length) ? columnNumber : columnName;
 			rawData.sort(function(a, b) {
-				if(a[index] > b[index]) return 1 * factor;
+				if(a[index] > b[index]) return  1 * factor;
 				if(a[index] < b[index]) return -1 * factor;
 				return 0;
 			});
