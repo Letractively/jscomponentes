@@ -136,11 +136,13 @@ var JsTable = function(params) {
 				
 		for(var col = 0; col < columns.length; col++) {
 			column = columns[col];
-			if(typeof column.columnRenderer === 'function') {
-				rowString += column.columnRenderer(row, col, this.model);
-			}
-			else {
-				rowString += this.columnRenderer(row, col, this.model);
+			if(column) {
+				if(typeof column.columnRenderer === 'function') {
+					rowString += column.columnRenderer(row, col, this.model);
+				}
+				else {
+					rowString += this.columnRenderer(row, col, this.model);
+				}
 			}
 		}
 		
@@ -153,11 +155,13 @@ var JsTable = function(params) {
 		
 		for(var index in columns) {
 			column = columns[index];
-			if(typeof column.cellHeaderRenderer ===  'function') {
-				rowString += column.cellHeaderRenderer(column, columnNumber);
-			}
-			else {
-				rowString += this.cellHeaderRenderer(column, columnNumber);
+			if(column) {
+				if(typeof column.cellHeaderRenderer ===  'function') {
+					rowString += column.cellHeaderRenderer(column, columnNumber);
+				}
+				else {
+					rowString += this.cellHeaderRenderer(column, columnNumber);
+				}
 			}
 			columnNumber++;
 		}
@@ -475,22 +479,32 @@ var JsTable = function(params) {
 		var table = document.getElementById(this.tableId),
 		    thead = table.tHead,
 				ths   = thead.getElementsByTagName('th'),
-				th, columnName, columnNumber,
+				th, columnName, columnNumber, factor,
 				columns = this.model.getColumns();
 		
 		for(var i=0; i<ths.length; i++) {
 			th = ths[i];
 			if(columns[i].sort != false) {
+				th.asc = true;
 				if(th.className.indexOf('sortby-') > -1) {
 					jQuery(th).click(function(){
 						columnName   = this.className.match(/sortby-(\w+)/)[1];
 						columnNumber = this.className.match(/column-(\d+)/)[1];
 						
-						if(typeof columns[columnNumber].sortRenderer == 'function') {
-							columns[columnNumber].sortRenderer(columnName, columnNumber, jsTable.model);
+						if(this.asc) {
+							factor = 1;
+							this.asc = false;
 						}
 						else {
-							jsTable.sortby(columnName, columnNumber, jsTable.model);
+							factor = -1;
+							this.asc = true;
+						}
+						
+						if(typeof columns[columnNumber].sortRenderer == 'function') {
+							columns[columnNumber].sortRenderer(columnName, columnNumber, jsTable.model, factor);
+						}
+						else {
+							jsTable.sortby(columnName, columnNumber, jsTable.model, factor);
 						}
 						
 						jsTable.showPagingRows(0, jsTable.itemsPerPage);
@@ -502,13 +516,16 @@ var JsTable = function(params) {
 		}
 	};
 	
-	this.sortby = function(columnName, columnNumber, model) {
-		var rawData = model.getRawData();
-		rawData.sort(function(a, b) {
-			if(a[columnNumber] > b[columnNumber]) return 1;
-			if(a[columnNumber] < b[columnNumber]) return -1;
-			return 0;
-		});
+	this.sortby = function(columnName, columnNumber, model, factor) {
+		if(model.getNumRows() > 0) {
+			var rawData = model.getRawData(),
+					index   = (rawData[0].length) ? columnNumber : columnName;
+			rawData.sort(function(a, b) {
+				if(a[index] > b[index]) return 1 * factor;
+				if(a[index] < b[index]) return -1 * factor;
+				return 0;
+			});
+		}
 	};
 	
 	//-------------------- controles para paginação --------------------------------
