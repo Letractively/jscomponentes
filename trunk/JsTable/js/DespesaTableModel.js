@@ -2,11 +2,11 @@
  * MyTableModel
  * TableModel para ser usado em conjuto com o componente JsTable
  */
-var DespesaTableModel = function(cache) {
-	this.cache = cache;
+var DespesaTableModel = function(data) {
+	this.data = data;
 	
 	this.getData = function(row, col) {
-	  var obj = this.cache[row];
+	  var obj = this.data[row];
 		
 	  switch (col) {
 		  case 0: return obj.codigo;
@@ -25,11 +25,19 @@ var DespesaTableModel = function(cache) {
 	};
 	
 	this.getObject = function(row) {
-		return this.cache[row];
+		return this.data[row];
 	};
 	
 	this.getNumRows = function() {
-		return this.cache.length;
+		return this.data.length;
+	};
+	
+	this.getNumCols = function() {
+		return this.getColumns().length;
+	};
+	
+	this.getRawData = function() {
+		return this.data;
 	};
 	
 	this.getColumns = function() {

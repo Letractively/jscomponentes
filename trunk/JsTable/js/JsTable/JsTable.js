@@ -79,6 +79,7 @@ var JsTable = function(params) {
 				this.initPaging();
 			}
 			
+			this.setSorter();
 			this.stripedTable();
 		}
 	};
@@ -119,7 +120,7 @@ var JsTable = function(params) {
 			}
 		}
 		else {
-			numCols = this.model.getColumns().length;
+			numCols = this.model.getNumCols();
 			tbody  += '<td colspan="' + numCols +'" class="'+ this.classNameForOdd +'">Nenhum item foi encontrado.</td>';
 		}
 		
@@ -152,13 +153,13 @@ var JsTable = function(params) {
 		
 		for(var index in columns) {
 			column = columns[index];
-			columnNumber++;
 			if(typeof column.cellHeaderRenderer ===  'function') {
 				rowString += column.cellHeaderRenderer(column, columnNumber);
 			}
 			else {
 				rowString += this.cellHeaderRenderer(column, columnNumber);
 			}
+			columnNumber++;
 		}
 		
 		rowString += "</tr>";
@@ -228,7 +229,8 @@ var JsTable = function(params) {
 	
 	this.showItemsPerPage = function() {
 		if(this.itemsPerPageControl) {
-			jQuery(this.itemsPerPageControl).val(this.itemsPerPage);
+			var total = (this.itemsPerPage <= this.model.getNumRows()) ? this.itemsPerPage : this.model.getNumRows();
+			jQuery(this.itemsPerPageControl).val(total);
 		}
 	}
 	
@@ -467,6 +469,48 @@ var JsTable = function(params) {
 		}
 	};
 
+	//-------------------- controles para ordenação --------------------------------
+	
+	this.setSorter = function() {
+		var table = document.getElementById(this.tableId),
+		    thead = table.tHead,
+				ths   = thead.getElementsByTagName('th'),
+				th, columnName, columnNumber,
+				columns = this.model.getColumns();
+		
+		for(var i=0; i<ths.length; i++) {
+			th = ths[i];
+			if(columns[i].sort != false) {
+				if(th.className.indexOf('sortby-') > -1) {
+					jQuery(th).click(function(){
+						columnName   = this.className.match(/sortby-(\w+)/)[1];
+						columnNumber = this.className.match(/column-(\d+)/)[1];
+						
+						if(typeof columns[columnNumber].sortRenderer == 'function') {
+							columns[columnNumber].sortRenderer(columnName, columnNumber, jsTable.model);
+						}
+						else {
+							jsTable.sortby(columnName, columnNumber, jsTable.model);
+						}
+						
+						jsTable.showPagingRows(0, jsTable.itemsPerPage);
+						jsTable.currentPage = 1;
+						jsTable.setStatusPaging();
+					});
+				}
+			}
+		}
+	};
+	
+	this.sortby = function(columnName, columnNumber, model) {
+		var rawData = model.getRawData();
+		rawData.sort(function(a, b) {
+			if(a[columnNumber] > b[columnNumber]) return 1;
+			if(a[columnNumber] < b[columnNumber]) return -1;
+			return 0;
+		});
+	};
+	
 	//-------------------- controles para paginação --------------------------------
 	
 	if(this.pagingContainerId) {
