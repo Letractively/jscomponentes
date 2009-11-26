@@ -14,6 +14,14 @@ var JsDefaultTableModel = function(columns, data) {
 		return this.data.length;
 	};
 	
+	this.getNumCols = function() {
+		return this.data.length;
+	};
+	
+	this.getRawData = function() {
+		return this.data;
+	};
+	
 	this.getColumns = function() {
 	  return this.columns;
 	};
