@@ -12,10 +12,15 @@ var CacheProduto = {
 			cellHeaderRenderer: function(cell, columnNumber) {
 				return '<th class="sortby-' + cell.className + ' column-' + columnNumber + '"><acronym title="'+ cell.text +'">V</acronym></th>';
 			},
-			sortRenderer: function(columnName, columnNumber, model) {
-				var rawData = model.getRawData();
+			sortRenderer: function(columnName, columnNumber, model, factor) {
+				var rawData = model.getRawData(), result;
 				rawData.sort(function(a, b) {
-					var result = a[columnNumber] - b[columnNumber];
+					if(factor == 1) {
+						result = a[columnNumber] - b[columnNumber];
+					}
+					else {
+						result = b[columnNumber] - a[columnNumber];
+					}
 					return result;
 				});
 			}
