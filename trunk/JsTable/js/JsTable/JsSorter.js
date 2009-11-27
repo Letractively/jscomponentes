@@ -7,8 +7,8 @@ var JsSorter = {
 	sortByNumber: function(columnName, columnNumber, model, factor) {
 		var rawData = model.getRawData(), result, valor1, valor2;
 		rawData.sort(function(a, b) {
-			valor1 = JsSorter.parseNumber(a[columnName]);
-			valor2 = JsSorter.parseNumber(b[columnName]);
+			valor1 = JsSorter.parseNumber(a[columnNumber] || a[columnName]);
+			valor2 = JsSorter.parseNumber(b[columnNumber] || b[columnName]);
 			result = valor1 - valor2;
 			return result * factor;
 		});
@@ -18,7 +18,7 @@ var JsSorter = {
 		var number;
 		number = valor.replace(/\./g, "");
 		number = number.replace(/\,/g, ".");
-		number = number.replace(/[^0-9.]/g, "");
+		number = number.replace(/[^0-9.-]/g, "");
 		number = parseFloat(number);
 		return number;
 	}
