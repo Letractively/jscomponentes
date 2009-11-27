@@ -57,23 +57,15 @@ var DespesaTableModel = function(data) {
 			{className:'nome', text:'Nome'},
 			{className:'quantidade', text:'Quantidade'},
 			{
-				className:'valor', 
-				text:'Valor',
+				className: 'valor', 
+				text: 'Valor',
 				sortby: function(columnName, columnNumber, model, factor) {
-				var rawData = model.getRawData(), result, valor1, valor2;
+					var rawData = model.getRawData(), result, valor1, valor2;
 					rawData.sort(function(a, b) {
-						
 						valor1 = model.parseNumber(a[columnName]);
 						valor2 = model.parseNumber(b[columnName]);
-						
-						if(factor == 1) {
-							result = valor1 - valor2;
-						}
-						else {
-							result = valor2 - valor1;
-						}
-						
-						return result;
+						result = valor1 - valor2;
+						return result * factor;
 					});
 				}
 			},
