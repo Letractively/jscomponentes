@@ -172,8 +172,15 @@ var JsTable = function(params) {
 	
 	this.cellHeaderRenderer = function(cell, columnNumber) {
 		var cellString = "";
-		cellString = '<th class="sortby-' + cell.className + ' column-'+ columnNumber +'">' + cell.text + '</th>';
+		cellString = '<th class="' + this.cellIsSorteable(cell) + 'column-'+ columnNumber +'">' + cell.text + '</th>';
 		return cellString;
+	};
+	
+	this.cellIsSorteable = function(cell) {
+		if(cell.sort != false) {
+			return "sortby-" + cell.className + " ";
+		}
+		return "";
 	};
 	
 	this.columnRenderer = function(row, col, model) {
@@ -518,15 +525,40 @@ var JsTable = function(params) {
 	
 	this.sortby = function(columnName, columnNumber, model, factor) {
 		if(model.getNumRows() > 0) {
-			var rawData = model.getRawData(),
+			var rawData = model.getRawData(), valor1, valor2
 					index   = (rawData[0].length) ? columnNumber : columnName;
+			
 			rawData.sort(function(a, b) {
-				if(a[index] > b[index]) return  1 * factor;
-				if(a[index] < b[index]) return -1 * factor;
+				valor1 = jsTable.removeEspecialChars(a[index]);
+				valor2 = jsTable.removeEspecialChars(b[index]);
+				
+				if(valor1 > valor2) return  1 * factor;
+				if(valor1 < valor2) return -1 * factor;
+				
 				return 0;
 			});
 		}
 	};
+	
+	this.removeEspecialChars = function(text) {
+		var result = "";
+		if(text) {
+			text = text.replace(/[ÁÀÂÃ]/g, "A");
+			text = text.replace(/[áàâã]/g, "a");
+			text = text.replace(/[ÉÈÊ]/g, "E");
+			text = text.replace(/[éèê]/g, "e");
+			text = text.replace(/[ÍÌÎ]/g, "I");
+			text = text.replace(/[íìî]/g, "i");
+			text = text.replace(/[ÓÒÔÕ]/g, "O");
+			text = text.replace(/[óòôõ]/g, "o");
+			text = text.replace(/[ÚÙÛÜ]/g, "U");
+			text = text.replace(/[úùûü]/g, "u");
+			text = text.replace(/Ç/g, "C");
+			text = text.replace(/ç/g, "c");
+			result = text;
+		}
+		return result;
+	}
 	
 	//-------------------- controles para paginação --------------------------------
 	

@@ -12,3 +12,7 @@ div#wrapper-ccusto {
 div.paginacao {
 	margin-bottom: 5px;
 }
+
+th[class*=sortby] {
+	cursor: pointer;
+}
