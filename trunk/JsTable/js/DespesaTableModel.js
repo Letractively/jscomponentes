@@ -40,14 +40,6 @@ var DespesaTableModel = function(data) {
 		return this.data;
 	};
 	
-	this.parseNumber = function(valor) {
-		var number;
-		number = valor.replace(/\./g, "");
-		number = number.replace(/\,/g, ".");
-		number = parseFloat(number);
-		return number;
-	};
-	
 	this.getColumns = function() {
 	  return [
 			{className:'codigo', text:'Código'}, 
@@ -59,15 +51,7 @@ var DespesaTableModel = function(data) {
 			{
 				className: 'valor', 
 				text: 'Valor',
-				sortby: function(columnName, columnNumber, model, factor) {
-					var rawData = model.getRawData(), result, valor1, valor2;
-					rawData.sort(function(a, b) {
-						valor1 = model.parseNumber(a[columnName]);
-						valor2 = model.parseNumber(b[columnName]);
-						result = valor1 - valor2;
-						return result * factor;
-					});
-				}
+				sortby: JsSorter.sortByNumber
 			},
 			{className:'nomeTipoRecurso', text:'Tipo Recurso'},
 			{className:'idAtividade', text:'Atividade'},
