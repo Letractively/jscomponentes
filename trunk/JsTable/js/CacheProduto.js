@@ -28,7 +28,7 @@ var CacheProduto = {
 		{className:'descricao', text:'Descrição'},
 		{
 			className: 'unegocio', 
-			text: 'Unidade de Negócio',
+			text: 'Unidade de Negócio'
 		},
 		{className:'custo', text:'Custo'},
 		{className:'preco', text:'Preço'},
