@@ -51,7 +51,7 @@ var DespesaTableModel = function(data) {
 			{
 				className: 'valor', 
 				text: 'Valor',
-				sortby: JsSorter.sortByNumber
+				sortBy: JsSorter.sortByFormatNumber
 			},
 			{className:'nomeTipoRecurso', text:'Tipo Recurso'},
 			{className:'idAtividade', text:'Atividade'},
