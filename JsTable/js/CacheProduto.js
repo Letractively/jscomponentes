@@ -12,7 +12,7 @@ var CacheProduto = {
 			cellHeaderRenderer: function(cell, columnNumber) {
 				return '<th class="sortby-' + cell.className + ' column-' + columnNumber + '"><acronym title="'+ cell.text +'">V</acronym></th>';
 			},
-			sortby: JsSorter.sortByNumber
+			sortBy: JsSorter.sortOnlyNumber
 		},
 		{className:'descricao', text:'Descrição'},
 		{

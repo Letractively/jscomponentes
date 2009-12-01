@@ -399,7 +399,7 @@ var JsTable = function(params) {
 		var pageControl = jQuery('<input />').attr({
 			'type': 'text',
 			'id': jsTable.tableId + "-currentPage",
-			'class' : 'number currentPage',
+			'class' : 'currentPage',
 			'maxlength' : 3,
 			'value' : 1,
 			'defaultValue': 1
@@ -443,7 +443,7 @@ var JsTable = function(params) {
 		var pageControl = jQuery('<input />').attr({
 			'type': 'text',
 			'id': jsTable.tableId + "-itemsPerPage",
-			'class' : 'number itemsPerPage',
+			'class' : 'itemsPerPage',
 			'maxlength' : 3,
 			'value' : jsTable.itemsPerPage,
 			'defaultValue' : jsTable.itemsPerPage
@@ -507,11 +507,11 @@ var JsTable = function(params) {
 							this.asc = true;
 						}
 						
-						if(typeof columns[columnNumber].sortby == 'function') {
-							columns[columnNumber].sortby(columnName, columnNumber, jsTable.model, factor);
+						if(typeof columns[columnNumber].sortBy == 'function') {
+							columns[columnNumber].sortBy(columnName, columnNumber, jsTable.model, factor);
 						}
 						else {
-							jsTable.sortby(columnName, columnNumber, jsTable.model, factor);
+							jsTable.sortBy(columnName, columnNumber, jsTable.model, factor);
 						}
 						
 						jsTable.showPagingRows(0, jsTable.itemsPerPage);
@@ -523,7 +523,7 @@ var JsTable = function(params) {
 		}
 	};
 	
-	this.sortby = function(columnName, columnNumber, model, factor) {
+	this.sortBy = function(columnName, columnNumber, model, factor) {
 		if(model.getNumRows() > 0) {
 			var rawData = model.getRawData(), valor1, valor2
 					index   = (rawData[0].length) ? columnNumber : columnName;
@@ -543,6 +543,7 @@ var JsTable = function(params) {
 	this.removeEspecialChars = function(text) {
 		var result = "";
 		if(text) {
+			text = text.toString().toLowerCase();
 			text = text.replace(/[ÁÀÂÃ]/g, "A");
 			text = text.replace(/[áàâã]/g, "a");
 			text = text.replace(/[ÉÈÊ]/g, "E");
