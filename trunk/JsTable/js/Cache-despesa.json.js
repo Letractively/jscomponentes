@@ -18,7 +18,7 @@ var cacheDespesa = [
 		nomeItemCusto: 'PLANEJAMENTO E CONTROLE',
 		nome: 'DESPESA 1',
 		quantidade: '1,00',
-		valor: '132,78',
+		valor: '',
 		nomeTipoRecurso: 'OUTROS',
 		idAtividade: 'AT-1',
 		avanco: '10.0'
@@ -30,7 +30,7 @@ var cacheDespesa = [
 		nomeItemCusto: 'PLANEJAMENTO E CONTROLE',
 		nome: 'DESPESA 1',
 		quantidade: '1,00',
-		valor: '319,92',
+		valor: '',
 		nomeTipoRecurso: 'OUTROS',
 		idAtividade: 'AT-1',
 		avanco: '10.0'

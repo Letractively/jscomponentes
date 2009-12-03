@@ -52,7 +52,7 @@ var CacheProduto = {
 		['40156', '1', "Davene Des Spray Alma Bela Do Re Mi", 'Infantil', '0,01', '0,01', '0,01', '0,01'],
 		['40157', '1', "Davene Des Spray Alma Bela Do Re Mi", 'Infantil', '0,01', '0,01', '0,01', '0,01'],
 		['40158', '1', "Davene Des Spray Alma Bela Do Re Mi", 'Infantil', '0,01', '0,01', '0,01', '0,01'],
-		['40159', '1', "Davene Des Spray Alma Bela Do Re Mi", 'Infantil', '0,01', '0,01', '0,01', '0,01'],
+		['40159', '4', "Davene Des Spray Alma Bela Do Re Mi", 'Infantil', '0,01', '0,01', '0,01', '0,01'],
 		['40160', '1', "Davene Des Spray Alma Bela Do Re Mi", 'Infantil', '0,01', '0,01', '0,01', '0,01'],
 		['40149', '0', "Davene Des Spray Alma Linda Lactee", 'Infantil', '0,01', '0,01', '0,01', '0,01'],
 		['40150', '0', "Dav. D Sp Alma Leve Leite de Aveia Davene", 'Infantil', '0,01', '0,01', '0,01', '0,01'],
