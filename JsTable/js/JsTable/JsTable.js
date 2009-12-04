@@ -43,6 +43,10 @@ var JsTable = function(params) {
 		this.rowRenderer = renderer;
 	};
 	
+	this.setHeaderRenderer = function(renderer) {
+		this.getHeader = renderer;
+	};
+	
 	//---------- métodos para construção da tabela -----------------------------
 	
 	this.setTableModel = function(tableModel) {
@@ -485,7 +489,7 @@ var JsTable = function(params) {
 	this.setSorter = function() {
 		var table = document.getElementById(this.tableId),
 		    thead = table.tHead,
-				ths   = thead.getElementsByTagName('th'),
+				ths   = thead.rows[thead.rows.length-1].cells,
 				th, columnName, columnNumber, factor,
 				columns = this.model.getColumns();
 		
