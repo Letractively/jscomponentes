@@ -44,9 +44,25 @@ var Index = {
 		});
 		
 		tableDespesa.setTableModel(new DespesaTableModel(cacheDespesa));
+		tableDespesa.setFooterRenderer(Index.getFooter);
 		tableDespesa.showTable();
 	},
 
+	
+	
+	getFooter: function() {
+		var footer = '<tfoot>', model = this.model;
+		footer += 
+			'<tr>'
+				+ '<td colspan="5">&nbsp;</td>'
+				+ '<td class="label-total">Total</td>'
+				+ '<td class="number">' + model.getTotal(6) + '</td>'
+				+ '<td colspan="3">&nbsp;</td>'
+		+ '</tr>'
+		footer += '</tfoot>'
+		return footer;
+	},
+	
 	
 	getProdutoTableModel: function() {
 		var tableModel = new JsDefaultTableModel (
@@ -64,10 +80,11 @@ var Index = {
 	},
 	
 	setInputsChecked: function(inputCheck) {
-		var table  = inputCheck.parentNode.parentNode.parentNode.parentNode, check,
-		    checks = table.getElementsByTagName('input');
-		for(var i=0; i<checks.length; i++) {
-			checks[i].checked = inputCheck.checked;
+		var table = $(inputCheck).parents('table').get(0);
+		if(table) {
+			$('input[name=produtoIds]', table).each(function() {
+				this.checked = inputCheck.checked;
+			});
 		}
 	},
 	
