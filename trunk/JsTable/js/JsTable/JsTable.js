@@ -47,6 +47,10 @@ var JsTable = function(params) {
 		this.getHeader = renderer;
 	};
 	
+	this.setFooterRenderer = function(renderer) {
+		this.getFooter = renderer;
+	};
+	
 	//---------- métodos para construção da tabela -----------------------------
 	
 	this.setTableModel = function(tableModel) {

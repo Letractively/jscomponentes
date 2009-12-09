@@ -40,6 +40,17 @@ var DespesaTableModel = function(data) {
 		return this.data;
 	};
 	
+	this.getTotal = function(columnNumber) {
+		var total = 0, valor;
+		for(var i=0; i<this.getNumRows(); i++) {
+			valor = this.getData(i, columnNumber).toString().currencyToFloat();
+			if(valor != '' && !isNaN(valor)) {
+				total += valor;
+			}
+		}
+		return total.numberFormat(2, ",", ".");
+	};
+	
 	this.getColumns = function() {
 	  return [
 			{className:'codigo', text:'Código'}, 
@@ -51,7 +62,11 @@ var DespesaTableModel = function(data) {
 			{
 				className: 'valor', 
 				text: 'Valor',
-				sortBy: JsSorter.sortByFormatNumber
+				sortBy: JsSorter.sortByFormatNumber,
+				columnRenderer: function(row, col, model) {
+					var data = model.getData(row, col);
+					return '<td class="number">' + data + '</td>';
+				}
 			},
 			{className:'nomeTipoRecurso', text:'Tipo Recurso'},
 			{className:'idAtividade', text:'Atividade'},

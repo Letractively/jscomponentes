@@ -16,3 +16,7 @@ div.paginacao {
 th[class*=sortby] {
 	cursor: pointer;
 }
+
+.number {
+	text-align: right;
+}
