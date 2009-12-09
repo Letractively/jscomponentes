@@ -126,17 +126,16 @@ String.prototype.isCNPJ = function(){
  *
  */
 String.prototype.currencyToFloat = function() {
-	var result   = "";
-	var currency = this;
+	var number = this;
 	
-	if(currency.length) {
-		currency = currency.replace(/\./, "");
-		currency = currency.replace(/\,/, ".");
-		currency = parseFloat(currency);
-		result   = currency
+	if(number.length) {
+		number = number.replace(/\./, "");
+		number = number.replace(/\,/, ".");
+		number = number.replace(/[^0-9.-]/g, "");
+		number = parseFloat(number);
 	}
 
-	return result;
+	return number;
 }
 
 
