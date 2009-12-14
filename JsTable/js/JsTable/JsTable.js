@@ -165,7 +165,7 @@ var JsTable = function(params) {
 			column = columns[index];
 			if(column) {
 				if(typeof column.cellHeaderRenderer ===  'function') {
-					rowString += column.cellHeaderRenderer(column, columnNumber);
+					rowString += column.cellHeaderRenderer(column, columnNumber, this.model);
 				}
 				else {
 					rowString += this.cellHeaderRenderer(column, columnNumber);
