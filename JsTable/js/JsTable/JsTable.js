@@ -43,6 +43,10 @@ var JsTable = function(params) {
 		this.rowRenderer = renderer;
 	};
 	
+	this.setRowNoItemRenderer = function(renderer) {
+		this.rowNoItemRenderer = renderer;
+	};
+	
 	this.setHeaderRenderer = function(renderer) {
 		this.getHeader = renderer;
 	};
@@ -128,8 +132,7 @@ var JsTable = function(params) {
 			}
 		}
 		else {
-			numCols = this.model.getNumCols();
-			tbody  += '<td colspan="' + numCols +'" class="'+ this.classNameForOdd +'">Nenhum item foi encontrado.</td>';
+			tbody  += this.rowNoItemRenderer(this.model);
 		}
 		
 		tbody += "</tbody>";
@@ -156,6 +159,11 @@ var JsTable = function(params) {
 		
 		rowString += "</tr>";
 		return rowString;
+	};
+	
+	this.rowNoItemRenderer = function() {
+		var numCols = this.model.getNumCols();
+		return '<td colspan="' + numCols +'" class="'+ this.classNameForOdd +'">Nenhum item foi encontrado.</td>';;
 	};
 	
 	this.rowHeaderRenderer = function(columns) {
