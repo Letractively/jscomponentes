@@ -8,7 +8,6 @@
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
 var Browser = {
 	
 	//atributos publicos
