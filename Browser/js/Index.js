@@ -65,15 +65,16 @@ var Index = {
 	buildTable: function() {
 		var table = document.getElementById('properties'),
 		    tbody = table.appendChild(document.createElement('tbody')),
-		    pattern = /addBookmark|installSearchEngine|getPageSize|getScroll/;
+		    pattern = /addBookmark|installSearchEngine|getPageSize|getScroll/,
+				row, cellProperty, cellValue;
 		
 		//percorrendo o objeto Browser
 		for(var property in Browser) {
 			if(pattern.test(property)) continue;
 			
-			var row          = tbody.insertRow(tbody.rows.length);
-			var cellProperty = row.insertCell(row.cells.length);
-			var cellValue    = row.insertCell(row.cells.length);
+			row          = tbody.insertRow(tbody.rows.length);
+			cellProperty = row.insertCell(row.cells.length);
+			cellValue    = row.insertCell(row.cells.length);
 			
 			cellProperty.innerHTML = property;
 			cellValue.innerHTML    = Browser[property];
