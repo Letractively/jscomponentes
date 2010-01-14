@@ -55,6 +55,11 @@ var NumberFormat = {
 		
 		var inputValue    = oInput.value;
 		var oldInputValue = inputValue;
+		var sinal         = "";
+		
+		if(inputValue.match('-')) {
+			sinal = "-";
+		}
 		
 		//remove no-digits
 		inputValue = inputValue.replace(/\D/g, "");
@@ -81,7 +86,7 @@ var NumberFormat = {
 		inputValue = newInt + oMaskOption.FRACTION_SEPARATOR + frac;
 		
 		if(oldInputValue != inputValue) {
-			oInput.value = inputValue;
+			oInput.value = sinal + inputValue;
 		}
 	},
 	
@@ -89,7 +94,7 @@ var NumberFormat = {
 	numberOnly: function(e) {
 		var keynum;
 		var keychar;
-		var numCheck = /\d/;
+		var numCheck = /[0-9-]/;
 		var acceptKeyNum = /8|9|3[5-9]|46/;
 		var acceptKeyNumWithCtrlKey = /3[5-9]|46|118/;
 		
