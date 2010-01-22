@@ -43,8 +43,18 @@ var JsSorter = {
 			else if(date1 < date2) {
 				return -1 * factor;
 			}
-			return 0;
+			return JsSorter.checkIsSpace(string1, string2) * factor;
 		});
+	},
+	
+	checkIsSpace: function(a, b) {
+		if(a == "" && b != "") {
+			return 1;
+		}
+		else if(a != "" && b == "") {
+			return -1;
+		}
+		return 0;
 	},
 	
 	sortNumber: function(a, b) {
