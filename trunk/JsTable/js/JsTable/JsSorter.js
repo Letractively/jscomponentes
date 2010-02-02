@@ -86,6 +86,30 @@ var JsSorter = {
 		}
 		
 		return date
+	},
+	
+	/*
+	strToDate: function(str) {
+			var data = str.split('/'), date;
+			if(data.length == 3) {
+					var yhms = data[2].split(' ');
+					if(yhms.length==2){
+							var ano = yhms[0];
+							var hms = yhms[1].split(':');
+							if(hms.length==3){
+									date = new Date(ano, data[1] - 1, data[0],hms[0],hms[1],hms[2]);
+							}
+					}
+					if(yhms.length==1){
+							date = new Date(data[2], data[1] - 1, data[0]);    
+					}
+			}
+			else if(data.length == 2) {
+					date = new Date(data[1], data[0] - 1, 01);
+			}
+			
+			return date
 	}
+	*/
 
 };
