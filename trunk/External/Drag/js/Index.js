@@ -4,7 +4,6 @@
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
 var Index = {
 
 	init: function() {
@@ -12,17 +11,20 @@ var Index = {
 	},
 
 	setDrag: function() {
-		var div   = document.getElementById("drag");
-		var title = div.getElementsByTagName('h3')[0];
+		var div    = document.getElementById("drag"),
+		    title  = div.getElementsByTagName('h3')[0],
+				limitX = (Browser.getPageSize().viewWidth  - div.offsetWidth) - 2,
+				limitY = (Browser.getPageSize().viewHeight - div.offsetHeight) - 2;
 		
 		div.style.top  = "212px";
 		div.style.left = "9px";
 		
 		//usando componente Drag
-		Drag.init(title, div);
+		Drag.init(title, div, 2, limitX, 2, limitY);
 	}
 
 };
 
 //inicializacao
 window.onload = Index.init;
+window.onresize = Index.setDrag;

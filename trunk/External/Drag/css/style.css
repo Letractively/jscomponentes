@@ -15,6 +15,7 @@ div#drag {
 	border:1px solid #000;
 	font:10px Verdana, Arial, Helvetica, sans-serif;
 	background:#EAEAF4;
+	overflow: hidden;
 }
 
 div#drag h3 {
