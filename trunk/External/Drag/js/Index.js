@@ -11,6 +11,9 @@ var Index = {
 	},
 
 	setDrag: function() {
+		if(typeof Browser === 'undefined') { alert('Browser.js is required'); return false; }
+		if(typeof Drag === 'undefined') { alert('Drag.js is required'); return false; }
+		
 		var div    = document.getElementById("drag"),
 		    title  = div.getElementsByTagName('h3')[0],
 				limitX = (Browser.getPageSize().viewWidth  - div.offsetWidth) - 2,
