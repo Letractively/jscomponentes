@@ -477,6 +477,16 @@ var JsTable = function(params) {
 		return pageControl;
 	};
 	
+	this.createInputSearch = function() {
+		var input = jQuery('<input />').attr({
+			'type': 'text',
+			'id': jsTable.tableId + "-inputSearch",
+			'class' : 'search'
+		})
+		.get(0);
+		return input;
+	};
+	
 	//-------------------- stripedTable --------------------------------
 	
 	this.stripedTable = function() {
