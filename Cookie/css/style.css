@@ -6,13 +6,15 @@
  */
 
 input[type='text'] {
-	border: 1px solid #000;
-	background: #D8BFD8;
+	border: 1px solid #6E93B0;
+	background: #EAF2F7;
+	padding: 2px;
+	-moz-border-radius: 8px;
 }
 
 input[type='text']:hover {
 	border: 1px solid #000;
-	background: #6A5ACD;
+	background: #fff;
 	color: #FFF;
 }
 
@@ -21,6 +23,25 @@ input[type='text']:focus {
 	background: #FFF;
 	color: #000;
 }
+
+input.button {
+	padding: 4px 4px 4px 22px;
+	border: 2px outset #ccc;
+	-moz-border-radius: 8px;
+}
+
+input.button:hover {
+	border-style: inset;
+}
+
+input[type='submit'] {
+	background: url(images/save.png) no-repeat 5px;
+}
+
+input[type='reset'] {
+	background: url(images/deletar.png) no-repeat 5px;
+}
+
 
 img {
 	cursor: pointer;
