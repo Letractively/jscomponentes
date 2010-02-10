@@ -15,7 +15,6 @@ input[type='text'] {
 input[type='text']:hover {
 	border: 1px solid #000;
 	background: #fff;
-	color: #FFF;
 }
 
 input[type='text']:focus {
