@@ -1,4 +1,4 @@
-/**
+﻿/**
  *
  * Objeto Literal CSS. Documentacao completa disponivel em: 
  * http://code.google.com/p/jscomponentes/wiki/CSS
@@ -8,68 +8,60 @@
  * @author: Edy Segura - edy@segura.pro.br
  * 
  */
-
 var CSS = {
 	
-	getComputed: function(oElement, sCssProperty) {
-		
-		if(oElement.currentStyle) {
-			sCssProperty = CSS.formatPropertyCSS(sCssProperty);
-			return oElement.currentStyle[sCssProperty];
+	getComputed: function(element, cssProperty) {
+		if(element.currentStyle) {
+			cssProperty = CSS.formatPropertyCSS(cssProperty);
+			return element.currentStyle[cssProperty];
 		}
 		else if(window.getComputedStyle) {
-			var oComputedStyle = window.getComputedStyle(oElement, "");
-			return oComputedStyle.getPropertyValue(sCssProperty);
+			var computedStyle = window.getComputedStyle(element, "");
+			return computedStyle.getPropertyValue(cssProperty);
+		}
+		return false;
+	},	
+	
+	formatPropertyCSS: function(cssProperty) {
+		var formatPropertyCSS = '',
+		    splitCssProperty  = cssProperty.split("-");
+		
+		if(splitCssProperty.length > 1) {
+			formatPropertyCSS = splitCssProperty[0];
+			
+			for(var i=1; i<splitCssProperty.length; i++) {
+				formatPropertyCSS += (splitCssProperty[i].charAt(0).toUpperCase() + 
+															splitCssProperty[i].substr(1, splitCssProperty[i].length));
+			}
+		}
+		else {
+			formatPropertyCSS = splitCssProperty[0];
 		}
 		
-		return false;
-	},//fim getComputed
+		return formatPropertyCSS;
+	},	
 	
-	
-	formatPropertyCSS: function(sCssProperty) {
-		var sFormatPropertyCSS = new String;
-		var aSplitCssProperty  = sCssProperty.split("-");
-		
-		if(aSplitCssProperty.length > 1) {
-			sFormatPropertyCSS = aSplitCssProperty[0];
-			
-			for(var i=1; i<aSplitCssProperty.length; i++) {
-				sFormatPropertyCSS += (aSplitCssProperty[i].charAt(0).toUpperCase() + 
-															 aSplitCssProperty[i].substr(1, aSplitCssProperty[i].length));
-			}//fim for
-		}//fim if
-		else
-			sFormatPropertyCSS = aSplitCssProperty[0];
-		
-		return sFormatPropertyCSS;
-	},//fim formatPropertyCSS
-	
-	
-	addClass: function(oElement, sClassName) {
-		var rePattern = new RegExp("(^| )" + sClassName + "( |$)");
+	addClass: function(element, className) {
+		var rePattern = new RegExp("(^| )" + className + "( |$)");
 
-		if(!rePattern.test(oElement.className)) {
-
-			if(oElement.className == "")
-				oElement.className = sClassName;
+		if(!rePattern.test(element.className)) {
+			if(element.className == "")
+				element.className = className;
 			else
-				oElement.className += " " + sClassName;
-
-		}//fim if
+				element.className += " " + className;
+		}
+		return true;
+	},	
+	
+	removeClass: function(element, className) {
+		var removedClass = element.className,
+		    rePattern = new RegExp("(^| )" + className + "( |$)");
+		
+		removedClass = removedClass.replace(rePattern, "$1");
+		removedClass = removedClass.replace(/ $/, "");
+		element.className = removedClass;
 		
 		return true;
-	},//fim addClass
+	}
 	
-	
-	removeClass: function(oElement, sClassName) {
-		var sRemovedClass = oElement.className;
-		var rePattern = new RegExp("(^| )" + sClassName + "( |$)");
-		
-		sRemovedClass = sRemovedClass.replace(rePattern, "$1");
-		sRemovedClass = sRemovedClass.replace(/ $/, "");
-		oElement.className = sRemovedClass;
-		
-		return true;
-	}//fim removeClass
-
-};//fim CSS.js
+};
