@@ -4,18 +4,16 @@
  * @author: Edy Segura - edy@segura.pro.br
  *
  */
-
 var Index = {
 	
 	init: function() {
 		Index.showCSSProperty();
-	},//fim init
-	
+	},	
 	
 	showCSSProperty: function() {
-		var oTitle = document.getElementsByTagName('h2')[0];
+		var title = document.getElementsByTagName('h2')[0];
 		
-		var aCSSPropertys = [
+		var cssProperties = [
 			'border-bottom-style',
 			'border-bottom-color',
 			'border-bottom-width',
@@ -25,27 +23,26 @@ var Index = {
 			'background-color',
 		];
 		
-		for(var i in aCSSPropertys) {
-			var oSpanProperty = document.createElement('span');
-			var oSpanValue    = document.createElement('span');
-			var oParagrafo    = document.createElement('p');
+		for(var i in cssProperties) {
+			var spanProperty = document.createElement('span');
+			var spanValue    = document.createElement('span');
+			var paragrafo    = document.createElement('p');
 			
-			CSS.addClass(oSpanProperty, "property");
-			CSS.addClass(oSpanValue,    "value");
-			CSS.addClass(oSpanProperty, "comum");
-			CSS.addClass(oSpanValue,    "comum");
-
-			oSpanProperty.innerHTML = aCSSPropertys[i]  + ": ";
-			oSpanValue.innerHTML    = CSS.getComputed(oTitle, aCSSPropertys[i]) + ";";
+			CSS.addClass(spanProperty, "property");
+			CSS.addClass(spanValue,    "value");
+			CSS.addClass(spanProperty, "comum");
+			CSS.addClass(spanValue,    "comum");
 			
-			oParagrafo.appendChild(oSpanProperty);
-			oParagrafo.appendChild(oSpanValue);
-			document.body.appendChild(oParagrafo);
-
-		}//fim for
-	}//fim showCSSProperty
+			spanProperty.innerHTML = cssProperties[i]  + ": ";
+			spanValue.innerHTML    = CSS.getComputed(title, cssProperties[i]) + ";";
+			
+			paragrafo.appendChild(spanProperty);
+			paragrafo.appendChild(spanValue);
+			document.body.appendChild(paragrafo);
+		}
+	}
 	
-};//fim Index.js
+};
 
 //inicializacao
 window.onload = Index.init;
