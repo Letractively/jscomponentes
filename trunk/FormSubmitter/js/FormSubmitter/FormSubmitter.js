@@ -2,7 +2,7 @@
  *
  * FormSubmitter
  * Classe javascript para submitar o formulário via Ajax
- * 
+ *
  */
 var FormSubmitter = {
 	
@@ -21,17 +21,20 @@ var FormSubmitter = {
 	
 	setForm: function(form) {
 		if(form) {
-			form.onsubmit = FormSubmitter.submitListener;
+			form.onsubmit = function() {
+				FormSubmitter.submitListener(this);
+				return false;
+			};
 		}
 	},
 	
 	
-	submitListener: function() {
-		var form = this,
-		    data = $j(form).serialize();
+	submitListener: function(form) {
+		//for jQuery
+		//$j(form).validate({submitHandler: function(){}});
+		//if(!$j(form).valid()) return false;
 		
-		//for jquery.validate
-		//if(!$j(form).validate().form()) return false;
+		var data = $j(form).serialize();
 		
 		$j.ajax({
 		  type    : "POST",
@@ -42,7 +45,7 @@ var FormSubmitter = {
 		  	FormSubmitter.responseListener(data, form);
 		  }
 	 	});
-	 		 
+	 	
 		return false;
 	},
 	
@@ -75,6 +78,7 @@ var FormSubmitter = {
 				FormSubmitter.CALLBACK_ERROR
 			);
 		}
+		return false;
 	},
 	
 	
@@ -86,22 +90,22 @@ var FormSubmitter = {
 		for(var i in callbacks) {
 			params = callbacks[i];
 			
-			if(params[0] === form && params[callbackType]) {
+			if(params[0] == form && params[callbackType]) {
 				continueSubmit = params[callbackType](response, form);
 			}
 		}
 		
 		if(continueSubmit) {
-			FormSubmitter.formFilterSubmit();
+			FormSubmitter.formFilterSubmit(response, form);
 		}
 	},
 	
 	
-	formFilterSubmit: function() {
+	formFilterSubmit: function(response, form) {
 		var formFiltro = document.getElementById('form-filtro');
 		if(formFiltro && response.status == "SUCCESS") {
 			formFiltro.submit();
-		} 
+		}
 		else {
 			document.location.reload();
 		}
