@@ -354,6 +354,18 @@ var Form = {
 		return result;
 	},
 	
+	getRadioValue: function(inputRadioName) {
+		var inputs = document.getElementsByName(inputRadioName), input;
+		if(inputs && inputs.length > 0) {
+			for(var i=0; i<inputs.length; i++) {
+				input = inputs[i];
+				if(input.checked) {
+					return input.value;
+				}
+			}
+		}
+		return "";
+	},
 	
 	checkAll: function(inputCheck) {
 		var form    = inputCheck.form;
