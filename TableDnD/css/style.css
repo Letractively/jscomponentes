@@ -3,6 +3,7 @@
  */
  
 @import url(tagbox.css);
+@import url(contextmenu.css);
 
 #list-ramal .selected td {
 	background: #000;
@@ -11,4 +12,9 @@
 
 col.numero {
 	width: 20px;
+}
+
+#list-ramal th.number {
+	text-align: right;
+	cursor: default;
 }

@@ -8,9 +8,10 @@
 
 <!-- externals -->
 <link rel="stylesheet" href="css/style.css" type="text/css" />
-
 <script type="text/javascript" src="js/libs/jquery.js"></script>
 <script type="text/javascript" src="js/libs/jquery.tablednd.js"></script>
+<script type="text/javascript" src="js/libs/SimpleContextMenu.js"></script>
+<script type="text/javascript" src="js/TableActions.js"></script>
 <script type="text/javascript" src="js/Index.js"></script>
 
 </head>
@@ -41,52 +42,52 @@
 
 	<tbody>
 		<tr id="rm-1">
-			<td class="number">1</th>
+			<th class="number">1</th>
 			<td>Alana</td>
 			<td>39</td>
 		</tr>
 		<tr id="rm-2" class="odd">
-			<td class="number">2</th>
+			<th class="number">2</th>
 			<td>Ana Claúdia</td>
 			<td>48</td>
 		</tr>
 		<tr id="rm-3">
-			<td class="number">3</th>
+			<th class="number">3</th>
 			<td>André</td>
 			<td>27</td>
 		</tr>
 		<tr id="rm-4" class="odd">
-			<td class="number">4</th>
+			<th class="number">4</th>
 			<td>Carol</td>
 			<td>43</td>
 		</tr>
 		<tr id="rm-5">
-			<td class="number">5</th>
+			<th class="number">5</th>
 			<td>Célio</td>
 			<td>22</td>
 		</tr>
 		<tr id="rm-6" class="odd">
-			<td class="number">6</th>
+			<th class="number">6</th>
 			<td>Cláudia</td>
 			<td>33</td>
 		</tr>
 		<tr id="rm-7">
-			<td class="number">7</th>
+			<th class="number">7</th>
 			<td>Dani</td>
 			<td>20</td>
 		</tr>
 		<tr id="rm-8" class="odd">
-			<td class="number">8</th>
+			<th class="number">8</th>
 			<td>Eduardo</td>
 			<td>44</td>
 		</tr>
 		<tr id="rm-9">
-			<td class="number">9</th>
+			<th class="number">9</th>
 			<td>Edy Segura</td>
 			<td>41</td>
 		</tr>
 		<tr id="rm-10" class="odd">
-			<td class="number">10</th>
+			<th class="number">10</th>
 			<td>Lidy</td>
 			<td>41</td>
 		</tr>
@@ -94,6 +95,12 @@
 </table>
 
 <p id="console">&nbsp;</p>
+
+<ul id="list-ramal-cmenu" class="contextmenu">
+	<li><a href="#new-line" id="menu-1">Nova Linha</a></li>
+	<li><a href="#duplicate" id="menu-2">Duplicar</a></li>
+</ul>
+
 
 </body>
 </html>
