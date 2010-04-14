@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Edy Segura" />
+<meta name="reply-to" content="edy@segura.pro.br" />
+<title>Table Drag and Drop</title>
+
+<!-- externals -->
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+<script type="text/javascript" src="js/libs/jquery.js"></script>
+<script type="text/javascript" src="js/libs/jquery.tablednd.js"></script>
+<script type="text/javascript" src="js/Index.js"></script>
+
+</head>
+<body>
+
+<h1>Table Drag and Drop</h1>
+<p>
+	Exemplo de uma tabela sendo ordenada por Drag and Drop.<br />
+	Para mais detalhes veja o código fonte.
+</p>
+
+<table id="list-ramal">
+	<caption>Lista de Ramais</caption>
+	
+	<colgroup span="3">
+		<col class="numero" />
+		<col class="nome" />
+		<col class="ramal" />
+	</colgroup>
+	
+	<thead>
+		<tr>
+			<th>Nº</th>
+			<th>Nome</th>
+			<th>Ramal</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr id="rm-1">
+			<td class="number">1</th>
+			<td>Alana</td>
+			<td>39</td>
+		</tr>
+		<tr id="rm-2" class="odd">
+			<td class="number">2</th>
+			<td>Ana Claúdia</td>
+			<td>48</td>
+		</tr>
+		<tr id="rm-3">
+			<td class="number">3</th>
+			<td>André</td>
+			<td>27</td>
+		</tr>
+		<tr id="rm-4" class="odd">
+			<td class="number">4</th>
+			<td>Carol</td>
+			<td>43</td>
+		</tr>
+		<tr id="rm-5">
+			<td class="number">5</th>
+			<td>Célio</td>
+			<td>22</td>
+		</tr>
+		<tr id="rm-6" class="odd">
+			<td class="number">6</th>
+			<td>Cláudia</td>
+			<td>33</td>
+		</tr>
+		<tr id="rm-7">
+			<td class="number">7</th>
+			<td>Dani</td>
+			<td>20</td>
+		</tr>
+		<tr id="rm-8" class="odd">
+			<td class="number">8</th>
+			<td>Eduardo</td>
+			<td>44</td>
+		</tr>
+		<tr id="rm-9">
+			<td class="number">9</th>
+			<td>Edy Segura</td>
+			<td>41</td>
+		</tr>
+		<tr id="rm-10" class="odd">
+			<td class="number">10</th>
+			<td>Lidy</td>
+			<td>41</td>
+		</tr>
+	</tbody>
+</table>
+
+<p id="console">&nbsp;</p>
+
+</body>
+</html>

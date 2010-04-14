@@ -1,0 +1,14 @@
+/**
+ * Document CSS
+ */
+ 
+@import url(tagbox.css);
+
+#list-ramal .selected td {
+	background: #000;
+	color: #fff;
+}
+
+col.numero {
+	width: 20px;
+}
