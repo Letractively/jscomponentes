@@ -4,23 +4,19 @@
 var Index = {
 
 	init: function() {
-		Index.setTableActions();
+		TableActions.init({
+			tableId: 'list-ramal',
+			onDragListener: Index.showLinhaSelecionada,
+			onDropListener: Index.showNewOrder
+		});
+		
 	},
 	
-	setTableActions: function() {
-		$("#list-ramal").tableDnD({
-	    onDragClass: "selected",
-	    onDragStart: function(table, row) {
-				$(row).addClass("selected");
-				$('#console').html("Linha selecionada: " + row.id);
-			},
-			onDrop: function(table, row) {
-				$('tr', table).removeClass('odd');
-				$('tr:odd', table.tBodies[0]).addClass('odd');
-        Index.showNewOrder(table, row);
-	    }
-		});
+	
+	showLinhaSelecionada: function(table, row) {
+		$('#console').html("Linha selecionada: " + row.id);
 	},
+	
 	
 	showNewOrder: function(table, row) {
 		var rows = table.tBodies[0].rows, 
