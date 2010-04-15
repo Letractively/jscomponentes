@@ -4,7 +4,6 @@
  * @author Edy Segura, edy@segura.pro.br
  *
  */
- 
 var Index = {
 	
 	init: function() {
@@ -14,16 +13,15 @@ var Index = {
 	
 	
 	setContextMenu: function() {
-		SimpleContextMenu.setup({'preventDefault':true, 'preventForms':false});
+		SimpleContextMenu.setup({'preventDefault':false, 'preventForms':false});
 		SimpleContextMenu.attach('container', 'CM1'); //className and id of the contextmenu
 	},
 	
 	
 	setMouseUp: function() {
-		var aDivs = document.getElementsByTagName('div');
-		
-		for(var i=0; i<aDivs.length; i++) {
-			aDivs[i].onmouseup = Index.showTarget;
+		var divs = document.getElementsByTagName('div');
+		for(var i=0; i<divs.length; i++) {
+			divs[i].onmouseup = Index.showTarget;
 		}
 	},
 	
@@ -31,9 +29,9 @@ var Index = {
 	showTarget: function(e) {
 		e = e ? e : window.event;
 		if(e.button == 2) {
-			var oInput = document.getElementById('field');
-			var oElement = e.srcElement || e.target;
-			oInput.value = oElement.innerHTML;
+			var input = document.getElementById('field');
+			var element = e.srcElement || e.target;
+			input.value = element.innerHTML;
 		}
 	}
 	
