@@ -4,7 +4,7 @@
 var Index = {
 
 	init: function() {
-		TableActions.init({
+		TableDnD.init({
 			tableId: 'list-ramal',
 			onDragListener: Index.showLinhaSelecionada,
 			onDropListener: Index.showNewOrder,

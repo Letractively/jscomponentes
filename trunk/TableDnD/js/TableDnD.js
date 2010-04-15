@@ -1,14 +1,14 @@
 /**
  * Document JavaScript
  */
-var TableActions = {
+var TableDnD = {
 
 	selectedRow: null,
 	
 	init: function(params) {
 		var table  = document.getElementById(params.tableId);
 		if(table && table.nodeName.toLowerCase() === "table") {
-			TableActions.setActions(table, params);
+			TableDnD.setActions(table, params);
 		}
 		else {
 			alert("table#" + params.tableId + " not found!");
@@ -22,9 +22,9 @@ var TableActions = {
 		    onDropListener = (typeof(params.onDropListener) === 'function') 
 				                  ? params.onDropListener : null;
 				
-		TableActions.setTableDnD(table, onDragListener, onDropListener);
-		TableActions.setThAction(table);
-		TableActions.setThContextMenu(params);
+		TableDnD.setTableDnD(table, onDragListener, onDropListener);
+		TableDnD.setThAction(table);
+		TableDnD.setThContextMenu(params);
 	},
 	
 	
@@ -41,7 +41,7 @@ var TableActions = {
 			},
 			
 			onDrop: function(table, row) {
-				TableActions.stripedTable(table);
+				TableDnD.stripedTable(table);
 				if(onDropListener) {
 					onDropListener(table, row);
 				}
@@ -55,7 +55,7 @@ var TableActions = {
 		var tbody = table.tBodies[0];
 		jQuery('th', tbody)
 			.addClass('cmenu')
-			.mouseup(TableActions.getRow);
+			.mouseup(TableDnD.getRow);
 	},
 	
 	
@@ -64,7 +64,7 @@ var TableActions = {
 		if(cmenuContainer) {
 			SimpleContextMenu.setup({'preventDefault':false, 'preventForms':false});
 			SimpleContextMenu.attach('cmenu', cmenuContainer.id);
-			TableActions.setMenuActions(cmenuContainer, params.cmenuListeners);
+			TableDnD.setMenuActions(cmenuContainer, params.cmenuListeners);
 		}
 	},
 	
@@ -74,7 +74,7 @@ var TableActions = {
 		for(menuId in cmenuListeners) {
 			jQuery("#" + menuId).click(function() {
 				listener = cmenuListeners[this.id];
-				listener(TableActions.selectedRow);
+				listener(TableDnD.selectedRow);
 				jQuery(cmenuContainer).hide();
 				return false;
 			});
@@ -85,7 +85,7 @@ var TableActions = {
 	getRow: function(e) {
 		if(e.button == 2) {
 			var row = e.target.parentNode;
-			TableActions.selectedRow = row;
+			TableDnD.selectedRow = row;
 		}
 	},
 	
