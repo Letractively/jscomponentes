@@ -4,7 +4,6 @@
  * @author Edy Segura, edy@segura.pro.br
  * 
  */
-
 var Index = {
 	
 	init: function() {
@@ -23,6 +22,15 @@ var Index = {
 				FRACTION_SEPARATOR : ".",
 				FRACTION_NUMBER    : 3,
 				THOUSAND_SEPARATOR : ","
+			}
+		});
+		
+		NumberFormat.setNumberFormatByClass({
+			className   : "number-4",
+			maskOptions : {
+				FRACTION_SEPARATOR : "",
+				FRACTION_NUMBER    : 0,
+				THOUSAND_SEPARATOR : "."
 			}
 		});
 		
