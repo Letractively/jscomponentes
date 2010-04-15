@@ -4,14 +4,11 @@
 var TableActions = {
 
 	selectedRow: null,
-	tableId: null,
-	
 	
 	init: function(params) {
 		var table  = document.getElementById(params.tableId);
 		if(table && table.nodeName.toLowerCase() === "table") {
 			TableActions.setActions(table, params);
-			TableActions.tableId = table.id;
 		}
 		else {
 			alert("table#" + params.tableId + " not found!");
@@ -27,7 +24,7 @@ var TableActions = {
 				
 		TableActions.setTableDnD(table, onDragListener, onDropListener);
 		TableActions.setThAction(table);
-		TableActions.setThContextMenu(table.id);
+		TableActions.setThContextMenu(params);
 	},
 	
 	
@@ -62,19 +59,26 @@ var TableActions = {
 	},
 	
 	
-	setThContextMenu: function(tableId) {
-		var cmenuContainer = document.getElementById(tableId + '-cmenu');
+	setThContextMenu: function(params) {
+		var cmenuContainer = document.getElementById(params.tableId + '-cmenu');
 		if(cmenuContainer) {
 			SimpleContextMenu.setup({'preventDefault':false, 'preventForms':false});
 			SimpleContextMenu.attach('cmenu', cmenuContainer.id);
-			TableActions.setMenuActions(cmenuContainer);
+			TableActions.setMenuActions(cmenuContainer, params.cmenuListeners);
 		}
 	},
 	
 	
-	setMenuActions: function(cmenuContainer) {
-		jQuery('#menu-1').click(TableActions.addNewLine);
-		jQuery('#menu-2').click(TableActions.duplicateLine);
+	setMenuActions: function(cmenuContainer, cmenuListeners) {
+		var menuId = "", listener;
+		for(menuId in cmenuListeners) {
+			jQuery("#" + menuId).click(function() {
+				listener = cmenuListeners[this.id];
+				listener(TableActions.selectedRow);
+				jQuery(cmenuContainer).hide();
+				return false;
+			});
+		}
 	},
 	
 	
@@ -83,17 +87,6 @@ var TableActions = {
 			var row = e.target.parentNode;
 			TableActions.selectedRow = row;
 		}
-	},
-	
-	
-	addNewLine: function() {
-	},
-	
-	
-	duplicateLine: function() {
-		var row = TableActions.selectedRow,
-		    newRow = jQuery(row).clone(true).get(0);
-		jQuery(newRow).insertAfter(row);
 	},
 	
 	
