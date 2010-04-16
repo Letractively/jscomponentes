@@ -31,12 +31,12 @@ var FormSubmitter = {
 	
 	submitListener: function(form) {
 		//for jQuery
-		//$j(form).validate({submitHandler: function(){}});
-		//if(!$j(form).valid()) return false;
+		//jQuery(form).validate({submitHandler: function(){}});
+		//if(!jQuery(form).valid()) return false;
 		
-		var data = $j(form).serialize();
+		var data = jQuery(form).serialize();
 		
-		$j.ajax({
+		jQuery.ajax({
 		  type    : "POST",
 		  url     : form.action,
 		  data    : data,
@@ -56,6 +56,8 @@ var FormSubmitter = {
 	
 	
 	responseListener: function(response, form) {
+		var callbackType = 0;
+		
 		try {
 			response = eval ("(" + response + ")");
 			alert(response.message);
@@ -65,19 +67,18 @@ var FormSubmitter = {
 		}
 		
 		if(response.status == "SUCCESS") {
-			FormSubmitter.callForeignCallback (
-				response,
-				form,
-				FormSubmitter.CALLBACK_SUCCESS
-			);
+			callbackType = FormSubmitter.CALLBACK_SUCCESS
 		}
 		else if(response.status == "ERROR") {
-			FormSubmitter.callForeignCallback (
-				response,
-				form,
-				FormSubmitter.CALLBACK_ERROR
-			);
+			callbackType = FormSubmitter.CALLBACK_ERROR
 		}
+		
+		FormSubmitter.callForeignCallback (
+			response,
+			form,
+			callbackType
+		);
+			
 		return false;
 	},
 	
