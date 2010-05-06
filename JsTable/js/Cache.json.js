@@ -7823,10 +7823,5 @@ var cache = [
 		m1: '',
 		m2: '',
 		readonly: false
-	},
-	
-	{}
+	}
 ];
-	
-//remove o último item da lista
-cache.pop();
