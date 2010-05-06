@@ -17638,9 +17638,5 @@ var cacheDespesa = [
 		nomeTipoRecurso: 'SUB CONTRATACAO',
 		idAtividade: 'CMSP-15',
 		avanco: ''
-	},
-	{}
+	}
 ];
-
-//remove o último item da lista
-cacheDespesa.pop();

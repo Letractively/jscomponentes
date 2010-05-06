@@ -6,16 +6,23 @@ var MyTableModel = function(data) {
 	this.data = data;
 	
 	this.getData = function(row, col) {
-	  var obj = this.data[row];
+	  var obj = this.data[row], columns, value = "";
 		
-	  switch (col) {
-		  case 0: return obj.id;
-			case 1: return obj.codigo;
-		  case 2: return obj.versao;
-		  case 3: return obj.descricao;
+	  columns = [
+		  obj.id,
+			obj.codigo,
+		  obj.versao,
+		  obj.descricao
+		];
+		
+		try {
+			value = columns[col];
+		}
+		catch(e) {
+			value = obj;
 		}
 		
-		return obj;
+		return value;
 	};
 	
 	this.getObject = function(row) {

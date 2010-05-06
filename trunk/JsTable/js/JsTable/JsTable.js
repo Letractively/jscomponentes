@@ -10,8 +10,8 @@ var JsTable = function(params) {
 	
 	//atributos
 	this.tableId = (params.tableId) ? params.tableId : null;
-	this.containerId = (params.containerId) ? params.containerId : null;
-	this.pagingContainerId = (params.pagingContainerId) ? params.pagingContainerId : null;
+	this.containerId = (params.containerId) ? params.containerId : "wrapper-" + params.tableId;
+	this.pagingContainerId = (params.pagingContainerId) ? params.pagingContainerId : "page-" + params.tableId;
 	this.classNames = (params.classNames) ? params.classNames : null;
 	this.contextpath = (params.contextpath) ? (params.contextpath + "/") : "";
 	this.classNameForOdd = (params.classNameForOdd) ? params.classNameForOdd : "odd";
@@ -107,7 +107,9 @@ var JsTable = function(params) {
 		var colString = "", col, columns = this.model.getColumns();
 		for(var index in columns) {
 			col = columns[index];
-			colString += '<col class="'+ col.className +'" />';
+			if ( typeof col.visible == 'undefined' || col.visible ) {
+				colString += '<col class="'+ col.className +'" />';
+			}
 		}
 		return colString;
 	};
@@ -148,11 +150,13 @@ var JsTable = function(params) {
 		for(var col = 0; col < columns.length; col++) {
 			column = columns[col];
 			if(column) {
-				if(typeof column.columnRenderer === 'function') {
-					rowString += column.columnRenderer(row, col, this.model);
-				}
-				else {
-					rowString += this.columnRenderer(row, col, this.model);
+				if ( typeof column.visible == 'undefined' || column.visible ) {
+					if(typeof column.columnRenderer === 'function') {
+						rowString += column.columnRenderer(row, col, this.model);
+					}
+					else {
+						rowString += this.columnRenderer(row, col, this.model);
+					}
 				}
 			}
 		}
@@ -172,11 +176,13 @@ var JsTable = function(params) {
 		for(var index in columns) {
 			column = columns[index];
 			if(column) {
-				if(typeof column.cellHeaderRenderer ===  'function') {
-					rowString += column.cellHeaderRenderer(column, columnNumber, this.model);
-				}
-				else {
-					rowString += this.cellHeaderRenderer(column, columnNumber);
+				if ( typeof column.visible == 'undefined' || column.visible ) {
+					if(typeof column.cellHeaderRenderer ===  'function') {
+						rowString += column.cellHeaderRenderer(column, columnNumber, this.model);
+					}
+					else {
+						rowString += this.cellHeaderRenderer(column, columnNumber);
+					}					
 				}
 			}
 			columnNumber++;
@@ -219,7 +225,7 @@ var JsTable = function(params) {
 	this.createPagingControls = function() {
 		if(this.pagingContainer) {
 			jQuery(this.pagingContainer)
-			 .append(this.firstPageControl)
+			 .html(this.firstPageControl)
 			 .append(" ")
 			 .append(this.prevPageControl)
 			 .append(" ")
