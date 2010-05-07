@@ -1,5 +1,6 @@
 var cacheDespesa = [
-	 {
+	{
+		visible: false,
 		codigo: 'DEP 11', 
 		data: '2007-01-01 00:00:00.0',
 		nomeProjeto: 'PROJETO7',
