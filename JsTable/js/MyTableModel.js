@@ -34,7 +34,7 @@ var MyTableModel = function(data) {
 	};
 	
 	this.getNumCols = function() {
-		return this.getColumns().length;
+		return this.data.length;
 	};
 	
 	this.getRawData = function() {

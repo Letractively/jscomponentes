@@ -10,10 +10,12 @@ var Index = {
 		Index.showTableDespesa();
 	},
 	
+	
 	showTableProdutos: function() {
 		var tableProduto = new JsTable ({
 			tableId: 'produtos',
 			classNames: 'report',
+			actionInputSearch: Index.searchProduto,
 			itemsPerPage: 2
 		});
 		
@@ -21,11 +23,10 @@ var Index = {
 		tableProduto.showTable();
 	},
 	
+	
 	showTableProdutosAdvance: function() {
 		var tableCCusto = new JsTable ({
 			tableId: 'ccusto',
-			containerId: 'wrapper-ccusto',
-			pagingContainerId: 'page-ccusto',
 			itemsPerPage: 2
 		});
 		
@@ -33,11 +34,11 @@ var Index = {
 		tableCCusto.showTable();
 	},
 
+	
 	showTableDespesa: function() {
 		var tableDespesa = new JsTable ({
 			tableId: 'despesa',
-			containerId: 'wrapper-despesa',
-			pagingContainerId: 'page-despesa',
+			actionInputSearch: Index.searchDespesa,
 			itemsPerPage: 8
 		});
 		
@@ -47,15 +48,14 @@ var Index = {
 	},
 
 	
-	
 	getFooter: function() {
 		var footer = '<tfoot>', model = this.model;
 		footer += 
 			'<tr>'
 				+ '<td colspan="5">&nbsp;</td>'
-				+ '<td class="label-total">Total</td>'
+				+ '<td class="label-total">Total Geral</td>'
 				+ '<td class="number">' + model.getTotal(6) + '</td>'
-				+ '<td colspan="3">&nbsp;</td>'
+				+ '<td colspan="2">&nbsp;</td>'
 		+ '</tr>'
 		footer += '</tfoot>'
 		return footer;
@@ -88,6 +88,58 @@ var Index = {
 	
 	setSelected: function(row) {
 		cache[row].selected = !cache[row].selected;
+	},
+	
+	searchDespesa: function(e, jsTable, input) {
+		if(e.keyCode == 13) {
+			var text = input.value, data;
+			var rawData = cacheDespesa;
+			var newData = [];
+			var pattern = new RegExp(text, "gi");
+			
+			for(var i=0; i<rawData.length; i++) {
+				data = rawData[i];
+				
+				codigo  = data.codigo;
+				projeto = data.nomeProjeto;
+				
+				if(pattern.test(codigo) || pattern.test(projeto)) {
+					newData.push(data);
+				}
+				
+			}
+			
+			jsTable.setTableModel(new DespesaTableModel(newData));
+			jsTable.showTable();
+		}
+	},
+	
+	searchProduto: function(e, jsTable, input) {
+		if(e.keyCode == 13) {
+			var text = input.value, data;
+			var rawData = CacheProduto.tableData;
+			var newData = [];
+			var pattern = new RegExp(text, "gi");
+			
+			for(i=0; i<rawData.length; i++) {
+				data = rawData[i];
+				
+				codigo = data[0];
+				descricao = data[2];
+				
+				if(pattern.test(codigo) || pattern.test(descricao)) {
+					newData.push(data);
+				}
+				
+			}
+			
+			jsTable.setTableModel(new JsDefaultTableModel (
+				CacheProduto.columns,
+				newData
+			));
+			
+			jsTable.showTable();
+		}
 	}
 	
 };

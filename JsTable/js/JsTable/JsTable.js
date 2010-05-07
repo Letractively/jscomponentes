@@ -16,19 +16,20 @@ var JsTable = function(params) {
 	this.contextpath = (params.contextpath) ? (params.contextpath + "/") : "";
 	this.classNameForOdd = (params.classNameForOdd) ? params.classNameForOdd : "odd";
 	this.classNameForEven = (params.classNameForEven) ? params.classNameForEven : "even";
+	this.actionInputSearch = (params.actionInputSearch) ? params.actionInputSearch : null;
+	
 	this.model = {};
 	this.errors = [];
 	
 	//atributos para paginação
 	this.itemsPerPage = (params.itemsPerPage) ? params.itemsPerPage : 10;
 	
-	
 	//tratamento de erros
 	if(!this.tableId) {
 		this.errors.push("tableId is not defined!");
 	}
 	
-	if(!this.containerId) {
+	if(!this.containerId  || !document.getElementById(this.containerId)) {
 		this.errors.push("containerId is not defined!");
 	}
 	
@@ -87,7 +88,7 @@ var JsTable = function(params) {
 			
 			jQuery('#' + this.containerId).html(tableString);
 			
-			if(this.pagingContainerId) {
+			if(this.pagingContainerId && document.getElementById(this.pagingContainerId)) {
 				this.initPaging();
 			}
 			
@@ -127,9 +128,10 @@ var JsTable = function(params) {
 	
 	this.getBody = function() {
 		var tbody = "<tbody>", numCols;
+		var numRows = this.model.getNumRows();
 		
-		if(this.model.getNumRows() > 0) {
-			for(var i=0; i<this.model.getNumRows() && i<this.itemsPerPage; i++) {
+		if(numRows > 0) {
+			for(var i=0; i<numRows && i<this.itemsPerPage; i++) {
 				tbody += this.rowRenderer(i);
 			}
 		}
@@ -165,8 +167,8 @@ var JsTable = function(params) {
 		return rowString;
 	};
 	
-	this.rowNoItemRenderer = function() {
-		var numCols = this.model.getNumCols();
+	this.rowNoItemRenderer = function(model) {
+		var numCols = model.getNumCols();
 		return '<td colspan="' + numCols +'" class="'+ this.classNameForOdd +'">Nenhum item foi encontrado.</td>';;
 	};
 	
@@ -225,7 +227,8 @@ var JsTable = function(params) {
 	this.createPagingControls = function() {
 		if(this.pagingContainer) {
 			jQuery(this.pagingContainer)
-			 .html(this.firstPageControl)
+			 .html("")
+			 .append(this.firstPageControl)
 			 .append(" ")
 			 .append(this.prevPageControl)
 			 .append(" ")
@@ -240,12 +243,19 @@ var JsTable = function(params) {
 			 .append(this.itemsPerPageControl)
 			 .append(" | Total: ")
 			 .append(this.totalItemsControl)
+			 
+			 if(this.actionInputSearch) {
+				jQuery(this.pagingContainer)
+				.prepend(" ")
+				.prepend(this.inputSearch);
+			 }
 		}
 	}
 	
 	this.setPaging = function(itemsPerPage) {
 		this.itemsPerPage = itemsPerPage;
-		var totalPages = Math.ceil(this.model.getNumRows() / this.itemsPerPage);
+		var numRows = this.model.getNumRows();
+		var totalPages = Math.ceil(numRows / this.itemsPerPage);
 		if(totalPages === 0) {
 			totalPages = 1;
 		}
@@ -262,7 +272,8 @@ var JsTable = function(params) {
 	
 	this.showItemsPerPage = function() {
 		if(this.itemsPerPageControl) {
-			var total = (this.itemsPerPage <= this.model.getNumRows()) ? this.itemsPerPage : this.model.getNumRows();
+			var numRows = this.model.getNumRows();
+			var total = (this.itemsPerPage <= numRows) ? this.itemsPerPage : numRows;
 			jQuery(this.itemsPerPageControl).val(total);
 		}
 	}
@@ -375,17 +386,25 @@ var JsTable = function(params) {
 				jsTable.setStatusPaging();
 			}
 		});
+
+		//comportamento para o inputSearch
+		if(typeof this.actionInputSearch == 'function') {
+			jQuery(this.inputSearch).keydown(function(e) {
+				return jsTable.actionInputSearch(e, jsTable, this);
+			});
+		}
 	};
 	
 	this.showPagingRows = function (begin, n) {
-		if ( this.model.getNumRows() ) {
+		var numRows = this.model.getNumRows();
+		if ( numRows ) {
 			var table  = document.getElementById(this.tableId),
 			    rowStr = "", 
 					tbody  = table.getElementsByTagName('tbody')[0];
 			
 			jQuery(tbody).html("");
 			
-			for(var index=begin, i=0; index<this.model.getNumRows() && i<n; index++, i++) {
+			for(var index=begin, i=0; index<numRows && i<n; index++, i++) {
 				jQuery(tbody).append(this.rowRenderer(index));
 			}
 			
@@ -608,6 +627,10 @@ var JsTable = function(params) {
 		this.lastPageControl = this.createLastPageControl();
 		this.itemsPerPageControl = this.createItemsPerPageControl();
 		this.totalItemsControl = this.createTotalItemsControl();
+		
+		if(typeof this.actionInputSearch == 'function') {
+			this.inputSearch = this.createInputSearch();
+		}
 	}
 	
 }

@@ -75,9 +75,9 @@ var DespesaTableModel = function(data) {
 					return '<td class="number">' + data + '</td>';
 				}
 			},
-			{className:'nomeTipoRecurso', text:'Tipo Recurso'},
+			{visible: false, className:'nomeTipoRecurso', text:'Tipo Recurso'},
 			{className:'idAtividade', text:'Atividade'},
-			{className:'avanco', text:'Avanco'},
+			{className:'avanco', text:'Avanço'},
 		];
 	};
 	
