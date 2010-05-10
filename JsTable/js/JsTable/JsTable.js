@@ -169,7 +169,7 @@ var JsTable = function(params) {
 	
 	this.rowNoItemRenderer = function(model) {
 		var numCols = model.getNumCols();
-		return '<td colspan="' + numCols +'" class="'+ this.classNameForOdd +'">Nenhum item foi encontrado.</td>';;
+		return '<td colspan="' + numCols + '" class="no-items">Nenhum item foi encontrado.</td>';;
 	};
 	
 	this.rowHeaderRenderer = function(columns) {
@@ -246,7 +246,7 @@ var JsTable = function(params) {
 			 
 			 if(this.actionInputSearch) {
 				jQuery(this.pagingContainer)
-				.prepend(" ")
+				.prepend(" | ")
 				.prepend(this.inputSearch);
 			 }
 		}
@@ -506,7 +506,7 @@ var JsTable = function(params) {
 		var input = jQuery('<input />').attr({
 			'type': 'text',
 			'id': jsTable.tableId + "-inputSearch",
-			'class' : 'search'
+			'class' : 'jstable-search'
 		})
 		.get(0);
 		return input;
@@ -595,17 +595,11 @@ var JsTable = function(params) {
 		var result = "";
 		if(text) {
 			text = text.toString().toLowerCase();
-			text = text.replace(/[ÁÀÂÃ]/g, "A");
 			text = text.replace(/[áàâã]/g, "a");
-			text = text.replace(/[ÉÈÊ]/g, "E");
 			text = text.replace(/[éèê]/g, "e");
-			text = text.replace(/[ÍÌÎ]/g, "I");
 			text = text.replace(/[íìî]/g, "i");
-			text = text.replace(/[ÓÒÔÕ]/g, "O");
 			text = text.replace(/[óòôõ]/g, "o");
-			text = text.replace(/[ÚÙÛÜ]/g, "U");
 			text = text.replace(/[úùûü]/g, "u");
-			text = text.replace(/Ç/g, "C");
 			text = text.replace(/ç/g, "c");
 			result = text;
 		}
