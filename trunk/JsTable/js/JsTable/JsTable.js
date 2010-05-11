@@ -242,7 +242,14 @@ var JsTable = function(params) {
 			 .append(" | Itens por página: ")
 			 .append(this.itemsPerPageControl)
 			 .append(" | Total: ")
-			 .append(this.totalItemsControl)
+			 .append(this.totalItemsControl);
+			 
+			 var totalOfAll = this.model.getRawData().totalOfAll;
+			 if(totalOfAll) {
+				 jQuery(this.pagingContainer)
+					.append(" | Total sem filtro: ")
+					.append(this.createTotalOfAll(totalOfAll));
+			 }
 			 
 			 if(this.actionInputSearch) {
 				jQuery(this.pagingContainer)
@@ -502,6 +509,16 @@ var JsTable = function(params) {
 		return pageControl;
 	};
 	
+	this.createTotalOfAll = function(totalOfAll) {
+		var pageControl = jQuery('<span />').attr({
+			'id': jsTable.tableId + "-totalOfAll",
+			'class' : 'totalOfAll'
+		})
+		.text(totalOfAll)
+		.get(0);
+		return pageControl;
+	};
+	
 	this.createInputSearch = function() {
 		var input = jQuery('<input />').attr({
 			'type': 'text',
@@ -613,6 +630,12 @@ var JsTable = function(params) {
 		this.totalPages  = 0;
 		this.pagingContainer = document.getElementById(this.pagingContainerId);
 		
+		//campo de busca
+		if(typeof this.actionInputSearch == 'function') {
+			this.inputSearch = this.createInputSearch();
+		}
+		
+		//controles
 		this.firstPageControl = this.createFirstPageControl();
 		this.prevPageControl = this.createPrevPageControl();
 		this.currentPageControl = this.createCurrentPageControl();
@@ -621,10 +644,6 @@ var JsTable = function(params) {
 		this.lastPageControl = this.createLastPageControl();
 		this.itemsPerPageControl = this.createItemsPerPageControl();
 		this.totalItemsControl = this.createTotalItemsControl();
-		
-		if(typeof this.actionInputSearch == 'function') {
-			this.inputSearch = this.createInputSearch();
-		}
 	}
 	
 }

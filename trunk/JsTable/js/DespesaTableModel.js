@@ -49,7 +49,7 @@ var DespesaTableModel = function(data) {
 	
 	this.getTotal = function(columnNumber) {
 		var total = 0, valor;
-		for(var i=0; i<this.getNumRows(); i++) {
+		for(var i=0, leng = this.getNumRows(); i<leng; i++) {
 			valor = this.getData(i, columnNumber).toString().currencyToFloat();
 			if(valor != '' && !isNaN(valor)) {
 				total += valor;

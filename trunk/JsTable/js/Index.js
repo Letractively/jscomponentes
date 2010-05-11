@@ -109,6 +109,10 @@ var Index = {
 				
 			}
 			
+			if(newData.length < rawData.length) {
+				newData.totalOfAll = rawData.length;
+			}
+			
 			jsTable.setTableModel(new DespesaTableModel(newData));
 			jsTable.showTable();
 		}
@@ -131,6 +135,10 @@ var Index = {
 					newData.push(data);
 				}
 				
+			}
+			
+			if(newData.length < rawData.length) {
+				newData.totalOfAll = rawData.length;
 			}
 			
 			jsTable.setTableModel(new JsDefaultTableModel (
