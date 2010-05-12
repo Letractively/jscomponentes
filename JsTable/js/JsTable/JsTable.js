@@ -149,7 +149,7 @@ var JsTable = function(params) {
 		var rowString = "<tr>", column
 		    columns   = this.model.getColumns();
 				
-		for(var col = 0; col < columns.length; col++) {
+		for(var col = 0, leng = columns.length; col < leng; col++) {
 			column = columns[col];
 			if(column) {
 				if ( typeof column.visible == 'undefined' || column.visible ) {
@@ -536,7 +536,7 @@ var JsTable = function(params) {
 		    tbody = table.tBodies[0],
 				rows  = tbody.rows, className, row;
 				
-		for(var i=0; i<rows.length; i++) {
+		for(var i=0, leng = rows.length; i<leng; i++) {
 			row = rows[i];
 			if(i%2) {
 				className = this.classNameForOdd;
@@ -557,7 +557,7 @@ var JsTable = function(params) {
 				th, columnName, columnNumber, factor,
 				columns = this.model.getColumns();
 		
-		for(var i=0; i<ths.length; i++) {
+		for(var i=0, leng = ths.length; i<leng; i++) {
 			th = ths[i];
 			if(columns[i].sort != false) {
 				th.asc = true;
