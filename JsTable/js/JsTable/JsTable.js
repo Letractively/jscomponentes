@@ -361,6 +361,7 @@ var JsTable = function(params) {
 				begin = (jsTable.currentPage-1) * jsTable.itemsPerPage;
 				jsTable.showPagingRows(begin, jsTable.itemsPerPage);
 				jsTable.setStatusPaging();
+				e.preventDefault();
 			}
 		});
 		
@@ -391,6 +392,7 @@ var JsTable = function(params) {
 				jsTable.showPagingRows(0, jsTable.itemsPerPage);
 				jsTable.currentPage = 1;
 				jsTable.setStatusPaging();
+				e.preventDefault();
 			}
 		});
 
