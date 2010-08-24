@@ -33,7 +33,7 @@ var TableUtils = {
 			}
 		}
 		else {
-			throw new Error("table#" + tableId + " not found for method TableUtils.stripedTable()");
+			throw new Error("Table not found for method TableUtils.stripedTable()");
 		}
 	},
 	
@@ -61,7 +61,7 @@ var TableUtils = {
 			result = tbody;
 		}
 		else {
-			throw new Error("table#" + tableId + " not found for method TableUtils.clearTable()");
+			throw new Error("Table not found for method TableUtils.clearTable()");
 		}
 		
 		return result;
