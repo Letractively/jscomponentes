@@ -146,7 +146,7 @@ var JsTable = function(params) {
 	//--------- renderers ----------------------------------------------------
 	
 	this.rowRenderer = function(row) {
-		var rowString = "<tr>", column
+		var rowString = "<tr>", column = {},
 		    columns   = this.model.getColumns();
 				
 		for(var col = 0, leng = columns.length; col < leng; col++) {
