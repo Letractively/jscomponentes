@@ -1,0 +1,27 @@
+/**
+ * CSS Document
+ */
+
+@import url(reset.css);
+@import url(SuperFilter/style.css);
+
+
+fieldset {
+	background: #F5F5F5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	background: -moz-linear-gradient(top,  #fff,  #ccc);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cccccc');
+}
+
+legend {
+	background: #fff;
+	padding: 4px;
+	font-weight: bold;
+}
+
+h1 {
+	padding: 5px;
+	font-size: 22px;
+	margin: 20px 0;
+	text-align: center;
+}
