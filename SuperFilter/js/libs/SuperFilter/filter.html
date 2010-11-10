@@ -3,12 +3,12 @@
 		<legend>Filtro</legend>
 		<div class="filter-content">
 			<label>
-				<a href="#entidade" id="filter-name">Entidade</a>
-				<input type="text" id="filter-value" />
+				<a href="#entidade" id="superfilter-entityName">Entidade</a>
+				<input type="text" id="superfilter-entityValue" />
 			</label>
 			<div class="buttons">
 				<a href="#addmore" id="superfilter-addmore">Adicionar Vários</a>
-				<a href="#salve" id="superfilter-salve">Salvar</a>
+				<a href="#save" id="superfilter-save">Salvar</a>
 				<a href="#import" id="superfilter-import">Importar</a>
 				<a href="#export" id="superfilter-export">Exportar</a>
 			</div>
@@ -21,6 +21,14 @@
 	</fieldset>
 </form>
 
-<div id="superfilter-entities"></div>
-<div id="superfilter-values"></div>
-<div id="superfilter-findmore"></div>
+<div id="superfilter-entities" class="superfilter-floatdiv" style="display:none"></div>
+<div id="superfilter-values" class="superfilter-floatdiv" style="display:none"></div>
+<div id="superfilter-findmore" class="superfilter-floatdiv" style="display:none">
+	<h2>Entidade</h2>
+	<form action="" method="post">
+		<input type="text" id="entity-filter" />
+		<div class="buttons">
+			<input type="submit" value="Adicionar" />
+		</div>
+	</form>
+</div>

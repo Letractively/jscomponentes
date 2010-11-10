@@ -4,67 +4,96 @@
 var SuperFilter = {
 
 	container: 'superfilter-container',
+	defaultEntity: 'entidade_1',
+	idScript: 'script-superfilter',
+	fileNameHTML: 'filter.html',
+	entitiesContainer: 'superfilter-entities',
+	linkEntityName: 'superfilter-entityName',
+	inputEntityValue: 'superfilter-entityValue',
+	path: '',
 
 	init: function(container) {
-		if(container != null && container != '') {
-			SuperFilter.container = container;
+		if(typeof Entities == 'object') {
+			if(container != null && container != '') {
+				SuperFilter.container = container;
+			}
+			SuperFilter.loadHTML();
 		}
-		SuperFilter.appendHTML();
+		else {
+			alert('Não foi possível inicializar o filtro. O metadata Entities não foi definido.');
+		}
 	},
 	
 	
-	appendHTML: function() {
-		var script = document.getElementById('script-superfilter');
+	loadHTML: function() {
+		var script = document.getElementById(SuperFilter.idScript);
 		if(script) {
-			var path = script.src.replace(/SuperFilter\.js$/, '');
-			jQuery('#' + SuperFilter.container).load(path + 'filter.html', SuperFilter.initHTML);
+			var path = SuperFilter.path = script.src.replace(/\/SuperFilter\.js$/, '');
+			jQuery('#' + SuperFilter.container)
+			.load(path + '/' + SuperFilter.fileNameHTML, SuperFilter.initHTML);
 		}
 	},
 	
 	
 	initHTML: function(response, status, xhr) {
 		if(status === 'success') {
-			SuperFilter.setEntityActin();
+			SuperFilter.setEntityDefault();
 			SuperFilter.buildListEntities();
 			SuperFilter.setListEntitiesAction();
 		}
 		else {
-			alert('Ocorreram erros ao carregar o super filtro.');
+			alert('Ocorreram erros ao carregar o HTML do filtro.');
 		}
 	},
 	
 	
-	buildListEntities: function() {
-		var entityList = Entities.list, list = [], entity = {};
-		list.push('<ul>');
-		for (var i = 0, leng = entityList.length; i < leng; i++) {
-			entity = entityList[i];
-			list.push('<li>');
-				list.push('<a href="#entidade_'+ entity.id +'">');
-					list.push(entity);
-				list.push('</a>');
-			list.push('</li>');
-		}
-		list.push('</ul>');
-		jQuery('#superfilter-entities').append(list.join(""));
-	},
-	
-	setEntityActin: function() {
-		var linkEntity = document.getElementById('filter-name');
-		if(linkEntity) {
-			linkEntity.onclick = function(e) {
-				console.info(e);
+	setEntityDefault: function() {
+		var link = document.getElementById(SuperFilter.linkEntityName);
+		if(link) {
+			SuperFilter.setLinkEntity(SuperFilter.defaultEntity);
+			link.onclick = function(e) {
+				var link = this;
+				jQuery('#' + SuperFilter.entitiesContainer)
+				.css({top: (link.offsetTop + 12) + 'px', left: link.offsetLeft + 'px'})
+				.show();
 				return false;
 			};
 		}
 	},
 	
+	
+	setLinkEntity: function(entity) {
+		var link = document.getElementById(SuperFilter.linkEntityName);
+		link.innerHTML = Entities[entity];
+		link.rel  = entity;
+		link.href = Entities[entity].url;
+	},
+	
+	
+	buildListEntities: function() {
+		var entityList = Entities.list, list = [], entity = {}, entityStr = "";
+		list.push('<ul>');
+		for (var i = 0, leng = entityList.length; i < leng; i++) {
+			entity = entityList[i];
+			entityStr = 'entidade_'+ entity.id;
+			list.push('<li>');
+				list.push('<a href="#'+ entityStr +'" rel="'+ entityStr +'">');
+					list.push(entity);
+				list.push('</a>');
+			list.push('</li>');
+		}
+		list.push('</ul>');
+		jQuery('#' + SuperFilter.entitiesContainer).append(list.join(""));
+	},
+	
+	
 	setListEntitiesAction: function() {
-		jQuery('#superfilter-entities a').click(function(){
-			alert(this.href);
+		jQuery('#' + SuperFilter.entitiesContainer + ' a').click(function() {
+			var entity = this.rel;
+			SuperFilter.setLinkEntity(entity);
+			jQuery('#' + SuperFilter.entitiesContainer).hide();
 			return false;
 		});
 	}
 	
-	
-}
+};

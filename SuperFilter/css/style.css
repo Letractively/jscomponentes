@@ -25,3 +25,7 @@ h1 {
 	margin: 20px 0;
 	text-align: center;
 }
+
+#superfilter-container {
+	width: 360px;
+}
