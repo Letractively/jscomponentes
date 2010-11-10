@@ -15,6 +15,7 @@ var Entities = {
 	'entidade_25': {id:'25', name:'Gerência Regional'},
 	'entidade_26': {id:'26', name:'Vendedor'},
 	'entidade_27': {id:'27', name:'Subsidiária'},
+	'entidade_3' : {id:'3',  name:'Teste Edy Segura'},
 	
 	list: [],
 	
@@ -24,6 +25,7 @@ var Entities = {
 			if(property == 'init' || property == 'list') continue;
 			entity = Entities[property];
 			entity.url = 'superFilter.action?entity=' + entity.id;
+			entity.key = property;
 			entity.toString = function() {
 				return this.name;
 			}
