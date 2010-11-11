@@ -4,6 +4,8 @@
 
 @import url(reset.css);
 @import url(SuperFilter/style.css);
+@import url(jquery.autocomplete.css);
+@import url(div-flutuante/div-flutuante.css);
 
 
 fieldset {

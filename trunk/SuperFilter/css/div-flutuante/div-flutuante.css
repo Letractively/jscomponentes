@@ -1,0 +1,123 @@
+/**
+ *
+ * Definicoes para as divs flutuantes
+ * @author Lidiane, lidiane@liveware.com.br
+ *
+ */
+
+div.div-flutuante {
+	background:#F4F9FD;
+	border:1px solid #839CAF;
+	height:auto;
+	padding:8px 6px 6px 6px;
+	position:fixed; /* removi position absolute para mostrar cursor nos campos*/
+	width:auto;
+	min-width:200px;
+	z-index:99999999;
+}
+
+div.div-flutuante h2 {
+	border-bottom:1px solid #839CAF;
+	background:transparent;
+	cursor:move;
+	margin:4px 0 3px !important;
+	padding:0 0 1px !important;
+}
+
+div.div-flutuante label {	font-weight:bold; }
+
+div.div-flutuante ul {
+	margin:5px 0 0 1px;
+	overflow-x:hidden;
+	clear:both;
+}
+
+div.div-flutuante ul li,
+div.div-flutuante ol li {
+	font-weight:bold;
+	line-height:18px;
+	margin-left:4px;
+	white-space:nowrap;
+}
+
+div.div-flutuante li a {
+	cursor:pointer;
+}
+
+div.close {
+	background:#F7F8FD url(images/bg-cadastrar.jpg) repeat-x top;
+	border:1px solid #839CAF;
+	cursor:pointer;
+	font-weight:bold;
+	padding:3px;
+	position:absolute;
+	right:5px;
+	text-align:center;
+	top:-12px;
+	width:47px;
+	color:#222;
+}
+
+div.close a {	color:#222; }
+
+div.listFiltered {
+	height:70px;
+	overflow-y:auto;
+	margin-top:5px;
+}
+
+div#divAneis {
+	width:200px;
+}
+
+a.fechar-div:hover {
+	text-decoration: underline !important;
+}
+a.fechar-div {
+	font-weight:bold !important;
+	color:#222 !important;
+	font-family: Arial,Verdana,Helvetica,sans-serif !important;
+	font-size: 11px !important;
+}
+
+div.div-flutuante .buttons {
+	border-top:1px solid #839CAF;
+}
+
+div.div-flutuante .buttons input {
+	border:1px solid #839CAF !important;
+	width:100px !important;
+}
+
+/* fieldset */
+
+div.div-flutuante fieldset {
+	border:1px solid #839CAF;
+}
+
+div.div-flutuante fieldset legend {
+	border:none;
+	font-weight:bold;
+	padding:0 3px 2px 2px;
+	display:block;
+	color:#333;
+}
+
+/* table - div flutuante */
+
+div.div-flutuante table.report { border:1px solid #ccc; }
+div.div-flutuante table.report caption {
+	border:1px solid #ccc;
+	border-bottom:none;
+}
+div.div-flutuante table.report tr.normal { background:#EEF5FB; }
+div.div-flutuante table.report tr.alternada { background:#F2F2F2; }
+div.div-flutuante table.report tr:hover td,
+div.div-flutuante table.report tbody tr:hover th { background:#D9E7EE !important; }
+
+div.div-flutuante option.new {
+	background: #eee url(images/new.png) no-repeat 4px center;
+	font-weight: bold;
+	padding-left: 20px;
+	text-transform: uppercase;
+}
