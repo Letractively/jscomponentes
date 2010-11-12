@@ -211,6 +211,14 @@ var SuperFilter = {
 			.show();
 			return false;
 		});
+		jQuery('a.delete', table).click(function(e){
+			var entity = Entities[this.rel], entityName = '';
+			entityName = entity.name.toLowerCase();
+			if (confirm('Deseja remover os valores para o filtro de ' + entityName + '?')) {
+	  		Entities[this.rel].filterValues = [];
+				SuperFilter.buildTableFilterValues();
+	  	}
+		});
 	},
 	
 	hideDivs: function() {
