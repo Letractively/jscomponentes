@@ -4,17 +4,17 @@
 var Entities = {
 	
 	'entidade_1' : {name:'Produto', filterValues: [["951333", "Gel Fixador p/ Cab. M.Marinho 150g - 12"]]},
-	'entidade_11': {id:'11', name:'Linha'},
-	'entidade_12': {id:'12', name:'Hierarquia'},
-	'entidade_13': {id:'13', name:'Unidade de Negócio'},
-	'entidade_2' : {id:'2',  name:'Cliente'},
-	'entidade_21': {id:'21', name:'Canal'},
-	'entidade_22': {id:'22', name:'Empresa'},
-	'entidade_23': {id:'23', name:'Grupo de Cliente'},
-	'entidade_24': {id:'24', name:'Estado'},
-	'entidade_25': {id:'25', name:'Gerência Regional'},
-	'entidade_26': {id:'26', name:'Vendedor'},
-	'entidade_27': {id:'27', name:'Subsidiária'},
+	'entidade_11': {name:'Linha'},
+	'entidade_12': {name:'Hierarquia'},
+	'entidade_13': {name:'Unidade de Negócio'},
+	'entidade_2' : {name:'Cliente'},
+	'entidade_21': {name:'Canal'},
+	'entidade_22': {name:'Empresa'},
+	'entidade_23': {name:'Grupo de Cliente'},
+	'entidade_24': {name:'Estado'},
+	'entidade_25': {name:'Gerência Regional'},
+	'entidade_26': {name:'Vendedor'},
+	'entidade_27': {name:'Subsidiária'},
 	
 	list: [],
 	

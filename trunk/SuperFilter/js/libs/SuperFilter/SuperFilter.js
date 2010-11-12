@@ -69,11 +69,11 @@ var SuperFilter = {
 	},
 	
 	
-	setLinkEntity: function(entity) {
+	setLinkEntity: function(entityKey) {
 		var link = document.getElementById(SuperFilter.linkEntityName);
-		link.innerHTML = Entities[entity];
-		link.rel  = entity;
-		link.href = Entities[entity].url;
+		link.innerHTML = Entities[entityKey];
+		link.rel  = entityKey;
+		link.href = Entities[entityKey].url;
 	},
 	
 	
@@ -82,9 +82,8 @@ var SuperFilter = {
 		list.push('<ul>');
 		for (var i = 0, leng = entityList.length; i < leng; i++) {
 			entity = entityList[i];
-			entityStr = 'entidade_'+ entity.id;
 			list.push('<li>');
-				list.push('<a href="#'+ entityStr +'" rel="'+ entityStr +'">');
+				list.push('<a href="#'+ entity.key +'" rel="'+ entity.key +'">');
 					list.push(entity);
 				list.push('</a>');
 			list.push('</li>');
@@ -96,8 +95,8 @@ var SuperFilter = {
 	
 	setListEntitiesAction: function() {
 		jQuery('#' + SuperFilter.entitiesContainer + ' a').click(function() {
-			var entity = this.rel;
-			SuperFilter.setLinkEntity(entity);
+			var entityName = this.rel;
+			SuperFilter.setLinkEntity(entityName);
 			SuperFilter.setAutocomplete();
 			jQuery('#' + SuperFilter.entitiesContainer).hide();
 			return false;
