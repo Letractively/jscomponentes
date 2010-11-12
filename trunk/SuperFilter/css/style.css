@@ -31,3 +31,31 @@ h1 {
 #superfilter-container {
 	width: 360px;
 }
+
+table#filter-values a.delete {
+	background:url("../images/ico-remove.gif") no-repeat scroll 0 0 transparent;
+	padding-left:13px;
+	text-indent:-999px;
+}
+
+table#filter-values td {
+	padding:2px;
+}
+
+table#filter-values th {
+	text-align:right;
+	padding:2px 6px 2px 0;
+}
+
+table#filter-values tr:hover {
+	background:#F2F2F2;
+}
+
+table#filter-values div.superfilter-floatdiv {
+	background:none repeat scroll 0 0 #F5FAFF;
+	border:1px solid #DFEFFF;
+}
+
+table#filter-values div.superfilter-floatdiv ul li:hover {
+	background:#EAF5FF;
+}
