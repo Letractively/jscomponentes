@@ -146,6 +146,15 @@ var SuperFilter = {
 	
 	
 	addToMetadata: function(entityName, data) {
+		var filterValues = Entities[entityName].filterValues;
+		if(filterValues.length > 0) {
+			for (var i=0, leng = filterValues.length; i < leng; i++) {
+				if(data[0] == filterValues[i][0]) {
+					alert('O item (' + data[1] + ') já foi adicionado.');
+					return;
+				}
+			}
+		}
 		Entities[entityName].filterValues.push(data);
 	},
 	

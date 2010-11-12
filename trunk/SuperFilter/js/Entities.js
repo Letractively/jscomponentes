@@ -3,7 +3,7 @@
  */
 var Entities = {
 	
-	'entidade_1' : {name:'Produto', filterValues: [["951333", "Gel Fixador p/ Cab. M.Marinho 150g - 12"]]},
+	'entidade_1' : {name:'Produto'},
 	'entidade_11': {name:'Linha'},
 	'entidade_12': {name:'Hierarquia'},
 	'entidade_13': {name:'Unidade de Negócio'},
