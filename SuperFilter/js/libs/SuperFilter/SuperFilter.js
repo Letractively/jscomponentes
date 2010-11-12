@@ -185,7 +185,7 @@ var SuperFilter = {
 				rows.push('</td>');
 				
 				rows.push('<td>');
-					rows.push('<a href="#delete-'+ entity.key +'" rel="'+ entity.key +'">[X]</a>');
+					rows.push('<a href="#delete-'+ entity.key +'" rel="'+ entity.key +'" class="delete">[X]</a>');
 				rows.push('</td>');
 			rows.push('</tr>');
 		}
@@ -205,7 +205,7 @@ var SuperFilter = {
 			var div = this.nextSibling;
 			jQuery(div)
 			.css({
-				top: (e.clientY - div.offsetHeight) + 'px',
+				top: e.clientY + 'px',
 				left: e.clientX + 'px'
 			})
 			.show();
