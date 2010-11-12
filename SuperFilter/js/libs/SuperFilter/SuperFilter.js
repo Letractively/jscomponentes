@@ -11,6 +11,7 @@ var SuperFilter = {
 	findMoreContainer: 'superfilter-findmore',
 	linkEntityName: 'superfilter-entityName',
 	inputEntityValue: 'superfilter-entityValue',
+	filterValues: 'filter-values',
 	path: '',
 
 	
@@ -41,8 +42,10 @@ var SuperFilter = {
 		if(status === 'success') {
 			SuperFilter.setEntityDefault();
 			SuperFilter.buildListEntities();
+			SuperFilter.buildTableFilterValues();
 			SuperFilter.setListEntitiesAction();
 			SuperFilter.setFindMoreAction();
+			SuperFilter.hideDivs();
 		}
 		else {
 			alert('Ocorreram erros ao carregar o HTML do filtro.');
@@ -55,13 +58,13 @@ var SuperFilter = {
 		if(link) {
 			SuperFilter.setLinkEntity(SuperFilter.defaultEntity);
 			SuperFilter.setAutocomplete();
-			link.onclick = function(e) {
+			jQuery(link).click(function(e) {
 				var link = this;
 				jQuery('#' + SuperFilter.entitiesContainer)
 				.css({top: (link.offsetTop + 12) + 'px', left: link.offsetLeft + 'px'})
 				.show();
 				return false;
-			};
+			});
 		}
 	},
 	
@@ -121,22 +124,102 @@ var SuperFilter = {
 		SuperFilter.clearInput();
 		jQuery('#' + SuperFilter.inputEntityValue)
 		.autocomplete (
-			eval(link.rel), // TODO alterar para href e tirar o método eval
+			link.href,
 			{
-				minChar: 0,
+				minChars: 0,
 				max: 10,
 				autoFill: false,
 				matchContains: true,
 				formatItem: function(data, i, max) {
-					return data.cod + ' - ' + data.label; // TODO alterar para indece data[0] e data[1]
+					return data[0] + ' - ' + data[1];
 				},
 				formatResult: function(data) {
-					return data.label;
+					return data[1];
 				}
 			}
-		);
+		)
+		.result(function(event, data, formatted) {
+			SuperFilter.addToMetadata(link.rel, data);
+			SuperFilter.buildTableFilterValues();
+			jQuery('#' + SuperFilter.inputEntityValue).val('');
+		});
 	},
 	
+	
+	addToMetadata: function(entityName, data) {
+		Entities[entityName].filterValues.push(data);
+	},
+	
+	
+	buildTableFilterValues: function() {
+		var table = document.getElementById(SuperFilter.filterValues);
+		var entities = Entities.list, rows = [], entity, filterValues;
+		
+		for(var i=0, lengI = entities.length; i<lengI; i++) {
+			entity = entities[i];
+			if(entity.filterValues.length == 0) continue;
+			
+			filterValues = entity.filterValues;
+			
+			rows.push('<tr>');
+				rows.push('<th>');
+					rows.push(entity.name);
+				rows.push('</th>');
+				
+				rows.push('<td>');
+					if (filterValues.length == 1) {
+		  			rows.push(filterValues[0][1]);
+				  }
+				  else if(filterValues.length > 1) {
+						rows.push('<a href="#show-values" class="show-values">Vários...</a>');
+						rows.push('<div class="superfilter-floatdiv" style="display:none;">');
+							rows.push('<ul>');
+					  	for (var j = 0, lengJ = filterValues.length; j < lengJ; j++) {
+					  		rows.push('<li>');
+									rows.push(filterValues[j][1]);
+								rows.push('</li>');
+					  	}
+							rows.push('</ul>');
+						rows.push('</div>');
+				  }
+				rows.push('</td>');
+				
+				rows.push('<td>');
+					rows.push('<a href="#delete-'+ entity.key +'" rel="'+ entity.key +'">[X]</a>');
+				rows.push('</td>');
+			rows.push('</tr>');
+		}
+		
+		if(rows.length > 0) {
+			jQuery(table).html(rows.join(''));
+			SuperFilter.setLinksTableAction();
+		}
+		else {
+			jQuery(table).html('<tr><td>Nenhum parâmetro para o filtro foi adicionado.</td></tr>');
+		}
+	},
+	
+	setLinksTableAction: function() {
+		var table = document.getElementById(SuperFilter.filterValues);
+		jQuery('a.show-values', table).click(function(e){
+			var div = this.nextSibling;
+			jQuery(div)
+			.css({
+				top: (e.clientY - div.offsetHeight) + 'px',
+				left: e.clientX + 'px'
+			})
+			.show();
+			return false;
+		});
+	},
+	
+	hideDivs: function() {
+		jQuery(document).click(function(e){
+			var table = document.getElementById(SuperFilter.filterValues);
+			jQuery('div.superfilter-floatdiv', table).hide();
+			jQuery('#' + SuperFilter.entitiesContainer).hide();
+		});
+	},
 	
 	clearInput: function() {
 		jQuery('#' + SuperFilter.inputEntityValue)

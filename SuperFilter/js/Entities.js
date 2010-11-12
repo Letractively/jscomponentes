@@ -3,7 +3,7 @@
  */
 var Entities = {
 	
-	'entidade_1' : {id:'1',  name:'Produto'},
+	'entidade_1' : {name:'Produto', filterValues: [["951333", "Gel Fixador p/ Cab. M.Marinho 150g - 12"]]},
 	'entidade_11': {id:'11', name:'Linha'},
 	'entidade_12': {id:'12', name:'Hierarquia'},
 	'entidade_13': {id:'13', name:'Unidade de Negócio'},
@@ -15,7 +15,6 @@ var Entities = {
 	'entidade_25': {id:'25', name:'Gerência Regional'},
 	'entidade_26': {id:'26', name:'Vendedor'},
 	'entidade_27': {id:'27', name:'Subsidiária'},
-	'entidade_3' : {id:'3',  name:'Teste Edy Segura'},
 	
 	list: [],
 	
@@ -24,8 +23,11 @@ var Entities = {
 		for (var property in Entities) {
 			if(property == 'init' || property == 'list') continue;
 			entity = Entities[property];
-			entity.url = 'superFilter.action?entity=' + entity.id;
+			entity.url = 'localdata/' + property + '.html'; //'superFilter.action?entity=' + entity.id;
 			entity.key = property;
+			if (!entity.filterValues) {
+	  		entity.filterValues = []; // valores do filtro
+			}
 			entity.toString = function() {
 				return this.name;
 			}
