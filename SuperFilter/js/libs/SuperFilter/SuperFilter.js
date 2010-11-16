@@ -107,10 +107,10 @@ var SuperFilter = {
 	setFindMoreAction: function() {
 		var link = document.getElementById('superfilter-addmore');
 		if(link) {
-			jQuery(link).click(function() {
+			jQuery(link).click(function(e) {
 				var link = this;
 				jQuery('#' + SuperFilter.findMoreContainer)
-				.css({top: (link.offsetTop + 12) + 'px', left: link.offsetLeft + 'px'})
+				.css({top: e.clientY + 'px', left: e.clientx + 'px'})
 				.show();
 				return false;
 			});
@@ -203,7 +203,7 @@ var SuperFilter = {
 			SuperFilter.setLinksTableAction();
 		}
 		else {
-			jQuery(table).html('<tr><td>Nenhum parâmetro para o filtro foi adicionado.</td></tr>');
+			jQuery(table).html('<tr><td class="no-item">Nenhum parâmetro para o filtro foi adicionado.</td></tr>');
 		}
 	},
 	
@@ -226,6 +226,7 @@ var SuperFilter = {
 	  		Entities[this.rel].filterValues = [];
 				SuperFilter.buildTableFilterValues();
 	  	}
+			return false;
 		});
 	},
 	
