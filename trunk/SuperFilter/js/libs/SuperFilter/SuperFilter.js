@@ -12,6 +12,7 @@ var SuperFilter = {
 	linkEntityName: 'superfilter-entityName',
 	inputEntityValue: 'superfilter-entityValue',
 	filterValues: 'filter-values',
+	filterAddMore: 'superfilter-findmore',
 	path: '',
 
 	
@@ -74,8 +75,8 @@ var SuperFilter = {
 		link.innerHTML = Entities[entityKey];
 		link.rel  = entityKey;
 		link.href = Entities[entityKey].url;
+		jQuery('#' + SuperFilter.filterAddMore + ' h2').text(Entities[entityKey]);
 	},
-	
 	
 	buildListEntities: function() {
 		var entityList = Entities.list, list = [], entity = {}, entityStr = "";
@@ -105,13 +106,13 @@ var SuperFilter = {
 	
 	
 	setFindMoreAction: function() {
-		var link = document.getElementById('superfilter-addmore');
+		var link = document.getElementById(SuperFilter.filterAddMore);
 		if(link) {
 			jQuery(link).click(function(e) {
 				var link = this;
-				jQuery('#' + SuperFilter.findMoreContainer)
-				.css({top: e.clientY + 'px', left: e.clientx + 'px'})
-				.show();
+//				jQuery('#' + SuperFilter.findMoreContainer)
+//				.css({top: e.clientY + 'px', left: e.clientx + 'px'})
+//				.show();
 				return false;
 			});
 		}
@@ -211,6 +212,7 @@ var SuperFilter = {
 		var table = document.getElementById(SuperFilter.filterValues);
 		jQuery('a.show-values', table).click(function(e){
 			var div = this.nextSibling;
+			jQuery('div.superfilter-floatdiv', table).hide();
 			jQuery(div)
 			.css({
 				top: e.clientY + 'px',
