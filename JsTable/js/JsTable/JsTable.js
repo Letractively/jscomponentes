@@ -561,7 +561,7 @@ var JsTable = function(params) {
 		
 		for(var i=0, leng = ths.length; i<leng; i++) {
 			th = ths[i];
-			if(columns[i].sort != false) {
+			if(columns[i] && columns[i].sort != false) {
 				th.asc = true;
 				if(th.className.indexOf('sortby-') > -1) {
 					jQuery(th).click(function(){
