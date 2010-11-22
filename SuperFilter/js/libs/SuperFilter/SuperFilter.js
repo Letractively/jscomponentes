@@ -12,7 +12,7 @@ var SuperFilter = {
 	linkEntityName: 'superfilter-entityName',
 	inputEntityValue: 'superfilter-entityValue',
 	filterValues: 'filter-values',
-	filterAddMore: 'superfilter-findmore',
+	linkAddMore: 'superfilter-addmore',
 	path: '',
 
 	
@@ -72,10 +72,11 @@ var SuperFilter = {
 	
 	setLinkEntity: function(entityKey) {
 		var link = document.getElementById(SuperFilter.linkEntityName);
+		var selector = "#" + SuperFilter.findMoreContainer + " h2";
 		link.innerHTML = Entities[entityKey];
 		link.rel  = entityKey;
 		link.href = Entities[entityKey].url;
-		jQuery('#' + SuperFilter.filterAddMore + ' h2').text(Entities[entityKey]);
+		jQuery(selector).text(link.innerHTML);
 	},
 	
 	buildListEntities: function() {
@@ -106,13 +107,13 @@ var SuperFilter = {
 	
 	
 	setFindMoreAction: function() {
-		var link = document.getElementById(SuperFilter.filterAddMore);
+		var link = document.getElementById(SuperFilter.linkAddMore);
 		if(link) {
 			jQuery(link).click(function(e) {
 				var link = this;
-//				jQuery('#' + SuperFilter.findMoreContainer)
-//				.css({top: e.clientY + 'px', left: e.clientx + 'px'})
-//				.show();
+				jQuery('#' + SuperFilter.findMoreContainer)
+				.css({top: e.clientY + 'px', left: e.clientx + 'px'})
+				.show();
 				return false;
 			});
 		}

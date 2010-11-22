@@ -3,7 +3,7 @@
  */
 var Entities = {
 	
-	'entidade_1' : {name:'Produto'},
+	'entidade_1' : {name:'Produto', filterValues: [["951332", "Gel de Banho M.Marinho 150g - 12"]]},
 	'entidade_11': {name:'Linha'},
 	'entidade_12': {name:'Hierarquia'},
 	'entidade_13': {name:'Unidade de Negócio'},
