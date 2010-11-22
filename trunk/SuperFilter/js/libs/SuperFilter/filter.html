@@ -27,13 +27,24 @@
 <div id="superfilter-entities" class="superfilter-floatdiv" style="display:none"></div>
 
 <!-- adicionar mais de um -->
-<div id="superfilter-findmore" class="div-flutuante">
+<div id="superfilter-findmore" class="div-flutuante" style="display:none;">
 	<h2>Entidade</h2>
 	<form action="" method="post">
 		<input type="text" id="entity-filter" />
 		<div class="values-content">
 			<table id="findmore-values" class="report">
-				<tr class="no-item">Utilize o filtro para visualizar os dados.</tr>
+				<thead>
+					<tr>
+						<th><input type="checkbox" class="check" id="entity" /></th>
+						<th>Código</th>
+						<th>Nome</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="3" class="no-item">Utilize o filtro para visualizar os dados.</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 		<div class="buttons">
