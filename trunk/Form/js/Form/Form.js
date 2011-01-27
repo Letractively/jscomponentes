@@ -87,7 +87,7 @@ var Form = {
 			for(var i=0; i<form.elements.length; i++) {
 				var field = form.elements[i];
 				
-				if(typeof field.type != "undefined" && field.type != "hidden") {
+				if(typeof field.type != "undefined" && field.type != "hidden" && !field.readOnly && !field.disabled) {
 					if(!field.value) field.focus();
 					else continue;
 					return;
