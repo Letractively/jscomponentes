@@ -126,7 +126,7 @@ var Ajax = {
 			delete httpRequest;
 		}
 		else {
-			throw new Error("Your browser does not support XMLHttpRequest");
+			throw new Error("Your browser does not support XMLHttpRequest.");
 			result = false;
 		}
 		
