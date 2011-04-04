@@ -44,5 +44,4 @@ var DateUtil = {
 		result   = weekLabel[dayWeek] + ", " + dayMonth + " de " + monthLabel[month] + " de " + year + ".";
 	},
 	
-	
 };
