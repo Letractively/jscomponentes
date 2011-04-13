@@ -7,41 +7,51 @@
 var DateUtil = {
 	
 	getFormatDate: function() {
-		var result;
-		
-		var date     = new Date();         // objeto do tipo date.
-		var dayMonth = date.getDate();     // dia do mês.
-		var dayWeek  = date.getDay();      // dia da semana.
-		var month    = date.getMonth();    // mês representado em números.
-		var year     = date.getFullYear(); // ano representado em números.
+		var date     = new Date(),         
+		    dayMonth = date.getDate(),     
+		    dayWeek  = date.getDay(),      
+		    month    = date.getMonth(),    
+		    year     = date.getFullYear(),
+				hours    = date.getHours(),
+				minutes  = date.getMinutes(),
+				strDate  = '';
 		
 		var weekLabel = [
-			"Domingo",
-			"Segunda",
-			"Terça",
-			"Quarta",
-			"Quinta",
-			"Sexta",
-			"Sábado"
+			"Sunday",
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday"
 		];
 		
 		var monthLabel = [
-			"Janeiro",
-			"Fevereiro",
-			"Março",
-			"Abril",
-			"Maio",
-			"Junho",
-			"Julho",
-			"Agosto",
-			"Setembro",
-			"Outubro",
-			"Novembro",
-			"Dezembro"
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December"
 		];
 		
-		dayMonth = (dayMonth < 10) ? "0" + dayMonth : dayMonth;
-		result   = weekLabel[dayWeek] + ", " + dayMonth + " de " + monthLabel[month] + " de " + year + ".";
+		dayMonth = DateUtil.fillWithZero(dayMonth);
+		hours = DateUtil.fillWithZero(hours);
+		minutes = DateUtil.fillWithZero(minutes);
+		
+		strDate = weekLabel[dayWeek] + ', ' + dayMonth + ' ' + monthLabel[month] + ', ' + year + '. ' + hours + ':' + minutes;
+		
+		return strDate;
 	},
+	
+	fillWithZero: function(value) {
+		return value = (value < 10) ? "0" + value : value;
+	}
 	
 };
