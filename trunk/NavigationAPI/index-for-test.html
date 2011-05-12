@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>NavigationScreenSet Test Page</title>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+<!-- jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+
+<!-- navigation lib -->
+<script type="text/javascript" src="js/navigation/KeyMapping/KeyMapping.PC.js"></script> <!-- verify device before include this -->
+<script type="text/javascript" src="js/navigation/NavigationScreenSet.js"></script>
+<script type="text/javascript" src="js/navigation/NavigationActionSet.js"></script>
+<script type="text/javascript" src="js/navigation/KeyAction.js"></script>
+
+<!-- behaviour -->
+<script type="text/javascript" src="js/BuildKeyAction.js"></script>
+<script type="text/javascript" src="js/BuildNavigations.js"></script>
+<script type="text/javascript" src="js/Index.js"></script>
+
+</head>
+<body>
+
+<h1>NavigationScreenSet Test Page</h1>
+<p>Press the key M for show menu, G for guide, left/up/right/down, B for back or enter for selecte.</p>
+
+<p id="log"></p>
+<p>KeyCode: <span id="logkeydown"></span></p>
+
+<h2>Sample</h2>
+
+<div id="mainMenu" class="navigation">
+	<h3>Main Menu</h3>
+	<ul>
+		<li class="selected">Main Menu Item 1</li>
+		<li>Main Menu Item 2</li>
+		<li>Main Menu Item 3</li>
+		<li>Main Menu Item 4</li>
+	</ul>
+</div>
+
+<div id="secondMenu" class="navigation">
+	<h3>Second Menu</h3>
+	<ul>
+		<li class="selected">Seconde Menu Item 1</li>
+		<li>Seconde Menu Item 2</li>
+		<li>Seconde Menu Item 3</li>
+		<li>Seconde Menu Item 4</li>
+	</ul>
+</div>
+
+<div id="guide" class="navigation">
+	<h3>Guide</h3>
+	<ul>
+		<li class="sected">Guide Item 1</li>
+		<li>Guide Item 2</li>
+		<li>Guide Item 3</li>
+		<li>Guide Item 4</li>
+	</ul>
+</div>
+
+</body>
+</html>
