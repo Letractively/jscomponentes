@@ -26,13 +26,13 @@ var NavigationActionSet = function(navigationId, keyActions) {
 			action = actions[i];
 			if(action.key == key) {
 				if (action.before) {
-					action.before();
+					action.before(key);
 				}
 				if (action.execute) {
-					action.execute();
+					action.execute(key);
 				}
 				if (action.after) {
-					action.after();
+					action.after(key);
 				}
 			}
 		}
