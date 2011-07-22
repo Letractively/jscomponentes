@@ -10,12 +10,13 @@
  */
 var Cookie = {
 
-	set: function(nome, value, expireDays) {
+	set: function(nome, value, expireDays, path) {
 		var expireDate = new Date();
 
 		expireDate.setTime(expireDate.getTime() + (expireDays * 24 * 3600 * 1000));
 		document.cookie = nome + "=" + escape(value) + 
-		((expireDays == null) ? "" : "; expires=" + expireDate.toGMTString());
+		((expireDays == null) ? "" : "; expires=" + expireDate.toGMTString()) +
+		((path == null) ? "; path=/" : "; path=" + path + "/");
 	},
 
 	//deprecated
