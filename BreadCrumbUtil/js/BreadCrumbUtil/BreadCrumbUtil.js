@@ -28,6 +28,11 @@ var BreadCrumbUtil = {
 		}
 	},
 	
+	addCurrentUrl: function() {
+		var bc = new BreadCrumb();
+		BreadCrumbUtil.addToStack(bc);
+	},
+	
 	reset: function() {
 		this.stack = [];
 		this.current = null;
