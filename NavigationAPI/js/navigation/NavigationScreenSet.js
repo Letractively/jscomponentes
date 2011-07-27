@@ -10,6 +10,7 @@ var NavigationScreenSet = {
 	
 	init: function() {
 		NavigationScreenSet.monitorKeyEvents();
+		NavigationScreenSet.add(new NavigationActionSet('blockNav', null));
 	},
 	
 	/**
@@ -73,6 +74,7 @@ var NavigationScreenSet = {
 					acceptedKey = navigation.acceptedKeys[i];
 					if(acceptedKey == keyCode) {
 						navigation.delegateAction(keyCode);
+						break;
 					}
 				}
 			}
@@ -87,7 +89,10 @@ var NavigationScreenSet = {
  */
 var NavigationScreenStatus = {
 	
-	current: 0, //first navigation action set
+	/*
+	 * Begin the one because the zero is navigation broker.
+	 */
+	current: 1, //first navigation action set
 	
 	/**
 	 * Set navigation for execute actions
@@ -100,6 +105,13 @@ var NavigationScreenStatus = {
 		else {
 			alert('The navigation ' + navigationId + ' is not found!');
 		}
+	},
+	
+	/**
+	 * block navigation
+	 */
+	blockNavigation: function() {
+		NavigationScreenStatus.setNavigationActions('blockNav');
 	},
 	
 	/**

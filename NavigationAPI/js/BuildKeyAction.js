@@ -25,6 +25,22 @@ var BuildKeyAction = {
 		
 		actions = [menuAction, guideAction];
 		return actions;
+	},
+	
+	overrideAction: function(action) {
+		var index = -1, actions = BuildKeyAction.actions;
+		for(var i=0, leng = actions.length; i<leng; i++) {
+			if(action.key == actions[i].key) {
+				index = i;
+				break;
+			}
+		}
+		if(index > -1) {
+			actions[index] = action;
+		}
+		else {
+			actions.push(action);
+		}
 	}
 	
 };
